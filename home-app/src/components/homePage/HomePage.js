@@ -1,11 +1,12 @@
-import {MainMenu} from "./MainMenu";
-import {UserFormLogin} from "../userForm/UserFormLogin";
+import MainMenu from "./MainMenu";
 
-export const HomePage = () => {
+const HomePage = () => {
     return (
         <main>
-            <UserFormLogin/>
             <MainMenu/>
         </main>
     )
 }
+export default HomePage
+
+

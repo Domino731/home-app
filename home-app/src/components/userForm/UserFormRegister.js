@@ -1,10 +1,11 @@
 import {useState} from "react"
-import {registerDB} from "../../fireBase/registerFB";
+import {auth} from "../../fireBase/fireBase";
+import {Link, useHistory} from "react-router-dom";
 
 export const UserFormRegister = () => {
     const [data, setData] = useState({email: "", password: "", userName: ""})
     const [invalid, setInvalid] = useState({email: "", password: "", userName: ""})
-
+    let history = useHistory()
     const handleInputChange = (e) => {
         const {name, value} = e.target;
 
@@ -13,6 +14,20 @@ export const UserFormRegister = () => {
             [name]: value
         }));
     };
+    const register = () => {
+        auth().createUserWithEmailAndPassword(data.email, data.password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                console.log(`sign up successfully :)`)
+                history.push("/")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
     const handleChange = (e) => {
         e.preventDefault()
         if (data.password.length <= 8) {
@@ -22,7 +37,7 @@ export const UserFormRegister = () => {
             setInvalid(prev => ({...prev, userName: "*Nazwa użytkownika jest za krótka"}))
         }
         if (data.password.length >= 8 && data.userName.length >= 3) {
-            registerDB(data)
+            register()
         }
     }
 
