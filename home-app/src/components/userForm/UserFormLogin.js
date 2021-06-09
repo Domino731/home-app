@@ -50,7 +50,7 @@ export const UserFormLogin = () => {
                         </div>
                         <button className="userForm__button" >ZALOGUJ SIĘ</button>
                         <div className="userForm__options">
-                            <Link to="/register">Zarejestruj się</Link>
+                            <Link to="/register" >Zarejestruj się</Link>
                             <Link>Zresetuj hasło</Link>
                         </div>
                     </form>
