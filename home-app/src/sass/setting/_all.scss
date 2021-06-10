@@ -1,0 +1,93 @@
+@mixin corners($position, $color, $size, $borderSize) {
+  @if $position == "leftTop" {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-left: $borderSize solid $color;
+    border-top: $borderSize solid $color;
+  }
+  @if $position == "rightTop" {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-right: $borderSize solid $color;
+    border-top: $borderSize solid $color;
+  }
+  @if $position == "leftBot" {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-left: $borderSize solid $color;
+    border-bottom: $borderSize solid $color;
+  }
+  @if $position == "rightBot" {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-right: $borderSize solid  $color;
+    border-bottom: $borderSize solid $color;
+  }
+
+
+  @if $position == "anotherLeftTop" {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-right: $borderSize solid $color;
+    border-top: $borderSize solid $color;
+  }
+  @if $position == "anotherRightTop" {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-left: $borderSize solid $color;
+    border-top: $borderSize solid $color;
+  }
+  @if $position == "anotherLeftBot" {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-right: $borderSize solid $color;
+    border-bottom: $borderSize solid $color;
+  }
+  @if $position == "anotherRightBot" {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: $size;
+    height: $size;
+    border-left: $borderSize solid  $color;
+    border-bottom: $borderSize solid $color;
+  }
+
+}

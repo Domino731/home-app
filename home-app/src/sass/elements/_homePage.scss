@@ -1,9 +1,8 @@
 .mainMenu {
   width: 100%;
   height: 700px;
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
+  color: $color-green;
+
   &__titleBar {
     height: 120px;
     font-size: 50px;
@@ -18,6 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    box-shadow: $textShadow-green;
 
     h1 {
       position: relative;
@@ -65,35 +65,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     a{
-       font-size: 66px;
-       color: $color-green;
-       font-weight: bold;
-       text-decoration: none;
-     }
+  overflow: hidden;
+    border-radius: 5px;
+    a {
+      font-size: 66px;
+      color: $color-green;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
     &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: block;
-      width: 80px;
-      height: 80px;
-      border-left: 7px solid $color-green;
-      border-top: 7px solid $color-green;
+      @include corners("leftTop",  $color-green, 80px, 7px);
     }
 
     &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: block;
-      width: 80px;
-      height: 80px;
-      border-right: 7px solid $color-green;
-      border-bottom: 7px solid $color-green;
+      @include corners("rightBot", $color-green, 80px, 7px);
     }
+  }
+
+  &__logOut {
+    font-size: 62px;
+    width: 100px;
+    height: 100px;
+    border: 7px solid $color-green;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: $textShadow-green;
+    border-radius: 5px;
   }
 }
 

@@ -1,11 +1,20 @@
 import {useState} from "react"
 import {auth} from "../../fireBase/fireBase";
 import {Link, useHistory} from "react-router-dom";
+import {userFormRegisterValidate} from "../../functions/userFormRegisterValidate";
+import {SuccessfulForm} from "./SuccessfulForm";
 
-export const UserFormRegister = () => {
-    const [data, setData] = useState({email: "", password: "", userName: ""})
-    const [invalid, setInvalid] = useState({email: "", password: "", userName: ""})
+export const UserFormRegister = ({changeForm}) => {
+    const [data, setData] = useState({email: "", password: "", passwordRepeat: ""})
+    const [invalid, setInvalid] = useState({email: "", password: "", passwordRepeat: ""})
+    const [isInvalid, setIsInvalid] = useState(false);
+    const [successful, setSuccessful] = useState(false)
     let history = useHistory()
+    const handleChangeForm = () => {
+        if (typeof changeForm) {
+            return changeForm()
+        }
+    }
     const handleInputChange = (e) => {
         const {name, value} = e.target;
 
@@ -20,67 +29,68 @@ export const UserFormRegister = () => {
                 // Signed in
                 const user = userCredential.user;
                 console.log(`sign up successfully :)`)
-                history.push("/")
+                setTimeout(()=> {history.push("/")}, 5000)
+                setSuccessful(true)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
-            });
+                userFormRegisterValidate(errorCode,errorMessage,setInvalid)
+                setIsInvalid(true)
+            })
     }
-    const handleChange = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault()
-        if (data.password.length <= 8) {
-            setInvalid(prev => ({...prev, password: "*hasło jest za krótkie"}))
-        }
-        if (data.userName.length <= 3) {
-            setInvalid(prev => ({...prev, userName: "*Nazwa użytkownika jest za krótka"}))
-        }
-        if (data.password.length >= 8 && data.userName.length >= 3) {
+
+        if(data.password === data.passwordRepeat){
             register()
         }
+        else{
+            setInvalid(prev => ({...prev, password: "*Hasła nie są takie same"}))
+        }
+
     }
 
     return (
         <>
-            <style>{`body {
-              background: rgb(48, 169, 222);
-  background: linear-gradient(142deg, rgba(48, 169, 222, 1) 0%, rgba(44, 79, 180, 1) 77%), rgba(48, 169, 222, 1))} 
-            `}</style>
-            <section className="container">
+            {successful === false && <section className="container">
                 <div className="userForm">
-                    <i className="fas fa-clipboard-list"/>
-                    <form className="userForm__box" onSubmit={handleChange}>
+                    <h1 className="userForm__title">ZAREJESTRUJ</h1>
+                    <div className="userForm__line"/>
+                    <form className="userForm__form">
                         <div className="userForm__element">
-                            <i className="fas fa-user"/> <input type="email" name="email"
-                                                                onChange={handleInputChange} value={data.email}/>
-                        </div>
-                        <div className="userForm__element">
-                            <i className="fas fa-lock"/> <input type="password" className="signIn__input"
-                                                                name="password"
-                                                                onChange={handleInputChange} value={data.password}
-                                                                placeholder="minimum 8 znaków"/>
+                            <i className="fas fa-envelope"/>
+                            <input type="text" placeholder="E-mail"
+                                   value={data.email} name="email"
+                                   onChange={handleInputChange}/>
                         </div>
                         <div className="userForm__element">
-                            <i className="fas fa-lock"/> <input type="text" className="signIn__input" name="userName"
-                                                                onChange={handleInputChange} value={data.userName}
-                                                                placeholder="minimum 3 znaki"/>
+                            <i className="fas fa-lock"/>
+                            <input type="password" placeholder="Hasło"
+                                   name="password" value={data.password} onChange={handleInputChange}/>
                         </div>
-
-
-                        <button className="userForm__button">ZAREJESTRUJ SIĘ</button>
-
-
-                        <div className="form__invalid">
-                            <p>{invalid.email}</p>
-                            <p>{invalid.userName}</p>
-                            <p>{invalid.password}</p>
+                        <div className="userForm__element">
+                            <i className="fas fa-unlock"/>
+                            <input type="password" placeholder=" powtórz hasło"
+                                   name="passwordRepeat" value={data.passwordRepeat} onChange={handleInputChange}/>
                         </div>
-
-
                     </form>
+                    <div className="userForm__line"/>
+                    {isInvalid &&
+                    <div className="userForm__invalidData">
+                        <p>{invalid.email}</p>
+                        <p>{invalid.password}</p>
+                        <p>{invalid.passwordRepeat}</p>
+                    </div>
+                    }
+                    <div className="userForm__btn">
+                        <button onClick={handleFormSubmit}> Zarejestruj się</button>
+                    </div>
+                    <span className="userForm__question" onClick={handleChangeForm}>Posiadasz już swoje konto ?</span>
                 </div>
-            </section>
+            </section>}
+            {successful && <SuccessfulForm text={"Zarejestrowano"}/>}
         </>
     )
 }
+

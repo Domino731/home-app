@@ -5,22 +5,30 @@ import {Link} from "react-router-dom";
 import {auth} from "../../fireBase/fireBase";
 import {Route} from "react-router-dom";
 import {changeUser} from "../../redux/actions/currenUser.actions";
+import {useEffect} from "react";
 
 
-const MainMenus = ({user, change}) => {
-    const handleLogout = () => {
-        change(null)
+// const MainMenus = ({user, change}) => {
+//     const handleLogout = () => {
+//         change(null)
+//     }
+//     return (
+//         <section>
+//             <h1>{JSON.stringify(user)}</h1>
+//             <div onClick={handleLogout}>Wyloguj się</div>
+//         </section>
+//     )
+// }
+
+
+export const MainMenu = ({user, change}) => {
+    useEffect(()=>{
+        console.log(true)
+        console.log(user)
+    },[])
+    const handleLogOut = () => {
+        auth().signOut()
     }
-    return (
-        <section>
-            <h1>{JSON.stringify(user)}</h1>
-            <div onClick={handleLogout}>Wyloguj się</div>
-        </section>
-    )
-}
-
-
-export const MainMenu = () => {
     return (
         <section className="container">
             <div className="mainMenu">
@@ -33,6 +41,9 @@ export const MainMenu = () => {
                 </div>
                 <div className="mainMenu__element">
                     <Link to="/mykitchen">Przepisy</Link>
+                </div>
+                <div className="mainMenu__logOut" onClick={handleLogOut}>
+                    <i className="fas fa-sign-out-alt"/>
                 </div>
             </div>
         </section>

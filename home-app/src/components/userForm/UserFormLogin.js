@@ -1,14 +1,20 @@
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {auth} from "../../fireBase/fireBase";
+import {SuccessfulForm} from "./SuccessfulForm";
 
-
-export const UserFormLogin = () => {
+export const UserFormLogin = ({changeForm}) => {
     const [data, setData] = useState({email: "", password: "", userName: ""})
-    let history = useHistory();
+    const [error, setError] = useState("")
+    const [successful, setSuccessful] = useState(false)
+    const handleChangeForm = () => {
+        if (typeof changeForm) {
+            return changeForm()
+        }
+    }
     const handleInputChange = (e) => {
         const {name, value} = e.target;
-
+        setError("")
         setData((prev) => ({
             ...prev,
             [name]: value
@@ -19,43 +25,50 @@ export const UserFormLogin = () => {
         auth().signInWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
                 // Signed in
-                history.push("/")
+                setTimeout(() => {
+                    history.push("/")
+                }, 5000)
                 const user = userCredential.user;
-                console.log(true)
+                setSuccessful(true)
 
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
+                setError("Niepoprawny login lub hasło")
             });
     }
-    return (
-        <>
-            <style>{`body {
-              background: rgb(48, 169, 222);
-  background: linear-gradient(142deg, rgba(48, 169, 222, 1) 0%, rgba(44, 79, 180, 1) 77%), rgba(48, 169, 222, 1))} 
-            `}</style>
-            <section className="container">
+    let history = useHistory();
+    return (<>
+
+            {successful === false && <section className="container">
                 <div className="userForm">
-                    <i className="far fa-user userForm__icon"/>
-                    <form className="userForm__box" onSubmit={handleSubmit}>
+                    <h1 className="userForm__title">ZALOGUJ</h1>
+                    <div className="userForm__line"/>
+                    <form className="userForm__form">
                         <div className="userForm__element">
-                            <i className="fas fa-user"/> <input type="text" placeholder="E-mail"
-                                                                value={data.email} name="email" onChange={handleInputChange}/>
+                            <i className="fas fa-envelope"/>
+                            <input type="text" placeholder="E-mail"
+                                   value={data.email} name="email"
+                                   onChange={handleInputChange}/>
                         </div>
                         <div className="userForm__element">
-                            <i className="fas fa-lock"/> <input type="password" placeholder="Password"
-                         name="password" value={data.password} onChange={handleInputChange}/>
+                            <i className="fas fa-lock"/>
+                            <input type="password" placeholder="Hasło"
+                                   name="password" value={data.password} onChange={handleInputChange}/>
                         </div>
-                        <button className="userForm__button" >ZALOGUJ SIĘ</button>
-                        <div className="userForm__options">
-                            <Link to="/register" >Zarejestruj się</Link>
-                            <Link>Zresetuj hasło</Link>
-                        </div>
+
                     </form>
+                    <div className="userForm__line"/>
+                    {error !== "" && <div className="userForm__invalidData">{error}</div>}
+                    <div className="userForm__btn">
+                        <button onClick={handleSubmit}>Zaloguj się</button>
+                    </div>
+                    <span className="userForm__question" onClick={handleChangeForm}>Nie masz jeszcze konta ?</span>
                 </div>
-            </section>
+            </section>}
+            {successful && <SuccessfulForm text={"Zalogowano"}/>}
         </>
     )
 }

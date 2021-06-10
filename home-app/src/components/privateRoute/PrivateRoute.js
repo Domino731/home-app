@@ -12,6 +12,9 @@ const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
                if(currentUser.currentUser === null){
                   return  <Redirect to="/login"/>
                }
+               else if(currentUser.currentUser === undefined){
+                   return  <Redirect to="/login"/>
+               }
                else{
                   return <Component {...props}/>
                }
@@ -25,5 +28,4 @@ const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
 const mapStateToProps = state => ({
     currentUser: state.currentUser
 })
-// return currentUser  ? <Component {...props}/> : <Redirect to="/login"/>
 export default connect(mapStateToProps)(PrivateRoute)
