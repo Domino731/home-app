@@ -3,8 +3,7 @@ import {Route, Redirect} from "react-router-dom"
 import {connect} from "react-redux";
 
 const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
-    console.log(JSON.stringify(currentUser).length)
-    console.log(currentUser.currentUser)
+    console.log( typeof currentUser.currentUser)
     return(
         <Route
             {...rest}
@@ -13,7 +12,7 @@ const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
                   return  <Redirect to="/login"/>
                }
                else if(currentUser.currentUser === undefined){
-                   return  <Redirect to="/login"/>
+                   return null
                }
                else{
                   return <Component {...props}/>

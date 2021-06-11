@@ -67,11 +67,15 @@
     align-items: center;
   overflow: hidden;
     border-radius: 5px;
-    a {
+    strong {
       font-size: 66px;
       color: $color-green;
       font-weight: bold;
       text-decoration: none;
+      padding: 40px;
+    }
+    :focus{
+      background: red;
     }
 
     &::before {
@@ -96,7 +100,10 @@
     border-radius: 5px;
   }
 }
-
+.animatedRedirect{
+  overflow: hidden;
+   animation: redirectAnimation 0.5s forwards;
+}
 @keyframes titleAnimation {
   0% {
     width: 0;
@@ -104,5 +111,16 @@
   100% {
     width: 100%;
   }
-
+}
+@keyframes redirectAnimation {
+  0%{
+   box-shadow: 0 0 2px $color-green inset;
+  }
+  100%{
+    box-shadow: 0 100px $color-green inset,
+    100px 0 $color-green inset,
+    0 -100px $color-green inset,
+     -100px 0 $color-green inset;
+    -webkit-text-stroke: 1px $color-grey;
+  }
 }

@@ -3,31 +3,23 @@ import {dayName} from "../../functions/greeting";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {auth} from "../../fireBase/fireBase";
-import {Route} from "react-router-dom";
 import {changeUser} from "../../redux/actions/currenUser.actions";
-import {useEffect} from "react";
-
-
-// const MainMenus = ({user, change}) => {
-//     const handleLogout = () => {
-//         change(null)
-//     }
-//     return (
-//         <section>
-//             <h1>{JSON.stringify(user)}</h1>
-//             <div onClick={handleLogout}>Wyloguj się</div>
-//         </section>
-//     )
-// }
-
+import {useHistory} from "react-router-dom";
+import {useState} from "react";
 
 export const MainMenu = ({user, change}) => {
-    useEffect(()=>{
-        console.log(true)
-        console.log(user)
-    },[])
+    const [kitchenClass, setKitchenClass] = useState(false)
+    const [recipesClass, setRecipesClass] = useState(false)
+    const history = useHistory()
     const handleLogOut = () => {
         auth().signOut()
+    }
+    const redirect = (setClass, path) => {
+        setTimeout(() => {
+            history.push(path)
+
+        }, 700)
+        setClass(true)
     }
     return (
         <section className="container">
@@ -36,12 +28,15 @@ export const MainMenu = ({user, change}) => {
                     <h1 data-text={greeting()}>{greeting()}</h1>
                     <h2 data-text={dayName()}>{dayName()}</h2>
                 </div>
-                <div className="mainMenu__element">
-                    <Link to="/mykitchen">Kuchnia</Link>
+                <div className={`mainMenu__element ${kitchenClass ? "animatedRedirect" : null}`}
+                     onClick={() => redirect(setKitchenClass, "/myKitchen")}>
+                    <strong>Kuchnia</strong>
                 </div>
-                <div className="mainMenu__element">
-                    <Link to="/mykitchen">Przepisy</Link>
+                <div className={`mainMenu__element ${recipesClass ? "animatedRedirect" : null}`}
+                     onClick={() => redirect(setRecipesClass, "/myRecipes")}>
+                    <strong>Kuchnia</strong>
                 </div>
+
                 <div className="mainMenu__logOut" onClick={handleLogOut}>
                     <i className="fas fa-sign-out-alt"/>
                 </div>

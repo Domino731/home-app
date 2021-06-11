@@ -1,3 +1,11 @@
+import {MyKitchenBar} from "./MyKitchenBar";
+import {MyKitchenCategory} from "./MyKitchenCategory";
+
 export const MyKitchen = () => {
-    return <h1>asd</h1>
+    return (
+        <section className="container">
+            <MyKitchenBar/>
+            <MyKitchenCategory category="Mięso"/>
+        </section>
+    )
 }

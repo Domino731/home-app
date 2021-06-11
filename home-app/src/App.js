@@ -11,9 +11,7 @@ import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
-const XS = () => {
-    return <h1>asd</h1>
-}
+
 
 function App({change}) {
     useEffect(() => {
