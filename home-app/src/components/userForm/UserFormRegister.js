@@ -3,9 +3,10 @@ import {auth} from "../../fireBase/fireBase";
 import {Link, useHistory} from "react-router-dom";
 import {userFormRegisterValidate} from "../../functions/userFormRegisterValidate";
 import {SuccessfulForm} from "./SuccessfulForm";
+import {createUserDatabase} from "../../functions/createUserDatabase";
 
 export const UserFormRegister = ({changeForm}) => {
-    const [data, setData] = useState({email: "", password: "", passwordRepeat: ""})
+    const [data, setData] = useState({email: "", userName: "", password: "", passwordRepeat: ""})
     const [invalid, setInvalid] = useState({email: "", password: "", passwordRepeat: ""})
     const [isInvalid, setIsInvalid] = useState(false);
     const [successful, setSuccessful] = useState(false)
@@ -29,23 +30,25 @@ export const UserFormRegister = ({changeForm}) => {
                 // Signed in
                 const user = userCredential.user;
                 console.log(`sign up successfully :)`)
-                setTimeout(()=> {history.push("/")}, 5000)
+                setTimeout(() => {
+                    history.push("/")
+                }, 5000)
                 setSuccessful(true)
+                createUserDatabase(data.userName)
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                userFormRegisterValidate(errorCode,errorMessage,setInvalid)
+                userFormRegisterValidate(errorCode, errorMessage, setInvalid)
                 setIsInvalid(true)
             })
     }
     const handleFormSubmit = (e) => {
         e.preventDefault()
 
-        if(data.password === data.passwordRepeat){
+        if (data.password === data.passwordRepeat) {
             register()
-        }
-        else{
+        } else {
             setInvalid(prev => ({...prev, password: "*Hasła nie są takie same"}))
         }
 
@@ -58,6 +61,12 @@ export const UserFormRegister = ({changeForm}) => {
                     <h1 className="userForm__title">ZAREJESTRUJ</h1>
                     <div className="userForm__line"/>
                     <form className="userForm__form">
+                        <div className="userForm__element">
+                            <i className="fas fa-envelope"/>
+                            <input type="text" placeholder="Nazwa Użytkownika"
+                                   value={data.userName} name="userName"
+                                   onChange={handleInputChange}/>
+                        </div>
                         <div className="userForm__element">
                             <i className="fas fa-envelope"/>
                             <input type="text" placeholder="E-mail"

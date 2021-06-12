@@ -1,4 +1,5 @@
 import {auth} from "./fireBase";
+import {createUserDatabase} from "../functions/createUserDatabase";
 
 export const registerDB = (data) =>
     {
@@ -6,7 +7,7 @@ export const registerDB = (data) =>
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                // ...
+                createUserDatabase()
             })
             .catch((error) => {
                 const errorCode = error.code;

@@ -1,10 +1,14 @@
+import {addDataToFirestore} from "../../functions/addDataToFirestore";
+
 export const MyKitchenBar = () => {
     return (
-        <div className="kitchenBar">
-            <h1>Lodówka</h1>
-            <h1>Lodówka</h1>
-            <span/>
-            <span/>
-        </div>
+        <section>
+            <div className="kitchenBar" >
+                <h1>Lodówka</h1><h1>Lodówka</h1>
+                <span/>
+                <span/>
+            </div>
+            <span onClick={addDataToFirestore}>asddddddddddddddddddddd</span>
+        </section>
     )
 }
