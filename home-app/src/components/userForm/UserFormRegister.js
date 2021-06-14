@@ -27,14 +27,17 @@ export const UserFormRegister = ({changeForm}) => {
     const register = () => {
         auth().createUserWithEmailAndPassword(data.email, data.password)
             .then((userCredential) => {
+
                 // Signed in
                 const user = userCredential.user;
-                console.log(`sign up successfully :)`)
                 setTimeout(() => {
                     history.push("/")
                 }, 5000)
                 setSuccessful(true)
-                createUserDatabase(data.userName)
+                return user.updateProfile({
+                    displayName: data.userName
+                })
+
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -48,6 +51,8 @@ export const UserFormRegister = ({changeForm}) => {
 
         if (data.password === data.passwordRepeat) {
             register()
+            createUserDatabase(data.userName)
+
         } else {
             setInvalid(prev => ({...prev, password: "*Hasła nie są takie same"}))
         }

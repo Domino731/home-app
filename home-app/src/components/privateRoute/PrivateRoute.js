@@ -1,9 +1,14 @@
 import {Route, Redirect} from "react-router-dom"
 import {connect} from "react-redux";
 import UserForm from "../userForm/UserForm";
-
+import {getProductsFromFirestore} from "../../functions/getDataFromFirestore";
+import {useEffect, useState} from "react";
+import {db} from "../../fireBase/fireBase";
 const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
-    console.log( typeof currentUser.currentUser)
+   const [s] = useState(db.collection("users"))
+   useEffect(()=> {
+       getProductsFromFirestore(currentUser.displayName)
+   },[s,currentUser])
     return(
         <Route
             {...rest}
@@ -11,10 +16,10 @@ const PrivateRoute = ({currentUser, component: Component, ...rest}) => {
                // if(currentUser.currentUser === null){
                //    return  <Redirect to="/login"/>
                // }
-                if(currentUser.currentUser === null){
+                if(currentUser === null){
                    return <UserForm/>
                 }
-               else if(currentUser.currentUser === undefined){
+               else if(currentUser === undefined){
                    return "ładuję ..."
                }
                else{

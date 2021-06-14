@@ -24,7 +24,6 @@ export const MyKitchenCategory = ({category}) => {
 
     return (
         <section className="kitchenCtg">
-
             <div className="kitchenCtg__title">
                 {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList}/> :
                     <i className="fas fa-chevron-down" onClick={handleChangeShowList}/>}

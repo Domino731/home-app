@@ -1,16 +1,17 @@
-import {MyKitchenBar} from "./MyKitchenBar";
+import MyKitchenBar from "./MyKitchenBar";
 import {MyKitchenCategory} from "./MyKitchenCategory";
 import {db} from "../../fireBase/fireBase";
 import {useEffect} from "react";
 import {getProductsFromFirestore} from "../../functions/getDataFromFirestore";
+import {connect} from "react-redux";
 
-export const MyKitchen = () => <MyKitchenComponent db={db}/>
-const MyKitchenComponent = ({ db = null}) => {
+const MyKitchenComponent = ({ db = null, currentUser }) => {
     useEffect(() => {
         if (db) {
-        getProductsFromFirestore()
+            console.log(currentUser)
+       // getProductsFromFirestore(username)
         }
-    }, [db])
+    }, [db, currentUser])
 
     return (
         <section className="container">
@@ -19,3 +20,9 @@ const MyKitchenComponent = ({ db = null}) => {
         </section>
     )
 }
+const MyKitchen = () => <MyKitchenComponent db={db}/>
+
+const mapStateToProps = state => ({
+    currentUser: state.currentUser
+})
+export default connect(mapStateToProps)(MyKitchen)

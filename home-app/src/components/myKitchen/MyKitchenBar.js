@@ -1,14 +1,22 @@
-import {addDataToFirestore} from "../../functions/addDataToFirestore";
+import {connect} from "react-redux";
+import {useEffect} from "react";
 
-export const MyKitchenBar = () => {
+const MyKitchenBar = (currentUser, name) => {
+    useEffect(()=>{
+        console.log(currentUser)
+        console.log(name)
+    }, [])
     return (
         <section>
-            <div className="kitchenBar" >
+            <div className="kitchenBar"  >
                 <h1>Lodówka</h1><h1>Lodówka</h1>
                 <span/>
                 <span/>
             </div>
-            <span onClick={addDataToFirestore}>asddddddddddddddddddddd</span>
         </section>
     )
 }
+const mapStateToProps = state => ({
+    currentUser: state.currentUser
+})
+export default connect(mapStateToProps)(MyKitchenBar)

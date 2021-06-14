@@ -1,7 +1,7 @@
 import "./sass/main.scss"
 import HomePage from "./components/homePage/HomePage";
 import {UserFormRegister} from "./components/userForm/UserFormRegister";
-import {MyKitchen} from "./components/myKitchen/MyKitchen";
+import MyKitchen from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import UserForm from "./components/userForm/UserForm";
 import {BrowserRouter as Router, Route} from "react-router-dom";
@@ -10,19 +10,19 @@ import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import {changeUsername} from "./redux/actions/username.actions";
 
-function App({change}) {
+function App({setUser, setUsername, currentUser, username}) {
     useEffect( () => {
         auth().onAuthStateChanged(user => {
             if (user) {
-                console.log(user)
-                change(user)
+                setUser(user)
+                setUsername(user.displayName)
             } else {
-                change(null)
+                setUser(null)
             }
         })
-    }, [])
-
+    }, [currentUser, username])
 
 
     return (
@@ -35,9 +35,13 @@ function App({change}) {
         </Router>
     )
 }
-
-const mapDispatchToProps = dispatch => ({
-    change: data => dispatch(changeUser(data))
+const mapStateToProps = state => ({
+    currentUser: state.currentUser,
+    username: state.username
 })
-export default connect(null, mapDispatchToProps)(App);
+const mapDispatchToProps = dispatch => ({
+    setUser: data => dispatch(changeUser(data)),
+    setUsername: data => dispatch(changeUsername(data))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
