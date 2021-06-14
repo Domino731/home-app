@@ -1,10 +1,15 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addNewProduct} from "../../functions/addNewProduct";
+import {connect} from "react-redux";
+import {getFirestoreId} from "../../functions/getFirestoreId";
 
-export const MyKitchenAddProductForm = () => {
+const MyKitchenAddProductForm = ({username}) => {
     const [unit, setUnit] = useState("Dag")
     const [product, setProduct] = useState({name: "", amount: ""})
     const [invalidFlag, setInvalidFlag] = useState(false)
+    useEffect(()=>{
+        getFirestoreId(username)
+    },[])
     const handleChangeUnit = (e) => {
         setUnit(e.target.value)
     }
@@ -48,3 +53,7 @@ export const MyKitchenAddProductForm = () => {
         </section>
     )
 }
+const mapStateToProps = state => ({
+    username: state.currentUser.displayName
+})
+export default connect(mapStateToProps)(MyKitchenAddProductForm)

@@ -7,18 +7,16 @@ import {db} from "../../fireBase/fireBase";
 import {setProducts} from "../../redux/actions/firebaseData.actions";
 import {setRecipes} from "../../redux/actions/firebaseData.actions";
 import {setToDo} from "../../redux/actions/firebaseData.actions";
-import {setUsername} from "../../redux/actions/username.actions";
 
-const PrivateRoute = ({currentUser, setProducts,setRecipes, setUsername, setToDo, component: Component, ...rest}) => {
+const PrivateRoute = ({currentUser, setProducts,setRecipes, setToDos, component: Component, ...rest}) => {
     const [s] = useState(db.collection("users"))
     useEffect(() => {
         if (currentUser !== null) {
             getDataFromFirestore("recipes",currentUser.displayName, setRecipes)
             getDataFromFirestore("products",currentUser.displayName, setProducts)
-            getDataFromFirestore("ToDo",currentUser.displayName, setToDo)
-            setUsername(currentUser.displayName)
+            getDataFromFirestore("ToDo",currentUser.displayName, setToDos)
         }
-    }, [s, currentUser, setProducts,setRecipes, setToDo, setUsername])
+    }, [s, currentUser, setProducts,setRecipes, setToDos])
     return (
         <Route
             {...rest}
@@ -43,7 +41,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     setProducts: data => dispatch(setProducts(data)),
     setRecipes: data => dispatch(setRecipes(data)),
-    setToDo: data => dispatch(setToDo(data)),
-    setUsername: data => dispatch(setUsername(data))
+    setToDos: data => dispatch(setToDo(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute)

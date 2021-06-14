@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {MyKitchenAddProductForm} from "./MyKitchenAddProductForm";
+import MyKitchenAddProductForm from "./MyKitchenAddProductForm";
 
 export const MyKitchenCategory = ({category}) => {
     const [showList, setShowList] = useState(false)
