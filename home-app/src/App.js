@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
     setUser: data => dispatch(changeUser(data)),
-    setUsername: data => dispatch(changeUsername(data))
+    setUsername: data => dispatch(changeUsername(data)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

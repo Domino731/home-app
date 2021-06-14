@@ -19,7 +19,7 @@ const createData = (name) => {
 const createCategories = (data) => {
     addCategory(data,"recipes")
     addCategory(data, "ToDo")
-    addCategory(data, "kitchen")
+    addCategory(data, "products")
 }
 const addCategory = (data, name) => {
     db.collection("users").doc(`${data[0]}`).collection(`${name}`).add({

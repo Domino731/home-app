@@ -1,11 +1,8 @@
 import {connect} from "react-redux";
-import {useEffect} from "react";
 
-const MyKitchenBar = (currentUser, name) => {
-    useEffect(()=>{
-        console.log(currentUser)
-        console.log(name)
-    }, [])
+
+const MyKitchenBar = ({asd}) => {
+    console.log(asd)
     return (
         <section>
             <div className="kitchenBar"  >
@@ -13,10 +10,11 @@ const MyKitchenBar = (currentUser, name) => {
                 <span/>
                 <span/>
             </div>
+            <h1>{JSON.stringify(asd)}</h1>
         </section>
     )
 }
 const mapStateToProps = state => ({
-    currentUser: state.currentUser
+    asd: state.products
 })
 export default connect(mapStateToProps)(MyKitchenBar)
