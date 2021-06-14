@@ -1,11 +1,14 @@
 import {combineReducers} from "redux";
 import {currentUser} from "./currentUser";
-import {username} from "./username";
-//import {products} from "./products";
 import {products} from "./firebaseData";
+import {recipes} from "./firebaseData";
+import {toDo} from "./firebaseData";
+import {username} from "./username";
 
 export default  combineReducers({
     currentUser,
     username,
-    products
+    products,
+    recipes,
+    toDo
 })

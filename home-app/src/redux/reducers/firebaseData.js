@@ -1,9 +1,25 @@
 export const products = (state = null, action) => {
-    console.log(state)
  switch (action.type){
-     case "ADD_TODO":
+     case "GET_PRODUCTS":
          return action.products
      default:
          return state
  }
 }
+export const recipes = (state = null, action) => {
+    switch (action.type){
+        case "GET_RECIPES":
+            return action.recipe
+        default:
+            return state
+    }
+}
+export const toDo = (state = null, action) => {
+    switch (action.type){
+        case "GET_TODO":
+            return action.todo
+        default:
+            return state
+    }
+}
+

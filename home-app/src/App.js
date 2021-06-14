@@ -10,14 +10,13 @@ import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import {changeUsername} from "./redux/actions/username.actions";
+
 
 function App({setUser, setUsername, currentUser, username}) {
     useEffect( () => {
         auth().onAuthStateChanged(user => {
             if (user) {
                 setUser(user)
-                setUsername(user.displayName)
             } else {
                 setUser(null)
             }
@@ -40,8 +39,7 @@ const mapStateToProps = state => ({
     username: state.username
 })
 const mapDispatchToProps = dispatch => ({
-    setUser: data => dispatch(changeUser(data)),
-    setUsername: data => dispatch(changeUsername(data)),
+    setUser: data => dispatch(changeUser(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

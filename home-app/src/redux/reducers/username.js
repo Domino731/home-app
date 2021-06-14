@@ -1,10 +1,8 @@
-export const username = (state = "", action) => {
+export const username = (state = null, action) => {
+    console.log(state)
     switch (action.type){
         case "CHANGE_USERNAME":
-            const username = action.displayName
-            return username
-        //{currentUser: action.currentUser};
-
+            return action.username
         default:
             return state
     }

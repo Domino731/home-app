@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {addNewProduct} from "../../functions/addNewProduct";
 
 export const MyKitchenAddProductForm = () => {
     const [unit, setUnit] = useState("Dag")
@@ -19,20 +20,19 @@ export const MyKitchenAddProductForm = () => {
         if(product.name.length <= 2){
            setInvalidFlag(true)
         }
+        else{
+            addNewProduct()
+        }
     }
     return (
         <section className="kitchenCtg__addProduct">
             <form className="addProduct__form">
-                {/*<div className="addProduct__formIcon">*/}
-
-                {/*</div>*/}
 
                 <input type="text" className="addProduct__formInput" placeholder="Nazwa produktu" name="name"
                        onChange={handleChangeProduct}/>
                 <input type="number" className="addProduct__formInput" placeholder={`Ilość (${unit})`} name="amount"
                        onChange={handleChangeProduct}/>
                 <fieldset>
-                    {/*<legend className="addProduct__formChose">Wybierz jednostkę masy</legend>*/}
                     <label> <input type="radio" name="weightUnit" value="Kg" onClick={handleChangeUnit}/> Kilogramy
                     </label>
                     <label> <input type="radio" name="weightUnit" value="Dag" onClick={handleChangeUnit}

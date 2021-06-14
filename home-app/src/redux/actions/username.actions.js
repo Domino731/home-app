@@ -1,5 +1,4 @@
-export const changeUsername = data => ({
+export const setUsername = (TEXT) => ({
     type: "CHANGE_USERNAME",
-    displayName: data
-}
-)
+    username: TEXT
+})
