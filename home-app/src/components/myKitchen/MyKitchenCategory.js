@@ -1,7 +1,7 @@
 import {useState} from "react";
 import MyKitchenAddProductForm from "./MyKitchenAddProductForm";
 
-export const MyKitchenCategory = ({category}) => {
+export const MyKitchenCategory = ({category, productType}) => {
     const [showList, setShowList] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const handleChangeShowList = () => {
@@ -31,7 +31,7 @@ export const MyKitchenCategory = ({category}) => {
                 {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm}/> :
                     <i className="fas fa-plus" onClick={handleChangeShowAddForm}/>}
             </div>
-            {showAddForm && <MyKitchenAddProductForm/>}
+            {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
             {showList && <section className="kitchenCtg__list"></section>}
         </section>
     )

@@ -16,7 +16,7 @@ const MyKitchenComponent = ({ db = null, currentUser }) => {
     return (
         <section className="container">
             <MyKitchenBar/>
-            <MyKitchenCategory category="Mięso"/>
+            <MyKitchenCategory category="Mięso" productType={"meat"}/>
         </section>
     )
 }

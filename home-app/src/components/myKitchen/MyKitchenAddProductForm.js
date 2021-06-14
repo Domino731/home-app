@@ -1,17 +1,20 @@
 import {useEffect, useState} from "react";
-import {addNewProduct} from "../../functions/addNewProduct";
+import {addNewElement} from "../../functions/addNewProduct";
 import {connect} from "react-redux";
 import {getFirestoreId} from "../../functions/getFirestoreId";
 
-const MyKitchenAddProductForm = ({username}) => {
-    const [unit, setUnit] = useState("Dag")
-    const [product, setProduct] = useState({name: "", amount: ""})
+const MyKitchenAddProductForm = ({username, productType}) => {
+    const [product, setProduct] = useState({name: "", amount: "", unit: "dag",type: productType,  })
     const [invalidFlag, setInvalidFlag] = useState(false)
+    const [successful, setSuccessful] = useState(false)
     useEffect(()=>{
         getFirestoreId(username)
     },[])
     const handleChangeUnit = (e) => {
-        setUnit(e.target.value)
+        setProduct(prev =>( {
+            ...prev,
+            unit: e.target.value
+        }))
     }
     const handleChangeProduct = (e) => {
         const {name, value} = e.target;
@@ -26,16 +29,17 @@ const MyKitchenAddProductForm = ({username}) => {
            setInvalidFlag(true)
         }
         else{
-            addNewProduct()
+            addNewElement(username, "products", product)
+           setSuccessful(true)
+            //setTimeout(()=>{setSuccessful(false)}, 2000)
         }
     }
     return (
         <section className="kitchenCtg__addProduct">
-            <form className="addProduct__form">
-
+            { successful === false && <form className="addProduct__form">
                 <input type="text" className="addProduct__formInput" placeholder="Nazwa produktu" name="name"
                        onChange={handleChangeProduct}/>
-                <input type="number" className="addProduct__formInput" placeholder={`Ilość (${unit})`} name="amount"
+                <input type="number" className="addProduct__formInput" placeholder={`Ilość (${product.unit})`} name="amount"
                        onChange={handleChangeProduct}/>
                 <fieldset>
                     <label> <input type="radio" name="weightUnit" value="Kg" onClick={handleChangeUnit}/> Kilogramy
@@ -49,7 +53,14 @@ const MyKitchenAddProductForm = ({username}) => {
                 </fieldset>
                 {invalidFlag && <strong className="addProduct__invalid">*Wprowadz poprawną nazwę produktu</strong>}
                 <button className="addProduct__formButton" onClick={handleSubmitProduct}>Dodaj <span/></button>
-            </form>
+            </form>}
+            {successful && <div className="addProduct__form">
+                <div className="successful">
+                    <h3>Dodano produkt</h3>
+                    <i className="far fa-smile"/>
+                    <button onClick={() => setSuccessful(false)}>Dodaj Kolejny</button>
+                </div>
+            </div>}
         </section>
     )
 }
