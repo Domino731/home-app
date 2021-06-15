@@ -77,10 +77,15 @@
     animation: showKitchenList 0.6s forwards;
     border-radius: 7px;
     overflow: hidden;
-
+     padding-top: 40px;
     position: absolute;
     z-index: 1;
     top: -420px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
     &::after {
       @include corners("leftBot", $color-blue, 100px, 5px, 92%);
@@ -277,5 +282,121 @@
     margin-top: 20px;
     width: 190px;
     height: 50px;
+  }
+}
+
+
+
+.kitchenProduct{
+  width: 93%;
+  height: 44px;
+  border: 2px solid $color-vegetables;
+  margin-top: 11px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   i {
+     font-size: 30px;
+     height: 100%;
+     width: 44px;
+     border: 2px solid $color-vegetables;
+     background: $color-vegetables;
+     border-radius: 26px;
+     margin-left: -2px;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+
+  &__name{
+    color:$fontColor-dark;
+    background: white;
+    margin-left: -10px;
+    width: 42%;
+    font-weight: bold;
+  }
+  &_amount{
+    color: white;
+    font-weight: 500;
+    width: 29%;
+    height: 100%;
+    background: $color-vegetables;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      left: -23px;
+      display: block;
+      height: 100%;
+      width: 44px;
+      background: white;
+      border-radius: 22px;
+    }
+  }
+}
+.kitchenProductManagement{
+  width: 93%;
+  border: 2px solid $color-vegetables;
+  overflow: hidden;
+  margin-top: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 22px;
+  .management{
+    &__title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      i{
+        font-size:28px;
+        padding: 3px;
+      }
+    }
+    &__amount{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 7px;
+      i{
+        padding: 7px 15px;
+        background: $color-vegetables;
+        color: white;
+        border-radius: 0 10px 10px 0;
+        &:nth-child(1){
+          border-radius: 10px 0 0 10px;
+        }
+      }
+    }
+    &__actions{
+      width: 100%;
+      height: 28px;
+      margin-top: 15px;
+      display: flex;
+       strong{
+         width: 50%;
+         height: 100%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         &:nth-child(2){
+           background: $color-vegetables;
+         }
+       }
+    }
+  }
+
+  input{
+    text-align: center;
+    width: 82px;
   }
 }

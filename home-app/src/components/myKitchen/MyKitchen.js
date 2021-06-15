@@ -1,5 +1,5 @@
 import MyKitchenBar from "./MyKitchenBar";
-import {MyKitchenCategory} from "./MyKitchenCategory";
+import MyKitchenCategory from "./MyKitchenCategory";
 import {db} from "../../fireBase/fireBase";
 import {useEffect} from "react";
 import {getProductsFromFirestore} from "../../functions/getDataFromFirestore";
@@ -16,7 +16,8 @@ const MyKitchenComponent = ({ db = null, currentUser }) => {
     return (
         <section className="container">
             <MyKitchenBar/>
-            <MyKitchenCategory category="Mięso" productType={"meat"}/>
+            <MyKitchenCategory title="Mięso" productType={"meat"}/>
+            <MyKitchenCategory title="Warzywa" productType={"vegetables"}/>
         </section>
     )
 }
