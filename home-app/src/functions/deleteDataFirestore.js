@@ -1,7 +1,5 @@
 import {db} from "../fireBase/fireBase";
-
-export const deleteDataInFirestore = (DataId, username, item) => {
-     console.log(DataId, username)
+export const deleteDataFirestore = (DataId, username, item) => {
      db.collection("users")
          .where(`userName`, `==`, `${username}`)
          .onSnapshot(querySnapshot => {

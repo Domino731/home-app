@@ -351,6 +351,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 22px;
+  animation:  showProductManagement 0.7s forwards;
   .management{
     &__title{
       display: flex;
@@ -367,10 +368,14 @@
       display: flex;
       justify-content: center;
       margin-top: 7px;
-      i{
+
+      button{
+        font-size: 12px;
         padding: 7px 15px;
+        display: block;
         background: $color-vegetables;
         color: white;
+        border: none;
         border-radius: 0 10px 10px 0;
         &:nth-child(1){
           border-radius: 10px 0 0 10px;
@@ -382,12 +387,14 @@
       height: 28px;
       margin-top: 15px;
       display: flex;
-       strong{
+       button{
+         font-weight: bold;
          width: 50%;
          height: 100%;
          display: flex;
          justify-content: center;
          align-items: center;
+         border: none;
          &:nth-child(2){
            background: $color-vegetables;
          }
@@ -398,5 +405,24 @@
   input{
     text-align: center;
     width: 82px;
+  }
+}
+.successfulProductUpdate{
+  animation: successfulProductUpdate 0.7s forwards;
+}
+@keyframes showProductManagement {
+  0%{
+    transform: scale(0.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+@keyframes successfulProductUpdate {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.1);
   }
 }

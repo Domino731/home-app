@@ -12,7 +12,7 @@ const MyKitchenCategory = ({title, productType, products}) => {
         if (products !== null) {
            // const array = products.filter(el => el.element.type == "meat")
            //  console.log(array)
-           setProductsArray(products.filter(el => el.element.type === productType))
+           setProductsArray(products.filter(el => el.type === productType))
         }
     }, [products, productType])
     const handleChangeShowList = () => {
@@ -43,7 +43,7 @@ const MyKitchenCategory = ({title, productType, products}) => {
             </div>
             {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
             {showList && <section className="kitchenCtg__list">
-                {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el.element} id={el.id}/>)}
+                {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el} id={el.id}/>)}
             </section>}
         </section>
     )

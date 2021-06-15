@@ -6,9 +6,9 @@ export const addNewElement = (username, type, element) => {
         .onSnapshot(querySnapshot => {
             const id = querySnapshot.docs.map(doc => doc.id);
             db.collection("users").doc(`${id[0]}`).collection(`${type}`)
-                .add({
+                .add(
                 element
-            })
+            )
                 .then(() => {
                     console.log("Document successfully written!");
                 })
