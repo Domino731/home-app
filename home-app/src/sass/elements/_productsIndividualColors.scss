@@ -1,0 +1,32 @@
+//// VEGETABLES
+.kitchenCtg:nth-child(2){
+  @include colorForKitchenProducts($color-vegetables);
+}
+//// MEAT
+.kitchenCtg:nth-child(3){
+  @include colorForKitchenProducts($color-meat);
+}
+//// DAIRY
+.kitchenCtg:nth-child(4){
+  @include colorForKitchenProducts($color-dairy);
+}
+//// SUGAR
+.kitchenCtg:nth-child(5){
+  @include colorForKitchenProducts($color-sugar);
+}
+//// FRUITS
+.kitchenCtg:nth-child(6){
+  @include colorForKitchenProducts($color-fruits);
+}
+//// FROZEN FOOD
+.kitchenCtg:nth-child(7){
+  @include colorForKitchenProducts($color-frozenFood);
+}
+//// DRINKS
+.kitchenCtg:nth-child(8){
+  @include colorForKitchenProducts($color-drinks);
+}
+//// OTHER
+.kitchenCtg:nth-child(9){
+  @include colorForKitchenProducts(#9055A2);
+}

@@ -2,6 +2,7 @@ import {useState} from "react";
 import {deleteDataFirestore} from "../../functions/deleteDataFirestore";
 import {updateDataFirestore} from "../../functions/updateDataFirestore";
 import {getProductIcon} from "../../functions/getProductIcon";
+import {getUnit} from "../../functions/getUnit";
 import {connect} from "react-redux";
 
 
@@ -34,7 +35,9 @@ const MyKitchenProduct = ({prod, id, username}) => {
         setSuccessfulUpdate(true)
         setTimeout(()=>{
             setFlag(true)
-        }, 700)
+            setSuccessfulUpdate(false)
+        }, 650)
+
     }
     return (
         <>
@@ -44,7 +47,7 @@ const MyKitchenProduct = ({prod, id, username}) => {
             <div className="kitchenProduct_amount" onClick={handleChangeFlag}>
                 {prod.amount > 0 && <>
                 <strong>{prod.amount}</strong>
-                <strong>{prod.unit}</strong>
+                <strong>{getUnit(prod.unit, prod.amount)}</strong>
                 </>}
                 {prod.amount === 0 && <strong>Brak</strong>}
             </div>
