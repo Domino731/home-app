@@ -1,23 +1,23 @@
 import {greeting} from "../../functions/greeting";
 import {dayName} from "../../functions/greeting";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+
 import {auth} from "../../fireBase/fireBase";
 import {changeUser} from "../../redux/actions/currenUser.actions";
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 
-export const MainMenu = ({user, change}) => {
+export const MainMenu = () => {
     const [kitchenClass, setKitchenClass] = useState(false)
     const [recipesClass, setRecipesClass] = useState(false)
     const history = useHistory()
     const handleLogOut = () => {
-        auth().signOut()
+        return auth().signOut()
     }
     const redirect = (setClass, path) => {
         setTimeout(() => {
             history.push(path)
-
+            setClass(false)
         }, 700)
         setClass(true)
     }
@@ -34,7 +34,7 @@ export const MainMenu = ({user, change}) => {
                 </div>
                 <div className={`mainMenu__element ${recipesClass ? "animatedRedirect" : null}`}
                      onClick={() => redirect(setRecipesClass, "/myRecipes")}>
-                    <strong>Kuchnia</strong>
+                    <strong>Przepisy</strong>
                 </div>
 
                 <div className="mainMenu__logOut" onClick={handleLogOut}>

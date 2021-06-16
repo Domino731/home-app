@@ -4,14 +4,15 @@ import {connect} from "react-redux";
 import {getFirestoreId} from "../../functions/getFirestoreId";
 
 const MyKitchenAddProductForm = ({username, productType}) => {
-    const [product, setProduct] = useState({name: "", amount: "", unit: "dag",type: productType,  })
+    const [product, setProduct] = useState({name: "", amount: "", unit: "Dag", type: productType})
     const [invalidFlag, setInvalidFlag] = useState(false)
     const [successful, setSuccessful] = useState(false)
-    useEffect(()=>{
-        getFirestoreId(username)
-    },[])
+    useEffect(() => {
+
+    }, [product])
+
     const handleChangeUnit = (e) => {
-        setProduct(prev =>( {
+        setProduct(prev => ({
             ...prev,
             unit: e.target.value
         }))
@@ -25,28 +26,30 @@ const MyKitchenAddProductForm = ({username, productType}) => {
     };
     const handleSubmitProduct = (e) => {
         e.preventDefault()
-        if(product.name.length <= 2){
-           setInvalidFlag(true)
+        if (product.name.length <= 2) {
+            setInvalidFlag(true)
         }
-        else{
+        else {
             addNewElement(username, "products", product)
-           setSuccessful(true)
-            //setTimeout(()=>{setSuccessful(false)}, 2000)
+            setSuccessful(true)
         }
     }
     return (
         <section className="kitchenCtg__addProduct">
-            { successful === false && <form className="addProduct__form">
+            {successful === false && <form className="addProduct__form">
                 <input type="text" className="addProduct__formInput" placeholder="Nazwa produktu" name="name"
                        onChange={handleChangeProduct}/>
-                <input type="number" className="addProduct__formInput" placeholder={`Ilość (${product.unit})`} name="amount"
+                <input type="number" className="addProduct__formInput" placeholder={`Ilość (${product.unit})`}
+                       name="amount"
                        onChange={handleChangeProduct}/>
                 <fieldset>
                     <label> <input type="radio" name="weightUnit" value="Kg" onClick={handleChangeUnit}/> Kilogramy
                     </label>
                     <label> <input type="radio" name="weightUnit" value="Dag" onClick={handleChangeUnit}
                                    defaultChecked/> Dekagramy </label>
-                    <label> <input type="radio" name="weightUnit" value="G" onClick={handleChangeUnit}/> Gramy </label>
+                    <label> <input type="radio" name="weightUnit" value="G" onClick={handleChangeUnit} id="1t"/> Gramy </label>
+                    <label> <input type="radio" name="weightUnit" value="Mg" onClick={handleChangeUnit}/> Miligramy
+                    </label>
                     <label> <input type="radio" name="weightUnit" value="Na sztuki" onClick={handleChangeUnit}/> Na
                         sztuki
                     </label>

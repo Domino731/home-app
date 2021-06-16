@@ -1,5 +1,5 @@
 import {db} from "../fireBase/fireBase";
-
+//nieuzywana
 export const getFirestoreId = ( username, fnc) => {
     db.collection("users")
         .where(`userName`, `==`, `${username}`)

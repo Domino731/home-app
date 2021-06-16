@@ -1,0 +1,83 @@
+.recipesType {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 13px;
+}
+
+.recipeBox {
+  flex-grow: 1;
+  border-radius: 5px;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  margin: 13px;
+  position: relative;
+  padding: 12px;
+
+  &::before {
+    @include corners("rightBot", $color-green, 30px, 5px);
+  }
+
+  &::after {
+    @include corners("rightTop", $color-green, 30px, 5px);
+  }
+
+  span {
+    &::after {
+      @include corners("leftBot", $color-green, 30px, 5px);
+    }
+
+    &::before {
+      @include corners("leftTop", $color-green, 30px, 5px);
+    }
+  }
+
+  h1 {
+    color: white;
+    font-size: 23px;
+    width: 100%;
+    height: 100%;
+    background: $color-green;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.animatedRedirect2 {
+  animation: removePadding 0.2s 0.8s forwards;
+
+  &::before {
+    animation: cornerEffect 1s ease-in-out forwards;
+  }
+
+  &::after {
+    animation: cornerEffect 1s ease-in-out forwards;
+  }
+
+  span {
+    &::after {
+      animation: cornerEffect 1s ease-in-out forwards;
+    }
+
+    &::before {
+      animation: cornerEffect 1s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes removePadding {
+  100% {
+    padding: 0;
+  }
+}
+
+@keyframes cornerEffect {
+  100% {
+    width: 100px;
+    height: 100px;
+  }
+}
