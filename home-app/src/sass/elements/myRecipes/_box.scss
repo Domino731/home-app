@@ -15,7 +15,7 @@
   margin: 13px;
   position: relative;
   padding: 12px;
-
+animation: showEffect 0.5s forwards;
   &::before {
     @include corners("rightBot", $color-green, 30px, 5px);
   }

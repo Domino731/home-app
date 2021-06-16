@@ -2,6 +2,7 @@ import "./sass/main.scss"
 import HomePage from "./components/homePage/HomePage";
 import {MyKitchen} from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
+import {MyRecipesList} from "./components/myRecipes/MyRecipesList";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
@@ -25,10 +26,9 @@ function App({setUser, setUsername, currentUser, username}) {
     return (
         <Router>
             <PrivateRoute exact path="/" component={HomePage}/>
-            <PrivateRoute path="/mykitchen" component={MyKitchen}/>
-            <PrivateRoute path="/myrecipes" component={MyRecipes}/>
-            {/*<Route path="/login" component={UserForm}/>*/}
-            {/*<Route path="/register" component={UserFormRegister}/>*/}
+            <PrivateRoute exact path="/mykitchen" component={MyKitchen}/>
+            <PrivateRoute exact path="/myrecipes" component={MyRecipes}/>
+            <PrivateRoute path="/myRecipes/:type" component={MyRecipesList}/>
         </Router>
     )
 }

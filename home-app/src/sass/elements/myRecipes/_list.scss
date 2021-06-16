@@ -1,0 +1,18 @@
+.recipesBar{
+  background: $color-green;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  h2{
+    font-size: 36px;
+  }
+  strong{
+    font-size: 15px;
+    i{
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+}
