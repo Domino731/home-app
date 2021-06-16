@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {deleteDataFirestore} from "../../functions/deleteDataFirestore";
 import {updateDataFirestore} from "../../functions/updateDataFirestore";
+import {getProductIcon} from "../../functions/getProductIcon";
 import {connect} from "react-redux";
 
 
@@ -22,7 +23,12 @@ const MyKitchenProduct = ({prod, id, username}) => {
     }
     const handleDecrease = () => {
         console.log(true)
+        if(newAmount === 0){
+            setNewAmount(0)
+        }
+        else{
         setNewAmount(prev => prev - 1)
+    }
     }
     const handleClose = () => {
         setSuccessfulUpdate(true)
@@ -33,11 +39,14 @@ const MyKitchenProduct = ({prod, id, username}) => {
     return (
         <>
          <section className="kitchenProduct">
-            <i className="fas fa-drumstick-bite"/>
+             {getProductIcon(prod.type)}
             <strong className="kitchenProduct__name" onClick={handleChangeFlag}>{prod.name}</strong>
             <div className="kitchenProduct_amount" onClick={handleChangeFlag}>
+                {prod.amount > 0 && <>
                 <strong>{prod.amount}</strong>
                 <strong>{prod.unit}</strong>
+                </>}
+                {prod.amount === 0 && <strong>Brak</strong>}
             </div>
         </section>
             {flag === false && <section className={`kitchenProductManagement ${successfulUpdate && "successfulProductUpdate"}`}>

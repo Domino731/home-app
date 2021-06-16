@@ -8,13 +8,17 @@ const MyKitchenCategory = ({title, productType, products}) => {
     const [showList, setShowList] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [productsArray, setProductsArray] = useState([])
+    const [sorting, setSorting] = useState("Największa ilość")
     useEffect(() => {
         if (products !== null) {
-           // const array = products.filter(el => el.element.type == "meat")
-           //  console.log(array)
-           setProductsArray(products.filter(el => el.type === productType))
+            setProductsArray(products.filter(el => el.type === productType))
+            if (sorting === "Największa ilość") {
+                setProductsArray(prev => prev.sort((a, b) => b.amount - a.amount))
+            } else {
+                setProductsArray(prev => prev.sort((a, b) => a.amount - b.amount))
+            }
         }
-    }, [products, productType])
+    }, [products, productType, sorting])
     const handleChangeShowList = () => {
         if (showList === true) {
             setShowList(false)
@@ -31,9 +35,23 @@ const MyKitchenCategory = ({title, productType, products}) => {
         }
         setShowList(false)
     }
-
+    const handleChangeSorting = () => {
+        if (sorting === "Największa ilość") {
+            setSorting("Najmniejsza ilość")
+        } else {
+            console.log(true)
+            setSorting("Największa ilość")
+        }
+    }
+    const fixClass = () => {
+        if (showList) {
+            return "kitchenCtg2"
+        } else if (showAddForm) {
+            return "kitchenCtg2"
+        }
+    }
     return (
-        <section className="kitchenCtg">
+        <section className={`kitchenCtg ${fixClass()}`}>
             <div className="kitchenCtg__title">
                 {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList}/> :
                     <i className="fas fa-chevron-down" onClick={handleChangeShowList}/>}
@@ -43,11 +61,23 @@ const MyKitchenCategory = ({title, productType, products}) => {
             </div>
             {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
             {showList && <section className="kitchenCtg__list">
-                {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el} id={el.id}/>)}
+                {
+                    productsArray.length !== 0 ?
+                        <>
+                            <div className="sort" onClick={handleChangeSorting}>
+                                <button>{sorting}</button>
+                            </div>
+                            {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el} id={el.id}/>)}</>
+                        :
+                        <strong className="empty">Brak zapisanych produktów, dodaj je naciskająć w plusa po prawej
+                            stronie<i
+                                className="fas fa-plus"/></strong>
+                }
             </section>}
         </section>
     )
 }
+
 const mapStateToProps = state => ({
     products: state.products
 })

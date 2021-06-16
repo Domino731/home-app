@@ -4,7 +4,7 @@ const MyKitchenBar = () => {
     return (
         <section>
             <div className="kitchenBar"  >
-                <h1>Lodówka</h1><h1>Lodówka</h1>
+                <h1>Kuchnia</h1><h1>Kuchnia</h1>
                 <span/>
                 <span/>
             </div>

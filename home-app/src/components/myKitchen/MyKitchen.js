@@ -16,8 +16,14 @@ const MyKitchenComponent = ({ db = null, currentUser }) => {
     return (
         <section className="container">
             <MyKitchenBar/>
-            <MyKitchenCategory title="Mięso" productType={"meat"}/>
             <MyKitchenCategory title="Warzywa" productType={"vegetables"}/>
+            <MyKitchenCategory title="Mięso" productType={"meat"}/>
+            <MyKitchenCategory title="Nabiał" productType={"dairy"}/>
+            <MyKitchenCategory title="Cukry" productType={"sugar"}/>
+            <MyKitchenCategory title="Owoce" productType={"fruit"}/>
+            <MyKitchenCategory title="Mrożonki" productType={"frozenFood"}/>
+            <MyKitchenCategory title="Napoje" productType={"drinks"}/>
+            <MyKitchenCategory title="Inne" productType={"others"}/>
         </section>
     )
 }

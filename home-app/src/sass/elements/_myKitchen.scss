@@ -6,7 +6,7 @@
   box-shadow: 0 1px 6px $color-blue;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
   h1 {
@@ -39,7 +39,8 @@
 
 .kitchenCtg {
   width: 95%;
-  height: 527px;
+  //height: 527px;
+  height: 76px;
   margin: 40px auto;
   position: relative;
   z-index: 3;
@@ -54,7 +55,7 @@
     background: $color-blue;
     border-radius: 7px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: absolute;
     z-index: 5;
@@ -67,35 +68,59 @@
 
     i {
       font-size: 36px;
-      padding: 40px;
+      padding: 17px 12px;
     }
   }
 
   &__list {
     width: 93%;
-    height: 450px;
+    height: 82%;
     animation: showKitchenList 0.6s forwards;
     border-radius: 7px;
-    overflow: hidden;
-     padding-top: 40px;
+    padding-top: 15px;
     position: absolute;
     z-index: 1;
     top: -420px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
+    overflow: auto;
+    border-bottom: 5px solid $color-blue;
     &::after {
-      @include corners("leftBot", $color-blue, 100px, 5px, 92%);
+      @include corners("leftTop", $color-blue, 100px, 5px, 92%);
     }
 
     &::before {
-      @include corners("rightBot", $color-blue, 100px, 5px, 92%);
+      @include corners("rightTop", $color-blue, 100px, 5px, 92%);
     }
   }
+  .sort{
+    text-align: center;
 
+    display: flex;
+    justify-content: center;
+    i{
+     padding: 7px 25px;
+    }
+    button{
+      font-size: 20px;
+      background: white;
+      position: relative;
+      border: none;
+      padding: 7px 13px;
+      &::after{
+        @include corners("rightTop", $color-blue, 21px, 5px, 30px);
+      }
+      &::before{
+        @include corners("leftBot", $color-blue, 21px, 5px, 30px);
+      }
+    }
+  }
+  .empty{
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    i{
+      margin-left: 7px;
+    }
+  }
   &__addProduct {
     width: 93%;
     height: 200px;
@@ -106,19 +131,22 @@
 
     .addProduct__form {
       width: 100%;
-      height:  326px;
+      height: 326px;
       margin-top: 70px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      &::before{
+
+      &::before {
         @include corners("leftBot", $color-blue, 66px, 5px, 93%);
       }
-      &::after{
+
+      &::after {
         @include corners("rightBot", $color-blue, 66px, 5px, 93%);
       }
+
       &Icon {
         width: 43px;
         height: 43px;
@@ -155,60 +183,77 @@
         margin-top: 8px;
         border-radius: 6px;
       }
+
       fieldset {
         margin-top: 10px;
         display: flex;
         flex-direction: column;
-        legend{
+
+        legend {
           margin-bottom: 15px;
-        };
+        }
+      ;
+
         label {
           padding: 9px;
           position: relative;
-          &::after{
+
+          &::after {
             @include corners("leftTop", $color-blue, 100%, 5px, 22px);
           }
         }
       }
-      &Button{
+
+      &Button {
         height: 30px;
         width: 147px;
         margin-top: 52px;
-        color:  $color-red;
+        color: $color-red;
         font-weight: bold;
         border: none;
         border-radius: 6px;
         position: relative;
-        &::after{
+
+        &::after {
           @include corners("leftTop", $color-red, 40px, 5px, 3px);
         }
-        &::before{
+
+        &::before {
           @include corners("rightBot", $color-red, 40px, 5px, 3px);
         }
-        span{
-          &::after{
+
+        span {
+          &::after {
             @include corners("rightTop", $color-red, 40px, 5px, 3px);
           }
-          &::before{
+
+          &::before {
             @include corners("leftBot", $color-red, 40px, 5px, 3px);
           }
         }
       }
     }
-    .addProduct__invalid{
-     font-size: 12px;
+
+    .addProduct__invalid {
+      font-size: 12px;
     }
   }
-  i[class*="fa-chevron-up"], i[class*="fa-times"]{
-    color:red;
+
+  i[class*="fa-chevron-up"], i[class*="fa-times"] {
+    color: red;
   }
+}
+
+.kitchenCtg2 {
+  height: 465px;
 }
 
 @keyframes showKitchenList {
   100% {
-    top: 60px;
+    top: 80px;
   }
 }
+
 @keyframes showAddProductForm {
   100% {
     top: 0;
@@ -216,8 +261,8 @@
 }
 
 
-.addProduct__form{
-  .successful{
+.addProduct__form {
+  .successful {
     width: 0;
     height: 0;
     background: $color-blue;
@@ -226,17 +271,20 @@
     flex-direction: column;
     align-items: center;
     color: white;
-    h3{
+
+    h3 {
       font-size: 32px;
       margin-top: 47px;
-     text-align: center;
+      text-align: center;
     }
-    i{
+
+    i {
       margin-top: 32px;
       font-size: 0;
       animation: successfulShowIcon 0.1s 1s forwards;
     }
-    button{
+
+    button {
       color: white;
       font-size: 25px;
       margin-top: 20px;
@@ -245,38 +293,43 @@
       border: none;
       background: $color-blue;
       position: relative;
-      &::after{
+
+      &::after {
         @include corners("rightTop", white, 85px, 5px, 15px);
       }
-      &::before{
+
+      &::before {
         @include corners("leftBot", white, 85px, 5px, 15px);
       }
     }
   }
 }
-@keyframes successfulProductSend{
-  0%{
+
+@keyframes successfulProductSend {
+  0% {
     width: 0;
     height: 0;
   }
-  100%{
+  100% {
     width: 90%;
     height: 90%;
   }
 }
+
 @keyframes successfulShowIcon {
-  0%{
-   font-size: 0;
+  0% {
+    font-size: 0;
   }
-  100%{
+  100% {
     font-size: 82px;
   }
 }
+
 @keyframes successfulShowButton {
-  0%{
+  0% {
     font-size: 0;
   }
-  100%{
+  100% {
     display: block;
     font-size: 25px;
     margin-top: 20px;
@@ -286,40 +339,41 @@
 }
 
 
-
-.kitchenProduct{
+.kitchenProduct {
   width: 93%;
   height: 44px;
   border: 2px solid $color-vegetables;
-  margin-top: 11px;
+  margin: 11px auto;
   border-radius: 22px;
   overflow: hidden;
   box-sizing: content-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-   i {
-     font-size: 30px;
-     height: 100%;
-     width: 44px;
-     border: 2px solid $color-vegetables;
-     background: $color-vegetables;
-     border-radius: 26px;
-     margin-left: -2px;
-     color: white;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-   }
+  animation: showEffect 1s;
+  i {
+    font-size: 30px;
+    height: 100%;
+    width: 44px;
+    border: 2px solid $color-vegetables;
+    background: $color-vegetables;
+    border-radius: 26px;
+    margin-left: -2px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-  &__name{
-    color:$fontColor-dark;
+  &__name {
+    color: $fontColor-dark;
     background: white;
     margin-left: -10px;
     width: 42%;
     font-weight: bold;
   }
-  &_amount{
+
+  &_amount {
     color: white;
     font-weight: 500;
     width: 29%;
@@ -330,7 +384,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    &::before{
+
+    &::before {
       content: "";
       position: absolute;
       left: -23px;
@@ -342,87 +397,115 @@
     }
   }
 }
-.kitchenProductManagement{
+
+.kitchenProductManagement {
   width: 93%;
-  border: 2px solid $color-vegetables;
+  border: 4px solid $color-vegetables;
   overflow: hidden;
-  margin-top: 11px;
+  margin: 11px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 22px;
-  animation:  showProductManagement 0.7s forwards;
-  .management{
-    &__title{
+  border-radius: 7px;
+  animation: showEffect 0.7s forwards;
+  .management {
+    &__title {
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      i{
-        font-size:28px;
+
+      i {
+        font-size: 28px;
         padding: 3px;
       }
     }
-    &__amount{
+
+    &__amount {
       width: 100%;
       display: flex;
       justify-content: center;
       margin-top: 7px;
 
-      button{
+      button {
         font-size: 12px;
         padding: 7px 15px;
         display: block;
-        background: $color-vegetables;
-        color: white;
+        background: white;
+        color: $color-vegetables;
         border: none;
         border-radius: 0 10px 10px 0;
-        &:nth-child(1){
+        position: relative;
+        &:last-child {
+          &::before {
+            @include corners("leftTop", $color-vegetables, 40px, 5px, 10px);
+          }
+
+          &::after {
+            @include corners("leftBot", $color-vegetables, 40px, 5px, 10px);
+          }
+        }
+        &:nth-child(1) {
           border-radius: 10px 0 0 10px;
+          &::before{
+            @include corners("rightTop", $color-vegetables, 40px, 5px, 10px);
+          }
+          &::after{
+            @include corners("rightBot", $color-vegetables, 40px, 5px, 10px);
+          }
         }
       }
     }
-    &__actions{
+
+    &__actions {
       width: 100%;
       height: 28px;
       margin-top: 15px;
       display: flex;
-       button{
-         font-weight: bold;
-         width: 50%;
-         height: 100%;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         border: none;
-         &:nth-child(2){
-           background: $color-vegetables;
-         }
-       }
+
+      button {
+        font-weight: bold;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+
+        &:nth-child(2) {
+          background: $color-vegetables;
+        }
+      }
     }
   }
 
-  input{
+  input {
     text-align: center;
     width: 82px;
+    border: none;
+    border-top: 4px solid $color-vegetables;
+    border-bottom: 4px solid $color-vegetables;
   }
 }
-.successfulProductUpdate{
+
+.successfulProductUpdate {
   animation: successfulProductUpdate 0.7s forwards;
 }
-@keyframes showProductManagement {
-  0%{
+
+@keyframes showEffect {
+  0% {
     transform: scale(0.1);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
+
 @keyframes successfulProductUpdate {
-  0%{
+  0% {
     transform: scale(1);
   }
-  100%{
+  100% {
     transform: scale(0.1);
   }
 }
