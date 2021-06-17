@@ -1,4 +1,4 @@
-.recipesBar{
+.recipesListBar{
   background: $color-green;
   color: white;
   display: flex;
@@ -14,5 +14,33 @@
       font-style: italic;
       font-weight: 500;
     }
+  }
+}
+
+.addRecipeBtn{
+  font-size: 26px;
+  color: $color-green;
+  width: 36%;
+  height: 32px;
+  background: white;
+  display: block;
+  margin: 3px auto;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  border: none;
+  &::before{
+    @include corners("rightBot", $color-green, 30px, 5px, 15px);
+  }
+  &::after{
+    @include corners("leftBot", $color-green, 30px, 5px, 15px);
+  }
+}
+.addRecipeBtn__animation{
+  &::before{
+    @include animatedCorners(0.7s, 70px)
+  }
+  &::after{
+    @include animatedCorners(0.7s, 70px)
   }
 }

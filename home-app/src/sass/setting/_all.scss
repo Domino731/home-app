@@ -162,3 +162,13 @@
     }
   }
 }
+
+@mixin animatedCorners($time, $size: 30px){
+  @keyframes cornerEffect {
+    100% {
+      width: $size;
+      height: $size;
+    }
+  }
+  animation: cornerEffect $time forwards;
+}

@@ -1,0 +1,132 @@
+.addRecipe {
+
+  &__Form {
+    width: 100%;
+    color: $color-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: $color-green;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    border-bottom: 7px solid $color-green;
+  }
+
+  &__element {
+    width: 93%;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-radius: 7px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+
+    &::before {
+      @include corners("leftTop", $color-green, 150px, 7px, 20px);
+    }
+
+    &::after {
+      @include corners("rightTop", $color-green, 150px, 7px, 20px);
+    }
+
+    span {
+      margin-top: 10px;
+      width: 100%;
+      position: relative;
+
+      &::before {
+        @include corners("leftBot", $color-green, 150px, 7px, 20px);
+      }
+
+      &::after {
+        @include corners("rightBot", $color-green, 150px, 7px, 20px);
+      }
+    }
+  }
+
+  &__label {
+    font-size: 25px;
+    margin-top: -7px;
+    background: white;
+    width: 144px;
+    text-align: center;
+    z-index: 2;
+    font-weight: 600;
+  }
+
+  &__input {
+    width: 260px;
+    height: 26px;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid $color-black;
+    transition: 0.1s;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $color-black;
+    }
+  }
+
+  &__textarea {
+    width: 260px;
+    height: 100px;
+    text-align: start;
+    resize: none;
+  }
+
+  &__addButton {
+    color: white;
+    background: $color-green;
+    font-weight: bold;
+    margin-top: -23px;
+    z-index: 2;
+    border-radius: 25px;
+    padding: 5px 40px;
+    border: 7px solid white;
+  }
+
+  &__buttonsBar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__choice {
+    width: 38%;
+    height: 40px;
+    border: none;
+    font-size: 16px;
+  font-weight: bold;
+    background: white;
+    position: relative;
+    &--pink{
+      &::after {
+        @include corners("rightTop", $color-pink, 10px, 6px);
+      }
+      &::before {
+        @include corners("leftBot", $color-pink, 10px, 6px);
+      }
+    }
+  }
+  &__ol {
+    padding-left: 20px;
+    list-style: decimal;
+    width: 93%;
+    max-height: 200px;
+    overflow: auto;
+    margin: 40px;
+    li{
+      margin-top: 14px;
+    }
+  }
+}

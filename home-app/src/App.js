@@ -3,6 +3,7 @@ import HomePage from "./components/homePage/HomePage";
 import {MyKitchen} from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import {MyRecipesList} from "./components/myRecipes/MyRecipesList";
+import {MyRecipesAddForm} from "./components/myRecipes/MyRecipesAddForm";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
@@ -12,7 +13,7 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 
 function App({setUser, setUsername, currentUser, username}) {
-    useEffect( () => {
+    useEffect(() => {
         auth().onAuthStateChanged(user => {
             if (user) {
                 setUser(user)
@@ -27,11 +28,13 @@ function App({setUser, setUsername, currentUser, username}) {
         <Router>
             <PrivateRoute exact path="/" component={HomePage}/>
             <PrivateRoute exact path="/mykitchen" component={MyKitchen}/>
-            <PrivateRoute exact path="/myrecipes" component={MyRecipes}/>
-            <PrivateRoute path="/myRecipes/:type" component={MyRecipesList}/>
+            <PrivateRoute exact path="/myRecipes" component={MyRecipes}/>
+            <PrivateRoute exact path="/myRecipes/:type" component={MyRecipesList}/>
+            <PrivateRoute exact path="/myRecipes/:type/add" component={MyRecipesAddForm}/>
         </Router>
     )
 }
+
 const mapStateToProps = state => ({
     currentUser: state.currentUser,
     username: state.username

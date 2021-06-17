@@ -1,9 +1,9 @@
 import {useState} from "react";
-import {useHistory, Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 export const MyRecipeBox = ({path, title}) => {
     const [animationClass, setAnimationClass] = useState(false)
     const [flag, setFlag] = useState(false)
-    const history = useHistory()
+
     const redirect = () => {
         setAnimationClass(true)
         setTimeout(()=>{
@@ -13,11 +13,11 @@ export const MyRecipeBox = ({path, title}) => {
         }, 1000)
     }
     return (
-        <div className={`recipeBox ${animationClass ? "animatedRedirect2" : null}`} onClick={redirect}>
+        <div className={`recipeBox ${animationClass && "animatedRedirect2"}`} onClick={redirect}>
             <span/>
             <h1>
                 {title}
-                {flag ? <Redirect to={`/myRecipes/${path}`}/> : null}
+                {flag && <Redirect to={`/myRecipes/${path}`}/>}
             </h1>
         </div>
     )
