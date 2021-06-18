@@ -23,12 +23,12 @@ export const UserFormLogin = ({changeForm}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         auth().signInWithEmailAndPassword(data.email, data.password)
-            .then((userCredential) => {
+            .then(() => {
                 // Signed in
                 setTimeout(() => {
                     history.push("/")
                 }, 5000)
-                const user = userCredential.user;
+                //const user = userCredential.user;
                 setSuccessful(true)
 
             })

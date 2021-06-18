@@ -4,7 +4,7 @@ import {MyKitchen} from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import {MyRecipesList} from "./components/myRecipes/MyRecipesList";
 import {MyRecipesAddForm} from "./components/myRecipes/MyRecipesAddForm";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
@@ -12,7 +12,7 @@ import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 
-function App({setUser, setUsername, currentUser, username}) {
+function App({setUser, currentUser, username}) {
     useEffect(() => {
         auth().onAuthStateChanged(user => {
             if (user) {
@@ -21,7 +21,7 @@ function App({setUser, setUsername, currentUser, username}) {
                 setUser(null)
             }
         })
-    }, [currentUser, username])
+    }, [currentUser, username, setUser])
 
 
     return (

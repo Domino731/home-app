@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {auth} from "../../fireBase/fireBase";
-import {Link, useHistory} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import {userFormRegisterValidate} from "../../functions/userFormRegisterValidate";
 import {SuccessfulForm} from "./SuccessfulForm";
 import {createUserDatabase} from "../../functions/createUserDatabase";

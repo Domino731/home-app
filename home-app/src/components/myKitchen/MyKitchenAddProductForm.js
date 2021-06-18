@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {addNewElement} from "../../functions/addNewProduct";
 import {connect} from "react-redux";
-import {getFirestoreId} from "../../functions/getFirestoreId";
+
 
 const MyKitchenAddProductForm = ({username, productType}) => {
     const [product, setProduct] = useState({name: "", amount: "", unit: "Dag", type: productType})

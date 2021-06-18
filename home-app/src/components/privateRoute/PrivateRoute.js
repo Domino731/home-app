@@ -1,4 +1,4 @@
-import {Route, Redirect} from "react-router-dom"
+import {Route} from "react-router-dom"
 import {connect} from "react-redux";
 import UserForm from "../userForm/UserForm";
 import {getDataFromFirestore} from "../../functions/getDataFromFirestore";
