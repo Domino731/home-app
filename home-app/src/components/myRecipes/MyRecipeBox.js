@@ -13,7 +13,7 @@ export const MyRecipeBox = ({path, title}) => {
         }, 1000)
     }
     return (
-        <div className={`recipeBox ${animationClass && "animatedRedirect2"}`} onClick={redirect}>
+        <div className={`recipeBox ${animationClass && "animatedRedirect--ToCategory"}`} onClick={redirect}>
             <span/>
             <h1>
                 {title}

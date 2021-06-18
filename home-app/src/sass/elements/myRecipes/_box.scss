@@ -47,35 +47,34 @@ animation: showEffect 0.5s forwards;
   }
 }
 
-.animatedRedirect2 {
-  animation: removePadding 0.2s 0.8s forwards;
-
+.animatedRedirect--ToCategory {
+  animation: removePadding--ToCategory 0.2s 0.8s forwards;
   &::before {
-    animation: cornerEffect 1s ease-in-out forwards;
+    animation: cornerEffect--ToCategory 1s ease-in-out forwards;
   }
 
   &::after {
-    animation: cornerEffect 1s ease-in-out forwards;
+    animation: cornerEffect--ToCategory 1s ease-in-out forwards;
   }
 
   span {
     &::after {
-      animation: cornerEffect 1s ease-in-out forwards;
+      animation: cornerEffect--ToCategory 1s ease-in-out forwards;
     }
 
     &::before {
-      animation: cornerEffect 1s ease-in-out forwards;
+      animation: cornerEffect--ToCategory 1s ease-in-out forwards;
     }
   }
 }
 
-@keyframes removePadding {
+@keyframes removePadding--ToCategory {
   100% {
     padding: 0;
   }
 }
 
-@keyframes cornerEffect {
+@keyframes cornerEffect--ToCategory {
   100% {
     width: 100px;
     height: 100px;

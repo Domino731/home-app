@@ -49,9 +49,21 @@
       }
     }
   }
-  &__msg{
+
+  &__msg {
     animation: showEffect 0.5s;
+    font-weight: bold;
+    margin-top: 8px;
+    &--true{
+      color: $color-blue;
+    }
+    &--false{
+      color: $color-red;
+      margin-bottom: 16px;
+
+    }
   }
+
   &__label {
     font-size: 25px;
     margin-top: -7px;
@@ -74,11 +86,27 @@
     transition: 0.1s;
     outline: none;
 
+    &--amount {
+      width: 122px;
+    }
+
     &:focus {
       border: 1px solid $color-black;
     }
   }
+   &__fieldset{
+     display: flex;
+     flex-direction: column;
+     margin-bottom: 15px;
+     label{
+       padding: 9px;
+       position: relative;
+       &::after {
+         @include corners("leftTop", $color-green, 100%, 5px, 22px);
+       }
+     }
 
+   }
   &__textarea {
     width: 260px;
     height: 100px;
@@ -135,8 +163,7 @@
     padding-left: 42px;
     border-left: 6px solid $color-blue;
     border-right: 6px solid $color-blue;
-    border-radius: 10px;
-
+    border-radius: 5px;
     textarea {
       width: 100%;
       height: 100px;
@@ -147,6 +174,7 @@
       border-bottom: 1px solid $color-black;
       border-top: 1px solid $color-black;
       margin-top: 10px;
+
       &:focus {
         border: 1px solid $color-black;
         outline: none;
@@ -160,6 +188,7 @@
       padding: 10px;
       word-wrap: break-word;
       position: relative;
+
       &::after {
         @include corners("leftTop", $color-blue, 80px, 6px, 10px);
       }
@@ -167,19 +196,79 @@
       &::before {
         @include corners("rightBot", $color-blue, 80px, 6px, 10px);
       }
+
       i {
         padding: 4px 10px;
         color: $color-red;
       }
 
-      span {
+      p {
+        width: 100%;
         color: $color-black;
         margin-left: 8px;
       }
-
-      i[class*="fa-edit"], i[class*="fa-save"] {
+      i[class*="fa-edit"], i[class*="fa-save"], i[class*="fa-long-arrow-alt-right"] {
         color: $color-black;
       }
     }
+  }
+  &__btn{
+    height: 70px;
+    width: 100%;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    color: $color-green;
+    font-weight: bold;
+    font-size: 29px;
+    &::before {
+      @include corners("rightBot", $color-green, 80px, 6px, 50px);
+    }
+    &::after {
+      @include corners("leftBot", $color-green, 80px, 6px, 50px);
+    }
+    span{
+      width: 100%;
+      &::before {
+        @include corners("rightTop", $color-green, 80px, 6px, 50px);
+      }
+      &::after {
+        @include corners("leftTop", $color-green, 80px, 6px, 50px);
+      }
+    }
+  }
+}
+.animatedRedirect--backToCategory {
+
+  &::before {
+    animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
+    cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+  }
+
+  &::after {
+    animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
+    cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+  }
+
+  span {
+    &::after {
+      animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
+      cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+    }
+
+    &::before {
+      animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
+      cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+    }
+  }
+}
+@keyframes cornerEffect--BackToCategory1 {
+  100% {
+    height: 0;
+  }
+}
+@keyframes cornerEffect--BackToCategory1_2 {
+  100% {
+    width: 200px;
   }
 }

@@ -36,7 +36,7 @@ export const MyRecipeAddFormInstructions = ({del,replace, el , num}) => {
                 {flag && <>
                    <i className="fas fa-edit" onClick={handleChangeFlag}/><i className="fas fa-trash-alt"
                                                                              onClick={handleDelete}/>
-                    <span>{el}</span>
+                    <p>{el}</p>
                             </>}
                 {flag === false && <>
                 <i className="far fa-times-circle" onClick={handleChangeFlag}/><i className="fas fa-save" onClick={handleReplace}/>
