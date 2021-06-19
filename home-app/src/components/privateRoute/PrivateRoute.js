@@ -7,6 +7,7 @@ import {db} from "../../fireBase/fireBase";
 import {setProducts} from "../../redux/actions/firebaseData.actions";
 import {setRecipes} from "../../redux/actions/firebaseData.actions";
 import {setToDo} from "../../redux/actions/firebaseData.actions";
+import {Loading} from "../loading/Loading";
 
 const PrivateRoute = ({currentUser, setProducts,setRecipes, setToDos, component: Component, ...rest}) => {
     const [s] = useState(db.collection("users"))
@@ -24,7 +25,7 @@ const PrivateRoute = ({currentUser, setProducts,setRecipes, setToDos, component:
                 if (currentUser === null) {
                     return <UserForm/>
                 } else if (currentUser === undefined) {
-                    return "ładuję ..."
+                    return <Loading/>
                 } else {
                     return <Component {...props}/>
                 }

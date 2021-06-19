@@ -2,8 +2,9 @@ import "./sass/main.scss"
 import HomePage from "./components/homePage/HomePage";
 import {MyKitchen} from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
-import {MyRecipesList} from "./components/myRecipes/MyRecipesList";
-import {MyRecipesAddForm} from "./components/myRecipes/MyRecipesAddForm";
+import MyRecipesList from "./components/myRecipes/MyRecipesList";
+import MyRecipesAddForm from "./components/myRecipes/MyRecipesAddForm";
+import MyRecipeSingleRecipe from "./components/myRecipes/MyRecipeSingleRecipe";
 import {BrowserRouter as Router} from "react-router-dom";
 import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
@@ -31,6 +32,7 @@ function App({setUser, currentUser, username}) {
             <PrivateRoute exact path="/myRecipes" component={MyRecipes}/>
             <PrivateRoute exact path="/myRecipes/:type" component={MyRecipesList}/>
             <PrivateRoute exact path="/myRecipes/:type/add" component={MyRecipesAddForm}/>
+            <PrivateRoute exact path="/myRecipe/:id" component={MyRecipeSingleRecipe}/>
         </Router>
     )
 }

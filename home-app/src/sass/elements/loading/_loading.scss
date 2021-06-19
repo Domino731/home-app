@@ -1,0 +1,40 @@
+.loading{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+  div{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i{
+      font-size: 138px;
+      color: $color-blue;
+      animation: loadingAnimation 3s infinite;
+    }
+    &::after{
+      @include corners("leftTop", $color-blue, 50px, 7px);
+    }
+    &::before{
+      @include corners("rightTop", $color-blue, 50px, 7px);
+    }
+    span{
+      &::after{
+        @include corners("leftBot", $color-blue, 50px, 7px);
+      }
+      &::before{
+        @include corners("rightBot", $color-blue, 50px, 7px);
+      }
+    }
+  }
+}
+@keyframes loadingAnimation {
+  100%{
+    transform: rotate(360deg);
+  }
+}

@@ -1,9 +1,20 @@
 import {useState} from "react";
 import {MyRecipeAddFormInstructions} from "./MyRecipeAddFormInstructions";
 import {MyRecipeAddFormIngredients} from "./MyRecipeAddFormIngredients";
-import { Redirect} from "react-router-dom";
-export const MyRecipesAddForm = (props) => {
-    const [product, setProduct] = useState({title: "", description: "", instructions: [], ingredients: []})
+import {addNewElement} from "../../functions/addNewElementToFirebase";
+import {Redirect} from "react-router-dom";
+import {connect} from "react-redux";
+
+const MyRecipesAddForm = (props) => {
+    const [recipe, setRecipe] = useState({
+        title: "",
+        description: "",
+        instructions: [],
+        ingredients: [],
+        type: props.match.params.type
+    })
+    const [instruction, setInstruction] = useState("")
+    const [ingredient, setIngredient] = useState({name: "", amount: "", unit: "Dag"})
     const [messagesFlag, setMessagesFlag] = useState({
         instruction: false,
         ingredient: false,
@@ -11,16 +22,19 @@ export const MyRecipesAddForm = (props) => {
         ingredientName: false,
         ingredientAmount: false
     })
-    const [instruction, setInstruction] = useState("")
-    const [ingredient, setIngredient] = useState({name: "", amount: "", unit: "Dag"})
     const [showIngredients, setShowIngredient] = useState(true)
     const [showInstructions, setShowInstructions] = useState(false)
     const [animationClass, setAnimationClass] = useState(false)
     const [redirectFlag, setRedirectFlag] = useState(false)
     const [sendButtonText, setSendButtonText] = useState("Dodaj przepis do kolekcji")
-    const handleChangeProduct = e => {
+    const [invalidForm, setInvalidForm] = useState({
+        ingredients: false,
+        instruction: false,
+        title: false
+    })
+    const handleChangeRecipe = e => {
         const {name, value} = e.target
-        setProduct(prev => ({
+        setRecipe(prev => ({
             ...prev,
             [name]: value
         }))
@@ -37,9 +51,9 @@ export const MyRecipesAddForm = (props) => {
     }
     const handleAddInstruction = e => {
         e.preventDefault()
-        setProduct(prev => ({
+        setRecipe(prev => ({
             ...prev,
-            instructions: [...product.instructions, instruction]
+            instructions: [...recipe.instructions, instruction]
         }))
         setMessagesFlag(prev => ({
             ...prev,
@@ -55,9 +69,9 @@ export const MyRecipesAddForm = (props) => {
     const handleAddIngredients = e => {
         e.preventDefault()
         if (ingredient.name.length > 0 && ingredient.amount.length > 0) {
-            setProduct(prev => ({
+            setRecipe(prev => ({
                 ...prev,
-                ingredients: [...product.ingredients, ingredient]
+                ingredients: [...recipe.ingredients, ingredient]
             }))
             setMessagesFlag(prev => ({
                 ...prev,
@@ -113,54 +127,75 @@ export const MyRecipesAddForm = (props) => {
         setShowInstructions(true)
     }
     const handleDeleteInstruction = el => {
-        const array = product.instructions;
+        const array = recipe.instructions;
         const index = array.indexOf(el);
         if (index > -1) {
             array.splice(index, 1);
-            setProduct(prev => ({
+            setRecipe(prev => ({
                 ...prev, instruction: array
             }))
         }
     }
     const handleDeleteIngredient = el => {
-        const array = product.ingredients;
+        const array = recipe.ingredients;
         const index = array.indexOf(el);
         if (index > -1) {
             array.splice(index, 1);
-            setProduct(prev => ({
+            setRecipe(prev => ({
                 ...prev, ingredients: array
             }))
         }
     }
-    const handleChangeProductInstructions = (num, text) => {
-        const array = product.instructions
+    const handleChangeRecipeInstructions = (num, text) => {
+        const array = recipe.instructions
         array[num] = text
-        setProduct(prev => ({
+        setRecipe(prev => ({
             ...prev,
             instructions: array
         }))
     }
     const handleSendRecipe = () => {
-        setAnimationClass(true)
-        setSendButtonText("Dodano przepis")
+        if (recipe.title.length > 0 && recipe.ingredients.length > 0 && recipe.instructions.length > 0) {
+            addNewElement(props.username, "recipes", recipe)
+            setAnimationClass(true)
+            setSendButtonText("Dodano przepis")
+            setTimeout(() => {
+                setRedirectFlag(true)
+            }, 1700)
+        }
+        if (recipe.title.length === 0) {
+             setInvalidForm(prev => ({
+                 ...prev, title: true
+             }))
+        }
+        if (recipe.ingredients.length === 0) {
+            setInvalidForm(prev => ({
+                ...prev, ingredients: true
+            }))
+        }
+        if (recipe.instructions.length === 0) {
+            setInvalidForm(prev => ({
+                ...prev, instruction: true
+            }))
+        }
     }
     return (
         <section className="container">
             <form className="addRecipe__Form">
                 <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
                 <div className="addRecipe__element">
-                    <label className="addRecipe__label">Nazwa</label>
-                    <input type="text" className="addRecipe__input" name="title" onChange={handleChangeProduct}/>
+                    <label className="addRecipe__label">*Nazwa</label>
+                    <input type="text" className="addRecipe__input" name="title" onChange={handleChangeRecipe} maxlength="40"/>
                     <span/>
                 </div>
                 <div className="addRecipe__element">
                     <label className="addRecipe__label">Opis</label>
                     <textarea className=" addRecipe__input addRecipe__textarea" name="description"
-                              onChange={handleChangeProduct}/>
+                              onChange={handleChangeRecipe}/>
                     <span/>
                 </div>
                 <div className="addRecipe__element">
-                    <label className="addRecipe__label">Instrukcje</label>
+                    <label className="addRecipe__label">*Instrukcje</label>
                     {messagesFlag.instruction &&
                     <strong className="addRecipe__msg addRecipe__msg--true">Dodano Instrukcję</strong>}
                     <textarea className=" addRecipe__input addRecipe__textarea" onChange={handleChangeInstruction}/>
@@ -169,7 +204,7 @@ export const MyRecipesAddForm = (props) => {
                 </div>
 
                 <div className="addRecipe__element">
-                    <label className="addRecipe__label">Składniki</label>
+                    <label className="addRecipe__label">*Składniki</label>
 
                     {messagesFlag.ingredient &&
                     <strong className="addRecipe__msg addRecipe__msg--true">Dodano Składnik</strong>}
@@ -209,21 +244,41 @@ export const MyRecipesAddForm = (props) => {
                             onClick={handleShowIngredients}>Pokaż składniki
                     </button>
                 </div>
-                {showIngredients && <ul className="addRecipe__list">{
-                    product.ingredients.map((el, num) => (
-                        <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el}/>
-                    ))
-                }</ul>}
-                {showInstructions && <ol className="addRecipe__list">{
-                    product.instructions.map((el, num) => (
-                        <MyRecipeAddFormInstructions del={handleDeleteInstruction} el={el} num={num}
-                                                     replace={handleChangeProductInstructions}/>
-                    ))
-                }</ol>}
+                {showIngredients && <ol className="addRecipe__list">{
+                    recipe.ingredients.length > 0 ?
+                        recipe.ingredients.map((el, num) => (
+                            <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el}/>
+                        ))
+                        :
+                        "Brak dodanych składników"
+                }</ol>
+
+                }
+                {showInstructions && <ol className="addRecipe__list">
+                    {
+                        recipe.instructions.length > 0 ?
+                            recipe.instructions.map((el, num) => (
+                                <MyRecipeAddFormInstructions del={handleDeleteInstruction} el={el} num={num}
+                                                             replace={handleChangeRecipeInstructions}/>
+                            )) : "Brak dodanych instrukcji"
+                    }</ol>}
             </form>
-            {redirectFlag && <Redirect to={`/myRecipes/${props.match.params.type}`}/>}
+            {invalidForm.title && <strong className="addRecipe__msg addRecipe__msg--invalidForm">*dodaj tytuł</strong>}
+            {invalidForm.ingredients &&
+            <strong className="addRecipe__msg addRecipe__msg--invalidForm">*dodaj conajmniej jeden składnik</strong>}
+            {invalidForm.instruction &&
+            <strong className="addRecipe__msg addRecipe__msg--invalidForm">*dodaj conajmniej jedną instrukcję </strong>}
+
             <button className={`addRecipe__btn ${animationClass && "animatedRedirect--backToCategory"}`}
                     onClick={handleSendRecipe}>{sendButtonText}<span/></button>
+
+
+            {redirectFlag && <Redirect to={`/myRecipes/${props.match.params.type}`}/>}
         </section>
     )
 }
+const mapStateToProps = state => ({
+    username: state.currentUser.displayName
+})
+export default connect(mapStateToProps)(MyRecipesAddForm)
+

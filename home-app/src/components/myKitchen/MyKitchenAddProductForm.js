@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {addNewElement} from "../../functions/addNewProduct";
+import {addNewElement} from "../../functions/addNewElementToFirebase";
 import {connect} from "react-redux";
 
 

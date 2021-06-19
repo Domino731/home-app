@@ -58,9 +58,15 @@
       color: $color-blue;
     }
     &--false{
-      color: $color-red;
+      color: $color-blue;
       margin-bottom: 16px;
-
+    }
+    &--invalidForm{
+      color: $color-blue;
+      display: block;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 
@@ -221,6 +227,7 @@
     color: $color-green;
     font-weight: bold;
     font-size: 29px;
+    border: none;
     &::before {
       @include corners("rightBot", $color-green, 80px, 6px, 50px);
     }

@@ -4,7 +4,7 @@ import MyKitchenProduct from "./MyKitchenProduct";
 import {connect} from "react-redux";
 
 
-const MyKitchenCategory = ({title, productType, products}) => {
+const MyKitchenCategory = ({title, productType, products,}) => {
     const [showList, setShowList] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [productsArray, setProductsArray] = useState([])
