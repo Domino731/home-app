@@ -13,7 +13,7 @@ const MyKitchenCategory = ({title, productType, products,}) => {
         if (products !== null) {
             setProductsArray(products.filter(el => el.type === productType))
             if (sorting === "Największa ilość") {
-                setProductsArray(prev => prev.sort((a, b) => b.amount - a.amount))
+                setProductsArray(prev => prev.sort((a, b) => b.amount  - a.amount))
             } else {
                 setProductsArray(prev => prev.sort((a, b) => a.amount - b.amount))
             }

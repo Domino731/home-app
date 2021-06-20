@@ -1,15 +1,24 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {deleteDataFirestore} from "../../functions/deleteDataFirestore";
 import {updateDataFirestore} from "../../functions/updateDataFirestore";
-import {getProductIcon} from "../../functions/getProductIcon";
 import {getUnit} from "../../functions/getUnit";
 import {connect} from "react-redux";
+import {db} from "../../fireBase/fireBase";
 
 
 const MyKitchenProduct = ({prod, id, username}) => {
     const [flag, setFlag] = useState(true)
     const [successfulUpdate, setSuccessfulUpdate ] = useState(false)
     const [newAmount, setNewAmount] = useState(prod.amount)
+    const [icon, setIcon] = useState("")
+    useEffect(()=>{
+        db.collection("productsRendering").where("productType", "==", `${prod.type}`).get().then((querySnapshot) => {
+            const data = querySnapshot.docs.map(doc => (
+                doc.data().icon
+            ));
+           setIcon(data[0])
+        });
+    },[])
     const handleChangeFlag = () => {
         if(flag){
             setFlag(false)
@@ -42,7 +51,7 @@ const MyKitchenProduct = ({prod, id, username}) => {
     return (
         <>
          <section className="kitchenProduct">
-             {getProductIcon(prod.type)}
+             <i className={icon}/>
             <strong className="kitchenProduct__name" onClick={handleChangeFlag}>{prod.name}</strong>
             <div className="kitchenProduct_amount" onClick={handleChangeFlag}>
                 {prod.amount > 0 && <>

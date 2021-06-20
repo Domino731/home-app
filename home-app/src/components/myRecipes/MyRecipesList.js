@@ -4,16 +4,28 @@ import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import MyRecipeBox from "./MyRecipeBox";
 import {Loading} from "../loading/Loading";
+import {db} from "../../fireBase/fireBase";
 
 const MyRecipesList = (props) => {
+
     const [animationClass, setAnimationClass] = useState(false)
     const [flag, setFlag] = useState(false)
     const [recipesArray, setRecipesArray] = useState(null)
+    const [recipesCategory, setRecipesCategory] = useState("")
     useEffect(() => {
         if (props.recipes !== null) {
             setRecipesArray(props.recipes.filter(el => el.type === props.match.params.type))
         }
-        console.log(recipesArray)
+        db.collection("recipesRendering").get().then((querySnapshot) => {
+            let arr = []
+            querySnapshot.docs.map(doc => (
+                arr.push(doc.data().path)
+            ));
+            console.log(arr)
+            console.log(props.match.params.type)
+            setRecipesCategory(arr)
+        });
+
     }, [props.recipes])
     const redirect = () => {
         setAnimationClass(true)
@@ -24,7 +36,7 @@ const MyRecipesList = (props) => {
     if (recipesArray === null) {
         return <Loading/>
     }
-    else {
+    else if(recipesCategory.includes(props.match.params.type)) {
         return (
             <section className="container">
                 <div className="titleBar recipesListBar">
@@ -41,17 +53,21 @@ const MyRecipesList = (props) => {
                         className="fas fa-heart-broken"/></strong>
                 }
                 {recipesArray.length > 0 &&
-                  <section>
-                      {recipesArray.map(el => {
-                          return <MyRecipeBox recipe={el}/>
-                      })}
-                  </section>
+                <section>
+                    {recipesArray.map(el => {
+                        return <MyRecipeBox recipe={el} key={el.id}/>
+                    })}
+                </section>
                 }
-
                 {flag && <Redirect to={`/myRecipes/${props.match.params.type}/add`}/>}
             </section>
 
         )
+    }
+    else if(recipesCategory.includes(props.match.params.type) === false){
+        return <div className="noMatch">Brak kategorii  <br/>
+          <strong>{props.match.params.type}</strong>
+        </div>
     }
 
 }

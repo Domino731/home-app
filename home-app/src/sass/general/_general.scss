@@ -40,7 +40,36 @@ body{
     }
   }
 }
+.noMatch{
+  text-align: center;
+  font-weight: bold;
+  font-size: 44px;
+  display: block;
+  margin: 40px auto;
+  width: 90%;
+  position: relative;
+  padding: 10px;
+    &::before {
+      @include corners("leftTop", $color-red, 20px, 7px);
+    }
 
+    &::after {
+      @include corners("rightTop", $color-red, 20px, 7px);
+    }
+  strong{
+    display: block;
+    width: 100%;
+    color: $color-red;
+    margin-top: 25px;
+    &::before {
+      @include corners("leftBot", $color-red, 20px, 7px);
+    }
+
+    &::after {
+      @include corners("rightBot", $color-red, 20px, 7px);
+    }
+  }
+}
 
 
 @keyframes showEffect {

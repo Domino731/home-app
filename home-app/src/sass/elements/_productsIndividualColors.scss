@@ -1,10 +1,10 @@
 //// VEGETABLES
 .kitchenCtg:nth-child(2){
-  @include colorForKitchenProducts($color-vegetables);
+  @include colorForKitchenProducts($color-meat);
 }
 //// MEAT
 .kitchenCtg:nth-child(3){
-  @include colorForKitchenProducts($color-meat);
+  @include colorForKitchenProducts($color-vegetables);
 }
 //// DAIRY
 .kitchenCtg:nth-child(4){

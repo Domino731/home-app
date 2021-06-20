@@ -14,21 +14,21 @@
     align-items: center;
     i{
       font-size: 138px;
-      color: $color-blue;
+      color: $color-black;
       animation: loadingAnimation 3s infinite;
     }
     &::after{
-      @include corners("leftTop", $color-blue, 50px, 7px);
+      @include corners("leftTop", $color-black, 50px, 7px);
     }
     &::before{
-      @include corners("rightTop", $color-blue, 50px, 7px);
+      @include corners("rightTop", $color-black, 50px, 7px);
     }
     span{
       &::after{
-        @include corners("leftBot", $color-blue, 50px, 7px);
+        @include corners("leftBot", $color-black, 50px, 7px);
       }
       &::before{
-        @include corners("rightBot", $color-blue, 50px, 7px);
+        @include corners("rightBot", $color-black, 50px, 7px);
       }
     }
   }
