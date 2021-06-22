@@ -1,0 +1,122 @@
+.newTaskForm {
+  width: 91%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  z-index: 0;
+  top: -420px;
+  animation: showTaskElement 0.6s forwards;
+  border-radius: 7px;
+  overflow: hidden;
+  &::before {
+    @include corners("leftBot", $color-purple, 66px, 5px, 92%);
+  }
+
+  &::after {
+    @include corners("rightBot", $color-purple, 66px, 5px, 92%);
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: bold;
+    color: $color-purple;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  &__input {
+
+    box-shadow: 0 0 4px $color-purple;
+    border: 2px solid $color-purple;
+    width: 90%;
+    margin-top: 15px;
+    border-radius: 9px;
+    outline: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &--name {
+      height: 28px;
+    }
+
+    &--description {
+      height: 50px;
+      resize: none;
+    }
+  }
+
+  &__invalid {
+    color: $color-red;
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: bold;
+  }
+
+  &__btn {
+    background: white;
+    font-weight: bold;
+    height: 30px;
+    width: 147px;
+    margin-top: 10px;
+    overflow: hidden;
+    border: none;
+    bottom: 0;
+    position: relative;
+    border-radius: 7px;
+    &::after {
+      @include corners("rightBot", $color-purple, 40px, 5px, 3px);
+    }
+
+    &::before {
+      @include corners("leftBot", $color-purple, 40px, 5px, 3px);
+    }
+
+    span {
+      &::after {
+        @include corners("rightTop", $color-purple, 40px, 5px, 3px);
+      }
+
+      &::before {
+        @include corners("leftTop", $color-purple, 40px, 5px, 3px);
+      }
+    }
+  }
+
+  &__successfulAdd {
+    width: 91%;
+    height: 91%;
+    background: $color-purple;
+    margin-top: -30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: showEffect 0.7s forwards;
+
+    h3 {
+      font-size: 32px;
+      margin-top: 47px;
+      text-align: center;
+    }
+
+    i {
+      margin-top: 32px;
+      margin-bottom: 32px;
+      font-size: 0;
+      animation: successfulShowIcon 0.1s 1s forwards;
+    }
+  }
+}
+
+@keyframes showTaskElement {
+  100% {
+    top: 0;
+  }
+}

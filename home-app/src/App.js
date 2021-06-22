@@ -11,7 +11,8 @@ import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
-
+import MyRecipeEditForm from "./components/myRecipes/MyRecipeEditForm";
+import ToDo from "./components/toDo/ToDo";
 
 function App({setUser, currentUser, username}) {
     useEffect(() => {
@@ -22,7 +23,7 @@ function App({setUser, currentUser, username}) {
                 setUser(null)
             }
         })
-    }, [currentUser, username, setUser])
+    }, [])
 
 
     return (
@@ -33,6 +34,8 @@ function App({setUser, currentUser, username}) {
             <PrivateRoute exact path="/myRecipes/:type" component={MyRecipesList}/>
             <PrivateRoute exact path="/myRecipes/:type/add" component={MyRecipesAddForm}/>
             <PrivateRoute exact path="/myRecipe/:id" component={MyRecipeSingleRecipe}/>
+            <PrivateRoute exact path="/myRecipe/edit/:id" component={MyRecipeEditForm}/>
+            <PrivateRoute exact path="/toDo" component={ToDo}/>
         </Router>
     )
 }

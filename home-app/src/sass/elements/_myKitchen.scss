@@ -10,7 +10,11 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  animation: showEffect 0.7s;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
   &__title {
     width: 100%;
     height: 70px;
@@ -45,44 +49,28 @@
     top: -420px;
     overflow: auto;
     border-bottom: 5px solid $color-blue;
+
     &::after {
       @include corners("leftTop", $color-blue, 100px, 5px, 92%);
+      z-index: -10;
     }
 
     &::before {
       @include corners("rightTop", $color-blue, 100px, 5px, 92%);
+      z-index: -10;
     }
   }
-  .sort{
-    text-align: center;
 
-    display: flex;
-    justify-content: center;
-    i{
-     padding: 7px 25px;
-    }
-    button{
-      font-size: 20px;
-      background: white;
-      position: relative;
-      border: none;
-      padding: 7px 13px;
-      &::after{
-        @include corners("rightTop", $color-blue, 21px, 5px, 30px);
-      }
-      &::before{
-        @include corners("leftBot", $color-blue, 21px, 5px, 30px);
-      }
-    }
-  }
-  .empty{
+  .empty {
     display: block;
     font-size: 20px;
     text-align: center;
-    i{
+
+    i {
       margin-left: 7px;
     }
   }
+
   &__addProduct {
     width: 93%;
     height: 200px;
@@ -100,7 +88,8 @@
       justify-content: flex-start;
       align-items: center;
       position: relative;
-
+      border-radius: 7px;
+      overflow: hidden;
       &::before {
         @include corners("leftBot", $color-blue, 66px, 5px, 93%);
       }
@@ -159,7 +148,8 @@
         label {
           padding: 9px;
           position: relative;
-
+          border-radius: 7px;
+          overflow: hidden;
           &::after {
             @include corners("leftTop", $color-blue, 100%, 5px, 22px);
           }
@@ -172,9 +162,14 @@
         color: $color-red;
         font-weight: bold;
         border: none;
-        border-radius: 6px;
         position: absolute;
-        bottom:0;
+        bottom: 0;
+        background: white;
+        border-radius: 7px;
+        overflow: hidden;
+        &:focus {
+          box-shadow: none;
+        }
 
         &::after {
           @include corners("leftTop", $color-red, 40px, 5px, 3px);
@@ -199,6 +194,7 @@
     .addProduct__invalid {
       font-size: 12px;
       color: $color-red;
+      font-weight: bold;
     }
   }
 
@@ -313,7 +309,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  animation: showEffect 1s;
+
   i {
     font-size: 30px;
     height: 100%;
@@ -371,6 +367,7 @@
   align-items: center;
   border-radius: 7px;
   animation: showEffect 0.7s forwards;
+
   .management {
     &__title {
       display: flex;
@@ -399,6 +396,7 @@
         border: none;
         border-radius: 0 10px 10px 0;
         position: relative;
+
         &:last-child {
           &::before {
             @include corners("leftTop", $color-vegetables, 40px, 5px, 10px);
@@ -408,12 +406,15 @@
             @include corners("leftBot", $color-vegetables, 40px, 5px, 10px);
           }
         }
+
         &:nth-child(1) {
           border-radius: 10px 0 0 10px;
-          &::before{
+
+          &::before {
             @include corners("rightTop", $color-vegetables, 40px, 5px, 10px);
           }
-          &::after{
+
+          &::after {
             @include corners("rightBot", $color-vegetables, 40px, 5px, 10px);
           }
         }
@@ -454,7 +455,6 @@
 .successfulProductUpdate {
   animation: successfulProductUpdate 0.7s forwards;
 }
-
 
 
 @keyframes successfulProductUpdate {

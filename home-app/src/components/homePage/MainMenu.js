@@ -6,10 +6,11 @@ import {auth} from "../../fireBase/fireBase";
 import {changeUser} from "../../redux/actions/currenUser.actions";
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
-
+import {Redirect} from "react-router-dom";
 export const MainMenu = () => {
-    const [kitchenClass, setKitchenClass] = useState(false)
-    const [recipesClass, setRecipesClass] = useState(false)
+    const [kitchenAnimation, setKitchenAnimation] = useState(false)
+    const [recipesAnimation, setRecipesAnimation] = useState(false)
+    const [toDoAnimation, setToDoAnimation] = useState(false)
     const history = useHistory()
     const handleLogOut = () => {
         return auth().signOut()
@@ -28,15 +29,18 @@ export const MainMenu = () => {
                     <h1 data-text={greeting()}>{greeting()}</h1>
                     <h2 data-text={dayName()}>{dayName()}</h2>
                 </div>
-                <div className={`mainMenu__element ${kitchenClass ? "animatedRedirect" : null}`}
-                     onClick={() => redirect(setKitchenClass, "/myKitchen")}>
+                <div className={`mainMenu__element ${kitchenAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setKitchenAnimation, "/myKitchen")}>
                     <strong>Kuchnia</strong>
                 </div>
-                <div className={`mainMenu__element ${recipesClass ? "animatedRedirect" : null}`}
-                     onClick={() => redirect(setRecipesClass, "/myRecipes")}>
+                <div className={`mainMenu__element ${recipesAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setRecipesAnimation, "/myRecipes")}>
                     <strong>Przepisy</strong>
                 </div>
-
+                <div className={`mainMenu__element ${toDoAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setToDoAnimation, "/ToDo")}>
+                    <strong>Do zrobienia</strong>
+                </div>
                 <div className="mainMenu__logOut" onClick={handleLogOut}>
                     <i className="fas fa-sign-out-alt"/>
                 </div>

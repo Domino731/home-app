@@ -1,0 +1,147 @@
+.singleTask {
+  margin-top: 30px;
+  width: 100%;
+  position: relative;
+  padding: 15px;
+
+  .corner {
+    &::after {
+      @include corners("rightBot", $color-purple, 40px, 5px);
+      z-index: -10;
+    }
+
+    &::before {
+      @include corners("leftBot", $color-purple, 40px, 5px);
+      z-index: -10;
+    }
+  }
+
+  &::after {
+    @include corners("rightTop", $color-purple, 40px, 5px);
+    z-index: -10;
+  }
+
+  &::before {
+    @include corners("leftTop", $color-purple, 40px, 5px);
+    z-index: -10;
+  }
+
+  &__title {
+    text-align: center;
+    overflow-wrap: break-word;
+    font-weight: bold;
+  }
+
+  &__description {
+    text-align: center;
+    overflow-wrap: break-word;
+    margin-top: 15px;
+  }
+
+  &__panel {
+    height: 30px;
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .panelBtn {
+      flex-grow: 1;
+      margin: 1px;
+      border-radius: 7px;
+      overflow: hidden;
+
+      &--delete {
+        border: 2px solid $color-red;
+        color: $color-red;
+        background: white;
+      }
+
+      &--archive {
+        border: none;
+        background: $color-grey;
+        color: white;
+      }
+
+      &--addOperation {
+        border: none;
+        background: $color-blue;
+        color: white;
+      }
+    }
+  }
+
+  &__addOps {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      box-shadow: 0 0 4px $color-blue;
+      border: 2px solid $color-blue;
+      height: 30px;
+      width: 90%;
+      margin-top: 15px;
+      border-radius: 9px;
+      outline: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    button {
+      margin-top: 10px;
+      background: white;
+      font-weight: bold;
+      height: 30px;
+      width: 147px;
+      overflow: hidden;
+      border: none;
+      bottom: 0;
+      position: relative;
+      border-radius: 7px;
+
+      &::after {
+        @include corners("rightBot", $color-blue, 40px, 5px, 3px);
+      }
+
+      &::before {
+        @include corners("leftBot", $color-blue, 40px, 5px, 3px);
+      }
+
+      span {
+        &::after {
+          @include corners("rightTop", $color-blue, 40px, 5px, 3px);
+        }
+
+        &::before {
+          @include corners("leftTop", $color-blue, 40px, 5px, 3px);
+        }
+      }
+    }
+  }
+
+  &__opsList {
+    width: 100%;
+    max-height: 200px;
+    margin-top: 30px;
+    overflow: auto;
+    list-style: inside;
+     li{
+       margin-bottom: 15px;
+     }
+    i{
+      color: $color-red;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+
+   }
+  ::-webkit-scrollbar-thumb{
+    background: $color-purple;
+    border-radius: 6px;
+  }
+
+}

@@ -69,7 +69,7 @@
     border-radius: 5px;
     animation: showEffect 0.6s forwards;
     strong {
-      font-size: 66px;
+      font-size: 41px;
       color: $color-green;
       font-weight: bold;
       text-decoration: none;
@@ -101,9 +101,9 @@
     border-radius: 5px;
   }
 }
-.animatedRedirect{
+.animatedRedirect--homePage{
   overflow: hidden;
-   animation: redirectAnimation 0.5s forwards;
+   animation: redirectAnimation--homePage 0.5s forwards;
 }
 @keyframes titleAnimation {
   0% {
@@ -113,7 +113,7 @@
     width: 100%;
   }
 }
-@keyframes redirectAnimation {
+@keyframes redirectAnimation--homePage {
   0%{
    box-shadow: 0 0 2px $color-green inset;
   }

@@ -2,21 +2,17 @@ import {useEffect, useState} from "react";
 import MyKitchenAddProductForm from "./MyKitchenAddProductForm";
 import MyKitchenProduct from "./MyKitchenProduct";
 import {connect} from "react-redux";
-
+import {sortingByAlphabeticalProducts} from "../../functions/sorting";
 
 const MyKitchenCategory = ({title, productType, products,}) => {
     const [showList, setShowList] = useState(false)
     const [showAddForm, setShowAddForm] = useState(false)
     const [productsArray, setProductsArray] = useState([])
-    const [sorting, setSorting] = useState("Największa ilość")
+    const [sorting, setSorting] = useState("Alfabetycznie A - Z")
     useEffect(() => {
         if (products !== null) {
             setProductsArray(products.filter(el => el.type === productType))
-            if (sorting === "Największa ilość") {
-                setProductsArray(prev => prev.sort((a, b) => b.amount  - a.amount))
-            } else {
-                setProductsArray(prev => prev.sort((a, b) => a.amount - b.amount))
-            }
+            sortingByAlphabeticalProducts(sorting, setProductsArray)
         }
     }, [products, productType, sorting])
     const handleChangeShowList = () => {
@@ -36,11 +32,11 @@ const MyKitchenCategory = ({title, productType, products,}) => {
         setShowList(false)
     }
     const handleChangeSorting = () => {
-        if (sorting === "Największa ilość") {
-            setSorting("Najmniejsza ilość")
+        if (sorting === "Alfabetycznie A - Z") {
+            setSorting("Alfabetycznie Z - A")
         } else {
             console.log(true)
-            setSorting("Największa ilość")
+            setSorting("Alfabetycznie A - Z")
         }
     }
     const fixClass = () => {
@@ -50,31 +46,32 @@ const MyKitchenCategory = ({title, productType, products,}) => {
             return "kitchenCtg2"
         }
     }
+
     return (
-        <section className={`kitchenCtg ${fixClass()}`}>
-            <div className="kitchenCtg__title">
-                {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList}/> :
-                    <i className="fas fa-chevron-down" onClick={handleChangeShowList}/>}
-                <h2>{title}</h2>
-                {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm}/> :
-                    <i className="fas fa-plus" onClick={handleChangeShowAddForm}/>}
-            </div>
-            {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
-            {showList && <section className="kitchenCtg__list">
-                {
-                    productsArray.length !== 0 ?
-                        <>
-                            <div className="sort" onClick={handleChangeSorting}>
-                                <button>{sorting}</button>
-                            </div>
-                            {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el} id={el.id}/>)}</>
-                        :
-                        <strong className="empty">Brak zapisanych produktów, dodaj je naciskająć w plusa po prawej
-                            stronie<i
-                                className="fas fa-plus"/></strong>
-                }
-            </section>}
-        </section>
+            <section className={`kitchenCtg ${fixClass()}`}>
+                <div className="kitchenCtg__title">
+                    {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList}/> :
+                        <i className="fas fa-chevron-down" onClick={handleChangeShowList}/>}
+                    <h2>{title}</h2>
+                    {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm}/> :
+                        <i className="fas fa-plus" onClick={handleChangeShowAddForm}/>}
+                </div>
+                {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
+                {showList && <section className="kitchenCtg__list">
+                    {
+                        productsArray.length !== 0 ?
+                            <>
+                                <div className="sort sort--blue" onClick={handleChangeSorting}>
+                                    <button>{sorting}</button>
+                                </div>
+                                {productsArray.map(el => <MyKitchenProduct key={el.id} prod={el} id={el.id}/>)}</>
+                            :
+                            <strong className="empty">Brak zapisanych produktów, dodaj je naciskająć w plusa po prawej
+                                stronie<i
+                                    className="fas fa-plus"/></strong>
+                    }
+                </section>}
+            </section>
     )
 }
 

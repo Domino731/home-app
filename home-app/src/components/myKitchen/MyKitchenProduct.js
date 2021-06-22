@@ -55,7 +55,10 @@ const MyKitchenProduct = ({prod, id, username}) => {
             <strong className="kitchenProduct__name" onClick={handleChangeFlag}>{prod.name}</strong>
             <div className="kitchenProduct_amount" onClick={handleChangeFlag}>
                 {prod.amount > 0 && <>
-                <strong>{prod.amount}</strong>
+                <strong>
+                    {prod.amount !== "" ? prod.amount : "Brak"}
+                </strong>
+
                 <strong>{getUnit(prod.unit, prod.amount)}</strong>
                 </>}
                 {prod.amount === 0 && <strong>Brak</strong>}

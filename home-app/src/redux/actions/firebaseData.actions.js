@@ -6,7 +6,7 @@ export const setRecipes = (TEXT) => ({
     type: "GET_RECIPES",
     recipe: TEXT
 })
-export const setToDo = (TEXT) => ({
+export const setToDos = (TEXT) => ({
     type: "GET_TODO",
     todo: TEXT
 })

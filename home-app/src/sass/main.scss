@@ -1,6 +1,7 @@
 
 @import "setting/_variables";
 @import "setting/_all";
+@import "setting/_showEffect";
 @import "generic/_reset";
 @import "elements/userForm";
 @import "general/_general";
@@ -13,3 +14,8 @@
 @import "elements/myRecipes/recipeRedirect";
 @import "elements/myRecipes/_list";
 @import "elements/myRecipes/_addForm";
+@import "elements/myRecipes/_singleRecipe";
+@import "elements/toDo/_newTaskForm";
+@import "elements/toDo/_tasks";
+@import "elements/toDo/_tasksList";
+@import "elements/toDo/_singleTask";

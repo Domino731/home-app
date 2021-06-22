@@ -9,6 +9,7 @@
     height: $sizeHeight;
     border-left: $borderSize solid $color;
     border-top: $borderSize solid $color;
+
   }
   @if $position == "rightTop" {
     content: "";

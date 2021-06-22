@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 
 const MyKitchenAddProductForm = ({username, productType}) => {
-    const [product, setProduct] = useState({name: "", amount: "", unit: "Dag", type: productType})
+    const [product, setProduct] = useState({name: "", amount: 0, unit: "Dag", type: productType})
     const [invalidFlag, setInvalidFlag] = useState(false)
     const [successful, setSuccessful] = useState(false)
     useEffect(() => {
@@ -23,6 +23,7 @@ const MyKitchenAddProductForm = ({username, productType}) => {
             ...prev,
             [name]: value
         }));
+        setInvalidFlag(false)
     };
     const handleSubmitProduct = (e) => {
         e.preventDefault()

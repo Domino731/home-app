@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import MyRecipeBox from "./MyRecipeBox";
 import {Loading} from "../loading/Loading";
 import {db} from "../../fireBase/fireBase";
+import {sortingByAlphabeticalRecipes} from "../../functions/sorting";
+import {renderByFirebase} from "../../functions/renderByFirebase";
 
 const MyRecipesList = (props) => {
 
@@ -12,21 +14,24 @@ const MyRecipesList = (props) => {
     const [flag, setFlag] = useState(false)
     const [recipesArray, setRecipesArray] = useState(null)
     const [recipesCategory, setRecipesCategory] = useState("")
+    const [sorting, setSorting] = useState("Alfabetycznie A - Z")
     useEffect(() => {
         if (props.recipes !== null) {
             setRecipesArray(props.recipes.filter(el => el.type === props.match.params.type))
+                sortingByAlphabeticalRecipes(sorting, setRecipesArray)
+            console.log(recipesArray)
         }
-        db.collection("recipesRendering").get().then((querySnapshot) => {
-            let arr = []
-            querySnapshot.docs.map(doc => (
-                arr.push(doc.data().path)
-            ));
-            console.log(arr)
-            console.log(props.match.params.type)
-            setRecipesCategory(arr)
-        });
+        renderByFirebase("recipesRendering", setRecipesCategory)
 
-    }, [props.recipes])
+    }, [props.recipes, sorting])
+    const handleChangeSorting = () => {
+        if (sorting === "Alfabetycznie Z - A") {
+            setSorting("Alfabetycznie A - Z")
+        } else {
+            console.log(true)
+            setSorting("Alfabetycznie Z - A")
+        }
+    }
     const redirect = () => {
         setAnimationClass(true)
         setTimeout(() => {
@@ -35,8 +40,7 @@ const MyRecipesList = (props) => {
     }
     if (recipesArray === null) {
         return <Loading/>
-    }
-    else if(recipesCategory.includes(props.match.params.type)) {
+    } else if (recipesCategory.includes(props.match.params.type)) {
         return (
             <section className="container">
                 <div className="titleBar recipesListBar">
@@ -53,7 +57,11 @@ const MyRecipesList = (props) => {
                         className="fas fa-heart-broken"/></strong>
                 }
                 {recipesArray.length > 0 &&
+
                 <section>
+                    <div className="sort sort--green" onClick={handleChangeSorting}>
+                        <button>{sorting}</button>
+                    </div>
                     {recipesArray.map(el => {
                         return <MyRecipeBox recipe={el} key={el.id}/>
                     })}
@@ -63,11 +71,8 @@ const MyRecipesList = (props) => {
             </section>
 
         )
-    }
-    else if(recipesCategory.includes(props.match.params.type) === false){
-        return <div className="noMatch">Brak kategorii  <br/>
-          <strong>{props.match.params.type}</strong>
-        </div>
+    } else if (recipesCategory.includes(props.match.params.type) === false) {
+        return null
     }
 
 }
