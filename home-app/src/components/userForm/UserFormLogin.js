@@ -1,12 +1,10 @@
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {auth} from "../../fireBase/fireBase";
-import {SuccessfulForm} from "./SuccessfulForm";
 
 export const UserFormLogin = ({changeForm}) => {
     const [data, setData] = useState({email: "", password: "", userName: ""})
     const [error, setError] = useState("")
-    const [successful, setSuccessful] = useState(false)
     const handleChangeForm = () => {
         if (typeof changeForm) {
             return changeForm()
@@ -29,7 +27,6 @@ export const UserFormLogin = ({changeForm}) => {
                     history.push("/")
                 }, 5000)
                 //const user = userCredential.user;
-                setSuccessful(true)
 
             })
             .catch((error) => {
@@ -42,7 +39,7 @@ export const UserFormLogin = ({changeForm}) => {
     let history = useHistory();
     return (<>
 
-            {successful === false && <section className="container">
+           <section className="container">
                 <div className="userForm">
                     <h1 className="userForm__title">ZALOGUJ</h1>
                     <div className="userForm__line"/>
@@ -67,8 +64,7 @@ export const UserFormLogin = ({changeForm}) => {
                     </div>
                     <span className="userForm__question" onClick={handleChangeForm}>Nie masz jeszcze konta ?</span>
                 </div>
-            </section>}
-            {successful && <SuccessfulForm text={"Zalogowano"}/>}
+            </section>
         </>
     )
 }

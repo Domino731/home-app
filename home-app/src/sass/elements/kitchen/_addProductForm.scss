@@ -1,0 +1,194 @@
+.addProduct__form {
+  width: 100%;
+  height: 326px;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-radius: 7px;
+  overflow: hidden;
+  &::before {
+    @include corners("leftBot", $color-blue, 66px, 5px, 93%);
+  }
+
+  &::after {
+    @include corners("rightBot", $color-blue, 66px, 5px, 93%);
+  }
+
+  &Icon {
+    width: 43px;
+    height: 43px;
+    border: 2px solid red;
+    border-radius: 9px;
+  }
+
+  &Input {
+    width: 81%;
+    height: 28px;
+    text-align: center;
+    border: 2px solid $color-blue;
+    border-radius: 9px;
+    box-shadow: 0 0 6px $color-blue;
+    margin-top: 15px;
+
+    &:focus {
+      outline: none;
+      border: none;
+      border-bottom: 4px solid $color-blue;
+    }
+
+    &:nth-child(2) {
+      width: 33%;
+    }
+  }
+
+  &Chose {
+    padding: 5px 10px;
+    height: 26px;
+    background: $color-blue;
+    color: white;
+    text-align: center;
+    margin-top: 8px;
+    border-radius: 6px;
+  }
+
+  fieldset {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    legend {
+      margin-bottom: 15px;
+    }
+  ;
+
+    label {
+      padding: 9px;
+      position: relative;
+      border-radius: 7px;
+      overflow: hidden;
+      &::after {
+        @include corners("leftTop", $color-blue, 100%, 5px, 22px);
+      }
+    }
+  }
+
+  &Button {
+    height: 30px;
+    width: 147px;
+    color: $color-red;
+    font-weight: bold;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    border-radius: 7px;
+    overflow: hidden;
+    &:focus {
+      box-shadow: none;
+    }
+
+    &::after {
+      @include corners("leftTop", $color-red, 40px, 5px, 3px);
+    }
+
+    &::before {
+      @include corners("rightBot", $color-red, 40px, 5px, 3px);
+    }
+
+    span {
+      &::after {
+        @include corners("rightTop", $color-red, 40px, 5px, 3px);
+      }
+
+      &::before {
+        @include corners("leftBot", $color-red, 40px, 5px, 3px);
+      }
+    }
+  }
+}
+.addProduct__form {
+  .successful {
+    width: 0;
+    height: 0;
+    background: $color-blue;
+    animation: successfulProductSend 0.7s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+
+    h3 {
+      font-size: 32px;
+      margin-top: 47px;
+      text-align: center;
+    }
+
+    i {
+      margin-top: 32px;
+      font-size: 0;
+      animation: successfulShowIcon 0.1s 1s forwards;
+    }
+
+    button {
+      color: white;
+      font-size: 25px;
+      margin-top: 20px;
+      width: 190px;
+      height: 50px;
+      border: none;
+      background: $color-blue;
+      position: relative;
+
+      &::after {
+        @include corners("rightTop", white, 85px, 5px, 15px);
+      }
+
+      &::before {
+        @include corners("leftBot", white, 85px, 5px, 15px);
+      }
+    }
+  }
+}
+
+@keyframes showAddProductForm {
+  100% {
+    top: 0;
+  }
+}
+
+
+@keyframes successfulProductSend {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@keyframes successfulShowIcon {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: 82px;
+  }
+}
+
+@keyframes successfulShowButton {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    display: block;
+    font-size: 25px;
+    margin-top: 20px;
+    width: 190px;
+    height: 50px;
+  }
+}

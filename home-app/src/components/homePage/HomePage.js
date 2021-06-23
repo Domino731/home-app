@@ -1,14 +1,59 @@
-import {BackgroundIcons} from "./BackgroundIcons";
-import MainMenu from "./MainMenu";
+import {greeting} from "../../functions/greeting";
+import {dayName} from "../../functions/greeting";
+import {connect} from "react-redux";
+import {auth} from "../../fireBase/fireBase";
+import {changeUser} from "../../redux/actions/currenUser.actions";
+import {useHistory} from "react-router-dom";
+import {useState} from "react";
 
-const HomePage = () => {
+export const HomePage = () => {
+    const [kitchenAnimation, setKitchenAnimation] = useState(false)
+    const [recipesAnimation, setRecipesAnimation] = useState(false)
+    const [toDoAnimation, setToDoAnimation] = useState(false)
+    const history = useHistory()
+    const handleLogOut = () => {
+        return auth().signOut()
+    }
+    const redirect = (setClass, path) => {
+        setTimeout(() => {
+            history.push(path)
+            setClass(false)
+        }, 700)
+        setClass(true)
+    }
     return (
-        <main className="animatedBackground">
-        <BackgroundIcons/>
-            <MainMenu/>
-        </main>
+        <section className="container">
+            <div className="mainMenu">
+                <div className="mainMenu__titleBar">
+                    <h1 data-text={greeting()}>{greeting()}</h1>
+                    <h2 data-text={dayName()}>{dayName()}</h2>
+                </div>
+                <div className={`mainMenu__element  mainMenu__element--kitchen ${kitchenAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setKitchenAnimation, "/myKitchen")}>
+                    <strong>Kuchnia</strong>
+                </div>
+                <div className={`mainMenu__element  mainMenu__element--recipes ${recipesAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setRecipesAnimation, "/myRecipes")}>
+                    <strong>Przepisy</strong>
+                </div>
+                <div className={`mainMenu__element  mainMenu__element--toDo ${toDoAnimation ? "animatedRedirect--homePage" : null}`}
+                     onClick={() => redirect(setToDoAnimation, "/ToDo")}>
+                    <strong>Do zrobienia</strong>
+                </div>
+                <div className="mainMenu__logOut" onClick={handleLogOut}>
+                    <i className="fas fa-sign-out-alt"/>
+                </div>
+            </div>
+        </section>
     )
 }
-export default HomePage
+const mapStateToProps = state => ({
+    user: state.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+    change: data => dispatch(changeUser(data))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
 
 

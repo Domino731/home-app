@@ -1,24 +1,21 @@
 .mainMenu {
   width: 100%;
-  height: 700px;
-  color: $color-green;
-
   &__titleBar {
     height: 120px;
+    font-weight: bold;
     font-size: 50px;
     text-transform: uppercase;
+    text-shadow: $textShadow-blue;
     //font-weight: bold;
     letter-spacing: 2px;
-    -webkit-text-stroke: 1px $color-green;
-    background: $background-colorMain;
-    color: $color-grey;
-    border-bottom: 7px solid $color-green;
+    -webkit-text-stroke: 1px $color-blue;
+    background: white;
+    color: white;
+    border-bottom: 7px solid $color-blue;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    box-shadow: $textShadow-green;
-
     h1 {
       position: relative;
       margin-bottom: 5px;
@@ -30,8 +27,8 @@
         left: 0;
         width: 0;
         height: 100%;
-        color: $color-green;
-        border-right: 4px solid $color-green;
+        color: $color-blue;
+        border-right: 4px solid $color-blue;
         overflow: hidden;
         animation: titleAnimation 6s linear infinite alternate;
       }
@@ -48,8 +45,8 @@
         left: 0;
         width: 0;
         height: 100%;
-        color: $color-green;
-        border-right: 4px solid $color-green;
+        color: $color-blue;
+        border-right: 4px solid $color-blue;
         overflow: hidden;
         animation: titleAnimation 6s linear infinite alternate;
       }
@@ -68,42 +65,82 @@
   overflow: hidden;
     border-radius: 5px;
     animation: showEffect 0.6s forwards;
-    strong {
-      font-size: 41px;
-      color: $color-green;
+
+    strong{
       font-weight: bold;
       text-decoration: none;
       padding: 40px;
-    }
-    :focus{
-      background: red;
+      font-size: 41px;
     }
 
-    &::before {
-      @include corners("leftTop",  $color-green, 80px, 7px);
-    }
 
-    &::after {
-      @include corners("rightBot", $color-green, 80px, 7px);
-    }
   }
 
   &__logOut {
     font-size: 62px;
     width: 100px;
     height: 100px;
-    border: 7px solid $color-green;
+    border: 7px solid $color-blue;
+    color: $color-blue;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: $textShadow-green;
     border-radius: 5px;
   }
 }
+.mainMenu__element--kitchen{
+  strong {
+    color: $color-blue;
+    text-shadow: $textShadow-blue;
+  }
+  &::before {
+    @include corners("leftTop",  $color-blue, 80px, 7px);
+  }
+
+  &::after {
+    @include corners("rightBot", $color-blue, 80px, 7px);
+  }
+}
+
+.mainMenu__element--recipes{
+  strong {
+    color: $color-green;
+    text-shadow: $textShadow-green;
+  }
+  &::before {
+    @include corners("leftTop",  $color-green, 80px, 7px);
+  }
+
+  &::after {
+    @include corners("rightBot", $color-green, 80px, 7px);
+  }
+}
+
+.mainMenu__element--toDo{
+  strong {
+    color: $color-purple;
+    text-shadow: $textShadow-purple;
+  }
+  &::before {
+    @include corners("leftTop",  $color-purple, 80px, 7px);
+  }
+
+  &::after {
+    @include corners("rightBot", $color-purple, 80px, 7px);
+  }
+}
+
+
+
 .animatedRedirect--homePage{
   overflow: hidden;
-   animation: redirectAnimation--homePage 0.5s forwards;
+  &::after {
+    animation:  redirectAnimation__homePage 0.8s forwards;
+  }
+  &::before {
+    animation:  redirectAnimation__homePage 0.8s forwards;
+  }
 }
 @keyframes titleAnimation {
   0% {
@@ -113,15 +150,9 @@
     width: 100%;
   }
 }
-@keyframes redirectAnimation--homePage {
-  0%{
-   box-shadow: 0 0 2px $color-green inset;
-  }
+@keyframes redirectAnimation__homePage {
   100%{
-    box-shadow: 0 100px $color-green inset,
-    100px 0 $color-green inset,
-    0 -100px $color-green inset,
-     -100px 0 $color-green inset;
-    -webkit-text-stroke: 1px $color-grey;
+    width: 100%;
+    height: 100%;
   }
 }

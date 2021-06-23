@@ -9,11 +9,14 @@
   }
 
   &__title {
+    position: relative;
+    width: 100vh;
     color: $color-green;
     text-align: center;
     font-weight: bold;
     font-size: 50px;
     border-bottom: 7px solid $color-green;
+    text-shadow: $textShadow-green;
   }
 
   &__element {
@@ -81,23 +84,29 @@
   }
 
   &__input {
-    width: 260px;
-    height: 26px;
-    font-size: 17px;
+    //width: 260px;
+    //height: 26px;
+    //font-size: 17px;
+
+
+    //border-bottom: 1px solid $color-black;
+    //transition: 0.1s;
+    outline: none;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 15px;
-    border: none;
-    border-bottom: 1px solid $color-black;
-    transition: 0.1s;
-    outline: none;
+    width: 81%;
+    height: 28px;
+    border: 4px solid $color-green;
+    border-radius: 9px;
+    box-shadow: 0 0 6px $color-green;
 
     &--amount {
       width: 122px;
     }
 
     &:focus {
-      border: 1px solid $color-black;
+    box-shadow: none;
     }
   }
    &__fieldset{
@@ -114,11 +123,17 @@
 
    }
   &__textarea {
-    width: 260px;
+
     height: 100px;
     text-align: start;
     resize: none;
-    border-top: 1px solid $color-black;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 81%;
+    border: 4px solid $color-green;
+    border-radius: 9px;
+    box-shadow: 0 0 6px $color-green;
   }
 
   &__addButton {
@@ -171,19 +186,17 @@
     border-right: 6px solid $color-blue;
     border-radius: 5px;
     textarea {
+      outline: none;
       width: 100%;
       height: 100px;
-
       resize: none;
-      font-size: 17px;
-      border: none;
-      border-bottom: 1px solid $color-black;
-      border-top: 1px solid $color-black;
-      margin-top: 10px;
+      border: 4px solid $color-blue;
+      border-radius: 9px;
+      box-shadow: 0 0 6px $color-blue;
 
+      margin-top: 10px;
       &:focus {
-        border: 1px solid $color-black;
-        outline: none;
+       box-shadow: none;
       }
     }
 

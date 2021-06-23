@@ -65,7 +65,7 @@ const MyKitchenProduct = ({prod, id, username}) => {
             </div>
         </section>
             {flag === false && <section className={`kitchenProductManagement ${successfulUpdate && "successfulProductUpdate"}`}>
-                {/*{flag === false && <section className="kitchenProductManagement successfulProductUpdate">*/}
+
                <h3 className="management__title"><i className="fas fa-times-circle" onClick={handleChangeFlag}/> Edytuj</h3>
                 <div className="management__amount">
                     <button onClick={handleIncrease}><i className="fas fa-plus-circle" /></button>
