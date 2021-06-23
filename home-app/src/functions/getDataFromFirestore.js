@@ -1,6 +1,6 @@
 import {db} from "../fireBase/fireBase";
 
-export const getDataFromFirestore = (item, username, set, ) => {
+export const getDataFromFirestore = (item, username, set,) => {
     db.collection("users")
         .where(`userName`, `==`, `${username}`)
         .onSnapshot(querySnapshot => {
@@ -16,16 +16,12 @@ export const getDataFromFirestore = (item, username, set, ) => {
             );
         })
 }
-// export const getProductsFromFirestore = (username, set) => {
-//     db.collection("users")
-//         .where(`userName`, `==`, `${username}`)
-//         .doc("kitchen")
-//         .onSnapshot(querySnapshot => {
-//             const data = querySnapshot.docs.map(doc => ({
-//                 ...doc.data(),
-//                 id: doc.id
-//             }));
-//             set(data)
-//         })
-// }
+export const getUsers = (set) => {
+    db.collection("users")
+        .onSnapshot(querySnapshot => {
+            const arr = []
+            querySnapshot.docs.map(doc => arr.push(doc.data().userName));
+             set(arr)
+        })
+}
 
