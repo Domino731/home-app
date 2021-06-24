@@ -1,0 +1,40 @@
+@media (min-width: 480px) {
+  .mainMenu__element strong {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 40px;
+    font-size: 56px;
+  }
+  .mainMenu__element--kitchen{
+    &::before {
+      @include corners("leftTop",  $color-blue, 100px, 7px);
+    }
+
+    &::after {
+      @include corners("rightBot", $color-blue, 100px, 7px);
+    }
+  }
+
+  .mainMenu__element--recipes{
+    &::before {
+      @include corners("leftTop",  $color-green, 100px, 7px);
+    }
+
+    &::after {
+      @include corners("rightBot", $color-green, 100px, 7px);
+    }
+  }
+
+  .mainMenu__element--toDo{
+    &::before {
+      @include corners("leftTop",  $color-purple, 100px, 7px);
+    }
+
+    &::after {
+      @include corners("rightBot", $color-purple, 100px, 7px);
+    }
+  }
+  .mainMenu__logOut {
+    width: 140px;
+  }
+}

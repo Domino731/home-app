@@ -1,0 +1,40 @@
+@media (min-width: 1280px) {
+  .kitchenCtg2{
+    height: 520px;
+  }
+  .kitchenBar {
+    border-bottom: 12px solid $color-blue;
+  }
+  .kitchenCtg__title {
+  border-radius: 20px;
+  }
+  .kitchenCtg__title i {
+    font-size: 54px;
+    padding: 17px 38px;
+  }
+  .kitchenCtg__list {
+    border-radius: 20px;
+    border-bottom: 12px solid #30A9DE;
+    &::before {
+      border-right: 12px solid #30A9DE;
+      border-top: 12px solid #30A9DE;
+    }
+
+    &::after {
+      border-left: 12px solid #30A9DE;
+      border-top: 12px solid #30A9DE;
+    }
+  }
+  .addProduct__form{
+    border-top: 12px solid #30A9DE;
+    border-radius: 20px;
+  }
+  .addProduct__form::after {
+    border-right: 12px solid #30A9DE;
+    border-bottom: 12px solid #30A9DE;
+  }
+  .addProduct__form::before {
+    border-left: 12px solid #30A9DE;
+    border-bottom: 12px solid #30A9DE;
+  }
+}

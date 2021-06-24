@@ -1,0 +1,8 @@
+@media (min-width: 600px){
+  .addRecipeBtn::before,
+  .addRecipeBtn::after,
+  .recipeBox__products::after,
+  .recipeBox__products::before{
+    width: 76px;
+  }
+}

@@ -6,23 +6,23 @@
 
   .corner {
     &::after {
-      @include corners("rightBot", $color-purple, 40px, 5px);
+      @include corners("rightBot", $color-purple, 18%, 5px, 18%);
       z-index: -10;
     }
 
     &::before {
-      @include corners("leftBot", $color-purple, 40px, 5px);
+      @include corners("leftBot", $color-purple,18%, 5px, 18%);
       z-index: -10;
     }
   }
 
   &::after {
-    @include corners("rightTop", $color-purple, 40px, 5px);
+    @include corners("rightTop", $color-purple, 18%, 5px, 18%);
     z-index: -10;
   }
 
   &::before {
-    @include corners("leftTop", $color-purple, 40px, 5px);
+    @include corners("leftTop", $color-purple, 18%, 5px, 18%);
     z-index: -10;
   }
 
@@ -95,7 +95,7 @@
       background: white;
       font-weight: bold;
       height: 30px;
-      width: 147px;
+      width: 191px;
       overflow: hidden;
       border: none;
       bottom: 0;

@@ -1,0 +1,19 @@
+@media (min-width: 1280px) {
+  .addProduct__form {
+    height: 439px;
+  }
+  .addProduct__formInput {
+    height: 45px;
+    font-size: 20px;
+  }
+  .addProduct__formButton {
+    height: 50px;
+    font-size: 29px;
+  }
+  .addProduct__formButton span::after,
+  .addProduct__formButton::before,
+  .addProduct__formButton::after,
+  .addProduct__formButton span::before {
+    width: 37%;
+  }
+}

@@ -39,7 +39,7 @@ const MyKitchenAddProductForm = ({username, productType}) => {
         <section className="kitchenCtg__addProduct">
             {successful === false && <form className="addProduct__form">
                 <input type="text" className="addProduct__formInput" placeholder="Nazwa produktu" name="name"
-                       onChange={handleChangeProduct}/>
+                       onChange={handleChangeProduct} maxLength="20"/>
                 <input type="number" className="addProduct__formInput" placeholder={`Ilość (${product.unit})`}
                        name="amount"
                        onChange={handleChangeProduct}/>
@@ -50,6 +50,8 @@ const MyKitchenAddProductForm = ({username, productType}) => {
                                    defaultChecked/> Dekagramy </label>
                     <label> <input type="radio" name="weightUnit" value="G" onClick={handleChangeUnit} id="1t"/> Gramy </label>
                     <label> <input type="radio" name="weightUnit" value="Mg" onClick={handleChangeUnit}/> Miligramy
+                    </label>
+                    <label> <input type="radio" name="weightUnit" value="Ml" onClick={handleChangeUnit}/> Mililitry
                     </label>
                     <label> <input type="radio" name="weightUnit" value="Na sztuki" onClick={handleChangeUnit}/> Na
                         sztuki

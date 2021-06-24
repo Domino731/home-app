@@ -137,14 +137,43 @@
   }
 
   &__addButton {
-    color: white;
-    background: $color-blue;
+    //color: white;
+    //background: $color-blue;
+    //font-weight: bold;
+    //z-index: 2;
+    //border-radius: 25px;
+    //padding: 5px 40px;
+    //border: 7px solid white;
+    margin-top: -19px;
+    height: 30px;
+    width: 147px;
+    color: $color-blue;
     font-weight: bold;
-    margin-top: -23px;
-    z-index: 2;
-    border-radius: 25px;
-    padding: 5px 40px;
-    border: 7px solid white;
+    border: none;
+    position: relative;
+    bottom: 0;
+    background: white;
+    border-radius: 7px;
+    overflow: hidden;
+    &:focus {
+      box-shadow: none;
+    }
+    &::after {
+      @include corners("leftTop", $color-blue, 29%, 5px, 20%);
+    }
+
+    &::before {
+      @include corners("rightBot", $color-blue, 29%, 5px, 20%);
+    }
+     i{
+       &::after {
+         @include corners("rightTop", $color-blue, 29%, 5px, 20%);
+       }
+
+       &::before {
+         @include corners("leftBot", $color-blue, 29%, 5px, 20%);
+       }
+     }
   }
 
   &__buttonsBar {
@@ -289,6 +318,6 @@
 }
 @keyframes cornerEffect--BackToCategory1_2 {
   100% {
-    width: 200px;
+    width: 100%;
   }
 }

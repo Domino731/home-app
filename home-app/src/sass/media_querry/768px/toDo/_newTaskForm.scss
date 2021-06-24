@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+  .newTaskForm__btn{
+    width: 510px;
+  }
+  .newTaskForm__btn span::after,
+  .newTaskForm__btn::before,
+  .newTaskForm__btn::after,
+  .newTaskForm__btn span::before{
+    width: 200px;
+  }
+}

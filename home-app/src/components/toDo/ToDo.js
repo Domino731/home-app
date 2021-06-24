@@ -12,7 +12,7 @@ const ToDo = () => {
         }
     }
     return (
-        <section className="container">
+        <section className="container toDo">
             <ToDoBar/>
             <div className="tasks">
                 <div className="tasks__choice" onClick={handleChangeFlag}><h2>{

@@ -49,9 +49,12 @@ const MyRecipeSingleRecipe = (props) => {
         <section className="container">
             <div className="recipe">
                 <h1 className="recipe__title">{recipe.title}</h1>
-                <article className="recipe__description"><p>
-                    {recipe.description > 0 ? "Brak opisu" : recipe.description}
-                </p></article>
+
+                {recipe.description.lenght > 0 && <article className="recipe__description"><p>
+                    {recipe.description}
+                </p></article>}
+
+
                 <ul className="recipe__switchBar">
                     <li className={flags.instructions ? "active" : "noActive"}
                         onClick={handleChangeFlags}>Instrukcje <span/></li>

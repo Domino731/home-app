@@ -36,6 +36,7 @@ const SingleTask = ({toDo, username}) => {
             ...prev,
             operations: operations
         }))
+        setOperationFormFlag(false)
     }
     let operations = task.operations
     const handleRemoveOperation = el => {

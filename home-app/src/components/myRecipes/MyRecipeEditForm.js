@@ -211,7 +211,7 @@ const MyRecipeEditForm = (props) => {
                         <strong className="addRecipe__msg addRecipe__msg--true">Dodano Instrukcję</strong>}
                         <textarea className=" addRecipe__input addRecipe__textarea" onChange={handleChangeInstruction}/>
                         <span/>
-                        <button className="addRecipe__addButton" onClick={handleAddInstruction}>Dodaj</button>
+                        <button className="addRecipe__addButton" onClick={handleAddInstruction}>Dodaj <i/></button>
                     </div>
 
                     <div className="addRecipe__element">
@@ -248,7 +248,7 @@ const MyRecipeEditForm = (props) => {
                             </label>
                         </fieldset>
                         <span/>
-                        <button className="addRecipe__addButton" onClick={handleAddIngredients}>Dodaj</button>
+                        <button className="addRecipe__addButton" onClick={handleAddIngredients}>Dodaj<i/></button>
 
                     </div>
                     <div className="addRecipe__buttonsBar">

@@ -28,7 +28,7 @@ export const MyKitchen = () => {
         return <Loading/>
     }
     return (
-        <section className="container">
+        <section className="container kitchen">
             <MyKitchenBar/>
             {
                 renderingArray.map(el => <MyKitchenCategory title={el.title} productType={el.productType} key={el.id}/>)

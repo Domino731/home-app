@@ -22,7 +22,7 @@ export const MyRecipes = () => {
         return <Loading/>
     }
     return (
-        <section className="container">
+        <section className="container recipes">
             <MyRecipesBar/>
             <div className="recipesType">
                 {

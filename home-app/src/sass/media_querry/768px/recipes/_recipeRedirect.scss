@@ -1,0 +1,23 @@
+@media (min-width: 768px){
+  .recipeRedirect{
+    h1{
+      font-size: 38px;
+    }
+    width: 175px;
+    &::before {
+      @include corners("rightBot", $color-green, 50px, 5px);
+    }
+    &::after {
+      @include corners("rightTop", $color-green, 50px, 5px);
+    }
+    span {
+      &::after {
+        @include corners("leftBot", $color-green, 50px, 5px);
+      }
+      &::before {
+        @include corners("leftTop", $color-green, 50px, 5px);
+      }
+    }
+  }
+
+}

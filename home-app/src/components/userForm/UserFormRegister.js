@@ -78,7 +78,7 @@ export const UserFormRegister = ({changeForm}) => {
                     <div className="userForm__line"/>
                     <form className="userForm__form">
                         <div className="userForm__element">
-                            <i className="fas fa-envelope"/>
+                            <i className="fas fa-signature"/>
                             <input type="text" placeholder="Nazwa Użytkownika"
                                    value={data.userName} name="userName"
                                    onChange={handleDataChange} maxLength="15"/>
@@ -92,12 +92,12 @@ export const UserFormRegister = ({changeForm}) => {
                         <div className="userForm__element">
                             <i className="fas fa-lock"/>
                             <input type="password" placeholder="Hasło"
-                                   name="password" value={data.password} onChange={handleDataChange}/>
+                                   name="password" value={data.password} onChange={handleDataChange} maxLength="15"/>
                         </div>
                         <div className="userForm__element">
                             <i className="fas fa-unlock"/>
                             <input type="password" placeholder=" powtórz hasło"
-                                   name="passwordRepeat" value={data.passwordRepeat} onChange={handleDataChange}/>
+                                   name="passwordRepeat" value={data.passwordRepeat} onChange={handleDataChange} maxLength="15"/>
                         </div>
                     </form>
                     <div className="userForm__line"/>

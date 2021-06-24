@@ -200,7 +200,7 @@ const MyRecipesAddForm = (props) => {
                     <strong className="addRecipe__msg addRecipe__msg--true">Dodano Instrukcję</strong>}
                     <textarea className=" addRecipe__input addRecipe__textarea" onChange={handleChangeInstruction}/>
                     <span/>
-                    <button className="addRecipe__addButton" onClick={handleAddInstruction}>Dodaj</button>
+                    <button className="addRecipe__addButton" onClick={handleAddInstruction}>Dodaj <i/></button>
                 </div>
 
                 <div className="addRecipe__element">
@@ -213,7 +213,7 @@ const MyRecipesAddForm = (props) => {
                     {messagesFlag.ingredientName &&
                     <strong className="addRecipe__msg addRecipe__msg--false">*Podaj Nazwę</strong>}
                     <input type="text" className="addRecipe__input" onChange={handleChangeIngredient}
-                           placeholder="nazwa" name="name" value={ingredient.name}/>
+                           placeholder="nazwa" name="name" value={ingredient.name}  maxLength="20"/>
                     <input type="number" className="addRecipe__input addRecipe__input--amount"
                            onChange={handleChangeIngredient} placeholder={`ilość(${ingredient.unit})`} name="amount"
                            value={ingredient.amount}/>
@@ -233,7 +233,7 @@ const MyRecipesAddForm = (props) => {
                         </label>
                     </fieldset>
                     <span/>
-                    <button className="addRecipe__addButton" onClick={handleAddIngredients}>Dodaj</button>
+                    <button className="addRecipe__addButton" onClick={handleAddIngredients}>Dodaj <i/></button>
 
                 </div>
                 <div className="addRecipe__buttonsBar">

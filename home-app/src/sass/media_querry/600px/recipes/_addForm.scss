@@ -1,0 +1,22 @@
+@media (min-width: 600px){
+  .addRecipe__addButton{
+    width: 242px;
+  }
+  .addRecipe__addButton i::after,
+  .addRecipe__addButton::before,
+  .addRecipe__addButton::after,
+  .addRecipe__addButton i::before{
+    width: 38%;
+  }
+  .addRecipe__choice--pink::after,
+  .addRecipe__choice--pink::before{
+    width: 20px;
+    height: 20px;
+  }
+  .addRecipe__btn span::before,
+  .addRecipe__btn::before,
+  .addRecipe__btn span::after,
+  .addRecipe__btn::after{
+    width: 110px
+  }
+}

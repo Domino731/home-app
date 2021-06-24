@@ -93,6 +93,7 @@
 }
 
 
+
 @mixin colorForKitchenProducts($color){
   .kitchenCtg__addProduct .addProduct__formInput{
     box-shadow: 0 0 6px $color;
@@ -162,8 +163,81 @@
       background: $color;
     }
   }
+
 }
 
+
+
+@mixin colorForKitchenProducts__media($color){
+  .kitchenCtg__addProduct .addProduct__formInput{
+    box-shadow: 0 0 6px $color;
+    border: 7px solid $color;
+  }
+  .kitchenCtg__addProduct .addProduct__form fieldset label::after{
+    border-left: 7px solid $color;
+    border-top: 7px solid $color;
+  }
+  .kitchenCtg__addProduct .addProduct__formButton{
+    color: $color;
+  }
+  .kitchenCtg__addProduct .addProduct__formButton span::after{
+    border-right: 7px solid $color;
+    border-top: 7px solid $color;
+  }
+  .kitchenCtg__addProduct .addProduct__formButton::before{
+    border-right: 7px solid $color;
+    border-bottom: 7px solid $color;
+  }
+  .kitchenCtg__addProduct .addProduct__formButton::after{
+    border-left: 7px solid $color;
+    border-top: 7px solid $color;
+  }
+  .kitchenCtg__addProduct .addProduct__formButton span::before{
+    border-left: 7px solid $color;
+    border-bottom: 7px solid $color;
+  }
+  .kitchenProduct{
+    border: 4px solid $color;
+    box-shadow: 0 0 2px $color;
+  }
+  .kitchenProduct i{
+    border: 2px solid $color;
+    background: $color;
+  }
+  .kitchenProduct_amount{
+    background: $color;
+  }
+  .kitchenProductManagement{
+    border:4px solid $color;
+    box-shadow: 0 0 2px $color;
+    input{
+      border-top: 4px solid $color;
+      border-bottom: 4px solid $color;
+    }
+    .management__amount button:last-child::before{
+      border-left: 5px solid $color;
+      border-top: 5px solid $color;
+    }
+    .management__amount button:last-child::after{
+      border-left: 5px solid $color;
+      border-bottom: 5px solid $color;
+    }
+    .management__amount button:nth-child(1)::before{
+      border-right: 5px solid $color;
+      border-top: 5px solid $color;
+    }
+    .management__amount button:nth-child(1)::after{
+      border-right: 5px solid $color;
+      border-bottom: 5px solid $color;
+    }
+    .management__amount button {
+      color: $color;
+    }
+    .management__actions button:nth-child(2) {
+      background: $color;
+    }
+  }
+}
 @mixin animatedCorners($time, $size: 30px){
   @keyframes cornerEffect {
     100% {

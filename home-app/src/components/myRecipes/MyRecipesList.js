@@ -42,7 +42,7 @@ const MyRecipesList = (props) => {
         return <Loading/>
     } else if (recipesCategory.includes(props.match.params.type)) {
         return (
-            <section className="container">
+            <section className="container recipes">
                 <div className="titleBar recipesListBar">
                     <h2>Dodaj Przepis</h2>
                     <strong>W kategorii <i>{getCategoryText(props.match.params.type)}</i></strong>
@@ -58,7 +58,7 @@ const MyRecipesList = (props) => {
                 }
                 {recipesArray.length > 0 &&
 
-                <section>
+                <section className="recipesList">
                     <div className="sort sort--green" onClick={handleChangeSorting}>
                         <button>{sorting}</button>
                     </div>

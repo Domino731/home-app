@@ -30,3 +30,38 @@
 .kitchenCtg:nth-child(9){
   @include colorForKitchenProducts(#9055A2);
 }
+
+@media (min-width: 1280px){
+  //// VEGETABLES
+  .kitchenCtg:nth-child(2){
+    @include colorForKitchenProducts__media($color-meat);
+  }
+  //// MEAT
+  .kitchenCtg:nth-child(3){
+    @include colorForKitchenProducts__media($color-vegetables);
+  }
+  //// DAIRY
+  .kitchenCtg:nth-child(4){
+    @include colorForKitchenProducts__media($color-dairy);
+  }
+  //// SUGAR
+  .kitchenCtg:nth-child(5){
+    @include colorForKitchenProducts__media($color-sugar);
+  }
+  //// FRUITS
+  .kitchenCtg:nth-child(6){
+    @include colorForKitchenProducts__media($color-fruits);
+  }
+  //// FROZEN FOOD
+  .kitchenCtg:nth-child(7){
+    @include colorForKitchenProducts__media($color-frozenFood);
+  }
+  //// DRINKS
+  .kitchenCtg:nth-child(8){
+    @include colorForKitchenProducts__media($color-drinks);
+  }
+  //// OTHER
+  .kitchenCtg:nth-child(9){
+    @include colorForKitchenProducts__media(#9055A2);
+  }
+}
