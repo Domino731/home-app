@@ -1,0 +1,37 @@
+@media (min-width: 1280px) {
+  .recipesBar {
+    border-bottom: 12px solid $color-green;
+  }
+  .recipeRedirect {
+    border-radius: 12px;
+    width: 410px;
+    height: 186px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      height: 144px;
+      width: 96%;
+      font-size: 38px;
+      border-radius: 12px;
+    }
+    &::before {
+      @include corners("rightBot", $color-green, 140px, 12px, 50px);
+    }
+
+    &::after {
+      @include corners("rightTop", $color-green, 140px, 12px, 50px);
+    }
+
+    span {
+      &::after {
+        @include corners("leftBot", $color-green, 140px, 12px, 50px);
+      }
+
+      &::before {
+        @include corners("leftTop", $color-green, 140px, 12px, 50px);
+      }
+    }
+  }
+
+}

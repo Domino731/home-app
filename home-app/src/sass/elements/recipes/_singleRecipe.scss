@@ -16,6 +16,7 @@
     background:$color-green;
     color: white;
     border: 7px solid #329d52;
+    box-shadow: 0 0 7px $color-green;
   }
 
   &__description {
@@ -115,6 +116,7 @@
     overflow: hidden;
     display: flex;
     margin: 11px auto;
+    box-shadow: 0 0 5px $color-blue;
 
     i {
       width: 16%;
@@ -145,6 +147,7 @@
     overflow: hidden;
     display: flex;
     margin: 11px auto;
+    box-shadow: 0 0 5px $color-blue;
   }
 
 }

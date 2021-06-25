@@ -3,7 +3,8 @@
   width: 100%;
   position: relative;
   padding: 15px;
-
+  border-radius: 7px;
+  overflow: hidden;
   .corner {
     &::after {
       @include corners("rightBot", $color-purple, 18%, 5px, 18%);
@@ -11,7 +12,7 @@
     }
 
     &::before {
-      @include corners("leftBot", $color-purple,18%, 5px, 18%);
+      @include corners("leftBot", $color-purple, 18%, 5px, 18%);
       z-index: -10;
     }
   }
@@ -128,20 +129,18 @@
     margin-top: 30px;
     overflow: auto;
     list-style: inside;
-     li{
-       margin-bottom: 15px;
-     }
-    i{
+
+    li {
+      margin-bottom: 15px;
+    }
+
+    i {
       color: $color-red;
     }
   }
+
   ::-webkit-scrollbar {
     width: 6px;
-
-   }
-  ::-webkit-scrollbar-thumb{
-    background: $color-purple;
-    border-radius: 6px;
   }
 
 }

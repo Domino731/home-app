@@ -1,0 +1,135 @@
+@media (min-width: 1280px){
+    .recipe__switchBar .active::after,
+    .recipe__switchBar .active span::after,
+    .recipe__switchBar .active::before,
+    .recipe__switchBar .active span::before {
+        width: 219px;
+    }
+    .recipe__switchBar {
+        height: 70px;
+        font-size: 26px;
+    }
+    .recipe__switchBar .active::before {
+        border-right: 12px solid $color-green;
+        border-top: 12px solid $color-green;
+    }
+    .recipe__switchBar .active span::before {
+        border-right: 12px solid $color-green;
+        border-bottom: 12px solid $color-green;
+    }
+    .recipe__switchBar .active::after {
+        border-left: 12px solid $color-green;
+        border-top: 12px solid $color-green;
+    }
+    .recipe__switchBar .active span::after {
+
+        border-left: 12px solid $color-green;
+        border-bottom: 12px solid $color-green;
+    }
+
+    .recipe__container {
+        width: 100%;
+        max-height: 700px;
+        margin-top: 30px;
+        position: relative;
+        padding: 15px;
+        border-left: 12px solid $color-green;
+        border-right: 12px solid $color-green;
+    }
+    .recipe__instruciton {
+        height: 90px;
+        width: 87%;
+        border: 12px solid $color-blue;
+        border-radius: 50px;
+        margin: 14px auto;
+    }
+    .recipe__instruciton i {
+        font-size: 46px;
+        height: 100%;
+        width: 70px;
+        border-radius: 44px;
+    }
+    .recipe__instruciton p {
+        width: 87%;
+           font-size: 32px;
+        line-height: 21px;
+    }
+    .recipe__ingredient {
+        height: 90px;
+        width: 87%;
+        border: 12px solid $color-blue;
+        border-radius: 50px;
+        margin: 14px auto;
+    }
+    .recipe__ingredient .ingredientName {
+        height: 65px;
+        width: 84%;
+        border-radius: 41px;
+        display: flex;
+        background: white;
+    }
+    .recipe__ingredient .ingredientName i {
+        width: 78px;
+        height: 70px;
+        font-size: 46px;
+    }
+    .recipe__ingredient .ingredientName strong {
+       font-size: 33px;
+    }
+    .recipe__ingredient .ingredientAmount {
+        height: 60px;
+        font-size: 25px;
+    }
+    .recipe__editBtn--green span::before,
+    .recipe__editBtn--green::before,
+    .recipe__editBtn--green span::after,
+    .recipe__editBtn--green::after,
+    .recipe__editBtn--red span::before,
+    .recipe__editBtn--red::before,
+    .recipe__editBtn--red span::after,
+    .recipe__editBtn--red::after {
+        width: 540px;
+    }
+    .recipe__editBtn--green {
+        height: 90px;
+    }
+    .recipe__editBtn--red {
+        height: 60px;
+    }
+    .recipe__editBtn--green span::before,
+    {
+        border-right: 12px solid $color-green;
+        border-top: 12px solid $color-green;
+    }
+    .recipe__editBtn--green::before {
+        border-right: 12px solid $color-green;
+        border-bottom: 12px solid $color-green;
+    }
+    .recipe__editBtn--green span::after {
+        border-left: 12px solid $color-green;
+        border-top: 12px solid $color-green;
+    }
+    .recipe__editBtn--green::after {
+        border-left: 12px solid $color-green;
+        border-bottom: 12px solid $color-green;
+    }
+    .recipe__editBtn--red span::before,
+    {
+        border-right: 12px solid $color-red;
+        border-top: 12px solid $color-red;
+    }
+    .recipe__editBtn--red::after {
+
+        border-left: 12px solid $color-red;
+        border-bottom: 12px solid $color-red;
+    }
+    .recipe__editBtn--red span::after {
+
+        border-left: 12px solid $color-red;
+        border-top: 12px solid $color-red;
+    }
+    .recipe__editBtn--red::before {
+        border-right: 12px solid #f9320c;
+        border-bottom: 12px solid #f9320c;
+    }
+}
