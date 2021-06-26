@@ -1,48 +1,48 @@
-@media (min-width: 1280px){
-    .addRecipeBtn {
-        font-size: 40px;
-        color: #329d52;
-        height: 40px;
-    }
-    .addRecipeBtn::before,
-    .addRecipeBtn::after,
-    .recipeBox__products::after,
-    .recipeBox__products::before{
-        width: 156px;
-    }
-    .addRecipeBtn::before,.addRecipeBtn::after  {
-        height: 23px;
-    }
+@media (min-width: 1280px) {
+  .addRecipeBtn {
+    font-size: 40px;
+    color: #329d52;
+    height: 40px;
+  }
+  .addRecipeBtn::before,
+  .addRecipeBtn::after,
+  .recipeBox__products::after,
+  .recipeBox__products::before {
+    width: 156px;
+  }
+  .addRecipeBtn::before, .addRecipeBtn::after {
+    height: 23px;
+  }
 
-    .addRecipeBtn::before {
-        border-right: 9px solid $color-green;
-        border-bottom: 9px solid $color-green;
-    }
-    .addRecipeBtn::after {
-        border-left: 9px solid $color-green;
-        border-bottom: 9px solid $color-green;
-    }
-    .sort--green button::after {
-        border-right: 9px solid $color-green;
-        border-top: 9px solid $color-green;
-    }
-    .sort--green button::before {
-        border-left: 9px solid $color-green;
-        border-bottom: 9px solid $color-green;
-    }
-    .recipeBox h3 {
-        border: 12px solid $color-green;
-    }
-    .recipeBox__products {
-        height: 51px;
-        font-size: 29px;
-    }
-    .recipeBox__products::after {
-        border-right: 12px solid $color-green;
-        border-bottom: 12px solid $color-green;
-    }
-    .recipeBox__products::before {
-        border-left: 12px solid $color-green;
-        border-bottom: 12px solid $color-green;
-    }
+  .addRecipeBtn::before {
+    border-right: 9px solid $color-green;
+    border-bottom: 9px solid $color-green;
+  }
+  .addRecipeBtn::after {
+    border-left: 9px solid $color-green;
+    border-bottom: 9px solid $color-green;
+  }
+  .sort--green button::after {
+    border-right: 9px solid $color-green;
+    border-top: 9px solid $color-green;
+  }
+  .sort--green button::before {
+    border-left: 9px solid $color-green;
+    border-bottom: 9px solid $color-green;
+  }
+  .recipeBox h3 {
+    border: 12px solid $color-green;
+  }
+  .recipeBox__products {
+    height: 51px;
+    font-size: 29px;
+  }
+  .recipeBox__products::after {
+    border-right: 12px solid $color-green;
+    border-bottom: 12px solid $color-green;
+  }
+  .recipeBox__products::before {
+    border-left: 12px solid $color-green;
+    border-bottom: 12px solid $color-green;
+  }
 }

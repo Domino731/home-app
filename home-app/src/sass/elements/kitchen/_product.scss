@@ -11,6 +11,10 @@
   align-items: center;
   position: relative;
 
+  &:hover {
+    cursor: pointer;;
+  }
+
   i {
     font-size: 30px;
     height: 100%;
@@ -23,6 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 
   &__name {
@@ -36,6 +41,7 @@
     border-radius: 0 20px 20px 0;
     position: relative;
     z-index: 1;
+
     &::before {
       content: "";
       z-index: -1;

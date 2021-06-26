@@ -1,20 +1,22 @@
 import "./sass/main.scss"
+import {BrowserRouter as Router} from "react-router-dom";
+import {connect} from "react-redux";
+import {changeUser} from "./redux/actions/currenUser.actions";
+import {auth} from "./fireBase/fireBase";
+import {useEffect} from "react";
+//components
 import HomePage from "./components/homePage/HomePage";
 import {MyKitchen} from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import MyRecipesList from "./components/myRecipes/MyRecipesList";
 import MyRecipesAddForm from "./components/myRecipes/MyRecipesAddForm";
 import MyRecipeSingleRecipe from "./components/myRecipes/MyRecipeSingleRecipe";
-import {BrowserRouter as Router} from "react-router-dom";
-import {connect} from "react-redux";
-import {changeUser} from "./redux/actions/currenUser.actions";
-import {auth} from "./fireBase/fireBase";
-import {useEffect} from "react";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import MyRecipeEditForm from "./components/myRecipes/MyRecipeEditForm";
 import ToDo from "./components/toDo/ToDo";
 
-function App({setUser, currentUser, username}) {
+function App({setUser}) {
+    //when component mounted check the user is logged in
     useEffect(() => {
         auth().onAuthStateChanged(user => {
             if (user) {
@@ -40,12 +42,9 @@ function App({setUser, currentUser, username}) {
     )
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.currentUser,
-    username: state.username
-})
+
 const mapDispatchToProps = dispatch => ({
     setUser: data => dispatch(changeUser(data))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
 

@@ -1,4 +1,4 @@
-@media(min-width: 480px){
+@media(min-width: 480px) {
   .recipe__instruciton {
     i {
       width: 50px;
@@ -19,7 +19,7 @@
   .recipe__switchBar .active::after,
   .recipe__switchBar .active span::after,
   .recipe__switchBar .active::before,
-  .recipe__switchBar .active span::before{
+  .recipe__switchBar .active span::before {
     width: 51px;
   }
 }

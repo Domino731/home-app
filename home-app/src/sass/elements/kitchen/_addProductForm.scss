@@ -10,6 +10,7 @@
   border-radius: 7px;
   overflow: hidden;
   border-top: 5px solid #30A9DE;
+
   &::before {
     @include corners("leftBot", $color-blue, 66px, 5px, 93%);
     z-index: -10;
@@ -72,6 +73,7 @@
       position: relative;
       border-radius: 7px;
       overflow: hidden;
+
       &::after {
         @include corners("leftTop", $color-blue, 100%, 5px, 22px);
       }
@@ -89,6 +91,7 @@
     background: white;
     border-radius: 7px;
     overflow: hidden;
+
     &:focus {
       box-shadow: none;
     }
@@ -113,6 +116,7 @@
     }
   }
 }
+
 .addProduct__form {
   .successful {
     width: 0;

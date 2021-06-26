@@ -29,7 +29,8 @@
     flex-direction: column;
     align-items: center;
     z-index: 1;
-     overflow: hidden;
+    overflow: hidden;
+
     &::before {
       @include corners("leftTop", $color-green, 100%, 7px, 20px);
     }
@@ -57,14 +58,17 @@
     animation: showEffect 0.5s;
     font-weight: bold;
     margin-top: 8px;
-    &--true{
+
+    &--true {
       color: $color-blue;
     }
-    &--false{
+
+    &--false {
       color: $color-blue;
       margin-bottom: 16px;
     }
-    &--invalidForm{
+
+    &--invalidForm {
       color: $color-blue;
       display: block;
       font-size: 14px;
@@ -106,25 +110,28 @@
     }
 
     &:focus {
-    box-shadow: none;
+      box-shadow: none;
     }
   }
 
-   &__fieldset{
-     display: flex;
-     flex-direction: column;
-     margin-bottom: 15px;
-     label{
-       border-radius: 7px;
-       overflow: hidden;
-       padding: 9px;
-       position: relative;
-       &::after {
-         @include corners("leftTop", $color-green, 100%, 5px, 22px);
-       }
-     }
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 
-   }
+    label {
+      border-radius: 7px;
+      overflow: hidden;
+      padding: 9px;
+      position: relative;
+
+      &::after {
+        @include corners("leftTop", $color-green, 100%, 5px, 22px);
+      }
+    }
+
+  }
+
   &__textarea {
 
     height: 100px;
@@ -158,9 +165,11 @@
     background: white;
     border-radius: 7px;
     overflow: hidden;
+
     &:focus {
       box-shadow: none;
     }
+
     &::after {
       @include corners("leftTop", $color-blue, 29%, 5px, 20%);
     }
@@ -168,15 +177,16 @@
     &::before {
       @include corners("rightBot", $color-blue, 29%, 5px, 20%);
     }
-     i{
-       &::after {
-         @include corners("rightTop", $color-blue, 29%, 5px, 20%);
-       }
 
-       &::before {
-         @include corners("leftBot", $color-blue, 29%, 5px, 20%);
-       }
-     }
+    i {
+      &::after {
+        @include corners("rightTop", $color-blue, 29%, 5px, 20%);
+      }
+
+      &::before {
+        @include corners("leftBot", $color-blue, 29%, 5px, 20%);
+      }
+    }
   }
 
   &__buttonsBar {
@@ -217,6 +227,7 @@
     border-left: 6px solid $color-blue;
     border-right: 6px solid $color-blue;
     border-radius: 5px;
+
     textarea {
       outline: none;
       width: 100%;
@@ -227,8 +238,9 @@
       box-shadow: 0 0 6px $color-blue;
 
       margin-top: 10px;
+
       &:focus {
-       box-shadow: none;
+        box-shadow: none;
       }
     }
 
@@ -253,6 +265,10 @@
       i {
         padding: 4px 10px;
         color: $color-red;
+
+        &:hover {
+          cursor: pointer;;
+        }
       }
 
       p {
@@ -260,12 +276,14 @@
         color: $color-black;
         margin-left: 8px;
       }
+
       i[class*="fa-edit"], i[class*="fa-save"], i[class*="fa-long-arrow-alt-right"] {
         color: $color-black;
       }
     }
   }
-  &__btn{
+
+  &__btn {
     height: 70px;
     width: 100%;
     background: white;
@@ -275,52 +293,60 @@
     font-weight: bold;
     font-size: 29px;
     border: none;
+
     &::before {
       @include corners("rightBot", $color-green, 80px, 6px, 50px);
     }
+
     &::after {
       @include corners("leftBot", $color-green, 80px, 6px, 50px);
     }
-    span{
+
+    span {
       width: 100%;
+
       &::before {
         @include corners("rightTop", $color-green, 80px, 6px, 50px);
       }
+
       &::after {
         @include corners("leftTop", $color-green, 80px, 6px, 50px);
       }
     }
   }
 }
+
 .animatedRedirect--backToCategory {
 
   &::before {
-    animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
-    cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
+    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
   }
 
   &::after {
-    animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
-    cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
+    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
   }
 
   span {
     &::after {
-      animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
-      cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
+      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
     }
 
     &::before {
-      animation: cornerEffect--BackToCategory1 0.7s  ease-in-out forwards,
-      cornerEffect--BackToCategory1_2  0.6s 0.9s ease-in-out forwards;
+      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
+      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
     }
   }
 }
+
 @keyframes cornerEffect--BackToCategory1 {
   100% {
     height: 0;
   }
 }
+
 @keyframes cornerEffect--BackToCategory1_2 {
   100% {
     width: 100%;

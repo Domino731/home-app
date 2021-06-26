@@ -1,4 +1,3 @@
-
 @import "setting/_variables";
 @import "setting/_all";
 @import "setting/_showEffect";
@@ -7,7 +6,7 @@
 @import "general/_general";
 @import "elements/loading/_loading";
 @import "elements/homePage/homePage";
-@import "elements/_productsIndividualColors";
+@import "elements/kitchen/productsIndividualColors";
 @import "elements/kitchen/_product";
 @import "elements/kitchen/_addProductForm";
 @import "elements/kitchen/_kitchenCategory";
@@ -21,8 +20,6 @@
 @import "elements/toDo/_tasks";
 @import "elements/toDo/_tasksList";
 @import "elements/toDo/_singleTask";
-
-
 
 @import "media_querry/480px/_general";
 @import "media_querry/480px/homePage/_homePage";

@@ -1,40 +1,47 @@
-.loading{
+.loading {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 0;
-  div{
+
+  div {
     width: 200px;
     height: 200px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    i{
+
+    i {
       font-size: 138px;
       color: $color-black;
       animation: loadingAnimation 3s infinite;
     }
-    &::after{
+
+    &::after {
       @include corners("leftTop", $color-black, 50px, 7px);
     }
-    &::before{
+
+    &::before {
       @include corners("rightTop", $color-black, 50px, 7px);
     }
-    span{
-      &::after{
+
+    span {
+      &::after {
         @include corners("leftBot", $color-black, 50px, 7px);
       }
-      &::before{
+
+      &::before {
         @include corners("rightBot", $color-black, 50px, 7px);
       }
     }
   }
 }
+
 @keyframes loadingAnimation {
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }

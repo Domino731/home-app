@@ -331,8 +331,8 @@ const MyRecipesAddForm = (props) => {
                 {/*if the number of ingredients is 0 show msg*/}
                 {showIngredients && <ol className="addRecipe__list">{
                     recipe.ingredients.length > 0 ?
-                        recipe.ingredients.map((el) => (
-                            <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el}/>
+                        recipe.ingredients.map((el, num) => (
+                            <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el} key={`${num}-newRecipe-ingredients`}/>
                         ))
                         :
                         "Brak dodanych składników"
@@ -348,7 +348,8 @@ const MyRecipesAddForm = (props) => {
                         recipe.instructions.length > 0 ?
                             recipe.instructions.map((el, num) => (
                                 <MyRecipeAddFormInstructions del={handleDeleteInstruction} el={el} num={num}
-                                                             replace={handleChangeRecipeInstructions}/>
+                                                             replace={handleChangeRecipeInstructions}
+                                                             key={`${num}-newRecipe-instructions`}/>
                             )) : "Brak dodanych instrukcji"
                     }</ol>}
 

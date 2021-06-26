@@ -5,6 +5,7 @@
   padding: 15px;
   border-radius: 7px;
   overflow: hidden;
+
   .corner {
     &::after {
       @include corners("rightBot", $color-purple, 18%, 5px, 18%);
@@ -129,6 +130,10 @@
     margin-top: 30px;
     overflow: auto;
     list-style: inside;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     li {
       margin-bottom: 15px;

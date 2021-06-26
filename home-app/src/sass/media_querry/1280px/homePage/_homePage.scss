@@ -1,8 +1,10 @@
-@media (min-width: 1280px){
+@media (min-width: 1280px) {
   .mainMenu__element--kitchen {
     height: 211px;
+    border-radius: 12px;
+
     &::before {
-      @include corners("leftTop",  $color-blue, 120px, 12px);
+      @include corners("leftTop", $color-blue, 120px, 12px);
     }
 
     &::after {
@@ -11,18 +13,20 @@
   }
   .mainMenu__element--recipes {
     height: 211px;
+
     &::before {
-      @include corners("leftTop",  $color-green, 120px, 12px);
+      @include corners("leftTop", $color-green, 120px, 12px);
     }
 
     &::after {
       @include corners("rightBot", $color-green, 120px, 12px);
     }
   }
-  .mainMenu__element--toDo{
+  .mainMenu__element--toDo {
     height: 211px;
+
     &::before {
-      @include corners("leftTop",  $color-purple, 120px, 12px);
+      @include corners("leftTop", $color-purple, 120px, 12px);
     }
 
     &::after {

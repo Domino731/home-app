@@ -4,7 +4,7 @@
   }
   .addRecipe__element {
     width: 73%;
-    border-radius: 20px;
+    border-radius: 12px;
   }
   .addRecipe__list, .addRecipe__buttonsBar, .addRecipe__btn {
     width: 73%;
@@ -16,6 +16,9 @@
     border: 9px solid #329d52;
     border-radius: 12px;
     margin-bottom: 35px;
+  }
+  .addRecipe__textarea {
+    height: 169px;
   }
   .addRecipe__input--amount {
     width: 228px;
@@ -104,7 +107,7 @@
     border-left: 9px solid $color-blue;
     border-top: 9px solid $color-blue;
   }
-  .addRecipe__list textarea{
+  .addRecipe__list textarea {
     border: 9px solid $color-blue;
     font-size: 20px;
   }
@@ -113,7 +116,7 @@
     border-right: 12px solid $color-blue;
 
   }
-  .addRecipe__list{
+  .addRecipe__list {
     height: 210px;
   }
   .addRecipe__list li i {
@@ -126,10 +129,10 @@
   .addRecipe__btn span::before,
   .addRecipe__btn::before,
   .addRecipe__btn span::after,
-  .addRecipe__btn::after{
+  .addRecipe__btn::after {
     width: 271px
   }
-  .addRecipe__btn{
+  .addRecipe__btn {
     width: 73%;
     margin: 0 auto;
     border-radius: 12px;
@@ -140,7 +143,7 @@
     border-top: 12px solid $color-green;
   }
   .addRecipe__btn::before {
-    border-right:12px solid $color-green;
+    border-right: 12px solid $color-green;
     border-bottom: 12px solid $color-green;
   }
   .addRecipe__btn span::after {

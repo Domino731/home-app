@@ -71,6 +71,10 @@
   align-items: center;
   animation: showEffect 0.8s;
 
+  &:hover {
+    cursor: pointer;;
+  }
+
   h3 {
     font-size: 47px;
     font-weight: bold;

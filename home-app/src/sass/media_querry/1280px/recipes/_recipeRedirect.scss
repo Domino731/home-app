@@ -9,12 +9,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     h1 {
       height: 144px;
       width: 96%;
       font-size: 38px;
       border-radius: 12px;
     }
+
     &::before {
       @include corners("rightBot", $color-green, 140px, 12px, 50px);
     }

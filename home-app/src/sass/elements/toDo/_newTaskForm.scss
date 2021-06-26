@@ -12,6 +12,7 @@
   animation: showTaskElement 0.6s forwards;
   border-radius: 7px;
   overflow: hidden;
+
   &::before {
     @include corners("leftBot", $color-purple, 66px, 5px, 92%);
     z-index: -10;
@@ -73,6 +74,7 @@
     bottom: 0;
     position: relative;
     border-radius: 7px;
+
     &::after {
       //@include corners("leftTop", $color-red, 40px, 5px, 3px);
       @include corners("leftTop", $color-blue, 29%, 5px, 20%);

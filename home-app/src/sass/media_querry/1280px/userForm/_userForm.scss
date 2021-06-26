@@ -1,5 +1,5 @@
 @media (min-width: 1280px) {
-  .userForm__title{
+  .userForm__title {
     font-size: 64px;
   }
   .userForm__title::before {
@@ -25,7 +25,7 @@
     border-bottom: 9px solid $color-blue;
     font-size: 20px;
   }
-  .userForm__element input:focus{
+  .userForm__element input:focus {
     border: 9px solid $color-blue;
     border-radius: 12px;
   }

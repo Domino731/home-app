@@ -1,5 +1,6 @@
 //reducers with firebase data, are used to rendering
 export const products = (state = null, action) => {
+
  switch (action.type){
      case "GET_PRODUCTS":
          return action.products

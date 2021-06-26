@@ -18,10 +18,13 @@ const SingleTask = ({toDo, username}) => {
     //state holding new operation value
     const [operationValue, setOperationValue] = useState("")
 
+    //array with task operations, which allows to add new operations
+    const operations = task.operations
+
     //when task is update, update him in firestore
     useEffect(() => {
-        updateDataFirestore(task.id, username, "ToDo", task, () => console.log("successful"))
-    }, [task.archive, task.operations])
+        updateDataFirestore(task.id, username, "ToDo", task, () => null)
+    }, [task, username])
 
     //function that delete task
     const handleDeleteTask = () => {
@@ -74,8 +77,6 @@ const SingleTask = ({toDo, username}) => {
         }))
     }
 
-    //array with task operations, which allows to add new operations
-    let operations = task.operations
 
 
     if (task.operations === undefined) {
@@ -116,8 +117,8 @@ const SingleTask = ({toDo, username}) => {
             {/*rendering task operations*/}
             <ol className="singleTask__opsList">
                 {
-                    task.operations.map(el => (
-                        <li key={`task${el}`}><i className="fas fa-trash-alt" onClick={() => handleRemoveOperation(el)}/> {el}</li>
+                    task.operations.map((el, num) => (
+                        <li key={`task${num}--${task.id}`} onClick={() => handleRemoveOperation(el)}><i className="fas fa-trash-alt"/> {el}</li>
                     ))
                 }
             </ol>

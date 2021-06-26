@@ -1,8 +1,9 @@
-.recipes{
+.recipes {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .recipesType {
   width: 100%;
   display: flex;
@@ -20,7 +21,12 @@
   margin: 13px;
   position: relative;
   padding: 12px;
-animation: showEffect 0.5s forwards;
+  animation: showEffect 0.5s forwards;
+
+  &:hover {
+    cursor: pointer;;
+  }
+
   &::before {
     @include corners("rightBot", $color-green, 30px, 5px);
   }
@@ -54,6 +60,7 @@ animation: showEffect 0.5s forwards;
 
 .animatedRedirect--ToCategory {
   animation: removePadding--ToCategory 0.2s 0.8s forwards;
+
   &::before {
     animation: cornerEffect--ToCategory 1s ease-in-out forwards;
   }

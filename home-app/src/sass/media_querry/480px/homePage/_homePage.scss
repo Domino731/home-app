@@ -5,9 +5,9 @@
     padding: 40px;
     font-size: 56px;
   }
-  .mainMenu__element--kitchen{
+  .mainMenu__element--kitchen {
     &::before {
-      @include corners("leftTop",  $color-blue, 100px, 7px);
+      @include corners("leftTop", $color-blue, 100px, 7px);
     }
 
     &::after {
@@ -15,9 +15,9 @@
     }
   }
 
-  .mainMenu__element--recipes{
+  .mainMenu__element--recipes {
     &::before {
-      @include corners("leftTop",  $color-green, 100px, 7px);
+      @include corners("leftTop", $color-green, 100px, 7px);
     }
 
     &::after {
@@ -25,9 +25,9 @@
     }
   }
 
-  .mainMenu__element--toDo{
+  .mainMenu__element--toDo {
     &::before {
-      @include corners("leftTop",  $color-purple, 100px, 7px);
+      @include corners("leftTop", $color-purple, 100px, 7px);
     }
 
     &::after {

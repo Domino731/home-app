@@ -1,4 +1,4 @@
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .recipe__editBtn--green span::before,
   .recipe__editBtn--green::before,
   .recipe__editBtn--green span::after,
@@ -13,7 +13,7 @@
   .recipe__switchBar .active::after,
   .recipe__switchBar .active span::after,
   .recipe__switchBar .active::before,
-  .recipe__switchBar .active span::before{
+  .recipe__switchBar .active span::before {
     width: 120px;
   }
 }
