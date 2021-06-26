@@ -1,10 +1,15 @@
+//component containing login and registration form, used in PrivateRoute component
+
+import {useState} from "react";
+//components
 import {UserFormLogin} from "./UserFormLogin";
 import {UserFormRegister} from "./UserFormRegister";
-import {useState} from "react";
 
 const UserForm = () => {
+    // flag which shows login or register form
     const [flag, setFlag] = useState(true)
-   // const handleChangeFlag = () => setFlag(flag ? false : true)
+
+    //function that change the displaying form
     const handleChangeFlag = () => {
         if(flag){
             setFlag(false)

@@ -251,7 +251,17 @@
     }
   }
 }
-
+.recipe__editBtn--green span::before,
+.recipe__editBtn--green::before,
+.recipe__editBtn--green span::after,
+.recipe__editBtn--green::after,
+.recipe__editBtn--red span::before,
+.recipe__editBtn--red::before,
+.recipe__editBtn--red span::after,
+.recipe__editBtn--red::after,
+{
+  width: 117px;
+}
 
 .animatedRedirect--editForm {
 

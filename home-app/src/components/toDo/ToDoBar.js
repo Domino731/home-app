@@ -1,3 +1,4 @@
+//simple component with title bar
 export const ToDoBar = () => {
     return (
         <section>

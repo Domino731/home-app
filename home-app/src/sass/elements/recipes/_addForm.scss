@@ -29,13 +29,13 @@
     flex-direction: column;
     align-items: center;
     z-index: 1;
-
+     overflow: hidden;
     &::before {
-      @include corners("leftTop", $color-green, 150px, 7px, 20px);
+      @include corners("leftTop", $color-green, 100%, 7px, 20px);
     }
 
     &::after {
-      @include corners("rightTop", $color-green, 150px, 7px, 20px);
+      @include corners("rightTop", $color-green, 100%, 7px, 20px);
     }
 
     span {
@@ -44,11 +44,11 @@
       position: relative;
 
       &::before {
-        @include corners("leftBot", $color-green, 150px, 7px, 20px);
+        @include corners("leftBot", $color-green, 100%, 7px, 20px);
       }
 
       &::after {
-        @include corners("rightBot", $color-green, 150px, 7px, 20px);
+        @include corners("rightBot", $color-green, 100%, 7px, 20px);
       }
     }
   }
@@ -75,12 +75,12 @@
 
   &__label {
     font-size: 25px;
-    margin-top: -7px;
     background: white;
     width: 144px;
     text-align: center;
     z-index: 2;
     font-weight: 600;
+    margin-bottom: 12px;
   }
 
   &__input {
@@ -109,11 +109,14 @@
     box-shadow: none;
     }
   }
+
    &__fieldset{
      display: flex;
      flex-direction: column;
      margin-bottom: 15px;
      label{
+       border-radius: 7px;
+       overflow: hidden;
        padding: 9px;
        position: relative;
        &::after {
@@ -239,10 +242,12 @@
 
       &::after {
         @include corners("leftTop", $color-blue, 80px, 6px, 10px);
+        z-index: -10;
       }
 
       &::before {
         @include corners("rightBot", $color-blue, 80px, 6px, 10px);
+        z-index: -10;
       }
 
       i {

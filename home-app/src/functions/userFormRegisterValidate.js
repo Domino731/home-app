@@ -1,3 +1,8 @@
+//function that sets errors based on code
+// params //
+// code --> state is set by this code
+// msg --> displaying msg and code in console
+// set --> state to set
 export const userFormRegisterValidate = (code, msg, set) => {
     console.log(msg, code)
     if (code === "auth/invalid-email") {

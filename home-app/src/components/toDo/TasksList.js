@@ -1,9 +1,12 @@
+//component containing all tasks
 import {connect} from "react-redux";
-import SingleTask from "./TasksList_subcomponent--SingleTask";
 import {Loading} from "../loading/Loading";
+//components
+import SingleTask from "./TasksList_subcomponent--SingleTask";
 
+// props //
+// tasks --> array with task form application state, which renders the  SingleTask component
 const TaskList = ({tasks}) => {
-
     if(tasks !== null) {
         return (
             <section className="tasksList">

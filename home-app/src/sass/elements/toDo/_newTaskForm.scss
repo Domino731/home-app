@@ -14,10 +14,12 @@
   overflow: hidden;
   &::before {
     @include corners("leftBot", $color-purple, 66px, 5px, 92%);
+    z-index: -10;
   }
 
   &::after {
     @include corners("rightBot", $color-purple, 66px, 5px, 92%);
+    z-index: -10;
   }
 
   &__title {

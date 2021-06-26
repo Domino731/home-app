@@ -1,3 +1,4 @@
+//a simple component containing a title bar
 const MyKitchenBar = () => {
     return (
         <section>

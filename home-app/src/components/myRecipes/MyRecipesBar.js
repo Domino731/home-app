@@ -1,3 +1,4 @@
+//a simple component containing a title bar
 export const MyRecipesBar = () => {
     return (
         <div className="titleBar recipesBar">

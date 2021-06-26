@@ -1,8 +1,13 @@
+//component displaying instruction, it used in SingleRecipe component
+
+// props //
+// num --> displays number of instructions
+// text --> instruction
 export const RecipeInstructions = ({num, text}) => {
     return (
-        <div className="recipe__instruciton">
+        <li className="recipe__instruciton">
             <i>{num + 1}</i>
             <p>{text}</p>
-        </div>
+        </li>
     )
 }

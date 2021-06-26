@@ -1,9 +1,16 @@
-import NewTaskForm from "./NewTaskForm";
+//ToDo component that displays a list of tasks to do or a form to submit a new task
+//which renders the component
+
 import {ToDoBar} from "./ToDoBar";
 import {useState} from "react";
+//components
+import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TasksList";
 const ToDo = () => {
+    //flag which shows NewTaskForm or TaskList
     const [flag, setFlag] = useState(false)
+
+    //function that show displayed element
     const handleChangeFlag = () => {
         if (flag) {
             setFlag(false)

@@ -1,4 +1,6 @@
-
+// simple function which returns title of recipe category
+// params //
+// text --> getting from props.match.params.type
 export const getCategoryText = (text) => {
     if(text === "cakes"){
         return "Ciasta"

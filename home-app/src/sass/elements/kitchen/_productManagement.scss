@@ -93,3 +93,11 @@
     border-bottom: 4px solid $color-vegetables;
   }
 }
+.successfulProductUpdate{
+  animation: productUpdate 1s;
+}
+@keyframes productUpdate {
+  100%{
+    transform: scale(0);
+  }
+}

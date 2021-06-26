@@ -1,12 +1,12 @@
-export const setProducts = (TEXT) => ({
+export const setProducts = (data) => ({
     type: "GET_PRODUCTS",
-    products: TEXT
+    products: data
 })
-export const setRecipes = (TEXT) => ({
+export const setRecipes = (data) => ({
     type: "GET_RECIPES",
-    recipe: TEXT
+    recipe: data
 })
-export const setToDos = (TEXT) => ({
+export const setToDos = (data) => ({
     type: "GET_TODO",
-    todo: TEXT
+    todo: data
 })

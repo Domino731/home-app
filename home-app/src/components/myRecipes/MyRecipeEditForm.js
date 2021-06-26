@@ -161,9 +161,10 @@ const MyRecipeEditForm = (props) => {
             instructions: array
         }))
     }
-    const handleSendEditedRecipe = () => {
+    const handleSendEditedRecipe = (e) => {
+        e.preventDefault()
         if (recipe.title.length > 0 && recipe.ingredients.length > 0 && recipe.instructions.length > 0) {
-            updateDataFirestore(props.match.params.id, props.username, "recipes", recipe, null)
+            updateDataFirestore(props.match.params.id, props.username, "recipes", recipe, () => null)
             setAnimationClass(true)
             setSendButtonText("Zapisano zmiany")
             setTimeout(() => {
@@ -196,7 +197,7 @@ const MyRecipeEditForm = (props) => {
                     <div className="addRecipe__element">
                         <label className="addRecipe__label">*Nazwa</label>
                         <input type="text" className="addRecipe__input" name="title" onChange={handleChangeRecipe}
-                               maxlength="40" placeholder={recipe.title}/>
+                               maxLength="40" placeholder={recipe.title}/>
                         <span/>
                     </div>
                     <div className="addRecipe__element">
@@ -262,7 +263,7 @@ const MyRecipeEditForm = (props) => {
                     {showIngredients && <ol className="addRecipe__list">{
                         recipe.ingredients.length > 0 ?
                             recipe.ingredients.map((el, num) => (
-                                <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el}/>
+                                <MyRecipeAddFormIngredients del={handleDeleteIngredient} el={el} ingredient={el} key={`${num}--ingredientForm`}/>
                             ))
                             :
                             "Brak dodanych składników"
@@ -277,6 +278,9 @@ const MyRecipeEditForm = (props) => {
                                                                  replace={handleChangeRecipeInstructions}/>
                                 )) : "Brak dodanych instrukcji"
                         }</ol>}
+
+                    <button className={`addRecipe__btn ${animationClass && "animatedRedirect--backToCategory"}`}
+                            onClick={handleSendEditedRecipe}>{sendButtonText}<span/></button>
                 </form>
                 {invalidForm.title &&
                 <strong className="addRecipe__msg addRecipe__msg--invalidForm">*dodaj tytuł</strong>}
@@ -287,8 +291,6 @@ const MyRecipeEditForm = (props) => {
                 <strong className="addRecipe__msg addRecipe__msg--invalidForm">*dodaj conajmniej jedną
                     instrukcję </strong>}
 
-                <button className={`addRecipe__btn ${animationClass && "animatedRedirect--backToCategory"}`}
-                        onClick={handleSendEditedRecipe}>{sendButtonText}<span/></button>
 
 
                 {redirectFlag && <Redirect to={`/myRecipe/${props.match.params.id}`}/>}

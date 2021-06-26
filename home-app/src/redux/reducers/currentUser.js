@@ -3,7 +3,6 @@ export const currentUser = (state = [], action) => {
         case "CHANGE_USER":
             const currentUser = action.currentUser
             return currentUser
-        //{currentUser: action.currentUser};
 
         default:
             return state

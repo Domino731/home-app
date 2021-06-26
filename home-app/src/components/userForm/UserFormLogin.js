@@ -1,15 +1,26 @@
+//component responsible for user login, is used in UserForm component
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {auth} from "../../fireBase/fireBase";
 
+// props //
+// changeForm --> changing form to register
 export const UserFormLogin = ({changeForm}) => {
-    const [data, setData] = useState({email: "", password: "", userName: ""})
+
+    //state with user data
+    const [data, setData] = useState({email: "", password: ""})
+
+    //state with error if user gives wrong data
     const [error, setError] = useState("")
+
+    //function that changing form to register
     const handleChangeForm = () => {
         if (typeof changeForm) {
             return changeForm()
         }
     }
+
+    //function that changing user's data
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setError("")
@@ -18,6 +29,8 @@ export const UserFormLogin = ({changeForm}) => {
             [name]: value
         }));
     };
+
+    //function that is responsible for login user
     const handleSubmit = (e) => {
         e.preventDefault()
         auth().signInWithEmailAndPassword(data.email, data.password)
@@ -26,7 +39,6 @@ export const UserFormLogin = ({changeForm}) => {
                 setTimeout(() => {
                     history.push("/")
                 }, 5000)
-                //const user = userCredential.user;
 
             })
             .catch((error) => {
@@ -36,6 +48,8 @@ export const UserFormLogin = ({changeForm}) => {
                 setError("Niepoprawny login lub hasło")
             });
     }
+
+    //history
     let history = useHistory();
     return (<>
 
@@ -58,10 +72,15 @@ export const UserFormLogin = ({changeForm}) => {
 
                     </form>
                     <div className="userForm__line"/>
+
+                    {/*if user gives wrong email or password show error*/}
                     {error !== "" && <div className="userForm__invalidData">{error}</div>}
+
                     <div className="userForm__btn">
                         <button onClick={handleSubmit}>Zaloguj się</button>
                     </div>
+
+                    {/*show register form*/}
                     <span className="userForm__question" onClick={handleChangeForm}>Nie masz jeszcze konta ?</span>
                 </div>
             </section>
