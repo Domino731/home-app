@@ -1,10 +1,120 @@
-.container{
+.container {
   width: 375px;
   margin: 0 auto;
 }
-.row{
+
+.row {
   display: flex;
 }
-body{
-  font-family: 'Roboto', sans-serif;;
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+//class for title bar
+.titleBar {
+  width: 100vw;
+  height: 70px;
+  font-size: 50px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    position: absolute;
+    color: white;
+
+    &:nth-child(1) {
+      color: transparent;
+    }
+
+    &:nth-child(2) {
+      animation: fluidEffect 4s ease-in-out infinite;
+    }
+  }
+}
+
+
+
+// sort button
+.sort {
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+
+  i {
+    padding: 7px 25px;
+  }
+
+  button {
+    font-size: 20px;
+    background: white;
+    position: relative;
+    border: none;
+    padding: 7px 13px;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;;
+    }
+  }
+
+  &--blue {
+    button {
+      &::after {
+        @include corners("rightTop", $color-blue, 21px, 5px, 30px);
+      }
+
+      &::before {
+        @include corners("leftBot", $color-blue, 21px, 5px, 30px);
+      }
+    }
+  }
+
+  &--green {
+    button {
+      margin-top: 20px;
+
+      &::after {
+        @include corners("rightTop", $color-green, 21px, 5px, 30px);
+      }
+
+      &::before {
+        @include corners("leftBot", $color-green, 21px, 5px, 30px);
+      }
+    }
+  }
+}
+
+.backIcon{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+button {
+  &:hover {
+    cursor: pointer;;
+  }
+}
+
+@keyframes showEffect {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fluidEffect {
+  0%, 100% {
+    clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%,
+            84% 59%, 100% 52%, 100% 100%, 0% 100%)
+  }
+  50% {
+    clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%,
+            84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
 }

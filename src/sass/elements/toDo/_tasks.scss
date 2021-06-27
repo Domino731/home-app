@@ -1,0 +1,56 @@
+.toDoBar {
+  border-bottom: 6px solid $color-purple;
+  box-shadow: 0 1px 6px $color-purple;
+
+  h1 {
+    &:nth-child(1) {
+      color: transparent;
+      -webkit-text-stroke: 1px $color-purple;
+    }
+
+    &:nth-child(2) {
+      color: $color-purple;
+    }
+  }
+}
+
+.toDo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasks {
+  width: 95%;
+  height: 80vh;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  z-index: 6;
+
+  &__choice {
+    width: 100%;
+    height: 70px;
+    background: $color-purple;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    color: white;
+    font-weight: bold;
+    font-size: 47px;
+
+    &:hover {
+      cursor: pointer;;
+    }
+
+    h2 {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
