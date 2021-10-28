@@ -32,7 +32,10 @@ const ToDo = ({setToDos}) => {
         <section className="container toDo">
             <ToDoBar/>
             <div className="tasks">
-                <div className="tasks__choice" onClick={handleChangeFlag}><h2>{
+                <div className="tasks__choice"
+                 onClick={handleChangeFlag} 
+                 title={flag ? 'Pokaż wszystkie zadania' : 'Dodaj nowe zadanie'}>
+                     <h2>{
                     flag ? "Pokaż zadania" : "Dodaj zadanie"
                 }</h2>
                 </div>

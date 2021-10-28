@@ -298,3 +298,10 @@
   }
   animation: cornerEffect $time forwards;
 }
+
+
+@mixin onlyOnDesktop(){
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}

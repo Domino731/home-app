@@ -93,17 +93,17 @@ const SingleTask = ({ toDo }) => {
             <div className="singleTask__panel">
 
                 {/*Delete button is displayed only if the number of operations in the task is 0*/}
-                {task.operations.length === 0 || task.archive &&
-                    <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask}><i
+                {(task.operations.length === 0 || task.archive ) &&
+                    <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask} title='Usuń te zadanie'><i
                         className="fas fa-trash-alt" />
                     </button>}
 
                 {/*These two buttons are only displayed when the job does not have archive status*/}
                 {task.archive === false &&
-                    <button className="panelBtn panelBtn--addOperation" onClick={handleChangeOpsFlag}><i
+                    <button className="panelBtn panelBtn--addOperation" onClick={handleChangeOpsFlag} title='Dodaj nową operację'><i
                         className="fas fa-plus" /></button>}
                 {task.archive === false &&
-                    <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask}><i
+                    <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask} title='Archiwizuj te zadanie'><i
                         className="fas fa-archive" />
                     </button>}
 
@@ -123,8 +123,11 @@ const SingleTask = ({ toDo }) => {
                         <li
                             key={`task${num}--${task.id}`}
                             >
-                            {!task.archive && <i className="fas fa-trash-alt" onClick={() => handleRemoveOperation(el)}/>}
-                            {el}
+                            {!task.archive && <i className="fas fa-trash-alt" 
+                            onClick={() => handleRemoveOperation(el)}
+                            title='Usuń operacje'
+                            />}
+                            - {el}
                         </li>
                     ))
                 }

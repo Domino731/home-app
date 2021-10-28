@@ -56,18 +56,44 @@
         border: 2px solid $color-red;
         color: $color-red;
         background: white;
+        transition: 0.2s;
+        @include onlyOnDesktop {
+          &:hover {
+            border: none;
+            background: $color-red;
+            color: #fff;
+          }
+        }
       }
 
       &--archive {
         border: none;
         background: $color-grey;
         color: white;
+        transform: 0.2s;
+        @include onlyOnDesktop {
+          &:hover {
+            border: none;
+            background: #fff;
+            color: $color-grey;
+            border: 2px solid $color-grey;
+          }
+        }
       }
 
       &--addOperation {
         border: none;
         background: $color-blue;
         color: white;
+        transition: 0.2s;
+        @include onlyOnDesktop {
+          &:hover {
+            border: none;
+            background: #fff;
+            color: $color-blue;
+            border: 2px solid $color-blue;
+          }
+        }
       }
     }
   }
@@ -129,23 +155,31 @@
     max-height: 200px;
     margin-top: 30px;
     overflow: auto;
-    list-style: inside;
-
-    &:hover {
-      cursor: pointer;
-    }
 
     li {
+
       margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      transition: 0.2s;
+      letter-spacing: 0.063rem;
+     
     }
 
     i {
       color: $color-red;
+      transition: 0.2s;
+
+      @include onlyOnDesktop {
+        &:hover {
+          cursor: pointer;
+          color: rgb(177, 47, 47);
+        }
+      }
     }
   }
 
   ::-webkit-scrollbar {
     width: 6px;
   }
-
 }
