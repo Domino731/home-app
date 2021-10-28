@@ -22,6 +22,12 @@
     z-index: -10;
   }
 
+  &::after,
+  &::before {
+    @include laptopS {
+      width: 313px;
+    }
+  }
   &__title {
     text-shadow: 1px 1px $color-grey;
     font-size: 23px;
@@ -39,6 +45,9 @@
     @include tablet {
       font-size: 38px;
     }
+    @include laptopS {
+      font-size: 26px;
+    }
   }
 
   &__input {
@@ -52,6 +61,9 @@
 
     @include tablet {
       font-size: 20px;
+    }
+    @include laptopS {
+      font-size: 14px;
     }
     &:focus {
       box-shadow: none;
@@ -68,6 +80,9 @@
       @include tablet {
         height: 41px;
       }
+      @include laptopS {
+        height: 31px;
+      }
     }
 
     &--description {
@@ -80,6 +95,9 @@
       }
       @include tablet {
         height: 188px;
+      }
+      @include laptopS {
+        height: 152px;
       }
     }
   }
@@ -127,6 +145,12 @@
       font-size: 24px;
       height: 46px;
       width: 532px;
+    }
+    @include laptopS {
+      margin-top: 25px;
+      font-size: 16px;
+      height: 31px;
+      width: 275px;
     }
     &::after {
       @include corners("leftTop", $color-blue, 29%, 5px, 20%);
@@ -177,7 +201,6 @@
     }
   }
 }
-
 @keyframes showTaskElement {
   100% {
     transform: translateX(0);

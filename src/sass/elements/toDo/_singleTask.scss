@@ -8,6 +8,9 @@
   @include tablet {
     margin-top: 35px;
   }
+  @include laptopS {
+    margin-top: 20px;
+  }
   .corner {
     &::after {
       @include corners("rightBot", $color-purple, 18%, 5px, 18%);
@@ -44,6 +47,9 @@
     @include tablet {
       font-size: 16px;
     }
+    @include laptopS {
+      font-size: 12px;
+    }
   }
   &__title {
     text-align: center;
@@ -76,6 +82,9 @@
     @include mobileXL {
       height: 39px;
     }
+    @include laptopS {
+      height: 29px;
+    }
     .panelBtn {
       flex-grow: 1;
       height: 100%;
@@ -84,9 +93,17 @@
       overflow: hidden;
       @include mobileM {
         font-size: 17px;
+        border-radius: 8px;
+      }
+      @include mobileL {
+        border-radius: 9px;
       }
       @include mobileXL {
         font-size: 22px;
+        
+      }
+      @include laptopS {
+        font-size: 16px;
       }
       &--delete {
         border: 2px solid $color-red;
@@ -154,6 +171,12 @@
       &:focus {
         box-shadow: none;
       }
+      @include mobileL {
+        min-height: 102px;
+      }
+      @include mobileXL {
+        min-height: 119px;
+      }
     }
 
     button {
@@ -168,6 +191,19 @@
       position: relative;
       border-radius: 7px;
       background-color: $color-blue;
+      @include mobileM {
+        border-radius: 8px;
+      }
+      @include mobileL {
+        border-radius: 9px;
+      }
+      @include mobileXL {
+        height: 36px;
+        border-radius: 8px;
+      }
+      @include laptopS {
+        height: 26px;
+      }
     }
   }
 
@@ -187,6 +223,9 @@
     }
     @include tablet {
       font-size: 15px;
+    }
+    @include laptopS {
+      font-size: 10px;
     }
     li {
       font-size: 1.3em;
@@ -262,4 +301,8 @@
 @include mobileXL {
   @include singleTaskCorners(6px);
   @include newTaskFormCorners(6px);
+}
+@include laptopS {
+  @include singleTaskCorners(4px);
+  @include newTaskFormCorners(4px);
 }
