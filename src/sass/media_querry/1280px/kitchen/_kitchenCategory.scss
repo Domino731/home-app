@@ -74,35 +74,5 @@
     font-size: 25px;
   }
 
-  .kitchenProductManagement {
-    width: 87%;
-    border-radius: 12px;
-
-    .management__title {
-      font-size: 20px;
-
-      i {
-        font-size: 44px;
-      }
-    }
-  }
-  .kitchenProductManagement .management__amount {
-    margin-top: 22px;
-  }
-  .kitchenProductManagement input {
-    height: 45px;
-    font-size: 24px;
-  }
-  .kitchenProductManagement .management__amount button {
-    font-size: 21px;
-    padding: 7px 17px;
-  }
-  .kitchenProductManagement .management__actions {
-    height: 40px;
-
-    button {
-      font-weight: bold;
-      font-size: 30px;
-    }
-  }
-}
+ 
+} 

@@ -82,80 +82,7 @@
     border-radius: 7px;
     animation: showEffect 0.7s forwards;
 
-    .management {
-      &__title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-
-        i {
-          font-size: 28px;
-          padding: 3px;
-        }
-      }
-
-      &__amount {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 7px;
-
-        button {
-          font-size: 12px;
-          padding: 7px 15px;
-          display: block;
-          background: white;
-          color: $color-vegetables;
-          border: none;
-          border-radius: 0 10px 10px 0;
-          position: relative;
-
-          &:last-child {
-            &::before {
-              @include corners("leftTop", $color-vegetables, 40px, 5px, 10px);
-            }
-
-            &::after {
-              @include corners("leftBot", $color-vegetables, 40px, 5px, 10px);
-            }
-          }
-
-          &:nth-child(1) {
-            border-radius: 10px 0 0 10px;
-
-            &::before {
-              @include corners("rightTop", $color-vegetables, 40px, 5px, 10px);
-            }
-
-            &::after {
-              @include corners("rightBot", $color-vegetables, 40px, 5px, 10px);
-            }
-          }
-        }
-      }
-
-      &__actions {
-        width: 100%;
-        height: 28px;
-        margin-top: 15px;
-        display: flex;
-
-        button {
-          font-weight: bold;
-          width: 50%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-
-          &:nth-child(2) {
-            background: $color-vegetables;
-          }
-        }
-      }
-    }
+   
 
     input {
       text-align: center;
@@ -177,6 +104,58 @@
     }
     100% {
       transform: scale(0.1);
+    }
+  }
+}
+.management {
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+
+    i {
+      font-size: 28px;
+      padding: 3px;
+    }
+  }
+
+  &__amount {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 7px;
+
+    button {
+      font-size: 12px;
+      padding: 7px 15px;
+      display: block;
+      background: white;
+      color: $color-vegetables;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      position: relative;
+    }
+  }
+
+  &__actions {
+    width: 100%;
+    height: 28px;
+    margin-top: 15px;
+    display: flex;
+
+    button {
+      font-weight: bold;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+
+      &:nth-child(2) {
+        background: $color-vegetables;
+      }
     }
   }
 }

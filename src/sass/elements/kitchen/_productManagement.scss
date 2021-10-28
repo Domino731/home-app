@@ -37,28 +37,6 @@
         border: none;
         border-radius: 0 10px 10px 0;
         position: relative;
-
-        &:last-child {
-          &::before {
-            @include corners("leftTop", $color-vegetables, 40px, 5px, 10px);
-          }
-
-          &::after {
-            @include corners("leftBot", $color-vegetables, 40px, 5px, 10px);
-          }
-        }
-
-        &:nth-child(1) {
-          border-radius: 10px 0 0 10px;
-
-          &::before {
-            @include corners("rightTop", $color-vegetables, 40px, 5px, 10px);
-          }
-
-          &::after {
-            @include corners("rightBot", $color-vegetables, 40px, 5px, 10px);
-          }
-        }
       }
     }
 
@@ -89,8 +67,6 @@
     text-align: center;
     width: 82px;
     border: none;
-    border-top: 4px solid $color-vegetables;
-    border-bottom: 4px solid $color-vegetables;
   }
 }
 

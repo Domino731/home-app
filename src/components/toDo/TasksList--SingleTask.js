@@ -87,13 +87,17 @@ const SingleTask = ({ toDo }) => {
     else {
         return <section className="singleTask">
             <span className="corner" />
-            <h3 className="singleTask__title">{task.title}</h3>
-            <div className="singleTask__description">{task.description}
+
+            <div class='singleTask__titleScale'>
+                <h3 className="singleTask__title">{task.title}</h3>
+                <p className="singleTask__description">{task.description}
+                </p>
             </div>
+
             <div className="singleTask__panel">
 
                 {/*Delete button is displayed only if the number of operations in the task is 0*/}
-                {(task.operations.length === 0 || task.archive ) &&
+                {(task.operations.length === 0 || task.archive) &&
                     <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask} title='Usuń te zadanie'><i
                         className="fas fa-trash-alt" />
                     </button>}
@@ -111,7 +115,7 @@ const SingleTask = ({ toDo }) => {
             </div>
 
             {/*add new operation*/}
-            {operationFormFlag && <form className="singleTask__addOps">
+            {(operationFormFlag && !task.archive) && <form className="singleTask__addOps">
                 <textarea type="text" placeholder="Opisz nową operacja" onChange={handleChangeOpValue} />
                 <button onClick={handleAddOperation}>Dodaj operację <span /></button>
             </form>}
@@ -122,10 +126,10 @@ const SingleTask = ({ toDo }) => {
                     task.operations.map((el, num) => (
                         <li
                             key={`task${num}--${task.id}`}
-                            >
-                            {!task.archive && <i className="fas fa-trash-alt" 
-                            onClick={() => handleRemoveOperation(el)}
-                            title='Usuń operacje'
+                        >
+                            {!task.archive && <i className="fas fa-trash-alt"
+                                onClick={() => handleRemoveOperation(el)}
+                                title='Usuń operacje'
                             />}
                             - {el}
                         </li>

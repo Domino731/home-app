@@ -1,4 +1,4 @@
-import {ToDoBar} from "./ToDoBar";
+import { ToDoHeader} from "./ToDoHeader";
 import {useState} from "react";
 import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TasksList";
@@ -29,8 +29,8 @@ const ToDo = ({setToDos}) => {
         }
     }
     return (
-        <section className="container toDo">
-            <ToDoBar/>
+        <section className="container toDo glassEffect">
+            <ToDoHeader/>
             <div className="tasks">
                 <div className="tasks__choice"
                  onClick={handleChangeFlag} 
@@ -42,6 +42,8 @@ const ToDo = ({setToDos}) => {
                 </div>
                     {  flag ? <NewTaskForm showTasks={handleChangeFlag}/>: <TaskList/>}
                  </div>
+
+                 <a href='https://www.freepik.com/photos/paper'>Paper photo created by freepik - www.freepik.com</a>
         </section>
     )
 
