@@ -80,13 +80,13 @@ const MyKitchenCategory = ({title, products, productType}) => {
 
 
                 {/*changing icons when what is displayed*/}
-                {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList}/> :
-                    <i className="fas fa-chevron-down" onClick={handleChangeShowList}/>}
+                {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList} title='Zwin listę z produktami'/> :
+                    <i className="fas fa-chevron-down" onClick={handleChangeShowList} title='Pokaż listę z produktami'/>}
                 <h2>{title}</h2>
 
                 {/*changing icons when what is displayed*/}
-                {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm}/> :
-                    <i className="fas fa-plus" onClick={handleChangeShowAddForm}/>}
+                {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm} title='Zamknij formularz'/> :
+                    <i className="fas fa-plus" onClick={handleChangeShowAddForm} title='Dodaj nowy produkt'/>}
 
 
             </div>

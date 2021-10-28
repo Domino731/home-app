@@ -6,7 +6,7 @@ import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
 //components
 import HomePage from "./components/homePage/HomePage";
-import {MyKitchen} from "./components/myKitchen/MyKitchen";
+import MyKitchen from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import MyRecipesList from "./components/myRecipes/MyRecipesList";
 import MyRecipesAddForm from "./components/myRecipes/MyRecipesAddForm";

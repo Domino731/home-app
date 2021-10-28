@@ -3,11 +3,11 @@
 import {useState} from "react";
 import {addNewElement} from "../../fireBase/addNewElementToFirebase";
 import {connect} from "react-redux";
-
+import { auth } from "../../fireBase/fireBase";
 // props //
 // username --> the name of the currently logged in user, is used in the addNewElement function
 // productType --> name of productType, passed to product state, is to add a product to a specific category
-const MyKitchenAddProductForm = ({username, productType}) => {
+const MyKitchenAddProductForm = ({productType}) => {
 
     //status containing all product information, is passed to the addNewElement function
     const [product, setProduct] = useState({name: "", amount: 0, unit: "Dag", type: productType})
@@ -45,7 +45,7 @@ const MyKitchenAddProductForm = ({username, productType}) => {
         if (product.name.length <= 2) {
             setInvalidFlag(true)
         } else {
-            addNewElement(username, "products", product)
+            addNewElement(auth().currentUser.uid, "products", product)
             setSuccessful(true)
         }
     }
@@ -97,8 +97,5 @@ const MyKitchenAddProductForm = ({username, productType}) => {
     )
 }
 
-//the username so that the function knows for which user to send the new product
-const mapStateToProps = state => ({
-    username: state.currentUser.displayName
-})
-export default connect(mapStateToProps)(MyKitchenAddProductForm)
+
+export default (MyKitchenAddProductForm)

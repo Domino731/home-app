@@ -9,16 +9,28 @@
 
 import {useEffect, useState} from "react";
 import {db} from "../../fireBase/fireBase";
-//components
 import MyKitchenBar from "./MyKitchenBar";
 import MyKitchenCategory from "./MyKitchenCategory";
 import {Loading} from "../loading/Loading";
+import { connect } from "react-redux";
+import { setProducts } from "../../redux/actions/firebaseData.actions";
+import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
+import { auth } from "../../fireBase/fireBase";
 
 
-export const MyKitchen = () => {
+ const MyKitchen = ({setProducts}) => {
 
     //state with array from firestore,is used to rendering specific type for products
     const [renderingArray, setRenderingArray] = useState([])
+
+    // fetch data about user's products
+    useEffect(() => {
+        auth().onAuthStateChanged(user => {
+            if (user) {
+                getDataFromFirestore('products', user.uid, setProducts)
+            } 
+        });  
+    }, []);
 
     //when component mount get products form firestore and push them into renderingArray state
     useEffect(() => {
@@ -31,22 +43,23 @@ export const MyKitchen = () => {
         });
     }, [])
 
-
-    if (renderingArray.length === undefined) {
-        return null
-    }
     if (renderingArray.length === 0) {
         return <Loading/>
     }
-    return (
-        <section className="container kitchen">
+    return <section className="container kitchen">
+            {/* header */}
             <MyKitchenBar/>
+
+            {/* content */}
             {
                 renderingArray.map(el => <MyKitchenCategory title={el.title} productType={el.productType} key={el.id}/>)
             }
-
-        </section>
-    )
+        </section> 
 }
+
+const mapDispatchToProps = dispatch => ({
+    setProducts: data => dispatch(setProducts(data)),
+})
+export default connect(null, mapDispatchToProps)(MyKitchen)
 
 

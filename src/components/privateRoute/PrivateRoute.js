@@ -50,7 +50,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setProducts: data => dispatch(setProducts(data)),
     setRecipes: data => dispatch(setRecipes(data)),
     setToDos: data => dispatch(setToDos(data))
 })
