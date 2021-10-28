@@ -10,7 +10,7 @@
 body {
   font-family: "Poppins", sans-serif;
 }
-header{
+header {
   width: 100%;
 }
 //class for title bar
@@ -39,6 +39,10 @@ header{
   @include mobileM {
     height: 53px;
     font-size: 39px;
+  }
+  @include mobileL {
+    height: 57px;
+    font-size: 41px;
   }
 }
 .glassEffect {
@@ -111,12 +115,17 @@ header{
   top: 0;
   left: 0;
 }
-.freepik{
+.freepik {
   z-index: 2;
   text-align: center;
   font-size: 11px;
+  margin-top: 10px;
   @include mobileM {
     font-size: 12px;
+  }
+  @include mobileL {
+    font-size: 13px;
+    margin-top: 12px;
   }
 }
 button {
