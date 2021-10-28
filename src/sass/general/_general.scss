@@ -44,6 +44,10 @@ header {
     height: 57px;
     font-size: 41px;
   }
+  @include mobileXL {
+    height: 65px;
+    font-size: 45px;
+  }
 }
 .glassEffect {
   &::after {
@@ -119,7 +123,7 @@ header {
   z-index: 2;
   text-align: center;
   font-size: 11px;
-  margin-top: 10px;
+  margin-top: 32px;
   @include mobileM {
     font-size: 12px;
   }

@@ -64,5 +64,10 @@
       height: 61px;
       font-size: 34px;
     }
+    @include mobileXL {
+      height: 65px;
+      font-size: 38px;
+      border-radius: 11px;
+    }
   }
 }

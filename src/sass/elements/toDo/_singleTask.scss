@@ -35,6 +35,9 @@
     @include mobileL {
       font-size: 13px;
     }
+    @include mobileXL {
+      font-size: 15px;
+    }
   }
   &__title {
     text-align: center;
@@ -64,16 +67,20 @@
     @include mobileL {
       height: 35px;
     }
+    @include mobileXL {
+      height: 39px;
+    }
     .panelBtn {
       flex-grow: 1;
+      height: 100%;
       margin: 1px;
       border-radius: 7px;
       overflow: hidden;
       @include mobileM {
         font-size: 17px;
       }
-      @include mobileL {
-        height: 35px;
+      @include mobileXL {
+        font-size: 22px;
       }
       &--delete {
         border: 2px solid $color-red;
@@ -169,6 +176,9 @@
     @include mobileL {
       font-size: 12px;
     }
+    @include mobileXL {
+      font-size: 13px;
+    }
     li {
       font-size: 1.3em;
       margin-bottom: 0.5em;
@@ -194,4 +204,53 @@
   ::-webkit-scrollbar {
     width: 6px;
   }
+}
+
+@mixin singleTaskCorners($borderSize) {
+  .singleTask::before {
+    border-left: $borderSize solid $color-purple;
+    border-top: $borderSize solid $color-purple;
+  }
+  .singleTask::after {
+    border-right: $borderSize solid $color-purple;
+    border-top: $borderSize solid $color-purple;
+  }
+  .singleTask .corner::before {
+    border-left: $borderSize solid $color-purple;
+    border-bottom: $borderSize solid $color-purple;
+  }
+  .singleTask .corner::after {
+    border-right: $borderSize solid $color-purple;
+    border-bottom: $borderSize solid $color-purple;
+  }
+}
+@mixin newTaskFormCorners($borderSize) {
+  .newTaskForm::after {
+    border-right: $borderSize solid $color-purple;
+    border-bottom: $borderSize solid $color-purple;
+  }
+  .newTaskForm::before {
+    border-left: $borderSize solid $color-purple;
+    border-bottom: $borderSize solid $color-purple;
+  }
+  .newTaskForm__btn span::after {
+    border-right: $borderSize solid $color-blue;
+    border-top: $borderSize solid $color-blue;
+  }
+  .newTaskForm__btn::before {
+    border-right: $borderSize solid $color-blue;
+    border-bottom: $borderSize solid $color-blue;
+  }
+  .newTaskForm__btn::after {
+    border-left: $borderSize solid $color-blue;
+    border-top: $borderSize solid $color-blue;
+  }
+  .newTaskForm__btn span::before {
+    border-left: $borderSize solid  $color-blue;
+    border-bottom: $borderSize solid  $color-blue;
+  }
+}
+@include mobileXL {
+  @include singleTaskCorners(6px);
+  @include newTaskFormCorners(6px)
 }
