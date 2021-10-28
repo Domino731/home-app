@@ -38,9 +38,10 @@ const ToDo = ({setToDos}) => {
                      <h2>{
                     flag ? "Pokaż zadania" : "Dodaj zadanie"
                 }</h2>
+                
                 </div>
                     {  flag ? <NewTaskForm showTasks={handleChangeFlag}/>: <TaskList/>}
-            </div>
+                 </div>
         </section>
     )
 

@@ -112,7 +112,7 @@ const SingleTask = ({ toDo }) => {
 
             {/*add new operation*/}
             {operationFormFlag && <form className="singleTask__addOps">
-                <input type="text" placeholder="Nowa operacja" onChange={handleChangeOpValue} />
+                <textarea type="text" placeholder="Opisz nową operacja" onChange={handleChangeOpValue} />
                 <button onClick={handleAddOperation}>Dodaj operację <span /></button>
             </form>}
 

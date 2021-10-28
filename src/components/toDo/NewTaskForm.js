@@ -52,7 +52,7 @@ const NewTaskForm = ({username, showTasks}) => {
                 <input type="text" className="newTaskForm__input newTaskForm__input--name" placeholder="*Tytuł zadania"
                        name="title" value={task.title} onChange={handleChangeTask} maxLength="30"/>
                 <textarea className="newTaskForm__input newTaskForm__input--description" placeholder="Opis zadania"
-                          name="description" value={task.description} onChange={handleChangeTask} maxLength="70"/>
+                          name="description" value={task.description} onChange={handleChangeTask}/>
 
                     {/*when user did not enter a task name show error*/}
                 {invalid && <strong className="newTaskForm__invalid">*Podaj tytuł zadania</strong>}
