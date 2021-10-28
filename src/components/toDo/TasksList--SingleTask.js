@@ -88,7 +88,7 @@ const SingleTask = ({ toDo }) => {
         return <section className="singleTask">
             <span className="corner" />
 
-            <div class='singleTask__titleScale'>
+            <div className='singleTask__titleScale'>
                 <h3 className="singleTask__title">{task.title}</h3>
                 <p className="singleTask__description">{task.description}
                 </p>

@@ -1,10 +1,13 @@
+@import "general/_media.scss";
 @import "setting/_variables";
 @import "setting/_all";
 @import "setting/_showEffect";
 @import "generic/_reset";
-@import "elements/userForm/userForm";
+
 @import "general/_general";
-@import "general/media";
+
+@import "elements/userForm/userForm";
+
 @import "elements/loading/_loading";
 @import "elements/homePage/homePage";
 @import "elements/kitchen/productsIndividualColors";

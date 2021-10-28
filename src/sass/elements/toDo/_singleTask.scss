@@ -1,10 +1,10 @@
 .singleTask {
-  margin-top: 30px;
+  margin-top: 23px;
   width: 100%;
   position: relative;
   padding: 15px;
   background-color: $background-opacity;
- 
+
   .corner {
     &::after {
       @include corners("rightBot", $color-purple, 18%, 5px, 18%);
@@ -27,8 +27,11 @@
     z-index: -10;
   }
 
-  &__titleScale{
+  &__titleScale {
     font-size: 10px;
+    @include mobileM {
+      font-size: 12px;
+    }
   }
   &__title {
     text-align: center;
@@ -52,16 +55,21 @@
     display: flex;
     flex-wrap: wrap;
 
+    @include mobileM {
+      height: 33px;
+    }
     .panelBtn {
       flex-grow: 1;
       margin: 1px;
       border-radius: 7px;
       overflow: hidden;
-
+      @include mobileM {
+        font-size: 17px;
+      }
       &--delete {
         border: 2px solid $color-red;
         color: $color-red;
-           background-color: $color-white;
+        background-color: $color-white;
         transition: 0.2s;
         @include onlyOnDesktop {
           &:hover {
@@ -111,7 +119,7 @@
     align-items: center;
 
     textarea {
-       font-family: "Poppins", sans-serif;
+      font-family: "Poppins", sans-serif;
       box-shadow: 0 0 4px $color-blue;
       border: 2px solid $color-blue;
       height: auto;
@@ -146,13 +154,16 @@
     margin-top: 1em;
     overflow: auto;
     font-size: 10px;
+    @include mobileM {
+      font-size: 11px;
+    }
     li {
       font-size: 1.3em;
       margin-bottom: 0.5em;
       display: flex;
-      align-items: center;
       transition: 0.2s;
       letter-spacing: 0.063rem;
+      word-break: break-all;
     }
 
     i {

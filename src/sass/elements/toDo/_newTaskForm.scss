@@ -30,6 +30,9 @@
     color: $color-purple;
     margin-top: 17px;
     margin-bottom: 3px;
+    @include mobileM {
+      font-size: 26px;
+    }
   }
 
   &__input {
@@ -49,6 +52,10 @@
       height: 28px;
       text-align: center;
       background-color: $color-white;
+
+      @include mobileM {
+        height: 32px;
+      }
     }
 
     &--description {
@@ -56,6 +63,9 @@
       resize: none;
       text-align: center;
       background-color: $color-white;
+      @include mobileM {
+        height: 147px;
+      }
     }
   }
 
@@ -67,9 +77,10 @@
   }
 
   &__btn {
-   background-color: $color-white;
+    background-color: transparent;
     font-weight: bold;
-    color: $color-black;
+    color: $color-white;
+    font-size: 14px;
     letter-spacing: 0.063rem;
     font-style: italic;
     height: 36px;
