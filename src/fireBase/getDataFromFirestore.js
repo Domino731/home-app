@@ -21,15 +21,4 @@ export const getDataFromFirestore = (ctg, username, set) => {
             );
         })
 }
-// getting the users form firestore
-// params //
-// set --> sets the state with users array
-export const getUsers = (set) => {
-    db.collection("users")
-        .onSnapshot(querySnapshot => {
-            const arr = []
-            querySnapshot.docs.map(doc => arr.push(doc.data().userName));
-            set(arr)
-        })
-}
 
