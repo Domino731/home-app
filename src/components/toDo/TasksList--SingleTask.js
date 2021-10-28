@@ -1,13 +1,14 @@
 //this component displays single tasks, used in ToDo component
-import {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {deleteDataFirestore} from "../../fireBase/deleteDataFirestore";
-import {updateDataFirestore} from "../../fireBase/updateDataFirestore";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { deleteDataFirestore } from "../../fireBase/deleteDataFirestore";
+import { auth } from "../../fireBase/fireBase";
+import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
 
 // props //
 // toDo --> specific task
 // username --> username need for delete or update task
-const SingleTask = ({toDo, username}) => {
+const SingleTask = ({ toDo }) => {
 
     //state with specific task
     const [task, setTask] = useState(toDo)
@@ -23,12 +24,12 @@ const SingleTask = ({toDo, username}) => {
 
     //when task is update, update him in firestore
     useEffect(() => {
-        updateDataFirestore(task.id, username, "ToDo", task, () => null)
-    }, [task, username])
+        updateDataFirestore(task.id, auth().currentUser.uid, "ToDo", task, () => null)
+    }, [task])
 
     //function that delete task
     const handleDeleteTask = () => {
-        deleteDataFirestore(task.id, username, "ToDo")
+        deleteDataFirestore(task.id, auth().currentUser.uid, "ToDo")
     }
 
     //function that archive task
@@ -36,7 +37,8 @@ const SingleTask = ({toDo, username}) => {
         setTask(prev => ({
             ...prev,
             archive: true
-        }))
+        }));
+
     }
 
     //function that shows of hide new operation form
@@ -84,41 +86,46 @@ const SingleTask = ({toDo, username}) => {
     }
     else {
         return <section className="singleTask">
-            <span className="corner"/>
+            <span className="corner" />
             <h3 className="singleTask__title">{task.title}</h3>
             <div className="singleTask__description">{task.description}
             </div>
             <div className="singleTask__panel">
 
                 {/*Delete button is displayed only if the number of operations in the task is 0*/}
-                {task.operations.length === 0 &&
-                <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask}><i
-                    className="fas fa-trash-alt"/>
-                </button>}
+                {task.operations.length === 0 || task.archive &&
+                    <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask}><i
+                        className="fas fa-trash-alt" />
+                    </button>}
 
                 {/*These two buttons are only displayed when the job does not have archive status*/}
                 {task.archive === false &&
-                <button className="panelBtn panelBtn--addOperation" onClick={handleChangeOpsFlag}><i
-                    className="fas fa-plus"/></button>}
+                    <button className="panelBtn panelBtn--addOperation" onClick={handleChangeOpsFlag}><i
+                        className="fas fa-plus" /></button>}
                 {task.archive === false &&
-                <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask}><i
-                    className="fas fa-archive"/>
-                </button>}
+                    <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask}><i
+                        className="fas fa-archive" />
+                    </button>}
 
 
             </div>
 
             {/*add new operation*/}
             {operationFormFlag && <form className="singleTask__addOps">
-                <input type="text" placeholder="Nowa operacja" onChange={handleChangeOpValue}/>
-                <button onClick={handleAddOperation}>Dodaj operację <span/></button>
+                <input type="text" placeholder="Nowa operacja" onChange={handleChangeOpValue} />
+                <button onClick={handleAddOperation}>Dodaj operację <span /></button>
             </form>}
 
             {/*rendering task operations*/}
             <ol className="singleTask__opsList">
                 {
                     task.operations.map((el, num) => (
-                        <li key={`task${num}--${task.id}`} onClick={() => handleRemoveOperation(el)}><i className="fas fa-trash-alt"/> {el}</li>
+                        <li
+                            key={`task${num}--${task.id}`}
+                            >
+                            {!task.archive && <i className="fas fa-trash-alt" onClick={() => handleRemoveOperation(el)}/>}
+                            {el}
+                        </li>
                     ))
                 }
             </ol>
@@ -126,7 +133,5 @@ const SingleTask = ({toDo, username}) => {
         </section>
     }
 }
-const mapStateToProps = state => ({
-    username: state.currentUser.displayName
-})
-export default connect(mapStateToProps)(SingleTask)
+
+export default SingleTask

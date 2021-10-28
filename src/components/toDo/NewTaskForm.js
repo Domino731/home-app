@@ -2,7 +2,7 @@
 import {connect} from "react-redux";
 import {useState} from "react";
 import {addNewElement} from "../../fireBase/addNewElementToFirebase";
-
+import { auth } from "../../fireBase/fireBase";
 
 // props //
 // username --> username for add new task addNewElementFunction
@@ -37,7 +37,7 @@ const NewTaskForm = ({username, showTasks}) => {
             setTimeout(()=>{
                 showTasks()
             }, 2000)
-            addNewElement(username, "ToDo", task)
+            addNewElement(auth().currentUser.uid, "ToDo", task)
         }
         // when task has no name set error
         else{

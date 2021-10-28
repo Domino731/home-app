@@ -1,6 +1,6 @@
 //function that updates documents in firestore
 
-import {db} from "./fireBase";
+import { db } from "./fireBase";
 
 // params //
 // dataId --> to know which element update
@@ -9,21 +9,14 @@ import {db} from "./fireBase";
 // element --> new element
 // fnc --> function that you want to call
 
-export const updateDataFirestore = async (dataId, username, ctg, element, fnc) => {
-    db.collection("users")
-        .where(`userName`, `==`, `${username}`)
-        .onSnapshot(querySnapshot => {
-             querySnapshot.docs.map(doc =>
-                db.collection(`users/${doc.id}/${ctg}`)
-                    .doc(`${dataId}`).update(element)
-                .then(() => {
-                    console.log("Document successfully updated!");
-                    fnc()
-                })
-                .catch((error) => {
-                    // The document probably doesn't exist.
-                    console.error("Error updating document: ", error);
-                })
-            );
+export const updateDataFirestore = async (dataId, userUID, category, element, callback) => {
+    db.collection(`users/${userUID}/${category}`)
+        .doc(`${dataId}`).update(element)
+        .then(() => {
+            typeof callback === "function" && callback();
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
         })
 }

@@ -1,5 +1,3 @@
-//component which shows the component passed to props if the user is logged in,
-// and if he is not it sends him to the login form
 
 import {Route} from "react-router-dom"
 import {connect} from "react-redux";
@@ -9,7 +7,6 @@ import {setProducts} from "../../redux/actions/firebaseData.actions";
 import {setRecipes} from "../../redux/actions/firebaseData.actions";
 import {setToDos} from "../../redux/actions/firebaseData.actions";
 import {Loading} from "../loading/Loading";
-// components
 import UserForm from "../userForm/UserForm";
 
 // props //
@@ -23,9 +20,9 @@ const PrivateRoute = ({currentUser, setProducts, setRecipes, setToDos, component
     //if user is logged in, get data from firestore and push into reducers
     useEffect(() => {
         if (currentUser !== null) {
-            getDataFromFirestore("recipes", currentUser.displayName, setRecipes)
-            getDataFromFirestore("products", currentUser.displayName, setProducts)
-            getDataFromFirestore("ToDo", currentUser.displayName, setToDos)
+           // getDataFromFirestore("recipes", currentUser.displayName, setRecipes)
+           // getDataFromFirestore("products", currentUser.displayName, setProducts)
+            // getDataFromFirestore("ToDo", currentUser.displayName, setToDos)
         }
     }, [currentUser])
 
