@@ -69,5 +69,9 @@
       font-size: 38px;
       border-radius: 11px;
     }
+    @include tablet {
+      height: 69px;
+      font-size: 39px;
+    }
   }
 }

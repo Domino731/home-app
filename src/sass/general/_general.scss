@@ -48,6 +48,9 @@ header {
     height: 65px;
     font-size: 45px;
   }
+  @include tablet {
+    font-size: 49px;
+  }
 }
 .glassEffect {
   &::after {
@@ -131,6 +134,12 @@ header {
     font-size: 13px;
     margin-top: 12px;
   }
+  @include mobileXL {
+    margin-top: 23px;
+  }
+  @include tablet {
+    margin-top: 54px;
+  }
 }
 button {
   &:hover {
@@ -154,5 +163,25 @@ button {
   }
   50% {
     clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
+
+@mixin cornerForNewTaskBtn($width) {
+  &::after {
+    @include corners("leftTop", $color-blue, $width, 5px, 20%);
+  }
+
+  &::before {
+    @include corners("rightBot", $color-blue, $width, 5px, 20%);
+  }
+
+  span {
+    &::after {
+      @include corners("rightTop", $color-blue, $width, 5px, 20%);
+    }
+
+    &::before {
+      @include corners("leftBot", $color-blue, $width, 5px, 20%);
+    }
   }
 }

@@ -5,6 +5,9 @@
   padding: 15px;
   background-color: $background-opacity;
 
+  @include tablet {
+    margin-top: 35px;
+  }
   .corner {
     &::after {
       @include corners("rightBot", $color-purple, 18%, 5px, 18%);
@@ -37,6 +40,9 @@
     }
     @include mobileXL {
       font-size: 15px;
+    }
+    @include tablet {
+      font-size: 16px;
     }
   }
   &__title {
@@ -179,6 +185,9 @@
     @include mobileXL {
       font-size: 13px;
     }
+    @include tablet {
+      font-size: 15px;
+    }
     li {
       font-size: 1.3em;
       margin-bottom: 0.5em;
@@ -246,11 +255,11 @@
     border-top: $borderSize solid $color-blue;
   }
   .newTaskForm__btn span::before {
-    border-left: $borderSize solid  $color-blue;
-    border-bottom: $borderSize solid  $color-blue;
+    border-left: $borderSize solid $color-blue;
+    border-bottom: $borderSize solid $color-blue;
   }
 }
 @include mobileXL {
   @include singleTaskCorners(6px);
-  @include newTaskFormCorners(6px)
+  @include newTaskFormCorners(6px);
 }

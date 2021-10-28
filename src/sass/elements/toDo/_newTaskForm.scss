@@ -36,6 +36,9 @@
     @include mobileL {
       font-size: 32px;
     }
+    @include tablet {
+      font-size: 38px;
+    }
   }
 
   &__input {
@@ -47,6 +50,9 @@
     border-radius: 9px;
     outline: none;
 
+    @include tablet {
+      font-size: 20px;
+    }
     &:focus {
       box-shadow: none;
     }
@@ -59,6 +65,9 @@
       @include mobileM {
         height: 32px;
       }
+      @include tablet {
+        height: 41px;
+      }
     }
 
     &--description {
@@ -69,6 +78,9 @@
       @include mobileM {
         height: 147px;
       }
+      @include tablet {
+        height: 188px;
+      }
     }
   }
 
@@ -77,6 +89,10 @@
     font-size: 12px;
     margin-top: 4px;
     font-weight: bold;
+    @include tablet {
+      font-size: 18px;
+      margin-top: 13px;
+    }
   }
 
   &__btn {
@@ -100,6 +116,18 @@
       height: 40px;
       width: 266px;
     }
+    @include mobileXL {
+      margin-top: 28px;
+      font-size: 19px;
+      height: 40px;
+      width: 377px;
+    }
+    @include tablet {
+      margin-top: 49px;
+      font-size: 24px;
+      height: 46px;
+      width: 532px;
+    }
     &::after {
       @include corners("leftTop", $color-blue, 29%, 5px, 20%);
     }
@@ -116,6 +144,10 @@
       &::before {
         @include corners("leftBot", $color-blue, 29%, 5px, 20%);
       }
+    }
+
+    @include tablet {
+      @include cornerForNewTaskBtn(36%);
     }
   }
 
