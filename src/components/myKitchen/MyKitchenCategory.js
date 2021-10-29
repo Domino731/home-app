@@ -65,20 +65,11 @@ const MyKitchenCategory = ({title, products, productType}) => {
         }
     }
 
-    //function return class, which displays products list or new product form
-    const showCtg = () => {
-        if (showList) {
-            return "kitchenCtg2"
-        } else if (showAddForm) {
-            return "kitchenCtg2"
-        }
-    }
 
     return (
-        <section className={`kitchenCtg ${showCtg()}`}>
+        <div className={`kitchenCtg`}>
+
             <div className="kitchenCtg__title">
-
-
                 {/*changing icons when what is displayed*/}
                 {showList ? <i className="fas fa-chevron-up" onClick={handleChangeShowList} title='Zwin listę z produktami'/> :
                     <i className="fas fa-chevron-down" onClick={handleChangeShowList} title='Pokaż listę z produktami'/>}
@@ -87,14 +78,12 @@ const MyKitchenCategory = ({title, products, productType}) => {
                 {/*changing icons when what is displayed*/}
                 {showAddForm ? <i className="fas fa-times" onClick={handleChangeShowAddForm} title='Zamknij formularz'/> :
                     <i className="fas fa-plus" onClick={handleChangeShowAddForm} title='Dodaj nowy produkt'/>}
-
-
             </div>
 
             {/*displaying new product form*/}
             {showAddForm && <MyKitchenAddProductForm productType={productType}/>}
 
-            {/*displaying product list*/}
+            {/*displaying products list*/}
             {showList && <section className="kitchenCtg__list">
 
                 {/*if product array is empty, return notification, if not return individual products*/}
@@ -113,7 +102,10 @@ const MyKitchenCategory = ({title, products, productType}) => {
 
                 }
             </section>}
-        </section>
+
+
+
+        </div>
     )
 }
 

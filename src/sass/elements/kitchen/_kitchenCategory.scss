@@ -1,11 +1,9 @@
 .kitchen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  z-index: 2;
 }
 
 .kitchenBar {
-  border-bottom: 6px solid $color-blue;
+  border-bottom: 4px solid $color-blue;
   box-shadow: 0 1px 6px $color-blue;
 
   h1 {
@@ -19,18 +17,20 @@
     }
   }
 }
-
+.kitchen__container {
+  z-index: 2;
+}
 .kitchenCtg {
-  width: 95%;
-  //height: 527px;
-  height: 76px;
-  margin: 20px auto;
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+  // //height: 527px;
+  // height: 76px;
+  // margin: 20px auto;
+  // z-index: 3;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // overflow: hidden;
 
   ::-webkit-scrollbar {
     width: 0;
@@ -38,59 +38,63 @@
 
   &__title {
     width: 100%;
-    height: 70px;
+    height: 31px;
     background: $color-blue;
-    border-radius: 7px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
     z-index: 5;
+    padding: 0 10px;
     color: white;
+    font-size: 22px;
+    margin-top: 15px;
+    // h2 {
+    //   font-weight: bold;
+    //   font-size: 47px;
+    // }
 
-    h2 {
-      font-weight: bold;
-      font-size: 47px;
-    }
+    // i {
+    //   font-size: 36px;
+    //   padding: 17px 12px;
 
-    i {
-      font-size: 36px;
-      padding: 17px 12px;
-
-      &:hover {
-        cursor: pointer;;
-      }
-    }
+    //   &:hover {
+    //     cursor: pointer;;
+    //   }
+    // }
   }
 
   &__list {
+    transition: all 0.5s ease-in-out;
     width: 93%;
-    height: 82%;
-    animation: showKitchenList 0.6s forwards;
-    border-radius: 7px;
-    padding-top: 15px;
-    position: absolute;
     z-index: 1;
-    top: -420px;
+    margin-top: 13px;
+    margin: 10px auto;
+    border-radius: 5px;
+    position: relative;
     overflow: auto;
     border-bottom: 5px solid $color-blue;
-
+    background: $background-opacity;
+    padding-bottom: 10px;
+    .sort button {
+      background: transparent;
+    }
     &::after {
-      @include corners("leftTop", $color-blue, 100px, 5px, 92%);
+      @include corners("leftTop", $color-blue, 100px, 4px, 92%);
       z-index: -10;
     }
 
     &::before {
-      @include corners("rightTop", $color-blue, 100px, 5px, 92%);
+      @include corners("rightTop", $color-blue, 100px, 4px, 92%);
       z-index: -10;
     }
   }
 
   .empty {
     display: block;
-    font-size: 20px;
     text-align: center;
-
+    padding: 12px 14px;
+    font-size: 14px;
     i {
       margin-left: 7px;
     }
@@ -98,27 +102,24 @@
 
   &__addProduct {
     width: 93%;
-    height: 200px;
-    animation: showAddProductForm 0.6s forwards;
-    position: absolute;
     z-index: 1;
-    top: -420px;
-
-
+    margin: 0 auto;
     .addProduct__invalid {
-      font-size: 12px;
+      margin-top: 10px;
+      font-size: 10px;
       color: $color-red;
       font-weight: bold;
     }
   }
 
-  i[class*="fa-chevron-up"], i[class*="fa-times"] {
+  i[class*="fa-chevron-up"],
+  i[class*="fa-times"] {
     color: red;
   }
 }
 
 .kitchenCtg2 {
- height: 465px;
+  height: 465px;
 }
 
 @keyframes showKitchenList {

@@ -8,41 +8,50 @@
   align-items: center;
   border-radius: 7px;
   animation: showEffect 0.7s forwards;
-
+  font-size: 10px;
   .management {
     &__title {
+      font-size: 1.1em;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
 
       i {
-        font-size: 28px;
+        font-size: 1.9em;
         padding: 3px;
       }
     }
 
     &__amount {
       width: 100%;
+      height: 25px;
       display: flex;
       justify-content: center;
-      margin-top: 7px;
-
+      margin-top: 0.5em;
+     
       button {
-        font-size: 12px;
+        height: 100%;
+        font-size: 1.2em;
         padding: 7px 15px;
         display: block;
-        background: white;
+        background: $color-white;
         color: $color-vegetables;
         border: none;
-        border-radius: 0 10px 10px 0;
+       
         position: relative;
+        &:first-child{
+          border-radius: 0.6em 0 0 0.6em;
+        }
+        &:last-child{
+           border-radius: 0 0.6em 0.6em 0;
+        }
       }
     }
 
     &__actions {
       width: 100%;
-      height: 28px;
+      height: 21px;
       margin-top: 15px;
       display: flex;
 
@@ -55,7 +64,7 @@
         align-items: center;
         border: none;
         background: white;
-
+        font-size: 12px;
         &:nth-child(2) {
           background: $color-vegetables;
         }
@@ -66,7 +75,9 @@
   input {
     text-align: center;
     width: 82px;
+    height: 100%;
     border: none;
+    background: $color-white;
   }
 }
 
