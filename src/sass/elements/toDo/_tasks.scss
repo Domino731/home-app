@@ -32,10 +32,12 @@
 .toDo {
   display: flex;
   height: 100vh;
+  overflow: auto;
   flex-direction: column;
   align-items: center;
   background-image: url(../../../images/background_tasks.jpg);
-  background-size: 100% 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
 }
@@ -46,7 +48,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
   z-index: 6;
 
   @include mobileL {
