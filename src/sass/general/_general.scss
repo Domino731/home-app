@@ -16,8 +16,8 @@ header {
 //class for title bar
 .titleBar {
   width: 100%;
-  height: 50px;
-  font-size: 36px;
+  height: 34px;
+  font-size: 27px;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -37,30 +37,31 @@ header {
     }
   }
   @include mobileM {
-    height: 53px;
-    font-size: 39px;
+    height: 38px;
+    font-size: 32px;
   }
   @include mobileL {
-    height: 57px;
-    font-size: 41px;
+    height: 43px;
+    font-size: 37px;
   }
   @include mobileXL {
-    height: 65px;
-    font-size: 45px;
+    height: 49px;
+    font-size: 40px;
   }
   @include tablet {
+    height: 54px;
     font-size: 49px;
   }
   @include laptopS {
     height: 49px;
     font-size: 35px;
   }
-  @include laptopM {
-    height: 54px;
-    font-size: 38px;
-  }
   @include laptopL {
-    height: 59px;
+    height: 52px;
+    font-size: 42px;
+  }
+  @include laptopXL {
+    height: 55px;
     font-size: 44px;
   }
   @include desktopS {

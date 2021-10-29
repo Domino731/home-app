@@ -1,10 +1,12 @@
 .singleTask {
-  margin-top: 23px;
+  margin-top: 10px;
   width: 100%;
   position: relative;
   padding: 15px;
   background-color: $background-opacity;
 
+  @include mobileL {
+  }
   @include tablet {
     padding: 17px;
     margin-top: 17px;
@@ -19,23 +21,23 @@
   }
   .corner {
     &::after {
-      @include corners("rightBot", $color-purple, 18%, 5px, 18%);
+      @include corners("rightBot", $color-purple, 18%, 4px, 18%);
       z-index: -10;
     }
 
     &::before {
-      @include corners("leftBot", $color-purple, 18%, 5px, 18%);
+      @include corners("leftBot", $color-purple, 18%, 4px, 18%);
       z-index: -10;
     }
   }
 
   &::after {
-    @include corners("rightTop", $color-purple, 18%, 5px, 18%);
+    @include corners("rightTop", $color-purple, 18%, 4px, 18%);
     z-index: -10;
   }
 
   &::before {
-    @include corners("leftTop", $color-purple, 18%, 5px, 18%);
+    @include corners("leftTop", $color-purple, 18%, 4px, 18%);
     z-index: -10;
   }
 
@@ -48,7 +50,7 @@
       font-size: 13px;
     }
     @include mobileXL {
-      font-size: 15px;
+      font-size: 14px;
     }
     @include tablet {
       font-size: 16px;
@@ -63,7 +65,7 @@
       font-size: 14px;
     }
     @include desktopS {
-      font-size: 16px;
+      font-size: 17px;
     }
   }
   &__title {
@@ -84,56 +86,69 @@
   }
 
   &__panel {
-    height: 30px;
+    height: 20px;
     display: flex;
     flex-wrap: wrap;
 
     @include mobileM {
-      height: 33px;
+      height: 26px;
     }
     @include mobileL {
-      height: 35px;
+      height: 28px;
     }
     @include mobileXL {
-      height: 39px;
+      height: 32px;
+    }
+    @include tablet {
+      height: 36px;
     }
     @include laptopS {
+      border-radius: 5px;
       height: 29px;
     }
     @include laptopM {
-      height: 33px;
+      height: 32px;
     }
     @include laptopXL {
       height: 35px;
     }
     @include desktopS {
-      height: 37px;
+      height: 41px;
     }
     .panelBtn {
       flex-grow: 1;
       height: 100%;
       margin: 1px;
-      border-radius: 7px;
+      border-radius: 5px;
       overflow: hidden;
       transition: 0.2s;
       @include mobileM {
-        font-size: 17px;
-        border-radius: 8px;
+        font-size: 15px;
       }
       @include mobileL {
-        border-radius: 9px;
+        border-radius: 8px;
       }
       @include mobileXL {
-        font-size: 22px;
+        font-size: 18px;
+      }
+      @include tablet {
+        border-radius: 10px;
       }
       @include laptopS {
+        border-radius: 5px;
         font-size: 16px;
       }
       @include laptopM {
         font-size: 19px;
       }
+      @include laptopL {
+        border-radius: 8px;
+      }
       @include laptopXL {
         font-size: 21px;
+      }
+      @include desktopS {
+        border-radius: 12px;
       }
       &--delete {
         border: 2px solid $color-red;
@@ -192,7 +207,7 @@
       height: auto;
       min-height: 80px;
       width: 100%;
-      border-radius: 9px;
+      border-radius: 5px;
       outline: none;
       letter-spacing: 0.063rem;
       resize: none;
@@ -201,14 +216,34 @@
       }
       @include mobileL {
         min-height: 102px;
+        border-radius: 8px;
+        margin-top: 13px;
       }
       @include mobileXL {
         min-height: 119px;
       }
+      @include tablet {
+        border-radius: 10px;
+        border: 4px solid $color-blue;
+      }
+      @include laptopS {
+        border-radius: 5px;
+        font-size: 13px;
+        border: 2px solid $color-blue;
+      }
       @include laptopM {
         min-height: 136px;
       }
+      @include laptopL {
+        min-height: 156px;
+        border: 4px solid $color-blue;
+        border-radius: 8px;
+        font-size: 15px;
+      }
       @include desktopS {
+        border: 6px solid $color-blue;
+        font-size: 17px;
+        border-radius: 11px;
         min-height: 165px;
       }
     }
@@ -217,38 +252,46 @@
       margin-top: 10px;
       color: white;
       font-weight: bold;
-      height: 30px;
-      width: 191px;
+      height: 20px;
+      width: 100%;
       overflow: hidden;
       border: none;
       bottom: 0;
       position: relative;
-      border-radius: 7px;
+      border-radius: 5px;
       background-color: $color-blue;
       @include mobileM {
-        border-radius: 8px;
-      }
-      @include mobileL {
-        border-radius: 9px;
-      }
-      @include mobileXL {
-        height: 36px;
-        border-radius: 8px;
-      }
-      @include laptopS {
         height: 26px;
       }
+      @include mobileL {
+        height: 28px;
+        border-radius: 8px;
+      }
+      @include mobileXL {
+        height: 32px;
+      }
+      @include tablet {
+        border-radius: 10px;
+      }
+      @include laptopS {
+        height: 29px;
+        border-radius: 5px;
+      }
       @include laptopM {
-        height: 33px;
+        height: 32px;
         font-size: 19px;
+      }
+      @include laptopL {
+        border-radius: 8px;
       }
       @include laptopXL {
         height: 35px;
         font-size: 20px;
       }
       @include desktopS {
-        height: 37px;
-        font-size: 22px;
+        height: 41px;
+        font-size: 24px;
+        border-radius: 12px;
       }
     }
   }
@@ -264,9 +307,7 @@
     @include mobileL {
       font-size: 12px;
     }
-    @include mobileXL {
-      font-size: 13px;
-    }
+
     @include tablet {
       font-size: 15px;
     }
@@ -280,7 +321,7 @@
       font-size: 13px;
     }
     @include desktopS {
-      font-size: 15px;
+      font-size: 16px;
     }
     li {
       font-size: 1.3em;
@@ -353,19 +394,25 @@
     border-bottom: $borderSize solid $color-blue;
   }
 }
+
 @include mobileXL {
-  @include singleTaskCorners(6px);
-  @include newTaskFormCorners(6px);
+  @include singleTaskCorners(5px);
+  @include newTaskFormCorners(5px);
 }
+@include tablet {
+  @include singleTaskCorners(7px);
+  @include newTaskFormCorners(7px);
+}
+
 @include laptopS {
   @include singleTaskCorners(4px);
   @include newTaskFormCorners(4px);
 }
 @include laptopL {
-  @include singleTaskCorners(5px);
-  @include newTaskFormCorners(5px);
+  @include singleTaskCorners(6px);
+  @include newTaskFormCorners(6px);
 }
 @include desktopS {
-  @include singleTaskCorners(7px);
-  @include newTaskFormCorners(7px);
+  @include singleTaskCorners(9px);
+  @include newTaskFormCorners(9px);
 }
