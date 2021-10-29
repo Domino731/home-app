@@ -5,6 +5,9 @@
   @include laptopS {
     border-bottom: 4px solid $color-purple;
   }
+  @include laptopL {
+    border-bottom: 5px solid $color-purple;
+  }
   h1 {
     &:nth-child(1) {
       color: transparent;
@@ -84,6 +87,10 @@
     @include laptopM {
       height: 50px;
       font-size: 29px;
+    }
+    @include laptopL {
+      height: 55px;
+      font-size: 32px;
     }
   }
 }

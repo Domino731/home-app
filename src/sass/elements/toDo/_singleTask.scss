@@ -53,6 +53,9 @@
     @include laptopM {
       font-size: 13px;
     }
+    @include laptopL {
+      font-size: 14px;
+    }
   }
   &__title {
     text-align: center;
@@ -244,6 +247,9 @@
     @include laptopM {
       font-size: 12px;
     }
+    @include laptopL {
+      font-size: 13px;
+    }
     li {
       font-size: 1.3em;
       margin-bottom: 0.5em;
@@ -323,4 +329,7 @@
   @include singleTaskCorners(4px);
   @include newTaskFormCorners(4px);
 }
-
+@include laptopL {
+  @include singleTaskCorners(5px);
+  @include newTaskFormCorners(5px);
+}
