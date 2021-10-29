@@ -77,6 +77,9 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
                 </div>
 
             </div>
+            <div className="freepik freepik--menu">
+            <a href='https://www.freepik.com/photos/vintage'>Vintage photo created by kjpargeter - www.freepik.com</a>
+            </div>
         </section>
     )
 }

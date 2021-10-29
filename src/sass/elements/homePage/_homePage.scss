@@ -39,6 +39,14 @@
       font-size: 33px;
       border-bottom: 4px solid $color-blue;
     }
+    @include laptopL {
+      font-size: 36px;
+      border-bottom: 6px solid $color-blue;
+    }
+    @include desktopS {
+      font-size: 41px;
+      border-bottom: 9px solid $color-blue;
+    }
     h1 {
       position: relative;
       margin-bottom: 5px;
@@ -89,7 +97,10 @@
     overflow: hidden;
     border-radius: 5px;
     animation: showEffect 0.6s forwards;
-
+    transition: 0.2s;
+    &:hover{
+      background: rgba(255,255,255,0.5);
+    }
     @include mobileM {
       height: 137px;
       margin: 14px auto;
@@ -100,6 +111,14 @@
     }
     @include laptopS {
       height: 134px;
+      margin: 20px auto;
+    }
+    @include laptopL {
+      height: 152px;
+      margin: 22px auto;
+    }
+    @include desktopS {
+      height: 186px;
       margin: 20px auto;
     }
     &::before,
@@ -120,6 +139,12 @@
       }
       @include laptopS {
         font-size: 41px;
+      }
+      @include laptopL {
+        font-size: 48px;
+      }
+      @include desktopS {
+        font-size: 56px;
       }
     }
   }
@@ -273,4 +298,16 @@
 }
 @include laptopS {
   @include menuElementsCorners(243px, 4px);
+}
+@include laptopM {
+  @include menuElementsCorners(300px, 4px);
+}
+@include laptopL {
+  @include menuElementsCorners(362px, 6px);
+}
+@include laptopXL {
+  @include menuElementsCorners(419px, 6px);
+}
+@include desktopS {
+  @include menuElementsCorners(478px, 9px);
 }

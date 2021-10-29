@@ -152,10 +152,17 @@ header {
   left: 0;
 }
 .freepik {
-  z-index: 2;
+  position: relative;
   text-align: center;
   font-size: 11px;
-  margin-top: 32px;
+  margin: 32px 0 10px;
+  z-index: 2;
+  &--menu{
+    a{
+color:rgb(17, 205, 254);
+  }
+    
+  }
   @include mobileM {
     font-size: 12px;
   }
