@@ -41,7 +41,7 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
     return (
         <section className="container">
-            <div className="mainMenu">
+            <div className="mainMenu glassEffect">
 
                 {/*top bar with greeting*/}
                 <div className="mainMenu__titleBar">
