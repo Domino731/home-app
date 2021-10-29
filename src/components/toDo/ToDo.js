@@ -29,7 +29,7 @@ const ToDo = ({ setToDos }) => {
         }
     }
     return (
-        <section className="container toDo glassEffect">
+        <section className="container container--menu toDo glassEffect">
             <ToDoHeader />
             <div className="tasks">
                 <div className="tasks__choice"

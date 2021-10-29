@@ -6,7 +6,7 @@ import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import {setProducts, setRecipes, setToDos} from "../../redux/actions/firebaseData.actions";
 import {connect} from "react-redux";
-
+import background from '../../images/background_menu.jpg'
 // props //
 // --> deleting user's stuff by redux actions
 export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
@@ -40,8 +40,11 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
 
     return (
-        <section className="container">
-            <div className="mainMenu glassEffect">
+        <section className="container container--menu glassEffect">
+             <style>{`body {
+            background-image: url(${background})} 
+            `}</style>
+            <div className="mainMenu">
 
                 {/*top bar with greeting*/}
                 <div className="mainMenu__titleBar">
@@ -69,7 +72,7 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
 
                 {/*log out*/}
-                <div className="mainMenu__logOut" onClick={handleLogOut} title='Wyloguj się'>
+                <div className="mainMenu__logOut" onClick={handleLogOut} title='Wyloguj się '>
                     <i className="fas fa-sign-out-alt"/>
                 </div>
 
