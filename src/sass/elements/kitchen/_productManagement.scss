@@ -9,6 +9,9 @@
   border-radius: 7px;
   animation: showEffect 0.7s forwards;
   font-size: 10px;
+  @include mobileL {
+    font-size: 12px;
+  }
   .management {
     &__title {
       font-size: 1.1em;
@@ -29,22 +32,24 @@
       display: flex;
       justify-content: center;
       margin-top: 0.5em;
-     
+
+      @include mobileL {
+        height: 29px;
+      }
       button {
         height: 100%;
         font-size: 1.2em;
-        padding: 7px 15px;
         display: block;
         background: $color-white;
         color: $color-vegetables;
         border: none;
-       
+
         position: relative;
-        &:first-child{
+        &:first-child {
           border-radius: 0.6em 0 0 0.6em;
         }
-        &:last-child{
-           border-radius: 0 0.6em 0.6em 0;
+        &:last-child {
+          border-radius: 0 0.6em 0.6em 0;
         }
       }
     }
@@ -55,6 +60,9 @@
       margin-top: 15px;
       display: flex;
 
+      @include mobileL {
+        height: 27px;
+      }
       button {
         font-weight: bold;
         width: 50%;
@@ -67,6 +75,9 @@
         font-size: 12px;
         &:nth-child(2) {
           background: $color-vegetables;
+        }
+        @include mobileL {
+          font-size: 14px;
         }
       }
     }
@@ -81,11 +92,11 @@
   }
 }
 
-.successfulProductUpdate{
+.successfulProductUpdate {
   animation: productUpdate 1s;
 }
 @keyframes productUpdate {
-  100%{
+  100% {
     transform: scale(0);
   }
 }

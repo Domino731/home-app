@@ -11,6 +11,9 @@
   overflow: hidden;
   border-top: 4px solid $color-blue;
 
+  @include mobileL {
+    height: 424px;
+  }
   &::before {
     @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
@@ -37,6 +40,11 @@
     box-shadow: 0 0 6px $color-blue;
     margin-top: 15px;
 
+    @include mobileL {
+      height: 32px;
+      font-size: 17px;
+      border-radius: 8px;
+    }
     &:focus {
       outline: none;
       border: none;
@@ -45,6 +53,9 @@
 
     &:nth-child(2) {
       width: 120px;
+      @include mobileL {
+        width: 148px;
+      }
     }
   }
 
@@ -76,6 +87,11 @@
       &::after {
         @include corners("leftTop", $color-blue, 100%, 4px, 22px);
       }
+      @include mobileL {
+        font-size: 18px;
+        padding: 7px;
+        margin-top: 7px;
+      }
     }
   }
 
@@ -96,6 +112,11 @@
     &:focus {
       box-shadow: none;
     }
+    @include mobileL {
+      border-radius: 8px;
+      font-size: 18px;
+      height: 31px;
+    }
   }
 }
 
@@ -114,12 +135,19 @@
       font-size: 25px;
       margin-top: 30px;
       text-align: center;
+      @include mobileL {
+        font-size: 32px;
+        margin-top: 34px;
+      }
     }
 
     i {
       margin-top: 32px;
       font-size: 0;
       animation: successfulShowIcon 0.1s 1s forwards;
+      @include mobileL {
+        animation: successfulShowIcon-mobileL 0.1s 1s forwards;
+      }
     }
 
     button {
@@ -138,6 +166,20 @@
 
       &::before {
         @include corners("leftBot", white, 85px, 4px, 15px);
+      }
+
+      &::after,
+      &::before {
+        @include mobileL {
+          width: 100px;
+        }
+      }
+
+      @include mobileL {
+        font-size: 21px;
+        margin-top: 24px;
+        width: 212px;
+        height: 41px;
       }
     }
   }
@@ -168,7 +210,14 @@
     font-size: 82px;
   }
 }
-
+@keyframes successfulShowIcon-mobileL {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: 101px;
+  }
+}
 @keyframes successfulShowButton {
   0% {
     font-size: 0;

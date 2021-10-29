@@ -11,6 +11,10 @@
   font-size: 10px;
   background: $color-white;
   height: 29px;
+  @include mobileL {
+    font-size: 12px;
+    height: 34px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -27,6 +31,9 @@
     line-height: 1.5;
     display: inline-block;
     vertical-align: middle;
+    @include mobileL {
+      width: 34px;
+    }
   }
 
   &__name {

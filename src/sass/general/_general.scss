@@ -1,4 +1,4 @@
-body{
+body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -117,6 +117,10 @@ header {
     &:hover {
       cursor: pointer;
     }
+    @include mobileL {
+      font-size: 13px;
+      padding: 9px 18px;
+    }
   }
 
   &--blue {
@@ -158,11 +162,10 @@ header {
   font-size: 11px;
   margin: 32px 0 10px;
   z-index: 2;
-  &--menu{
-    a{
-color:rgb(17, 205, 254);
-  }
-    
+  &--menu {
+    a {
+      color: rgb(17, 205, 254);
+    }
   }
   @include mobileM {
     font-size: 12px;
