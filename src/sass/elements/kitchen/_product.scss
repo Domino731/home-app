@@ -19,7 +19,11 @@
     font-size: 14px;
     height: 41px;
   }
-
+  @include tablet {
+    font-size: 17px;
+    height: 48px;
+    border-radius: 30px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -41,6 +45,9 @@
     }
     @include mobileXL {
       width: 41px;
+    }
+    @include tablet {
+      width: 48px;
     }
   }
 
@@ -173,4 +180,3 @@
     }
   }
 }
-

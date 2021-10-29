@@ -125,6 +125,10 @@ header {
       font-size: 15px;
       padding: 8px 25px;
     }
+    @include tablet {
+      font-size: 20px;
+      padding: 11px 25px;
+    }
   }
 
   &--blue {

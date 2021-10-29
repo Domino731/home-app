@@ -65,6 +65,11 @@
       height: 44px;
       font-size: 30px;
     }
+    @include tablet {
+      height: 56px;
+      font-size: 39px;
+      border-radius: 10px;
+    }
   }
 
   &__list {
@@ -114,6 +119,9 @@
       font-weight: bold;
       @include mobileL {
         font-size: 14px;
+      }
+      @include tablet {
+        font-size: 16px;
       }
     }
   }
