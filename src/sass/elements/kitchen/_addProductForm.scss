@@ -117,6 +117,10 @@
       font-size: 18px;
       height: 31px;
     }
+    @include mobileXL {
+      font-size: 17px;
+      height: 33px;
+    }
   }
 }
 

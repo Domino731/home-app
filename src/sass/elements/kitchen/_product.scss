@@ -15,6 +15,11 @@
     font-size: 12px;
     height: 34px;
   }
+  @include mobileXL {
+    font-size: 14px;
+    height: 41px;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -33,6 +38,9 @@
     vertical-align: middle;
     @include mobileL {
       width: 34px;
+    }
+    @include mobileXL {
+      width: 41px;
     }
   }
 
@@ -70,6 +78,10 @@
       border-radius: 50%;
       left: -27px;
       background-color: $color-white;
+      @include mobileXL {
+        height: 52px;
+        width: 42px;
+      }
     }
   }
 
@@ -84,6 +96,9 @@
     border-radius: 7px;
     animation: showEffect 0.7s forwards;
 
+    @include mobileXL {
+      border-radius: 8px;
+    }
     input {
       text-align: center;
       width: 82px;
@@ -158,3 +173,4 @@
     }
   }
 }
+

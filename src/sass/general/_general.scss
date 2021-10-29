@@ -121,6 +121,10 @@ header {
       font-size: 13px;
       padding: 9px 18px;
     }
+    @include mobileXL {
+      font-size: 15px;
+      padding: 8px 25px;
+    }
   }
 
   &--blue {
@@ -132,6 +136,13 @@ header {
 
       &::before {
         @include corners("leftBot", $color-blue, 21px, 4px, 30px);
+      }
+
+      &::after,
+      &::before {
+        @include mobileXL {
+          width: 31px;
+        }
       }
     }
   }
