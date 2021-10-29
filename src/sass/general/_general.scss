@@ -63,6 +63,10 @@ header {
     height: 59px;
     font-size: 44px;
   }
+  @include desktopS {
+    height: 64px;
+    font-size: 49px;
+  }
 }
 .glassEffect {
   &::after {

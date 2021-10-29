@@ -6,10 +6,16 @@
   background-color: $background-opacity;
 
   @include tablet {
-    margin-top: 35px;
+    padding: 17px;
+    margin-top: 17px;
   }
   @include laptopS {
+    padding: 15px;
     margin-top: 20px;
+  }
+  @include laptopXL {
+    padding: 19px;
+    margin-top: 29px;
   }
   .corner {
     &::after {
@@ -56,6 +62,9 @@
     @include laptopL {
       font-size: 14px;
     }
+    @include desktopS {
+      font-size: 16px;
+    }
   }
   &__title {
     text-align: center;
@@ -94,6 +103,12 @@
     @include laptopM {
       height: 33px;
     }
+    @include laptopXL {
+      height: 35px;
+    }
+    @include desktopS {
+      height: 37px;
+    }
     .panelBtn {
       flex-grow: 1;
       height: 100%;
@@ -116,6 +131,9 @@
       }
       @include laptopM {
         font-size: 19px;
+      }
+      @include laptopXL {
+        font-size: 21px;
       }
       &--delete {
         border: 2px solid $color-red;
@@ -190,6 +208,9 @@
       @include laptopM {
         min-height: 136px;
       }
+      @include desktopS {
+        min-height: 165px;
+      }
     }
 
     button {
@@ -221,6 +242,14 @@
         height: 33px;
         font-size: 19px;
       }
+      @include laptopXL {
+        height: 35px;
+        font-size: 20px;
+      }
+      @include desktopS {
+        height: 37px;
+        font-size: 22px;
+      }
     }
   }
 
@@ -249,6 +278,9 @@
     }
     @include laptopL {
       font-size: 13px;
+    }
+    @include desktopS {
+      font-size: 15px;
     }
     li {
       font-size: 1.3em;
@@ -332,4 +364,8 @@
 @include laptopL {
   @include singleTaskCorners(5px);
   @include newTaskFormCorners(5px);
+}
+@include desktopS {
+  @include singleTaskCorners(7px);
+  @include newTaskFormCorners(7px);
 }
