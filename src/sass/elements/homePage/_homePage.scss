@@ -29,6 +29,11 @@
       font-size: 33px;
       padding: 3px 0;
     }
+    @include mobileXL {
+      font-size: 35px;
+      padding: 5px 0;
+      border-bottom: 5px solid $color-blue;
+    }
     h1 {
       position: relative;
       margin-bottom: 5px;
@@ -84,6 +89,10 @@
       height: 137px;
       margin: 14px auto;
     }
+    @include mobileXL {
+      height: 157px;
+      margin: 17px auto;
+    }
     &:hover {
       cursor: pointer;
     }
@@ -92,6 +101,7 @@
       font-weight: bold;
       text-decoration: none;
       font-size: 31px;
+      text-shadow: 2px 1px $color-black;
       @include mobileM {
         font-size: 37px;
       }
@@ -121,45 +131,69 @@
 .mainMenu__element--kitchen {
   strong {
     color: $color-blue;
-    text-shadow: $textShadow-blue;
+  
   }
 
   &::before {
     @include corners("leftTop", $color-blue, 69px, 4px, 50%);
+    @include mobileXL {
+      border-left: 5px solid $color-blue;
+      border-top: 5px solid $color-blue;
+    }
   }
 
   &::after {
     @include corners("rightBot", $color-blue, 69px, 4px, 50%);
+    @include mobileXL {
+      border-right: 5px solid $color-blue;
+      border-bottom: 5px solid $color-blue;
+    }
   }
 }
 
 .mainMenu__element--recipes {
   strong {
     color: $color-green;
-    text-shadow: $textShadow-green;
+    
   }
 
   &::before {
     @include corners("leftTop", $color-green, 69px, 4px, 50%);
+    @include mobileXL {
+      border-left: 5px solid $color-green;
+      border-top: 5px solid $color-green;
+    }
   }
 
   &::after {
     @include corners("rightBot", $color-green, 69px, 4px, 50%);
+    @include mobileXL {
+      border-right: 5px solid $color-green;
+      border-bottom: 5px solid $color-green;
+    }
   }
 }
 
 .mainMenu__element--toDo {
   strong {
     color: $color-purple;
-    text-shadow: $textShadow-purple;
+
   }
 
   &::before {
     @include corners("leftTop", $color-purple, 69px, 4px, 50%);
+    @include mobileXL {
+      border-left: 5px solid $color-purple;
+      border-top: 5px solid $color-purple;
+    }
   }
 
   &::after {
     @include corners("rightBot", $color-purple, 69px, 4px, 50%);
+    @include mobileXL {
+      border-right: 5px solid $color-purple;
+      border-bottom: 5px solid $color-purple;
+    }
   }
 }
 
@@ -190,17 +224,16 @@
     height: 100%;
   }
 }
-@mixin menuElementsCorners($heigth, $width) {
+@mixin menuElementsCorners( $width) {
   .mainMenu__element--kitchen::before,
   .mainMenu__element--kitchen::after,
   .mainMenu__element--recipes::after,
   .mainMenu__element--recipes::before,
   .mainMenu__element--toDo::before,
   .mainMenu__element--toDo::after {
-    height: $heigth;
     width: $width;
   }
 }
 @include mobileM {
-  @include menuElementsCorners(50%, 76px);
+  @include menuElementsCorners(76px);
 }
