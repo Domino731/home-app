@@ -12,12 +12,12 @@
   border-top: 4px solid $color-blue;
 
   &::before {
-    @include corners("leftBot", $color-blue, 66px, 4px, 93%);
+    @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
   }
 
   &::after {
-    @include corners("rightBot", $color-blue, 66px, 4px, 93%);
+    @include corners("rightBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
   }
 
@@ -52,7 +52,7 @@
     padding: 5px 10px;
     height: 26px;
     background: $color-blue;
-    color: white;
+    color: $color-white;
     text-align: center;
     margin-top: 8px;
     border-radius: 6px;
@@ -108,7 +108,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: $color-white;
 
     h3 {
       font-size: 25px;

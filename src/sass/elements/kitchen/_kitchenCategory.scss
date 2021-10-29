@@ -46,22 +46,13 @@
     align-items: center;
     z-index: 5;
     padding: 0 10px;
-    color: white;
+    color: $color-white;
     font-size: 22px;
     margin-top: 15px;
-    // h2 {
-    //   font-weight: bold;
-    //   font-size: 47px;
-    // }
-
-    // i {
-    //   font-size: 36px;
-    //   padding: 17px 12px;
-
-    //   &:hover {
-    //     cursor: pointer;;
-    //   }
-    // }
+    @include mobileM {
+      height: 38px;
+      font-size: 25px;
+    }
   }
 
   &__list {
