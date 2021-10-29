@@ -50,6 +50,9 @@
     @include laptopS {
       font-size: 12px;
     }
+    @include laptopM {
+      font-size: 13px;
+    }
   }
   &__title {
     text-align: center;
@@ -85,12 +88,16 @@
     @include laptopS {
       height: 29px;
     }
+    @include laptopM {
+      height: 33px;
+    }
     .panelBtn {
       flex-grow: 1;
       height: 100%;
       margin: 1px;
       border-radius: 7px;
       overflow: hidden;
+      transition: 0.2s;
       @include mobileM {
         font-size: 17px;
         border-radius: 8px;
@@ -100,16 +107,17 @@
       }
       @include mobileXL {
         font-size: 22px;
-        
       }
       @include laptopS {
         font-size: 16px;
+      }
+      @include laptopM {
+        font-size: 19px;
       }
       &--delete {
         border: 2px solid $color-red;
         color: $color-red;
         background-color: $color-white;
-        transition: 0.2s;
         @include onlyOnDesktop {
           &:hover {
             border: none;
@@ -123,7 +131,6 @@
         border: none;
         background: $color-grey;
         color: $color-white;
-        transform: 0.2s;
         @include onlyOnDesktop {
           &:hover {
             border: none;
@@ -177,6 +184,9 @@
       @include mobileXL {
         min-height: 119px;
       }
+      @include laptopM {
+        min-height: 136px;
+      }
     }
 
     button {
@@ -204,6 +214,10 @@
       @include laptopS {
         height: 26px;
       }
+      @include laptopM {
+        height: 33px;
+        font-size: 19px;
+      }
     }
   }
 
@@ -226,6 +240,9 @@
     }
     @include laptopS {
       font-size: 10px;
+    }
+    @include laptopM {
+      font-size: 12px;
     }
     li {
       font-size: 1.3em;
@@ -306,3 +323,4 @@
   @include singleTaskCorners(4px);
   @include newTaskFormCorners(4px);
 }
+

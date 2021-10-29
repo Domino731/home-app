@@ -55,6 +55,10 @@ header {
     height: 49px;
     font-size: 35px;
   }
+  @include laptopM {
+    height: 54px;
+    font-size: 38px;
+  }
 }
 .glassEffect {
   &::after {
