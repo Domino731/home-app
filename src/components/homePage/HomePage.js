@@ -69,7 +69,7 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
 
                 {/*log out*/}
-                <div className="mainMenu__logOut" onClick={handleLogOut}>
+                <div className="mainMenu__logOut" onClick={handleLogOut} title='Wyloguj się'>
                     <i className="fas fa-sign-out-alt"/>
                 </div>
 

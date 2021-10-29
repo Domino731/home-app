@@ -70,6 +70,10 @@ header {
   }
 }
 .glassEffect {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
   &::after {
     content: "";
     position: absolute;

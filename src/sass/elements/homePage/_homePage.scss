@@ -3,20 +3,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background-image: url(../../../images/background_menu.jpg);
   &__titleBar {
     width: 100vw;
-    height: 120px;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
+    padding: 2px 0;
     text-transform: uppercase;
     text-shadow: $textShadow-blue;
-    //font-weight: bold;
     letter-spacing: 2px;
     -webkit-text-stroke: 1px $color-blue;
-    background: white;
-    color: white;
-    border-bottom: 7px solid $color-blue;
+    background: $color-white;
+    color: $color-white;
+    border-bottom: 4px solid $color-blue;
+    box-shadow: 0 1px 6px $color-blue;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,10 +61,10 @@
 
   &__element {
     width: 90%;
-    height: 168px;
+    height: 124px;
     margin: 12px auto;
     position: relative;
-    background: rgba(255, 255, 255, 0.1);;
+    background: $background-opacity;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,33 +73,31 @@
     animation: showEffect 0.6s forwards;
 
     &:hover {
-      cursor: pointer;;
+      cursor: pointer;
     }
 
     strong {
       font-weight: bold;
       text-decoration: none;
-      padding: 40px;
-      font-size: 41px;
+      font-size: 31px;
     }
-
-
   }
 
   &__logOut {
-    font-size: 62px;
-    width: 100px;
-    height: 100px;
-    border: 7px solid $color-blue;
+    font-size: 33px;
+    width: 57px;
+    height: 57px;
+    border: 4px solid $color-blue;
     color: $color-blue;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-
+    box-shadow: 0 0 3px $color-blue;
+    margin-bottom: 20px;
     &:hover {
-      cursor: pointer;;
+      cursor: pointer;
     }
   }
 }
@@ -111,11 +109,11 @@
   }
 
   &::before {
-    @include corners("leftTop", $color-blue, 80px, 7px);
+    @include corners("leftTop", $color-blue, 69px, 4px, 50%);
   }
 
   &::after {
-    @include corners("rightBot", $color-blue, 80px, 7px);
+    @include corners("rightBot", $color-blue, 69px, 4px, 50%);
   }
 }
 
@@ -126,11 +124,11 @@
   }
 
   &::before {
-    @include corners("leftTop", $color-green, 80px, 7px);
+    @include corners("leftTop", $color-green, 69px, 4px, 50%);
   }
 
   &::after {
-    @include corners("rightBot", $color-green, 80px, 7px);
+    @include corners("rightBot", $color-green, 69px, 4px, 50%);
   }
 }
 
@@ -141,14 +139,13 @@
   }
 
   &::before {
-    @include corners("leftTop", $color-purple, 80px, 7px);
+    @include corners("leftTop", $color-purple, 69px, 4px, 50%);
   }
 
   &::after {
-    @include corners("rightBot", $color-purple, 80px, 7px);
+    @include corners("rightBot", $color-purple, 69px, 4px, 50%);
   }
 }
-
 
 .animatedRedirect--homePage {
   overflow: hidden;
@@ -175,5 +172,16 @@
   100% {
     width: 100%;
     height: 100%;
+  }
+}
+@mixin menuElementsCorners($heigth, $width) {
+  .mainMenu__element--kitchen::before,
+  .mainMenu__element--kitchen::after,
+  .mainMenu__element--recipes::after,
+  .mainMenu__element--recipes::before,
+  .mainMenu__element--toDo::before,
+  .mainMenu__element--toDo::after {
+    height: $heigth;
+    width: $width;
   }
 }
