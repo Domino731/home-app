@@ -39,15 +39,6 @@
 .kitchenCtg {
   width: 90%;
   margin: 0 auto;
-  // //height: 527px;
-  // height: 76px;
-  // margin: 20px auto;
-  // z-index: 3;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // overflow: hidden;
-
   ::-webkit-scrollbar {
     width: 0;
   }
@@ -64,26 +55,30 @@
     padding: 0 10px;
     color: $color-white;
     font-size: 22px;
-    margin-top: 15px;
+    margin-top: 9px;
     @include mobileM {
       height: 38px;
       font-size: 25px;
+      margin-top: 11px;
     }
     @include mobileL {
       border-radius: 5px;
       height: 41px;
       font-size: 27px;
+      margin-top: 13px;
     }
     @include mobileXL {
       height: 44px;
       font-size: 30px;
     }
     @include tablet {
+      margin-top: 23px;
       height: 56px;
       font-size: 39px;
       border-radius: 10px;
     }
     @include laptopS {
+      margin-top: 12px;
       height: 44px;
       font-size: 26px;
       border-radius: 7px;
@@ -93,6 +88,7 @@
       font-size: 29px;
     }
     @include laptopL {
+      margin-top: 14px;
       height: 47px;
       font-size: 29px;
     }
@@ -101,6 +97,7 @@
       font-size: 32px;
     }
     @include desktopS {
+      margin-top: 16px;
       height: 64px;
       font-size: 39px;
       border-radius: 12px;
