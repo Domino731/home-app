@@ -1,5 +1,5 @@
 .recipes {
-z-index: 1;
+  z-index: 1;
 }
 
 .recipesType {
@@ -7,7 +7,7 @@ z-index: 1;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-   justify-content: space-between;
+  justify-content: space-between;
 }
 
 .recipeRedirect {
@@ -19,13 +19,31 @@ z-index: 1;
   position: relative;
   padding: 12px;
   animation: showEffect 0.5s forwards;
-
+  font-size: 20px;
+  @include mobileM {
+    height: 162px;
+    font-size: 23px;
+  }
+  @include mobileL {
+    height: 169px;
+    font-size: 27px;
+  }
+  @include mobileXL {
+    height: 174px;
+    font-size: 31px;
+  }
+  @include tablet {
+    height: 198px;
+    font-size: 36px;
+    padding: 16px;
+    margin-top: 14px;
+  }
   &:last-child {
     //flex-grow: 1;
     width: 100%;
   }
   &:hover {
-    cursor: pointer;;
+    cursor: pointer;
   }
 
   &::before {
@@ -48,7 +66,6 @@ z-index: 1;
 
   div {
     color: white;
-    font-size: 20px;
     width: 100%;
     height: 100%;
     background: $color-green;
@@ -56,6 +73,12 @@ z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include mobileL {
+      border-radius: 8px;
+    }
+    @include tablet {
+      border-radius: 10px;
+    }
   }
 }
 
@@ -92,4 +115,42 @@ z-index: 1;
     width: 100%;
     height: 100%;
   }
+}
+
+@mixin setRecipeTypeCorners($borderSize, $width) {
+  .recipeRedirect span::before {
+    border-left: $borderSize solid $color-green;
+    border-top: $borderSize solid $color-green;
+  }
+  .recipeRedirect::after {
+    border-right: $borderSize solid $color-green;
+    border-top: $borderSize solid $color-green;
+  }
+  .recipeRedirect span::after {
+    border-left: $borderSize solid $color-green;
+    border-bottom: $borderSize solid $color-green;
+  }
+  .recipeRedirect::before {
+    border-right: $borderSize solid $color-green;
+    border-bottom: $borderSize solid $color-green;
+  }
+  .recipeRedirect span::before,
+  .recipeRedirect span::after,
+  .recipeRedirect::after,
+  .recipeRedirect::before {
+    width: $width;
+    height: $width;
+  }
+}
+@include mobileM {
+  @include setRecipeTypeCorners(4px, 39px);
+}
+@include mobileL {
+  @include setRecipeTypeCorners(4px, 46px);
+}
+@include mobileXL {
+  @include setRecipeTypeCorners(5px, 61px);
+}
+@include tablet {
+  @include setRecipeTypeCorners(7px, 76px);
 }
