@@ -38,6 +38,25 @@
     padding: 16px;
     margin-top: 14px;
   }
+  @include laptopS {
+    margin-top: 11px;
+    height: 146px;
+    font-size: 30px;
+    padding: 12px;
+  }
+  @include laptopL {
+    margin-top: 19px;
+    height: 153px;
+    font-size: 32px;
+    padding: 14px;
+  }
+  @include desktopS {
+    margin-top: 19px;
+    height: 165px;
+    font-size: 38px;
+    padding: 19px;
+    border-radius: 9px;
+  }
   &:last-child {
     //flex-grow: 1;
     width: 100%;
@@ -78,6 +97,12 @@
     }
     @include tablet {
       border-radius: 10px;
+    }
+    @include laptopS {
+      border-radius: 5px;
+    }
+    @include desktopS {
+      border-radius: 15px;
     }
   }
 }
@@ -153,4 +178,13 @@
 }
 @include tablet {
   @include setRecipeTypeCorners(7px, 76px);
+}
+@include laptopS {
+  @include setRecipeTypeCorners(4px, 46px);
+}
+@include laptopL {
+  @include setRecipeTypeCorners(6px, 54px);
+}
+@include desktopS {
+  @include setRecipeTypeCorners(9px, 54px);
 }
