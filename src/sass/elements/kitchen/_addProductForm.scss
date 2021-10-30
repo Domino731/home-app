@@ -17,6 +17,9 @@
   @include tablet {
     height: 496px;
   }
+  @include laptopS {
+    height: 429px;
+  }
   &::before {
     @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
@@ -52,6 +55,11 @@
       height: 41px;
       border-radius: 10px;
       font-size: 20px;
+    }
+    @include laptopS {
+      border-radius: 5px;
+      height: 31px;
+      font-size: 13px;
     }
     &:focus {
       outline: none;
@@ -105,6 +113,11 @@
         padding: 9px;
         margin-top: 9px;
       }
+      @include laptopS {
+        font-size: 17px;
+        padding: 8px;
+        margin-top: 7px;
+      }
     }
   }
 
@@ -137,6 +150,11 @@
     @include tablet {
       font-size: 25px;
       height: 41px;
+    }
+    @include laptopS {
+      border-radius: 5px;
+      font-size: 16px;
+      height: 31px;
     }
   }
 }

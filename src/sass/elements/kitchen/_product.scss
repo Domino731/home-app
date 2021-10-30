@@ -24,6 +24,11 @@
     height: 48px;
     border-radius: 30px;
   }
+  @include laptopS {
+    font-size: 13px;
+    height: 35px;
+    border-radius: 30px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -49,6 +54,9 @@
     @include tablet {
       width: 48px;
     }
+    @include laptopS {
+      width: 35px;
+    }
   }
 
   &__name {
@@ -62,6 +70,9 @@
     z-index: 1;
     margin-left: 0.3em;
     font-size: 1.1em;
+    @include laptopS {
+      font-size: 1.4em;
+    }
   }
 
   &_amount {

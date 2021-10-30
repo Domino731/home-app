@@ -20,6 +20,10 @@
     font-size: 20px;
     border-radius: 10px;
   }
+  @include laptopS {
+    font-size: 16px;
+    border-radius: 7px;
+  }
   .management {
     &__title {
       font-size: 1.1em;
@@ -50,6 +54,9 @@
       @include tablet {
         height: 44px;
       }
+      @include laptopS {
+        height: 38px;
+      }
       button {
         height: 100%;
         font-size: 1.2em;
@@ -57,7 +64,7 @@
         background: $color-white;
         color: $color-vegetables;
         border: none;
-
+        padding: 0 0.8em;
         position: relative;
         &:first-child {
           border-radius: 0.6em 0 0 0.6em;
@@ -85,6 +92,10 @@
         height: 43px;
         margin-top: 40px;
       }
+      @include laptopS {
+        height: 36px;
+        margin-top: 29px;
+      }
       button {
         font-weight: bold;
         width: 50%;
@@ -106,6 +117,9 @@
         }
         @include tablet {
           font-size: 22px;
+        }
+        @include laptopS {
+          font-size: 19px;
         }
       }
     }

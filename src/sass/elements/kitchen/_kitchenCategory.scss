@@ -9,6 +9,12 @@
   @include mobileXL {
     border-bottom: 5px solid $color-blue;
   }
+  @include tablet {
+    border-bottom: 7px solid $color-blue;
+  }
+  @include laptopS {
+    border-bottom: 4px solid $color-blue;
+  }
   h1 {
     &:nth-child(1) {
       color: transparent;
@@ -70,6 +76,11 @@
       font-size: 39px;
       border-radius: 10px;
     }
+    @include laptopS {
+      height: 44px;
+      font-size: 26px;
+      border-radius: 7px;
+    }
   }
 
   &__list {
@@ -122,6 +133,9 @@
       }
       @include tablet {
         font-size: 16px;
+      }
+      @include laptopS {
+        font-size: 14px;
       }
     }
   }

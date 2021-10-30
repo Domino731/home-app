@@ -34,3 +34,6 @@
   @include tablet {
     @include setGeneralBorderSize(7px)
   }
+  @include laptopS {
+    @include setGeneralBorderSize(4px)
+  }

@@ -129,23 +129,30 @@ header {
       font-size: 20px;
       padding: 11px 25px;
     }
+    @include laptopS {
+      font-size: 16px;
+      padding: 7px 21px;
+    }
   }
 
   &--blue {
     margin-top: 10px;
     button {
       &::after {
-        @include corners("rightTop", $color-blue, 21px, 4px, 30px);
+        @include corners("rightTop", $color-blue, 21px, 4px, 100%);
       }
 
       &::before {
-        @include corners("leftBot", $color-blue, 21px, 4px, 30px);
+        @include corners("leftBot", $color-blue, 21px, 4px, 100%);
       }
 
       &::after,
       &::before {
         @include mobileXL {
           width: 31px;
+        }
+        @include laptopS {
+
         }
       }
     }
