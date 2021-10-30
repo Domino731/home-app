@@ -24,6 +24,9 @@
     font-size: 16px;
     border-radius: 7px;
   }
+  @include laptopM {
+    font-size: 18px;
+  }
   .management {
     &__title {
       font-size: 1.1em;
@@ -96,6 +99,9 @@
         height: 36px;
         margin-top: 29px;
       }
+      @include laptopM {
+        height: 40px;
+      }
       button {
         font-weight: bold;
         width: 50%;
@@ -120,6 +126,9 @@
         }
         @include laptopS {
           font-size: 19px;
+        }
+        @include mobileM {
+          font-size: 20px;
         }
       }
     }

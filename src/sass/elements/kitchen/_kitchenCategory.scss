@@ -81,6 +81,10 @@
       font-size: 26px;
       border-radius: 7px;
     }
+    @include laptopM {
+      height: 50px;
+      font-size: 29px;
+    }
   }
 
   &__list {

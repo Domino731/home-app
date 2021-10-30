@@ -20,6 +20,9 @@
   @include laptopS {
     height: 429px;
   }
+  @include laptopM {
+    height: 447px;
+  }
   &::before {
     @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
@@ -60,6 +63,9 @@
       border-radius: 5px;
       height: 31px;
       font-size: 13px;
+    }
+    @include laptopM {
+      height: 37px;
     }
     &:focus {
       outline: none;
@@ -155,6 +161,10 @@
       border-radius: 5px;
       font-size: 16px;
       height: 31px;
+    }
+    @include laptopM {
+      font-size: 24px;
+      height: 37px;
     }
   }
 }

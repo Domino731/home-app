@@ -29,6 +29,10 @@
     height: 35px;
     border-radius: 30px;
   }
+  @include laptopM {
+    font-size: 16px;
+    height: 39px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -56,6 +60,10 @@
     }
     @include laptopS {
       width: 35px;
+    }
+    @include laptopM {
+      width: 39px;
+      font-size: 25px;
     }
   }
 
