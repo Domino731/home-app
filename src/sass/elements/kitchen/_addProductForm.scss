@@ -23,6 +23,9 @@
   @include laptopM {
     height: 447px;
   }
+  @include laptopL {
+    height: 512px;
+  }
   &::before {
     @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
@@ -67,6 +70,10 @@
     @include laptopM {
       height: 37px;
     }
+    @include laptopL {
+      font-size: 15px;
+      height: 40px;
+    }
     &:focus {
       outline: none;
       border: none;
@@ -77,6 +84,9 @@
       width: 120px;
       @include mobileL {
         width: 148px;
+      }
+      @include laptopL {
+        width: 173px;
       }
     }
   }
@@ -107,7 +117,7 @@
       overflow: hidden;
       font-size: 14px;
       &::after {
-        @include corners("leftTop", $color-blue, 100%, 4px, 22px);
+        @include corners("leftTop", $color-blue, 100%, 4px, 100%);
       }
       @include mobileL {
         font-size: 18px;
@@ -123,6 +133,11 @@
         font-size: 17px;
         padding: 8px;
         margin-top: 7px;
+      }
+      @include laptopL {
+        font-size: 21px;
+        padding: 10px;
+        margin-top: 9px;
       }
     }
   }
@@ -165,6 +180,9 @@
     @include laptopM {
       font-size: 24px;
       height: 37px;
+    }
+    @include laptopL {
+      height: 40px;
     }
   }
 }

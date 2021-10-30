@@ -33,6 +33,11 @@
     font-size: 16px;
     height: 39px;
   }
+  @include laptopL {
+    font-size: 18px;
+    height: 45px;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -64,6 +69,10 @@
     @include laptopM {
       width: 39px;
       font-size: 25px;
+    }
+    @include laptopL {
+      width: 45px;
+      font-size: 29px;
     }
   }
 

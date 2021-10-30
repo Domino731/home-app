@@ -27,6 +27,9 @@
   @include laptopM {
     font-size: 18px;
   }
+  @include laptopL {
+    font-size: 20px;
+  }
   .management {
     &__title {
       font-size: 1.1em;
@@ -59,6 +62,9 @@
       }
       @include laptopS {
         height: 38px;
+      }
+      @include laptopL {
+        height: 46px;
       }
       button {
         height: 100%;
@@ -102,6 +108,9 @@
       @include laptopM {
         height: 40px;
       }
+      @include laptopL {
+        height: 44px;
+      }
       button {
         font-weight: bold;
         width: 50%;
@@ -127,8 +136,11 @@
         @include laptopS {
           font-size: 19px;
         }
-        @include mobileM {
+        @include laptopM {
           font-size: 20px;
+        }
+        @include laptopL {
+          font-size: 22px;
         }
       }
     }

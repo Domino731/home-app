@@ -37,3 +37,6 @@
   @include laptopS {
     @include setGeneralBorderSize(4px)
   }
+  @include laptopL {
+    @include setGeneralBorderSize(6px)
+  }
