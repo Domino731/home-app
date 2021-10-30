@@ -37,7 +37,11 @@
     font-size: 18px;
     height: 45px;
   }
-
+  @include desktopS {
+    font-size: 22px;
+    height: 57px;
+    border-radius: 45px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -73,6 +77,10 @@
     @include laptopL {
       width: 45px;
       font-size: 29px;
+    }
+    @include desktopS {
+      width: 57px;
+      font-size: 35px;
     }
   }
 
@@ -116,6 +124,10 @@
       @include mobileXL {
         height: 52px;
         width: 42px;
+      }
+      @include desktopS {
+        height: 69px;
+        width: 47px;
       }
     }
   }

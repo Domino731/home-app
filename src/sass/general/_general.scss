@@ -137,6 +137,10 @@ header {
       font-size: 18px;
       padding: 10px 29px;
     }
+    @include desktopS {
+      font-size: 22px;
+      padding: 13px 35px;
+    }
   }
 
   &--blue {
@@ -155,7 +159,8 @@ header {
         @include mobileXL {
           width: 31px;
         }
-        @include laptopS {
+        @include desktopS {
+          width: 61px;
         }
       }
     }

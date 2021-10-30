@@ -26,6 +26,9 @@
   @include laptopL {
     height: 512px;
   }
+  @include desktopS {
+    height: 587px;
+  }
   &::before {
     @include corners("leftBot", $color-blue, 100%, 4px, 93%);
     z-index: -10;
@@ -74,6 +77,11 @@
       font-size: 15px;
       height: 40px;
     }
+    @include desktopS {
+      height: 48px;
+      font-size: 18px;
+      border-radius: 11px;
+    }
     &:focus {
       outline: none;
       border: none;
@@ -87,6 +95,9 @@
       }
       @include laptopL {
         width: 173px;
+      }
+      @include desktopS {
+        width: 191px;
       }
     }
   }
@@ -139,6 +150,11 @@
         padding: 10px;
         margin-top: 9px;
       }
+      @include desktopS {
+        font-size: 23px;
+        padding: 12px;
+        margin-top: 11px;
+      }
     }
   }
 
@@ -184,6 +200,11 @@
     @include laptopL {
       width: 173px;
       height: 40px;
+    }
+    @include desktopS {
+      width: 191px;
+      font-size: 28px;
+      height: 47px;
     }
   }
 }

@@ -30,6 +30,9 @@
   @include laptopL {
     font-size: 20px;
   }
+  @include desktopS {
+    font-size: 24px;
+  }
   .management {
     &__title {
       font-size: 1.1em;
@@ -65,6 +68,9 @@
       }
       @include laptopL {
         height: 46px;
+      }
+      @include desktopS {
+        height: 52px;
       }
       button {
         height: 100%;
@@ -111,6 +117,10 @@
       @include laptopL {
         height: 44px;
       }
+      @include desktopS {
+        margin-top: 47px;
+        height: 50px;
+      }
       button {
         font-weight: bold;
         width: 50%;
@@ -141,6 +151,9 @@
         }
         @include laptopL {
           font-size: 22px;
+        }
+        @include desktopS {
+          font-size: 26px;
         }
       }
     }
