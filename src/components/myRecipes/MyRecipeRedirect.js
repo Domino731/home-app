@@ -24,12 +24,12 @@ export const MyRecipeRedirect = ({path, title}) => {
         }, 1000)
     }
     return (
-        <div className={`recipeRedirect ${animationClass && "animatedRedirect--ToCategory"}`} onClick={redirect}>
+        <div className={`recipeRedirect ${animationClass ? "animatedRedirect--ToCategory" : ''} `} onClick={redirect}>
             <span/>
-            <h1>
+            <div>
                 {title}
 
-            </h1>
+            </div>
 
         </div>
     )

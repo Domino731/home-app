@@ -3,13 +3,12 @@
 //if you want to add a new category add to the firestore in the recipesRendering collection
 // a new document with a title, path, and a number which defines where the category is located
 
-import {useEffect, useState} from "react";
-import {db} from "../../fireBase/fireBase";
-import {Loading} from "../loading/Loading";
-//components
-import {MyRecipesBar} from "./MyRecipesBar";
-import {MyRecipeRedirect} from "./MyRecipeRedirect";
-
+import { useEffect, useState } from "react";
+import { db } from "../../fireBase/fireBase";
+import { Loading } from "../loading/Loading";
+import { MyRecipesBar } from "./MyRecipesBar";
+import { MyRecipeRedirect } from "./MyRecipeRedirect";
+import background from "../../images/background_recipes_types.jpg";
 
 export const MyRecipes = () => {
 
@@ -33,21 +32,29 @@ export const MyRecipes = () => {
         return null
     }
     if (renderingArray.length === 0) {
-        return <Loading/>
+        return <Loading />
     }
     return (
         <section className="container recipes">
-            <MyRecipesBar/>
-            <div className="recipesType">
 
-                {/*rendering redirects by renderingArray state*/}
+            <style>{`body {
+            background-image: url(${background})} 
+            `}</style>
+
+            <MyRecipesBar />
+
+            {/* rendering links for earch type of recipe, if you want to add new type - everything is described in docs */}
+            <div className="recipesType">
                 {
                     renderingArray.map((el, num) => <MyRecipeRedirect title={el.title} path={el.path}
-                                                                      key={`recipe${num}`}/>)
+                        key={`recipe${num}`} />)
                 }
-
-
             </div>
+
+            <div className="freepik">
+                <a href='https://www.freepik.com/photos/food'>Food photo created by freepik - www.freepik.com</a>
+            </div>
+
         </section>
     )
 }

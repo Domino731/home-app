@@ -1,28 +1,29 @@
 .recipes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+z-index: 1;
 }
 
 .recipesType {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 13px;
+   justify-content: space-between;
 }
 
 .recipeRedirect {
-  flex-grow: 1;
   border-radius: 5px;
-  width: 160px;
-  height: 160px;
+  width: 49%;
+  height: 144px;
   overflow: hidden;
-  margin: 13px;
+  margin-top: 11px;
   position: relative;
   padding: 12px;
   animation: showEffect 0.5s forwards;
 
+  &:last-child {
+    //flex-grow: 1;
+    width: 100%;
+  }
   &:hover {
     cursor: pointer;;
   }
@@ -45,9 +46,9 @@
     }
   }
 
-  h1 {
+  div {
     color: white;
-    font-size: 23px;
+    font-size: 20px;
     width: 100%;
     height: 100%;
     background: $color-green;

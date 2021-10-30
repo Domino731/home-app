@@ -1,7 +1,21 @@
 .recipesBar {
-  border-bottom: 6px solid $color-green;
+  border-bottom: 4px solid $color-green;
   box-shadow: 0 1px 6px $color-green;
-
+  @include mobileXL {
+    border-bottom: 5px solid $color-green;
+  }
+  @include tablet {
+    border-bottom: 7px solid $color-green;
+  }
+  @include laptopS {
+    border-bottom: 4px solid $color-green;
+  }
+  @include laptopL {
+    border-bottom: 6px solid $color-green;
+  }
+  @include desktopS {
+    border-bottom: 9px solid $color-green;
+  }
   h1 {
     &:nth-child(1) {
       color: transparent;
