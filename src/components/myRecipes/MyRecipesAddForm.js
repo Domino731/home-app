@@ -1,6 +1,6 @@
 //component responsible for adding to a new recipe
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 //components
 import { MyRecipeAddFormInstructions } from "./MyRecipeAddFormInstructions";
@@ -20,13 +20,12 @@ const MyRecipesAddForm = (props) => {
         type: props.match.params.type
     })
 
-    // state with single instruction, which is pushed into recipe state using the function
-    const [instruction, setInstruction] = useState("")
+    const [instruction, setInstruction] = useState('');
 
     // state with single ingredient, which is pushed into recipe state using the function
     const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "Dag" })
 
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(3);
 
     /** set data about recipe */
     const handleChangeData = (e) => {
@@ -36,9 +35,20 @@ const MyRecipesAddForm = (props) => {
             [name]: value
         }));
     }
-    useEffect(() => {
-        console.log(step)
-    }, [step])
+
+    /** add new instruction */
+    const handleAddNewInstruction = (e) => {
+        // set data
+        setData(prev => ({
+            ...prev,
+            instructions: [...prev.instructions, instruction]
+        }));
+        // clear instruction input
+        setInstruction("");
+    };
+
+    const handleChangeInstruction = (e) => setInstruction(e.target.value);
+
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
 
@@ -65,6 +75,7 @@ const MyRecipesAddForm = (props) => {
 
                 {step === 2 && <>
                     <h2 className="addRecipe__label">Opisz nowy przepis</h2>
+
                     <textarea
                         type='textarea'
                         name='description'
@@ -73,13 +84,46 @@ const MyRecipesAddForm = (props) => {
                     />
 
                     <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">
+                        {/* detect if user enter description */}
                         {data.description.length >= 1 ? `Dodaj opis` : `Bez opisu`}
                     </button>
+
+                    {/* back to previous step - change title  */}
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
                         Zmień tytuł
                     </button>
-
                 </>}
+
+                {step === 3 && <>
+                    <h2 className="addRecipe__label">Dodaj instrukcje</h2>
+
+                    <textarea
+                        onChange={handleChangeInstruction}
+                        type='text'
+                        name='instruction'
+                        value={instruction}
+                        className='addRecipe__input addRecipe__input--instruction' />
+
+
+
+                    {/* check if user type new instruction */}
+                    {instruction.length >= 3 && <button  onClick={handleAddNewInstruction} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nową instrukcję</button>}
+
+                    {data.instructions.length >= 1 && <ul className='addRecipe__instructionsList'>
+                          {data.instructions.map((el, num) => <li className="addRecipe__instruction">
+                              {el}
+                          </li>)}
+                        </ul>}
+                    {/* check if user has enter 1 instruction at least */}
+                    {data.instructions.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj instrukcje</button>}
+
+                    {/* back to previous step - change description  */}
+                    <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
+                        Zmień opis
+                    </button>
+                </>}
+
+
             </div>
 
         </section>
