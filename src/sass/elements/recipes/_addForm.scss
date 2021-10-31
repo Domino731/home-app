@@ -32,11 +32,17 @@
     box-shadow: 0 0 7px rgb(82, 78, 78);
     border-radius: 5px;
     outline: none;
+    letter-spacing: 0.063rem;
+    word-spacing: 0.063rem;
+    resize: none;
     &:focus {
       box-shadow: 0 0 7px 2px $color-green;
     }
     &--small {
       height: 30px;
+    }
+    &--textarea {
+      height: 270px;
     }
   }
   &__btn {
@@ -45,12 +51,16 @@
     color: $color-white;
     font-weight: bold;
     letter-spacing: 0.063rem;
-    margin-top: 34px;
     font-size: 20px;
     border-radius: 5px;
     padding: 5px 0;
     &--nextStep{
+      margin-top: 34px;
       background-color: $color-green;
+    }
+    &--prevStep {
+      margin-top: 10px;
+      background-color: #22733b;
     }
     
   }
