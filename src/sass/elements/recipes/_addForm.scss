@@ -1,354 +1,57 @@
 .addRecipe {
-
-  &__Form {
-    width: 100%;
-    color: $color-black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   &__title {
-    position: relative;
-    width: 100vh;
+    border-bottom: 4px solid $color-green;
     color: $color-green;
-    text-align: center;
-    font-weight: bold;
-    font-size: 50px;
-    border-bottom: 7px solid $color-green;
-    text-shadow: $textShadow-green;
+  
   }
 
-  &__element {
-    width: 93%;
-    margin-top: 15px;
-    margin-bottom: 35px;
-    border-radius: 7px;
-    position: relative;
+  &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: 0 auto;
     z-index: 1;
-    overflow: hidden;
-
-    &::before {
-      @include corners("leftTop", $color-green, 100%, 7px, 20px);
-    }
-
-    &::after {
-      @include corners("rightTop", $color-green, 100%, 7px, 20px);
-    }
-
-    span {
-      margin-top: 10px;
-      width: 100%;
-      position: relative;
-
-      &::before {
-        @include corners("leftBot", $color-green, 100%, 7px, 20px);
-      }
-
-      &::after {
-        @include corners("rightBot", $color-green, 100%, 7px, 20px);
-      }
-    }
+    height: calc(100% - 34px);
+    position: relative;
+  font-size: 10px;
   }
-
-  &__msg {
-    animation: showEffect 0.5s;
-    font-weight: bold;
-    margin-top: 8px;
-
-    &--true {
-      color: $color-blue;
-    }
-
-    &--false {
-      color: $color-blue;
-      margin-bottom: 16px;
-    }
-
-    &--invalidForm {
-      color: $color-blue;
-      display: block;
-      font-size: 14px;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-  }
-
   &__label {
-    font-size: 25px;
-    background: white;
-    width: 144px;
-    text-align: center;
-    z-index: 2;
-    font-weight: 600;
-    margin-bottom: 12px;
+    width: 100%;
+    font-size: 1.8em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid $color-green;
   }
 
   &__input {
-    //width: 260px;
-    //height: 26px;
-    //font-size: 17px;
-
-
-    //border-bottom: 1px solid $color-black;
-    //transition: 0.1s;
-    outline: none;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    width: 81%;
-    height: 28px;
-    border: 4px solid $color-green;
-    border-radius: 9px;
-    box-shadow: 0 0 6px $color-green;
-
-    &--amount {
-      width: 122px;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-
-  &__fieldset {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-
-    label {
-      border-radius: 7px;
-      overflow: hidden;
-      padding: 9px;
-      position: relative;
-
-      &::after {
-        @include corners("leftTop", $color-green, 100%, 5px, 22px);
-      }
-    }
-
-  }
-
-  &__textarea {
-
-    height: 100px;
-    text-align: start;
-    resize: none;
-    outline: none;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    width: 81%;
-    border: 4px solid $color-green;
-    border-radius: 9px;
-    box-shadow: 0 0 6px $color-green;
-  }
-
-  &__addButton {
-    //color: white;
-    //background: $color-blue;
-    //font-weight: bold;
-    //z-index: 2;
-    //border-radius: 25px;
-    //padding: 5px 40px;
-    //border: 7px solid white;
-    margin-top: -19px;
-    height: 30px;
-    width: 147px;
-    color: $color-blue;
-    font-weight: bold;
-    border: none;
-    position: relative;
-    bottom: 0;
-    background: white;
-    border-radius: 7px;
-    overflow: hidden;
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    &::after {
-      @include corners("leftTop", $color-blue, 29%, 5px, 20%);
-    }
-
-    &::before {
-      @include corners("rightBot", $color-blue, 29%, 5px, 20%);
-    }
-
-    i {
-      &::after {
-        @include corners("rightTop", $color-blue, 29%, 5px, 20%);
-      }
-
-      &::before {
-        @include corners("leftBot", $color-blue, 29%, 5px, 20%);
-      }
-    }
-  }
-
-  &__buttonsBar {
     width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__choice {
-    width: 38%;
-    height: 40px;
+    font-size: 1.6em;
+    margin-top: 0.8em;
     border: none;
-    font-size: 16px;
-    font-weight: bold;
-    background: white;
-    position: relative;
-
-    &--pink {
-      &::after {
-        @include corners("rightTop", $color-blue, 10px, 6px);
-      }
-
-      &::before {
-        @include corners("leftBot", $color-blue, 10px, 6px);
-      }
-    }
-  }
-
-  &__list {
-
-    list-style: decimal;
-    width: 93%;
-    height: 170px;
-    overflow: auto;
-    margin: 25px;
-    position: relative;
-    padding-left: 42px;
-    border-left: 6px solid $color-blue;
-    border-right: 6px solid $color-blue;
+    box-shadow: 0 0 7px rgb(82, 78, 78);
     border-radius: 5px;
-
-    textarea {
-      outline: none;
-      width: 100%;
-      height: 100px;
-      resize: none;
-      border: 4px solid $color-blue;
-      border-radius: 9px;
-      box-shadow: 0 0 6px $color-blue;
-
-      margin-top: 10px;
-
-      &:focus {
-        box-shadow: none;
-      }
+    outline: none;
+    &:focus {
+      box-shadow: 0 0 7px 2px $color-green;
     }
-
-    li {
-      border-radius: 23px;
-      margin-top: 10px;
-      width: 94%;
-      padding: 10px;
-      word-wrap: break-word;
-      position: relative;
-
-      &::after {
-        @include corners("leftTop", $color-blue, 80px, 6px, 10px);
-        z-index: -10;
-      }
-
-      &::before {
-        @include corners("rightBot", $color-blue, 80px, 6px, 10px);
-        z-index: -10;
-      }
-
-      i {
-        padding: 4px 10px;
-        color: $color-red;
-
-        &:hover {
-          cursor: pointer;;
-        }
-      }
-
-      p {
-        width: 100%;
-        color: $color-black;
-        margin-left: 8px;
-      }
-
-      i[class*="fa-edit"], i[class*="fa-save"], i[class*="fa-long-arrow-alt-right"] {
-        color: $color-black;
-      }
+    &--small {
+      height: 30px;
     }
   }
-
   &__btn {
-    height: 70px;
-    width: 100%;
-    background: white;
-    position: relative;
-    overflow: hidden;
-    color: $color-green;
-    font-weight: bold;
-    font-size: 29px;
     border: none;
-
-    &::before {
-      @include corners("rightBot", $color-green, 80px, 6px, 50px);
-    }
-
-    &::after {
-      @include corners("leftBot", $color-green, 80px, 6px, 50px);
-    }
-
-    span {
-      width: 100%;
-
-      &::before {
-        @include corners("rightTop", $color-green, 80px, 6px, 50px);
-      }
-
-      &::after {
-        @include corners("leftTop", $color-green, 80px, 6px, 50px);
-      }
-    }
-  }
-}
-
-.animatedRedirect--backToCategory {
-
-  &::before {
-    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-  }
-
-  &::after {
-    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-  }
-
-  span {
-    &::after {
-      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-    }
-
-    &::before {
-      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-    }
-  }
-}
-
-@keyframes cornerEffect--BackToCategory1 {
-  100% {
-    height: 0;
-  }
-}
-
-@keyframes cornerEffect--BackToCategory1_2 {
-  100% {
     width: 100%;
+    color: $color-white;
+    font-weight: bold;
+    letter-spacing: 0.063rem;
+    margin-top: 34px;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px 0;
+    &--nextStep{
+      background-color: $color-green;
+    }
+    
   }
 }
