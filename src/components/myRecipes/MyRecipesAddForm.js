@@ -109,6 +109,9 @@ const MyRecipesAddForm = (props) => {
     const addNewRecipe = () => {
         console.log(12)
     }
+    useEffect(()=> {
+         console.log(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1)
+    }, [step])
     return (
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
@@ -304,6 +307,10 @@ const MyRecipesAddForm = (props) => {
                          <span/>
                     </div>
                 </div>
+
+                { (data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 &&  step !== 5 ) && <div className="addRecipe__summaryBtnWrapper">
+                    <button onClick={() => setStep(6)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
+                </div> }
             </div >
 
         </section>
