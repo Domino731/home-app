@@ -92,17 +92,17 @@
       background-color: #22733b;
     }
   }
-  &__instructionsList {
+  &__list {
     width: 100%;
     margin-top: 7px;
     font-size: 10px;
   }
-  &__instructionsTitle {
+  &__listTitle {
     margin-top: 23px;
     width: 100%;
     font-size: 1.4em;
   }
-  &__instruction {
+  &__listItem {
     margin-top: 0.6em;
     font-size: 1.5em;
     padding-left: 0.4em;
@@ -110,6 +110,10 @@
     word-break: break-all;
     p {
       display: inline-block;
+    }
+    span{
+      text-decoration: underline;
+      text-decoration-color: $color-green;
     }
   }
   &__deleteIcon {
@@ -179,6 +183,7 @@
       background: $color-green;
       color: $color-white;
       font-weight: bold;
+      letter-spacing: 0.125rem;
     }
   }
   span {
@@ -188,5 +193,7 @@
     z-index: 2;
     display: block;
     border: 3px solid $color-green;
+    letter-spacing: 0.063rem;
+    transition: 0.1s;
   }
 }

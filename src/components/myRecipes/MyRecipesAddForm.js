@@ -23,7 +23,7 @@ const MyRecipesAddForm = (props) => {
     const [instruction, setInstruction] = useState('');
 
     // state with single ingredient, which is pushed into recipe state using the function
-    const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "Dag" })
+    const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "" })
 
     const [step, setStep] = useState(4);
 
@@ -55,8 +55,6 @@ const MyRecipesAddForm = (props) => {
     const deleteSpecificInstruction = (index) => {
         const newData = data.instructions;
         newData.splice(index, 1);
-        console.log(newData)
-        console.log(index)
         setData(prev => ({
             ...prev,
             instructions: newData
@@ -74,6 +72,26 @@ const MyRecipesAddForm = (props) => {
         return setIngredient(prev => ({
             ...prev,
             [key]: value
+        }));
+    }
+    const handleChangeIngredientUnit = (e) => setIngredient(prev => ({
+        ...prev,
+        unit: e.target.value
+    }));
+    const handleAddNewIngredient = () => {
+        setData(prev => ({
+            ...prev,
+            ingredients: [...prev.ingredients, ingredient]
+        }));
+        setIngredient({ name: "", amount: "", unit: "Dag" });
+    }
+
+    const handleRemoveSpecificIngredient = (index) => {
+        const newData = data.ingredients;
+        newData.splice(index,1);
+        setData(prev => ({
+            ...prev,
+            ingredients: newData
         }));
     }
     return (
@@ -134,8 +152,8 @@ const MyRecipesAddForm = (props) => {
 
                     {data.instructions.length >= 1 && <>
 
-                        <h3 className="addRecipe__instructionsTitle">Instrukcje dla przepisu</h3>
-                        <ul className='addRecipe__instructionsList'>
+                        <h3 className="addRecipe__listTitle">Instrukcje dla przepisu</h3>
+                        <ul className='addRecipe__list'>
                             {data.instructions.map((el, num) => {
                                 return <SingleInstruction
                                     deleteInstructionFnc={deleteSpecificInstruction}
@@ -167,20 +185,42 @@ const MyRecipesAddForm = (props) => {
                         className='addRecipe__input addRecipe__input--small ' />
                     <strong className="addRecipe__subLabel ">Ilość</strong>
                     <input
-                        onChange={(e) => handleChangeingredient('name', e.target.value)}
-                        type='text'
+                        onChange={(e) => handleChangeingredient('amount', parseFloat(e.target.value))}
+                        type='number'
                         name='ingredient-name'
-                        value={ingredient.name}
+                        min={0}
+                        value={ingredient.amount}
                         className='addRecipe__input addRecipe__input--small addRecipe__input--ingredientAmount ' />
                     <fieldset className='addRecipe__ingredientUnits'>
                         <legend className="addRecipe__subLabel">Wybierz jednostkę</legend>
-                        <label> <input type="radio" name="unit" value="kilogramy" /> <span>Kilogramy</span> </label>
-                        <label> <input type="radio" name="unit" value="dekagramy" /> <span>Dekagramy </span> </label>
-                        <label> <input type="radio" name="unit" value="gramy" />  <span> Gramy </span> </label>
-                        <label> <input type="radio" name="unit" value="miligramy" />  <span>Miligramy </span> </label>
-                        <label> <input type="radio" name="unit" value="mililitry" />  <span>Mililitry </span> </label>
-                        <label> <input type="radio" name="unit" value="naSztuki" />  <span> Na sztuki</span> </label>
+                        <label> <input checked={ingredient.unit === 'Kg'} type="radio" name="unit" value="Kg" onChange={handleChangeIngredientUnit} /> <span>Kilogramy</span> </label>
+                        <label> <input checked={ingredient.unit === 'Dag'} type="radio" name="unit" value="Dag" onChange={handleChangeIngredientUnit} /> <span>Dekagramy </span> </label>
+                        <label> <input checked={ingredient.unit === 'G'} type="radio" name="unit" value="G" onChange={handleChangeIngredientUnit} />  <span> Gramy </span> </label>
+                        <label> <input checked={ingredient.unit === 'Mg'} type="radio" name="unit" value="Mg" onChange={handleChangeIngredientUnit} />  <span>Miligramy </span> </label>
+                        <label> <input checked={ingredient.unit === 'Ml'} type="radio" name="unit" value="Ml" onChange={handleChangeIngredientUnit} />  <span>Mililitry </span> </label>
+                        <label> <input checked={ingredient.unit === 'Na sztuki'} type="radio" name="unit" value="Na sztuki" onChange={handleChangeIngredientUnit} />  <span> Na sztuki</span> </label>
                     </fieldset>
+
+                    {(ingredient.amount > 0 && ingredient.name.length > 2 && ingredient.unit !== "") && <button onClick={handleAddNewIngredient} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nową instrukcję</button>}
+
+                    {data.ingredients.length > 0 && <div>
+                        <h3 className="addRecipe__listTitle">Składniki</h3>
+                        <ul className='addRecipe__list'>
+                            {data.ingredients.map((el,num) => <li className="addRecipe__listItem" key={`new-recipe-${data.name}-ingredients-${num}`}>
+                            <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)}/>
+                            {num + 1}. <span>{el.amount}{el.unit}</span> - <p>{el.name}</p>
+                            </li>)}
+                        </ul>
+                        </div>}
+ 
+                    {/* check if user's recipe has enter 1 ingredient at least */}
+                    {data.ingredients.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Podsumuj</button>}
+
+                    {/* back to previous step - change instructions  */}
+                    <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
+                        Zmień instrukcje
+                    </button>
+
                 </div>}
 
 
@@ -203,7 +243,7 @@ const SingleInstruction = ({ content, index, deleteInstructionFnc, editInstructi
     const handleChangeInstruction = (e) => setInputValue(e.target.value);
 
 
-    return <li className="addRecipe__instruction" >
+    return <li className="addRecipe__listItem" >
         <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
         {index + 1}.
         {!isInputActive && <p>{content}</p>}
