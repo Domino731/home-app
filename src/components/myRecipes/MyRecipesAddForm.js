@@ -12,20 +12,30 @@ import { useEffect } from "react";
 // username --> to know for which user add product
 const MyRecipesAddForm = (props) => {
     //state with new recipe
+    // const [data, setData] = useState({
+    //     title: "",
+    //     description: "",
+    //     instructions: [],
+    //     ingredients: [],
+    //     type: props.match.params.type
+    // })
     const [data, setData] = useState({
-        title: "",
-        description: "",
-        instructions: [],
-        ingredients: [],
+        title: "123123",
+        description: "1233333333333333333333333333333333333333333333",
+        instructions: [`asdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd`, `asddddddddddddddddddddddd`],
+        ingredients: [
+            { name: "qweqwe", amount: "12", unit: "kg" },
+            { name: "qw1", amount: "1", unit: "kg" },
+            { name: "asdasdasd", amount: "123", unit: "kg" }
+        ],
         type: props.match.params.type
     })
-
     const [instruction, setInstruction] = useState('');
 
     // state with single ingredient, which is pushed into recipe state using the function
     const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "" })
 
-    const [step, setStep] = useState(4);
+    const [step, setStep] = useState(5);
 
     /** set data about recipe */
     const handleChangeData = (e) => {
@@ -88,17 +98,20 @@ const MyRecipesAddForm = (props) => {
 
     const handleRemoveSpecificIngredient = (index) => {
         const newData = data.ingredients;
-        newData.splice(index,1);
+        newData.splice(index, 1);
         setData(prev => ({
             ...prev,
             ingredients: newData
         }));
     }
+    const addNewRecipe = () => {
+        console.log(12)
+    }
     return (
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
 
-            <div className={`addRecipe__content ${(step === 3 || step === 4) && `addRecipe__content--fix`}`}>
+            <div className={`addRecipe__content ${(step === 3 || step === 4 || step === 5) && `addRecipe__content--fix`}`}>
 
                 {/* first step -> user must enter new recipe title */}
                 {step === 1 && <>
@@ -206,13 +219,13 @@ const MyRecipesAddForm = (props) => {
                     {data.ingredients.length > 0 && <div>
                         <h3 className="addRecipe__listTitle">Składniki</h3>
                         <ul className='addRecipe__list'>
-                            {data.ingredients.map((el,num) => <li className="addRecipe__listItem" key={`new-recipe-${data.name}-ingredients-${num}`}>
-                            <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)}/>
-                            {num + 1}. <span>{el.amount}{el.unit}</span> - <p>{el.name}</p>
+                            {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`new-recipe-${data.name}-ingredients-${num}`}>
+                                <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)} />
+                                {num + 1}. <span>{el.amount} {el.unit}</span> - <p>{el.name}</p>
                             </li>)}
                         </ul>
-                        </div>}
- 
+                    </div>}
+
                     {/* check if user's recipe has enter 1 ingredient at least */}
                     {data.ingredients.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Podsumuj</button>}
 
@@ -223,7 +236,39 @@ const MyRecipesAddForm = (props) => {
 
                 </div>}
 
+                {step === 5 && <div className="recipeSummary">
+                    <h2 className="recipeSummary__title">Podsumowanie</h2>
 
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle">Tytuł</h3>
+                        <p className="recipeSummary__text">{data.title}</p>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle">Opis</h3>
+                        <p className="recipeSummary__text">{data.description ? data.description : `Przepis nie posiada opisu`}</p>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle">Składniki</h3>
+                        <ul className="recipeSummary__list">
+                            {data.ingredients.map((el, num) => <li key={`recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
+                                   - {el.amount} {el.unit} {el.name}
+                            </li>)}
+                        </ul>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle">Instrukcje</h3>
+                        <ul className="recipeSummary__list">
+                           {data.instructions.map((el, num) => <li  key={`recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
+                                  {num + 1}. {el}
+                           </li>)}
+                        </ul>
+                    </div>
+
+                    <button onClick={addNewRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj przepis</button>
+                </div>}
             </div >
 
         </section>
