@@ -114,7 +114,7 @@
     p {
       display: inline-block;
     }
-    span{
+    span {
       text-decoration: underline;
       text-decoration-color: $color-green;
     }
@@ -201,6 +201,61 @@
   }
 }
 
+.addRecipe__progressContainer {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 1.4em;
+}
+.addRecipe__progress {
+  font-size: 10px;
+  width: 139px;
+  margin: 0.7em auto;
+  display: flex;
+  justify-content: space-around;
+  span {
+    display: block;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    border: 1px solid $color-black;
+  }
+  &--1{
+    span:first-child{
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+  &--2{
+    span:first-child,  span:nth-child(2){
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+  &--3{
+    span:first-child,  span:nth-child(2),  span:nth-child(3){
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+  &--4{
+    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4){
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+  &--5{
+    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4), span:nth-child(5){
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+  &--6{
+    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4), span:nth-child(5),span:nth-child(6) {
+      background: $color-green;
+      box-shadow: 0 0 5px $color-green;
+    }
+  }
+}
 .recipeSummary {
   width: 100%;
   font-size: 10px;
@@ -210,10 +265,10 @@
     padding-bottom: 5px;
     border-bottom: 3px solid $color-green;
   }
-  &__item{
+  &__item {
     margin-top: 10px;
   }
-  &__itemTitle{
+  &__itemTitle {
     text-align: center;
     font-size: 1.8em;
     text-decoration: underline;
@@ -223,7 +278,7 @@
       font-size: 0.7em;
     }
   }
-  &__text{
+  &__text {
     font-size: 1.3em;
     margin-top: 0.4em;
     text-align: center;
@@ -233,7 +288,7 @@
     font-size: 10px;
     margin-top: 5px;
   }
-  &__listItem{
+  &__listItem {
     font-size: 1.3em;
     margin-bottom: 0.4em;
   }

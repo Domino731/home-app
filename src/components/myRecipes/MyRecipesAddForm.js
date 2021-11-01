@@ -241,15 +241,15 @@ const MyRecipesAddForm = (props) => {
                 {step === 5 && <div className="addRecipe__step">
                     <h2 className="addRecipe__label">Dodaj swoje notatki</h2>
                     <textarea
-                    value={data.notes}
-                    name='notes'
-                    onChange={handleChangeData}
-                    className='addRecipe__input addRecipe__input--notes'
+                        value={data.notes}
+                        name='notes'
+                        onChange={handleChangeData}
+                        className='addRecipe__input addRecipe__input--notes'
                     />
 
                     <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Przejdz do podsumowania</button>
-                     {/* back to previous step - change title  */}
-                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
+                    {/* back to previous step - change title  */}
+                    <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
                         Zmień składniki
                     </button>
                 </div>}
@@ -292,6 +292,18 @@ const MyRecipesAddForm = (props) => {
 
                     <button onClick={addNewRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj przepis</button>
                 </div>}
+
+                <div className="addRecipe__progressContainer">
+                    <strong>Krok nr {step} / 6</strong>
+                    <div className={`addRecipe__progress addRecipe__progress--${step}`}>
+                         <span/>
+                         <span/>
+                         <span/>
+                         <span/>
+                         <span/>
+                         <span/>
+                    </div>
+                </div>
             </div >
 
         </section>
