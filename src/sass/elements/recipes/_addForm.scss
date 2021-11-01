@@ -2,8 +2,11 @@
   &__title {
     border-bottom: 4px solid $color-green;
     color: $color-green;
-  }
 
+  }
+  &__step {
+    width: 100%;
+  }
   &__content {
     display: flex;
     flex-direction: column;
@@ -27,7 +30,13 @@
     padding-bottom: 0.3em;
     border-bottom: 2px solid $color-green;
   }
-
+  &__subLabel {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.4em;
+    text-decoration: underline;
+    text-decoration-color: $color-green;
+  }
   &__input {
     width: 100%;
     font-size: 1.6em;
@@ -41,6 +50,9 @@
     resize: none;
     &:focus {
       box-shadow: 0 0 7px 2px $color-green;
+    }
+    &--ingredientAmount {
+      width: 134px;
     }
     &--small {
       height: 30px;
@@ -141,5 +153,11 @@
     border: none;
     margin-top: -3px;
     border-radius: 0 0 5px 5px;
+  }
+  &__ingredientUnits{
+    margin-top: 8px;
+    font-size: 10px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
