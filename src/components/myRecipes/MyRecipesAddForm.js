@@ -7,6 +7,7 @@ import { MyRecipeAddFormInstructions } from "./MyRecipeAddFormInstructions";
 import { MyRecipeAddFormIngredients } from "./MyRecipeAddFormIngredients";
 import { addNewElement } from "../../fireBase/addNewElementToFirebase";
 import { useEffect } from "react";
+import { auth } from "../../fireBase/fireBase";
 // props //
 // type --> to know for which type to add a new product
 // username --> to know for which user add product
@@ -32,6 +33,7 @@ const MyRecipesAddForm = (props) => {
         type: props.match.params.type,
         notes: ''
     })
+    const [redirect, setRedirect] = useState(false)
     const [instruction, setInstruction] = useState('');
 
     // state with single ingredient, which is pushed into recipe state using the function
@@ -107,7 +109,9 @@ const MyRecipesAddForm = (props) => {
         }));
     }
     const addNewRecipe = () => {
-        console.log(12)
+        return addNewElement(auth().currentUser.uid, "recipes", data)
+        .then(() => window.location.replace(`/myRecipes/${props.match.params.type}`))
+        .catch(err => console.log(err))
     }
     useEffect(()=> {
          console.log(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1)
@@ -308,7 +312,7 @@ const MyRecipesAddForm = (props) => {
                     </div>
                 </div>
 
-                { (data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 &&  step !== 5 ) && <div className="addRecipe__summaryBtnWrapper">
+                { (data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 &&  step !== 5 && step !== 6 ) && <div className="addRecipe__summaryBtnWrapper">
                     <button onClick={() => setStep(6)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
                 </div> }
             </div >

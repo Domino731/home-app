@@ -6,7 +6,7 @@ import { auth } from "./fireBase";
 // type --> type of element (ToDO, recipes, products)
 // element --> new element
 //adds a new item to the firestore
-export const addNewElement = (userUid, category, element) => {
+export const addNewElement = async (userUid, category, element) => {
             db.collection("users").doc(`${userUid}`).collection(`${category}`)
                 .add(element)
                 .then(() => {
