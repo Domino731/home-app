@@ -173,13 +173,13 @@ const MyRecipesAddForm = (props) => {
                         value={ingredient.name}
                         className='addRecipe__input addRecipe__input--small addRecipe__input--ingredientAmount ' />
                     <fieldset className='addRecipe__ingredientUnits'>
-                        <legend className="addRecipe__subLabel">Wybierz płeć</legend>
-                        <label> <input type="radio" name="gender" value="m" /> mężczyzna </label><br />
-                        <label> <input type="radio" name="gender" value="w" /> kobieta </label>
-                        <label> <input type="radio" name="gender" value="m" /> mężczyzna </label><br />
-                        <label> <input type="radio" name="gender" value="w" /> kobieta </label>
-                        <label> <input type="radio" name="gender" value="m" /> mężczyzna </label><br />
-                        <label> <input type="radio" name="gender" value="w" /> kobieta </label>
+                        <legend className="addRecipe__subLabel">Wybierz jednostkę</legend>
+                        <label> <input type="radio" name="unit" value="kilogramy" /> <span>Kilogramy</span> </label>
+                        <label> <input type="radio" name="unit" value="dekagramy" /> <span>Dekagramy </span> </label>
+                        <label> <input type="radio" name="unit" value="gramy" />  <span> Gramy </span> </label>
+                        <label> <input type="radio" name="unit" value="miligramy" />  <span>Miligramy </span> </label>
+                        <label> <input type="radio" name="unit" value="mililitry" />  <span>Mililitry </span> </label>
+                        <label> <input type="radio" name="unit" value="naSztuki" />  <span> Na sztuki</span> </label>
                     </fieldset>
                 </div>}
 
@@ -189,6 +189,7 @@ const MyRecipesAddForm = (props) => {
         </section>
     )
 }
+
 const SingleInstruction = ({ content, index, deleteInstructionFnc, editInstruction }) => {
 
     const [inputValue, setInputValue] = useState(content);
