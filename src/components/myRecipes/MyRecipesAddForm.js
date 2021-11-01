@@ -1,5 +1,5 @@
 //component responsible for adding to a new recipe
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 //components
@@ -26,6 +26,10 @@ const MyRecipesAddForm = (props) => {
     const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "Dag" })
 
     const [step, setStep] = useState(3);
+
+    const [fitFlags, setFitFlags] = useState({
+        thirdStep: true
+    });
 
     /** set data about recipe */
     const handleChangeData = (e) => {
@@ -54,7 +58,7 @@ const MyRecipesAddForm = (props) => {
 
     const deleteSpecificInstruction = (index) => {
         const newData = data.instructions;
-        newData.splice(index,1);
+        newData.splice(index, 1);
         console.log(newData)
         console.log(index)
         setData(prev => ({
@@ -62,11 +66,19 @@ const MyRecipesAddForm = (props) => {
             instructions: newData
         }));
     }
+    const handleEditSpecificInstruction = (index, value) => {
+      const newData = data.instructions;
+      newData[index] = value;
+      setData(prev => ({
+          ...prev,
+          instructions: newData
+      })) 
+    }
     return (
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
 
-            <div className="addRecipe__content">
+            <div className={`addRecipe__content ${step === 3 && `addRecipe__content--fix`}`}>
 
                 {/* first step -> user must enter new recipe title */}
                 {step === 1 && <>
@@ -104,7 +116,7 @@ const MyRecipesAddForm = (props) => {
                     </button>
                 </>}
 
-                {step === 3 && <>
+                {step === 3 && <div>
                     <h2 className="addRecipe__label">Dodaj instrukcje</h2>
 
                     <textarea
@@ -121,12 +133,16 @@ const MyRecipesAddForm = (props) => {
 
                     {data.instructions.length >= 1 && <>
 
-                        <h3 className="addRecipe__instructionsTitle">Instrukcje dla przepisu</h3> 
-
+                        <h3 className="addRecipe__instructionsTitle">Instrukcje dla przepisu</h3>
                         <ul className='addRecipe__instructionsList'>
-                            {data.instructions.map((el, num) => <li className="addRecipe__instruction" key={`new-recipe-${data.title}-instruction-${num}`}>
-                            <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteSpecificInstruction(num)}/> {num + 1}. {el}
-                            </li>)}
+                            {data.instructions.map((el, num) => {
+                                return <SingleInstruction 
+                                deleteInstructionFnc={deleteSpecificInstruction}
+                                content={el} 
+                                index={num} 
+                                editInstruction={handleEditSpecificInstruction}
+                                />
+                            })}
                         </ul>
 
                     </>}
@@ -137,7 +153,7 @@ const MyRecipesAddForm = (props) => {
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
                         Zmień opis
                     </button>
-                </>}
+                </div>}
 
 
             </div>
@@ -145,5 +161,29 @@ const MyRecipesAddForm = (props) => {
         </section>
     )
 }
+const SingleInstruction = ({content, index, deleteInstructionFnc, editInstruction}) => {
 
+    const [inputValue, setInputValue] = useState(content);
+    const [isInputActive, setIsInputActive] = useState(false);
+
+    useEffect(()=> {
+        return editInstruction(index, inputValue);
+    },[inputValue]);
+
+    const handleChangeIsInputActive = () => isInputActive ? setIsInputActive(false) : setIsInputActive(true);
+    const handleChangeInstruction = (e) => setInputValue(e.target.value); 
+
+    
+    return <li className="addRecipe__instruction" >
+        <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
+        {index + 1}. 
+         {!isInputActive && <p>{content}</p> } 
+         {isInputActive && <>
+         <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive}/>
+         <button  onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>
+         </>}
+        
+        {!isInputActive && <i class="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive}/>}
+    </li>
+}
 export default MyRecipesAddForm

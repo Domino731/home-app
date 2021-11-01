@@ -15,11 +15,16 @@
     height: calc(100% - 34px);
     position: relative;
     font-size: 10px;
+
+    &--fix {
+      margin-top: 45px;
+      justify-content: flex-start;
+    }
   }
   &__label {
     width: 100%;
     font-size: 1.8em;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.3em;
     border-bottom: 2px solid $color-green;
   }
 
@@ -80,10 +85,10 @@
     margin-top: 7px;
     font-size: 10px;
   }
-  &__instructionsTitle{
-     margin-top: 23px;
-     width: 100%;
-     font-size: 1.4em;
+  &__instructionsTitle {
+    margin-top: 23px;
+    width: 100%;
+    font-size: 1.4em;
   }
   &__instruction {
     margin-top: 0.6em;
@@ -91,9 +96,50 @@
     padding-left: 0.4em;
     text-align: left;
     word-break: break-all;
+    p {
+      display: inline-block;
+    }
   }
-  &__deleteIcon{
+  &__deleteIcon {
     color: $color-red;
-
+    padding-right: 0.4em;
+  }
+  &__editIcon {
+    padding-left: 0.4em;
+    &--open {
+      color: $color-blue;
+    }
+    &--close {
+      color: $color-red;
+    }
+  }
+  &__editTextarea {
+    height: 103px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+    box-shadow: 0 0 7px 2px $color-green;
+    resize: none;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+    &:focus {
+      box-shadow: 0 0 9px 2px $color-green;
+    }
+  }
+  &__closeBtn {
+    width: 100%;
+    padding: 8px 0 4px 0;
+    font-size: 1.1em;
+    background: $color-red;
+    font-weight: 600;
+    letter-spacing: 0.063rem;
+    color: $color-white;
+    border: none;
+    margin-top: -3px;
+    border-radius: 0 0 5px 5px;
   }
 }
