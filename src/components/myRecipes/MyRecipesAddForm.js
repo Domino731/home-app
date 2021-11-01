@@ -52,6 +52,16 @@ const MyRecipesAddForm = (props) => {
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
 
+    const deleteSpecificInstruction = (index) => {
+        const newData = data.instructions;
+        newData.splice(index,1);
+        console.log(newData)
+        console.log(index)
+        setData(prev => ({
+            ...prev,
+            instructions: newData
+        }));
+    }
     return (
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
@@ -107,13 +117,19 @@ const MyRecipesAddForm = (props) => {
 
 
                     {/* check if user type new instruction */}
-                    {instruction.length >= 3 && <button  onClick={handleAddNewInstruction} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nową instrukcję</button>}
+                    {instruction.length >= 3 && <button onClick={handleAddNewInstruction} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nową instrukcję</button>}
 
-                    {data.instructions.length >= 1 && <ul className='addRecipe__instructionsList'>
-                          {data.instructions.map((el, num) => <li className="addRecipe__instruction">
-                              {el}
-                          </li>)}
-                        </ul>}
+                    {data.instructions.length >= 1 && <>
+
+                        <h3 className="addRecipe__instructionsTitle">Instrukcje dla przepisu</h3> 
+
+                        <ul className='addRecipe__instructionsList'>
+                            {data.instructions.map((el, num) => <li className="addRecipe__instruction" key={`new-recipe-${data.title}-instruction-${num}`}>
+                            <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteSpecificInstruction(num)}/> {num + 1}. {el}
+                            </li>)}
+                        </ul>
+
+                    </>}
                     {/* check if user has enter 1 instruction at least */}
                     {data.instructions.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj instrukcje</button>}
 

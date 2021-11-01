@@ -77,12 +77,23 @@
   }
   &__instructionsList {
     width: 100%;
-    margin-top: 23px;
+    margin-top: 7px;
     font-size: 10px;
   }
+  &__instructionsTitle{
+     margin-top: 23px;
+     width: 100%;
+     font-size: 1.4em;
+  }
   &__instruction {
+    margin-top: 0.6em;
     font-size: 1.5em;
     padding-left: 0.4em;
     text-align: left;
+    word-break: break-all;
+  }
+  &__deleteIcon{
+    color: $color-red;
+
   }
 }
