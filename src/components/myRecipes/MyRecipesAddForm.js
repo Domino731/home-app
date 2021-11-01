@@ -17,7 +17,8 @@ const MyRecipesAddForm = (props) => {
     //     description: "",
     //     instructions: [],
     //     ingredients: [],
-    //     type: props.match.params.type
+    //     type: props.match.params.type,
+    //        notes: ''
     // })
     const [data, setData] = useState({
         title: "123123",
@@ -28,7 +29,8 @@ const MyRecipesAddForm = (props) => {
             { name: "qw1", amount: "1", unit: "kg" },
             { name: "asdasdasd", amount: "123", unit: "kg" }
         ],
-        type: props.match.params.type
+        type: props.match.params.type,
+        notes: ''
     })
     const [instruction, setInstruction] = useState('');
 
@@ -111,7 +113,7 @@ const MyRecipesAddForm = (props) => {
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
 
-            <div className={`addRecipe__content ${(step === 3 || step === 4 || step === 5) && `addRecipe__content--fix`}`}>
+            <div className={`addRecipe__content ${(step === 3 || step === 4 || step === 6) && `addRecipe__content--fix`}`}>
 
                 {/* first step -> user must enter new recipe title */}
                 {step === 1 && <>
@@ -131,7 +133,7 @@ const MyRecipesAddForm = (props) => {
                     <h2 className="addRecipe__label">Opisz nowy przepis</h2>
 
                     <textarea
-                        type='textarea'
+                        value={data.description}
                         name='description'
                         onChange={handleChangeData}
                         className='addRecipe__input addRecipe__input--textarea'
@@ -227,7 +229,7 @@ const MyRecipesAddForm = (props) => {
                     </div>}
 
                     {/* check if user's recipe has enter 1 ingredient at least */}
-                    {data.ingredients.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Podsumuj</button>}
+                    {data.ingredients.length >= 1 && <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj notatki</button>}
 
                     {/* back to previous step - change instructions  */}
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
@@ -236,35 +238,56 @@ const MyRecipesAddForm = (props) => {
 
                 </div>}
 
-                {step === 5 && <div className="recipeSummary">
+                {step === 5 && <div className="addRecipe__step">
+                    <h2 className="addRecipe__label">Dodaj swoje notatki</h2>
+                    <textarea
+                    value={data.notes}
+                    name='notes'
+                    onChange={handleChangeData}
+                    className='addRecipe__input addRecipe__input--notes'
+                    />
+
+                    <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Przejdz do podsumowania</button>
+                     {/* back to previous step - change title  */}
+                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
+                        Zmień składniki
+                    </button>
+                </div>}
+
+                {step === 6 && <div className="recipeSummary">
                     <h2 className="recipeSummary__title">Podsumowanie</h2>
 
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle">Tytuł</h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(1)}>Tytuł <i className="fas fa-edit" /></h3>
                         <p className="recipeSummary__text">{data.title}</p>
                     </div>
 
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle">Opis</h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Opis<i className="fas fa-edit" /></h3>
                         <p className="recipeSummary__text">{data.description ? data.description : `Przepis nie posiada opisu`}</p>
                     </div>
 
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle">Składniki</h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(4)}>Składniki<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
                             {data.ingredients.map((el, num) => <li key={`recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
-                                   - {el.amount} {el.unit} {el.name}
+                                - {el.amount} {el.unit} {el.name}
                             </li>)}
                         </ul>
                     </div>
 
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle">Instrukcje</h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(3)}>Instrukcje<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
-                           {data.instructions.map((el, num) => <li  key={`recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
-                                  {num + 1}. {el}
-                           </li>)}
+                            {data.instructions.map((el, num) => <li key={`recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
+                                {num + 1}. {el}
+                            </li>)}
                         </ul>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Notatki<i className="fas fa-edit" /></h3>
+                        <p className="recipeSummary__text">{data.notes ? data.notes : `Przepis nie posiada dodatkowych notatek`}</p>
                     </div>
 
                     <button onClick={addNewRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj przepis</button>

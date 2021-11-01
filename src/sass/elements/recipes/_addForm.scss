@@ -63,6 +63,9 @@
     &--instruction {
       height: 151px;
     }
+    &--notes {
+      height: 210px;
+    }
   }
   &__btn {
     border: none;
@@ -215,6 +218,10 @@
     font-size: 1.8em;
     text-decoration: underline;
     text-decoration-color: $color-green;
+    i {
+      padding-left: 0.3em;
+      font-size: 0.7em;
+    }
   }
   &__text{
     font-size: 1.3em;
