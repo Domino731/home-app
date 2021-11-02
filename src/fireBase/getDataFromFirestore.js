@@ -12,9 +12,7 @@ export const getDataFromFirestore = (category, userUid, saveData) => {
             ...doc.data(),
             id: doc.id
         }));
-        console.log(data)
         saveData(data)
     });
-    
 }
 

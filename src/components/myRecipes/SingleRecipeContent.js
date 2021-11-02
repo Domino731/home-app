@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { connect } from "react-redux"
+import SingleRecipeInstructions from "./SingleRecipeInstructions";
 
 const SingleRecipeContent = ({ recipe, recipeStyles }) => {
     const [selectedContent, setSelectedContent] = useState('instructions');
@@ -28,6 +29,8 @@ const SingleRecipeContent = ({ recipe, recipeStyles }) => {
                 <span />
             </label>
         </fieldset>
+
+        {selectedContent === 'instructions' && <SingleRecipeInstructions/>}
     </section>
 }
 const mapStateToProps = state => ({
