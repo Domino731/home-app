@@ -235,11 +235,11 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 4px 0;
+    padding: 6px 0;
+    font-size: 17px;
     border-radius: 0 0 5px 5px;
     @include mobileM {
       font-size: 18px;
-      padding: 6px 0;
     }
     @include mobileL {
       font-size: 20px;

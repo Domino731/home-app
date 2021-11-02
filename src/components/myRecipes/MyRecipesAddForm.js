@@ -1,10 +1,6 @@
 //component responsible for adding to a new recipe
-import { useState, useRef } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { useState } from "react";
 //components
-import { MyRecipeAddFormInstructions } from "./MyRecipeAddFormInstructions";
-import { MyRecipeAddFormIngredients } from "./MyRecipeAddFormIngredients";
 import { addNewElement } from "../../fireBase/addNewElementToFirebase";
 import { useEffect } from "react";
 import { auth } from "../../fireBase/fireBase";
@@ -12,25 +8,15 @@ import { auth } from "../../fireBase/fireBase";
 // type --> to know for which type to add a new product
 // username --> to know for which user add product
 const MyRecipesAddForm = (props) => {
-    //state with new recipe
-    // const [data, setData] = useState({
-    //     title: "",
-    //     description: "",
-    //     instructions: [],
-    //     ingredients: [],
-    //     type: props.match.params.type,
-    //        notes: ''
-    // })
+    //state with data about new recipe
     const [data, setData] = useState({
-        title: "123123",
-        description: "1233333333333333333333333333333333333333333333",
-        instructions: [`asdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd`, `asddddddddddddddddddddddd`],
-        ingredients: [
-            { name: "qweqwe", amount: "12", unit: "kg" },
-            { name: "qw1", amount: "1", unit: "kg" },
-            { name: "asdasdasd", amount: "123", unit: "kg" }
-        ],
+        title: "",
+        description: "",
+        instructions: [],
+        ingredients: [],
         type: props.match.params.type,
+        notes: '',
+        kcal: '',
         notes: ''
     })
     const [redirect, setRedirect] = useState(false)
@@ -39,7 +25,7 @@ const MyRecipesAddForm = (props) => {
     // state with single ingredient, which is pushed into recipe state using the function
     const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "" })
 
-    const [step, setStep] = useState(4);
+    const [step, setStep] = useState(1);
 
     /** set data about recipe */
     const handleChangeData = (e) => {
@@ -110,11 +96,11 @@ const MyRecipesAddForm = (props) => {
     }
     const addNewRecipe = () => {
         return addNewElement(auth().currentUser.uid, "recipes", data)
-        .then(() => window.location.replace(`/myRecipes/${props.match.params.type}`))
-        .catch(err => console.log(err))
+            .then(() => window.location.replace(`/myRecipes/${props.match.params.type}`))
+            .catch(err => console.log(err))
     }
-    useEffect(()=> {
-         console.log(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1)
+    useEffect(() => {
+        console.log(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1)
     }, [step])
     return (
         <section className="container">
@@ -254,14 +240,39 @@ const MyRecipesAddForm = (props) => {
                         className='addRecipe__input addRecipe__input--notes'
                     />
 
-                    <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Przejdz do podsumowania</button>
+                    <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj dodatkowe informacje</button>
                     {/* back to previous step - change title  */}
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
                         Zmień składniki
                     </button>
                 </div>}
 
-                {step === 6 && <div className="recipeSummary">
+                {step === 6 && <div className="addRecipe__step">
+                    <h2 className="addRecipe__label">Dodatkowe informacje</h2>
+                    <strong className="addRecipe__subLabel ">Czas przygotowania (w minutach)</strong>
+                    <input
+                        onChange={handleChangeData}
+                        type='number'
+                        name='prepareTime'
+                        value={data.prepareTime}
+                        className='addRecipe__input addRecipe__input--small' />
+
+                    <strong className="addRecipe__subLabel ">Kaloryczność na 100g</strong>
+                    <input
+                        onChange={handleChangeData}
+                        type='number'
+                        name='kcal'
+                        value={data.kcal}
+                        className='addRecipe__input addRecipe__input--small' />
+
+                    <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Przejdz do podsumowania</button>
+                    {/* back to previous step - change title  */}
+                    <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
+                        Zmień notatki
+                    </button>
+
+                </div>}
+                {step === 7 && <div className="recipeSummary">
                     <h2 className="recipeSummary__title">Podsumowanie</h2>
 
                     <div className="recipeSummary__item">
@@ -271,7 +282,17 @@ const MyRecipesAddForm = (props) => {
 
                     <div className="recipeSummary__item">
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Opis<i className="fas fa-edit" /></h3>
-                        <p className="recipeSummary__text">{data.description ? data.description : `Przepis nie posiada opisu`}</p>
+                        <p className="recipeSummary__text">{data.description ? data.description : `Nie dodano opisu`}</p>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Kaloryczność na 100 gramów<i className="fas fa-edit" /></h3>
+                        <p className="recipeSummary__text">{data.kcal ? data.kcal + ' kcal' : `Nie dodano kaloryczności`}</p>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Czas przygotowania<i className="fas fa-edit" /></h3>
+                        <p className="recipeSummary__text">{data.prepareTime ? data.prepareTime + ' m.' : `Nie dodano czasu`}</p>
                     </div>
 
                     <div className="recipeSummary__item">
@@ -294,27 +315,28 @@ const MyRecipesAddForm = (props) => {
 
                     <div className="recipeSummary__item">
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Notatki<i className="fas fa-edit" /></h3>
-                        <p className="recipeSummary__text">{data.notes ? data.notes : `Przepis nie posiada dodatkowych notatek`}</p>
+                        <p className="recipeSummary__text">{data.notes ? data.notes : `Nie dodano dodatkowych notatek`}</p>
                     </div>
 
                     <button onClick={addNewRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj przepis</button>
                 </div>}
 
                 <div className="addRecipe__progressContainer">
-                    <strong>Krok nr {step} / 6</strong>
+                    <strong>Krok nr {step} / 7</strong>
                     <div className={`addRecipe__progress addRecipe__progress--${step}`}>
-                         <span/>
-                         <span/>
-                         <span/>
-                         <span/>
-                         <span/>
-                         <span/>
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
                     </div>
                 </div>
 
-                { (data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 &&  step !== 5 && step !== 6 ) && <div className="addRecipe__summaryBtnWrapper">
+                {(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 && step !== 5 && step !== 6 && step !== 7) && <div className="addRecipe__summaryBtnWrapper">
                     <button onClick={() => setStep(6)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
-                </div> }
+                </div>}
             </div >
 
         </section>
