@@ -18,6 +18,10 @@
     font-size: 11px;
     padding: 6px 0;
   }
+  @include mobileL {
+    font-size: 12px;
+    padding: 7px 0;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -47,10 +51,18 @@
   padding: 2px 0;
   &::before {
     @include corners("rightBot", $color-green, 30%, 4px, 50%);
+    @include mobileL {
+      border-right: 5px solid $color-green;
+      border-bottom: 5px solid $color-green;
+    }
   }
 
   &::after {
     @include corners("leftBot", $color-green, 30%, 4px, 50%);
+    @include mobileL {
+      border-left: 5px solid $color-green;
+      border-bottom: 5px solid $color-green;
+    }
   }
   @include mobileM {
     font-size: 27px;
@@ -91,7 +103,7 @@
     font-weight: bold;
     width: 95%;
     padding: 8px 10px;
-    margin: 24px auto;
+    margin: 24px auto 0;
     margin-bottom: 0;
     border-radius: 5px;
     text-align: center;
@@ -104,6 +116,11 @@
     @include mobileM {
       font-size: 33px;
       padding: 9px 10px;
+    }
+    @include mobileL {
+      font-size: 37px;
+      padding: 11px 12px;
+      margin: 33px auto 0;
     }
   }
 
@@ -119,6 +136,10 @@
     @include mobileM {
       font-size: 18px;
       padding: 6px 0;
+    }
+    @include mobileL {
+      font-size: 20px;
+      padding: 8px 0;
     }
     .missing {
       color: $color-red;
