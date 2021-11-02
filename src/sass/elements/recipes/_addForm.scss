@@ -5,6 +5,7 @@
   }
   &__step {
     width: 100%;
+    margin-top: 13px;
   }
   &__content {
     display: flex;
@@ -18,6 +19,9 @@
     position: relative;
     font-size: 10px;
 
+    @include mobileM {
+      font-size: 11px;
+    }
     &--fix {
       margin-top: 45px;
       justify-content: flex-start;
@@ -28,6 +32,7 @@
     font-size: 1.8em;
     padding-bottom: 0.3em;
     border-bottom: 2px solid $color-green;
+    margin-bottom: 0.8em;
   }
   &__subLabel {
     display: block;
@@ -40,7 +45,6 @@
   &__input {
     width: 100%;
     font-size: 1.6em;
-    margin-top: 0.8em;
     border: none;
     box-shadow: 0 0 7px rgb(82, 78, 78);
     border-radius: 5px;
@@ -48,6 +52,7 @@
     letter-spacing: 0.063rem;
     word-spacing: 0.063rem;
     resize: none;
+    margin-bottom: 4px;
     &:focus {
       box-shadow: 0 0 7px 2px $color-green;
     }
@@ -56,6 +61,9 @@
     }
     &--small {
       height: 30px;
+      @include mobileM {
+        height: 33px;
+      }
     }
     &--textarea {
       height: 270px;
@@ -76,6 +84,10 @@
     font-size: 20px;
     border-radius: 5px;
     padding: 5px 0;
+    @include mobileM {
+      font-size: 21px;
+      padding: 6px 0;
+    }
     &--newItem {
       margin-top: 10px;
       background: #00b09b; /* fallback for old browsers */
@@ -103,6 +115,9 @@
     width: 100%;
     margin-top: 7px;
     font-size: 10px;
+    @include mobileM {
+      font-size: 11px;
+    }
   }
   &__listTitle {
     margin-top: 23px;
@@ -170,8 +185,12 @@
     font-size: 10px;
     display: flex;
     flex-wrap: wrap;
+    @include mobileM {
+      margin-top: 12px;
+      font-size: 11px;
+    }
   }
-  &__summaryBtnWrapper{
+  &__summaryBtnWrapper {
     width: 100%;
     height: 48px;
   }
@@ -181,6 +200,10 @@
   margin: 2px 2px;
   position: relative;
   color: $color-black;
+  @include mobileM {
+    font-size: 11px;
+    margin: 3px 3px;
+  }
   input {
     position: absolute;
     left: 0;
@@ -213,6 +236,9 @@
   text-align: center;
   font-size: 10px;
   margin-top: 1.4em;
+  @include mobileM {
+    font-size: 12px;
+  }
 }
 .addRecipe__progress {
   font-size: 10px;
@@ -220,6 +246,11 @@
   margin: 0.7em auto;
   display: flex;
   justify-content: space-around;
+  @include mobileM {
+    font-size: 11px;
+    width: 140px;
+    margin-bottom: 10px;
+  }
   span {
     display: block;
     width: 1.1em;
@@ -227,38 +258,53 @@
     border-radius: 50%;
     border: 1px solid $color-black;
   }
-  &--1{
-    span:first-child{
+  &--1 {
+    span:first-child {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
   }
-  &--2{
-    span:first-child,  span:nth-child(2){
+  &--2 {
+    span:first-child,
+    span:nth-child(2) {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
   }
-  &--3{
-    span:first-child,  span:nth-child(2),  span:nth-child(3){
+  &--3 {
+    span:first-child,
+    span:nth-child(2),
+    span:nth-child(3) {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
   }
-  &--4{
-    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4){
+  &--4 {
+    span:first-child,
+    span:nth-child(2),
+    span:nth-child(3),
+    span:nth-child(4) {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
   }
-  &--5{
-    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4), span:nth-child(5){
+  &--5 {
+    span:first-child,
+    span:nth-child(2),
+    span:nth-child(3),
+    span:nth-child(4),
+    span:nth-child(5) {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
   }
-  &--6{
-    span:first-child,  span:nth-child(2),  span:nth-child(3), span:nth-child(4), span:nth-child(5),span:nth-child(6) {
+  &--6 {
+    span:first-child,
+    span:nth-child(2),
+    span:nth-child(3),
+    span:nth-child(4),
+    span:nth-child(5),
+    span:nth-child(6) {
       background: $color-green;
       box-shadow: 0 0 5px $color-green;
     }
@@ -267,14 +313,20 @@
 .recipeSummary {
   width: 100%;
   font-size: 10px;
+  @include mobileM {
+    font-size: 11px;
+  }
   &__title {
     font-size: 21px;
     text-align: center;
     padding-bottom: 5px;
     border-bottom: 3px solid $color-green;
+    @include mobileM {
+      font-size: 23px;
+    }
   }
   &__item {
-    margin-top: 10px;
+    margin-top: 16px;
   }
   &__itemTitle {
     text-align: center;
@@ -295,6 +347,10 @@
   &__list {
     font-size: 10px;
     margin-top: 5px;
+    @include mobileM {
+      font-size: 11px;
+      margin-top: 8px;
+    }
   }
   &__listItem {
     font-size: 1.3em;

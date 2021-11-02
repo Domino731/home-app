@@ -39,7 +39,7 @@ const MyRecipesAddForm = (props) => {
     // state with single ingredient, which is pushed into recipe state using the function
     const [ingredient, setIngredient] = useState({ name: "", amount: "", unit: "" })
 
-    const [step, setStep] = useState(5);
+    const [step, setStep] = useState(4);
 
     /** set data about recipe */
     const handleChangeData = (e) => {
