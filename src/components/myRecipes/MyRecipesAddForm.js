@@ -157,7 +157,7 @@ const MyRecipesAddForm = (props) => {
                     </button>
                 </>}
 
-                {step === 3 && <div>
+                {step === 3 && <>
                     <h2 className="addRecipe__label">Dodaj instrukcje</h2>
 
                     <textarea
@@ -194,7 +194,7 @@ const MyRecipesAddForm = (props) => {
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
                         Zmień opis
                     </button>
-                </div>}
+                </>}
 
                 {step === 4 && <div className="addRecipe__step">
                     <h2 className="addRecipe__label">Dodaj składniki</h2>
@@ -278,7 +278,7 @@ const MyRecipesAddForm = (props) => {
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(4)}>Składniki<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
                             {data.ingredients.map((el, num) => <li key={`recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
-                                - {el.amount} {el.unit} {el.name}
+                                - <span>{el.amount}</span>  {el.unit} {el.name}
                             </li>)}
                         </ul>
                     </div>
@@ -337,7 +337,7 @@ const SingleInstruction = ({ content, index, deleteInstructionFnc, editInstructi
     return <li className="addRecipe__listItem" >
         <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
         {index + 1}.
-        {!isInputActive && <p>{content}</p>}
+        {!isInputActive && <p> {content}</p>}
         {isInputActive && <>
             <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
             <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>

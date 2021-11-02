@@ -5,6 +5,9 @@
     @include mobileXL {
       border-bottom: 4px solid $color-green;
     }
+    @include tablet {
+      border-bottom: 7px solid $color-green;
+    }
   }
   &__step {
     width: 100%;
@@ -25,6 +28,9 @@
     }
     @include mobileL {
       font-size: 13px;
+    }
+    @include tablet {
+      font-size: 16px;
     }
   }
   &__label {
@@ -53,8 +59,18 @@
     word-spacing: 0.063rem;
     resize: none;
     margin-bottom: 4px;
+    padding: 1px 3px;
     &:focus {
       box-shadow: 0 0 7px 2px $color-green;
+    }
+    @include mobileL {
+      border-radius: 7px;
+      padding: 3px 5px;
+    }
+    @include tablet {
+      border-radius: 10px;
+      padding: 5px 10px;
+      margin-bottom: 9px;
     }
     &--ingredientAmount {
       width: 134px;
@@ -67,6 +83,9 @@
       @include mobileL {
         height: 41px;
       }
+      @include tablet {
+        height: 57px;
+      }
     }
     &--textarea {
       height: 270px;
@@ -78,6 +97,9 @@
       height: 151px;
       @include mobileL {
         height: 190px;
+      }
+      @include tablet {
+        height: 264px;
       }
     }
     &--notes {
@@ -105,6 +127,11 @@
       padding: 8px 0;
       border-radius: 8px;
     }
+    @include tablet {
+      font-size: 32px;
+      padding: 10px 0;
+      border-radius: 10px;
+    }
     &--newItem {
       margin-top: 10px;
       background: #00b09b; /* fallback for old browsers */
@@ -121,12 +148,18 @@
       @include mobileL {
         margin-top: 28px;
       }
+      @include tablet {
+        margin-top: 37px;
+      }
     }
     &--prevStep {
       margin-top: 10px;
       background-color: #22733b;
       @include mobileL {
         margin-top: 15px;
+      }
+      @include tablet {
+        margin-top: 20px;
       }
     }
     &--backToSummary {
@@ -144,11 +177,18 @@
     @include mobileL {
       font-size: 12px;
     }
+    @include tablet {
+      font-size: 15px;
+      margin-top: 11px;
+    }
   }
   &__listTitle {
     margin-top: 23px;
     width: 100%;
     font-size: 1.4em;
+    @include tablet {
+      margin-top: 27px;
+    }
   }
   &__listItem {
     margin-top: 0.6em;
@@ -219,10 +259,20 @@
       margin-top: 16px;
       font-size: 13px;
     }
+    @include tablet {
+      margin-top: 18px;
+      font-size: 16px;
+    }
   }
   &__summaryBtnWrapper {
     width: 100%;
     height: 48px;
+    @include mobileL {
+      height: 60px;
+    }
+    @include tablet {
+      height: 81px;
+    }
   }
 }
 .addRecipe__ingredientUnits label {
@@ -237,6 +287,10 @@
   @include mobileL {
     font-size: 13px;
     margin: 4px 5px;
+  }
+  @include tablet {
+    font-size: 16px;
+    margin: 6px 8px;
   }
   input {
     position: absolute;
@@ -263,18 +317,29 @@
     border: 3px solid $color-green;
     letter-spacing: 0.063rem;
     transition: 0.1s;
+    @include mobileL {
+      border-radius: 7px;
+    }
+    @include tablet {
+      border-radius: 10px;
+      border: 4px solid $color-green;
+    }
   }
 }
 
 .addRecipe__progressContainer {
   text-align: center;
   font-size: 10px;
-  margin-top: 1.4em;
+  margin-top: 14px;
   @include mobileM {
     font-size: 12px;
   }
   @include mobileL {
     font-size: 15px;
+  }
+  @include tablet {
+    font-size: 20px;
+    margin-top: 18px;
   }
 }
 .addRecipe__progress {
@@ -293,12 +358,20 @@
     width: 162px;
     margin-bottom: 16px;
   }
+  @include tablet {
+    font-size: 16px;
+    width: 217px;
+    margin-bottom: 22px;
+  }
   span {
     display: block;
     width: 1.1em;
     height: 1.1em;
     border-radius: 50%;
     border: 1px solid $color-black;
+    @include tablet {
+      border: 2px solid $color-black;
+    }
   }
   &--1 {
     span:first-child {
@@ -361,6 +434,9 @@
   @include mobileL {
     font-size: 13px;
   }
+  @include tablet {
+    font-size: 16px;
+  }
   &__title {
     font-size: 21px;
     text-align: center;
@@ -377,9 +453,17 @@
     @include mobileXL {
       font-size: 28px;
     }
+    @include tablet {
+      font-size: 39px;
+      border-bottom: 5px solid $color-green;
+      padding-bottom: 8px;
+    }
   }
   &__item {
     margin-top: 16px;
+    @include tablet {
+      margin-top: 24px;
+    }
   }
   &__itemTitle {
     text-align: center;
@@ -396,6 +480,9 @@
     margin-top: 0.4em;
     text-align: center;
     word-break: break-all;
+    @include tablet {
+      margin-top: 0.6em;
+    }
   }
   &__list {
     font-size: 10px;
@@ -408,9 +495,17 @@
       font-size: 13px;
       margin-top: 15px;
     }
+    @include tablet {
+      font-size: 16px;
+      margin-top: 18px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
     margin-bottom: 0.4em;
+    span {
+      text-decoration: underline;
+      text-decoration-color: $color-green;
+    }
   }
 }
