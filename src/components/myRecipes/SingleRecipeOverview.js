@@ -9,7 +9,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
         <h2 className="recipeOverview__title">{recipe.title}</h2>
         <div className="recipeOverview__topBar">
             {recipe.servingWeight && <div title='Jedna porcja'>{recipe.servingWeight}G  &nbsp;</div>}
-            {(recipe.servingWeight && recipe.kcal) && <i class="fas fa-circle" style={colorPrimary} />}
+            {(recipe.servingWeight && recipe.kcal) && <i className="fas fa-circle" style={colorPrimary} />}
             {recipe.kcal && <div title='Jedna porcja'>&nbsp; {recipe.kcal} Kcal </div>}
         </div>
         <p className="recipeOverview__description">{recipe.description}</p>
