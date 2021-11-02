@@ -11,20 +11,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 95%;
     margin: 0 auto;
     z-index: 1;
-    height: calc(100% - 34px);
     position: relative;
     font-size: 10px;
-
+    margin-top: 45px;
     @include mobileM {
       font-size: 11px;
     }
-    &--fix {
-      margin-top: 45px;
-      justify-content: flex-start;
+    @include mobileL {
+      font-size: 13px;
     }
   }
   &__label {
@@ -64,15 +61,27 @@
       @include mobileM {
         height: 33px;
       }
+      @include mobileL {
+        height: 41px;
+      }
     }
     &--textarea {
       height: 270px;
+      @include mobileL {
+        height: 304px;
+      }
     }
     &--instruction {
       height: 151px;
+      @include mobileL {
+        height: 190px;
+      }
     }
     &--notes {
       height: 210px;
+      @include mobileL {
+        height: 330px;
+      }
     }
   }
   &__btn {
@@ -88,6 +97,11 @@
       font-size: 21px;
       padding: 6px 0;
     }
+    @include mobileL {
+      font-size: 23px;
+      padding: 8px 0;
+      border-radius: 8px;
+    }
     &--newItem {
       margin-top: 10px;
       background: #00b09b; /* fallback for old browsers */
@@ -101,10 +115,16 @@
     &--nextStep {
       margin-top: 23px;
       background-color: $color-green;
+      @include mobileL {
+        margin-top: 28px;
+      }
     }
     &--prevStep {
       margin-top: 10px;
       background-color: #22733b;
+      @include mobileL {
+        margin-top: 15px;
+      }
     }
     &--backToSummary {
       background-color: #ffb703;
@@ -117,6 +137,9 @@
     font-size: 10px;
     @include mobileM {
       font-size: 11px;
+    }
+    @include mobileL {
+      font-size: 12px;
     }
   }
   &__listTitle {
@@ -189,6 +212,10 @@
       margin-top: 12px;
       font-size: 11px;
     }
+    @include mobileL {
+      margin-top: 16px;
+      font-size: 13px;
+    }
   }
   &__summaryBtnWrapper {
     width: 100%;
@@ -203,6 +230,10 @@
   @include mobileM {
     font-size: 11px;
     margin: 3px 3px;
+  }
+  @include mobileL {
+    font-size: 13px;
+    margin: 4px 5px;
   }
   input {
     position: absolute;
@@ -239,6 +270,9 @@
   @include mobileM {
     font-size: 12px;
   }
+  @include mobileL {
+    font-size: 15px;
+  }
 }
 .addRecipe__progress {
   font-size: 10px;
@@ -250,6 +284,11 @@
     font-size: 11px;
     width: 140px;
     margin-bottom: 10px;
+  }
+  @include mobileL {
+    font-size: 12px;
+    width: 162px;
+    margin-bottom: 16px;
   }
   span {
     display: block;
@@ -316,6 +355,9 @@
   @include mobileM {
     font-size: 11px;
   }
+  @include mobileL {
+    font-size: 13px;
+  }
   &__title {
     font-size: 21px;
     text-align: center;
@@ -323,6 +365,11 @@
     border-bottom: 3px solid $color-green;
     @include mobileM {
       font-size: 23px;
+    }
+    @include mobileL {
+      font-size: 26px;
+      padding-bottom: 6px;
+      border-bottom: 4px solid $color-green;
     }
   }
   &__item {
@@ -350,6 +397,10 @@
     @include mobileM {
       font-size: 11px;
       margin-top: 8px;
+    }
+    @include mobileL {
+      font-size: 13px;
+      margin-top: 15px;
     }
   }
   &__listItem {

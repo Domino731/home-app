@@ -120,7 +120,7 @@ const MyRecipesAddForm = (props) => {
         <section className="container">
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
 
-            <div className={`addRecipe__content ${(step === 3 || step === 4 || step === 6) && `addRecipe__content--fix`}`}>
+            <div className="addRecipe__content">
 
                 {/* first step -> user must enter new recipe title */}
                 {step === 1 && <>
