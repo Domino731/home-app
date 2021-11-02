@@ -36,7 +36,8 @@ body {
 body {
   font-family: "Poppins", sans-serif;
 }
-input, textarea {
+input,
+textarea {
   font-family: "Poppins", sans-serif;
   background: $color-white;
 }
@@ -177,10 +178,27 @@ header {
 
       &::after {
         @include corners("rightTop", $color-green, 21px, 4px, 100%);
+        @include tablet {
+          border-right: 7px solid  $color-green;
+          border-top: 7px solid  $color-green;
+        }
       }
 
       &::before {
         @include corners("leftBot", $color-green, 21px, 4px, 100%);
+        @include tablet {
+          border-left: 7px solid  $color-green;
+          border-bottom: 7px solid  $color-green;
+        }
+      }
+      &::after,
+      &::before {
+        @include mobileXL {
+          width: 31px;
+        }
+        @include desktopS {
+          width: 61px;
+        }
       }
     }
   }

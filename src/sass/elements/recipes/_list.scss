@@ -26,6 +26,10 @@
     font-size: 13px;
     padding: 8px 0;
   }
+  @include tablet {
+    font-size: 14px;
+    padding: 9px;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -59,6 +63,10 @@
       border-right: 5px solid $color-green;
       border-bottom: 5px solid $color-green;
     }
+    @include tablet {
+      border-right: 7px solid $color-green;
+      border-bottom: 7px solid $color-green;
+    }
   }
 
   &::after {
@@ -66,6 +74,10 @@
     @include mobileL {
       border-left: 5px solid $color-green;
       border-bottom: 5px solid $color-green;
+    }
+    @include tablet {
+      border-left: 7px solid $color-green;
+      border-bottom: 7px solid $color-green;
     }
   }
   @include mobileM {
@@ -75,6 +87,10 @@
   @include mobileXL {
     font-size: 13px;
     padding: 8px 0;
+  }
+  @include tablet {
+    font-size: 38px;
+    padding: 3px 0;
   }
 }
 
@@ -136,6 +152,14 @@
       margin: 38px auto 0;
       box-shadow: 0 0 12px $color-green inset;
     }
+    @include tablet {
+      font-size: 46px;
+      padding: 16px 16px;
+      margin: 43px auto 0;
+      box-shadow: 0 0 16px $color-green inset;
+      border: 9px solid $color-green;
+      border-radius: 10px;
+    }
   }
 
   &__products {
@@ -160,16 +184,29 @@
       font-size: 22px;
       padding: 9px 0;
     }
+    @include tablet {
+      border-radius: 0 0 8px 8px;
+      font-size: 26px;
+      padding: 10px 0;
+    }
     .missing {
       color: $color-red;
     }
 
     &::after {
       @include corners("rightBot", $color-green, 25%, 6px, 50%);
+      @include tablet {
+        border-right: 9px solid $color-green;
+        border-bottom: 9px solid $color-green;
+      }
     }
 
     &::before {
       @include corners("leftBot", $color-green, 25%, 6px, 50%);
+      @include tablet {
+        border-left: 9px solid $color-green;
+        border-bottom: 9px solid $color-green;
+      }
     }
   }
 }
