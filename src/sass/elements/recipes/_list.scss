@@ -22,6 +22,10 @@
     font-size: 12px;
     padding: 7px 0;
   }
+  @include mobileXL {
+    font-size: 13px;
+    padding: 8px 0;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -67,6 +71,10 @@
   @include mobileM {
     font-size: 27px;
     padding: 4px 0;
+  }
+  @include mobileXL {
+    font-size: 13px;
+    padding: 8px 0;
   }
 }
 
@@ -122,6 +130,12 @@
       padding: 11px 12px;
       margin: 33px auto 0;
     }
+    @include mobileXL {
+      font-size: 41px;
+      padding: 13px 16px;
+      margin: 38px auto 0;
+      box-shadow: 0 0 12px $color-green inset;
+    }
   }
 
   &__products {
@@ -140,6 +154,11 @@
     @include mobileL {
       font-size: 20px;
       padding: 8px 0;
+      border-radius: 0 0 6px 6px;
+    }
+    @include mobileXL {
+      font-size: 22px;
+      padding: 9px 0;
     }
     .missing {
       color: $color-red;
