@@ -75,10 +75,10 @@ const MyRecipesList = (props) => {
     else if (recipesCategory.includes(props.match.params.type)) {
         return (
             <section className="container recipes">
-                <div className="titleBar recipesListBar">
-                    <h2>Dodaj Przepis</h2>
+                <header className="recipesListHeader">
+                    <h2>Twoje przepisy</h2>
                     <strong>W kategorii <i>{getCategoryText(props.match.params.type)}</i></strong>
-                </div>
+                </header>
 
                 {/*if you click on this button it will redirect you to new recipe form*/}
                 <button className={`addRecipeBtn ${animationClass && "addRecipeBtn__animation"}`} onClick={redirect}>
@@ -95,11 +95,11 @@ const MyRecipesList = (props) => {
                 {/*if you have recipes */}
                 {recipesData.length > 0 &&
 
-                    <section className="recipesList">
+                    <section>
                         <div className="sort sort--green" onClick={handleChangeSorting}>
                             <button>{sorting}</button>
                         </div>
-                        <ul>
+                        <ul className="recipesList">
 
                             {/*render elements which, when clicked, redirect you to a specific recipe*/}
                             {recipesData.map(el => {

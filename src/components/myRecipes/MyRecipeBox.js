@@ -19,9 +19,9 @@ const MyRecipeBox = ({recipe}) => {
     }
     return (
         <li className="recipeBox" onClick={redirect}>
-            <h3 className={`${animationClass && "animatedRedirect--toSingleRecipe2"}`}>
+            <div className={`${animationClass && "animatedRedirect--toSingleRecipe2"}`}>
                 {recipe.title}
-            </h3>
+            </div>
             <div className={`recipeBox__products ${animationClass && "animatedRedirect--toSingleRecipe"}`}>
                 Przejdź
             </div>

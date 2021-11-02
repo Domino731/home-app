@@ -176,11 +176,11 @@ header {
       margin-top: 20px;
 
       &::after {
-        @include corners("rightTop", $color-green, 21px, 5px, 30px);
+        @include corners("rightTop", $color-green, 21px, 4px, 100%);
       }
 
       &::before {
-        @include corners("leftBot", $color-green, 21px, 5px, 30px);
+        @include corners("leftBot", $color-green, 21px, 4px, 100%);
       }
     }
   }

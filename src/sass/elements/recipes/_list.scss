@@ -1,8 +1,9 @@
 .recipesList {
   width: 95%;
+  margin: 0 auto;
 }
 
-.recipesListBar {
+.recipesListHeader {
   background: $color-green;
   color: white;
   display: flex;
@@ -10,13 +11,16 @@
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 0 0 6px $color-green;
-
+  font-size: 10px;
+  letter-spacing: 0.063rem;
+  padding: 5px 0;
   h2 {
-    font-size: 36px;
+    font-size: 3.4em;
+    padding-bottom:0.3em;
   }
 
   strong {
-    font-size: 15px;
+    font-size: 1.5em;
 
     i {
       font-style: italic;
@@ -26,24 +30,23 @@
 }
 
 .addRecipeBtn {
-  font-size: 26px;
   color: $color-green;
-  width: 36%;
-  height: 32px;
+  width: 51%;
   background: white;
   display: block;
   margin: 3px auto;
   position: relative;
-  border-radius: 3px;
+  border-radius: 5px;
   overflow: hidden;
   border: none;
-
+  font-size: 25px;
+  padding: 2px 0;
   &::before {
-    @include corners("rightBot", $color-green, 30px, 5px, 15px);
+    @include corners("rightBot", $color-green, 30%, 4px, 50%);
   }
 
   &::after {
-    @include corners("leftBot", $color-green, 30px, 5px, 15px);
+    @include corners("leftBot", $color-green, 30%, 4px, 50%);
   }
 }
 
@@ -75,42 +78,43 @@
     cursor: pointer;;
   }
 
-  h3 {
-    font-size: 47px;
+ div:first-child {
+    font-size: 31px;
     font-weight: bold;
     width: 95%;
-    padding: 12px;
-    margin: 40px auto;
+    padding: 8px 10px;
+    margin: 24px auto;
     margin-bottom: 0;
-    border-radius: 7px;
+    border-radius: 5px;
     text-align: center;
     word-wrap: break-word;
     background: white;
     color: $color-green;
-    border: 7px solid $color-green
+    border: 6px solid $color-green;
+    box-shadow: 0 0 5px $color-green inset;
+    word-break: break-all;
   }
 
   &__products {
     font-weight: bold;
     color: $color-green;
-    width: 38%;
-    height: 35px;
+    width: 60%;
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding-top: 7px;
-    border-radius: 0 0 7px 7px;
+    padding: 4px 0;
+    border-radius: 0 0 5px 5px;
 
     .missing {
       color: $color-red
     }
 
     &::after {
-      @include corners("rightBot", $color-green, 30px, 7px, 15px);
+      @include corners("rightBot", $color-green, 25%, 6px, 50%);
     }
 
     &::before {
-      @include corners("leftBot", $color-green, 30px, 7px, 15px);
+      @include corners("leftBot", $color-green, 25%, 6px,  50%);
     }
   }
 }
