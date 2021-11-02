@@ -182,6 +182,10 @@ header {
           border-right: 7px solid  $color-green;
           border-top: 7px solid  $color-green;
         }
+        @include laptopS {
+          border-right: 4px solid  $color-green;
+          border-top: 4px solid  $color-green;
+        }
       }
 
       &::before {
@@ -189,6 +193,10 @@ header {
         @include tablet {
           border-left: 7px solid  $color-green;
           border-bottom: 7px solid  $color-green;
+        }
+        @include laptopS {
+          border-left: 4px solid  $color-green;
+          border-bottom: 4px solid  $color-green;
         }
       }
       &::after,

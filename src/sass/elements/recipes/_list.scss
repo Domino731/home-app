@@ -30,6 +30,10 @@
     font-size: 14px;
     padding: 9px;
   }
+  @include laptopS {
+    font-size: 10px;
+    padding: 6px;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -67,6 +71,10 @@
       border-right: 7px solid $color-green;
       border-bottom: 7px solid $color-green;
     }
+    @include laptopS {
+      border-right: 4px solid $color-green;
+      border-bottom: 4px solid $color-green;
+    }
   }
 
   &::after {
@@ -79,6 +87,10 @@
       border-left: 7px solid $color-green;
       border-bottom: 7px solid $color-green;
     }
+    @include laptopS {
+      border-left: 4px solid $color-green;
+      border-bottom: 4px solid $color-green;
+    }
   }
   @include mobileM {
     font-size: 27px;
@@ -90,6 +102,10 @@
   }
   @include tablet {
     font-size: 38px;
+    padding: 3px 0;
+  }
+  @include laptopS {
+    font-size: 29px;
     padding: 3px 0;
   }
 }
@@ -160,6 +176,14 @@
       border: 9px solid $color-green;
       border-radius: 10px;
     }
+    @include laptopS {
+      font-size: 33px;
+      padding: 9px 9px;
+      margin: 33px auto 0;
+      box-shadow: 0 0 11px $color-green inset;
+      border: 6px solid $color-green;
+      border-radius: 4px;
+    }
   }
 
   &__products {
@@ -189,6 +213,11 @@
       font-size: 26px;
       padding: 10px 0;
     }
+    @include laptopS {
+      border-radius: 0 0 3px 3px;
+      font-size: 18px;
+      padding: 5px 0;
+    }
     .missing {
       color: $color-red;
     }
@@ -199,6 +228,10 @@
         border-right: 9px solid $color-green;
         border-bottom: 9px solid $color-green;
       }
+      @include laptopS {
+        border-right: 5px solid $color-green;
+        border-bottom: 5px solid $color-green;
+      }
     }
 
     &::before {
@@ -207,6 +240,14 @@
         border-left: 9px solid $color-green;
         border-bottom: 9px solid $color-green;
       }
+      @include laptopS {
+        border-left: 5px solid $color-green;
+        border-bottom: 5px solid $color-green;
+      }
+    }
+    &::before,
+    &::after {
+      width: 40%;
     }
   }
 }
