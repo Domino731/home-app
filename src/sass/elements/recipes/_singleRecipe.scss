@@ -1,308 +1,38 @@
-.recipe {
-  width: 95%;
-  margin: 0 auto;
-  font-weight: bold;
-
-  &__title {
-    font-size: 47px;
-    font-weight: bold;
-    width: 100%;
-    padding: 12px;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    border-radius: 7px;
-    text-align: center;
-    word-wrap: break-word;
-    background: $color-green;
-    color: white;
-    border: 7px solid #329d52;
-    box-shadow: 0 0 7px $color-green;
-  }
-
-  &__description {
-    width: 100%;
-    position: relative;
-    max-height: 140px;
-    overflow: hidden;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 7px;
-
-    p {
-      text-align: justify-all;
-      font-weight: bold;
-      color: $color-black;
-      padding: 3px;
-      display: block;
-      width: 100%;
-      max-height: 120px;
-      overflow: auto;
-      margin-bottom: 15px;
-      margin-top: 15px;
-    }
-
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-
-    &::before {
-      @include corners("leftTop", $color-green, 30px, 7px,);
-    }
-
-    &::after {
-      @include corners("rightBot", $color-green, 30px, 7px);
-    }
-  }
-
-  &__switchBar {
-    width: 100%;
-    margin-top: 30px;
-    height: 40px;
-    display: flex;
-    border-radius: 7px;
-    overflow: hidden;
-
-    li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 7px;
-      overflow: hidden;
-
-      &:hover {
-        cursor: pointer;;
-      }
-    }
-
-    .noActive {
-      width: 50%;
-      height: 100%;
-    }
-
-    .active {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      span {
-        &::after {
-          @include corners("leftBot", $color-green, 30px, 7px, 10px);
-        }
-
-        &::before {
-          @include corners("rightBot", $color-green, 30px, 7px, 10px);
-        }
-      }
-
-      &::after {
-        @include corners("leftTop", $color-green, 30px, 7px, 10px);
-      }
-
-      &::before {
-        @include corners("rightTop", $color-green, 30px, 7px, 10px);
-      }
-    }
-  }
-
-  &__container {
-    width: 100%;
-    max-height: 400px;
-    margin-top: 30px;
-    position: relative;
-    padding: 15px;
-    border-left: 7px solid $color-green;
-    border-right: 7px solid $color-green;
-    overflow: auto
-  }
-
-  &__instruciton {
-    width: 100%;
-    border: 4px solid $color-blue;
-    border-radius: 50px;
-    overflow: hidden;
-    display: flex;
-    margin: 11px auto;
-    box-shadow: 0 0 5px $color-blue;
-
-    i {
-      width: 16%;
-      color: white;
-      font-size: 44px;
-      margin-left: -3px;
-      background: $color-blue;
-      border-radius: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      float: left;
-    }
-
-    p {
-      width: 87%;
-      padding: 10px;
-      text-align: justify;
-      line-height: 21px;
-    }
-  }
-
-  &__ingredient {
-    width: 100%;
-    background: $color-blue;
-    border: 4px solid $color-blue;
-    border-radius: 100px;
-    overflow: hidden;
-    display: flex;
-    margin: 11px auto;
-    box-shadow: 0 0 5px $color-blue;
-  }
-
-}
-
-.recipe__ingredient {
-  .ingredientName {
-    height: 50px;
-    width: 76%;
-    border-radius: 22px;
-    display: flex;
-    background: white;
-
-    i {
-      width: 62px;
-      height: 50px;
-      color: white;
-      font-size: 30px;
-      margin-left: -3px;
-      background: #30A9DE;
-      border-radius: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      float: left;
-    }
-
-    strong {
-      width: 100%;
-      color: $color-black;
-      display: flex;
-      align-items: center;
-      padding-left: 10px;
-    }
-  }
-
-  .ingredientAmount {
-    width: 24%;
-    height: 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    strong {
-      color: white;
-    }
-  }
-}
-
-.recipe__editBtn {
-
+.recipeHeader {
+  position: absolute;
   width: 100%;
-  background: white;
-  position: relative;
-  overflow: hidden;
-  font-weight: bold;
-  font-size: 29px;
-  border: none;
-  border-radius: 7px;
-  overflow: hidden;
-
-  &--green {
-    margin-top: 30px;
-    color: $color-green;
-    height: 70px;
-    position: relative;
-
-    &::before {
-      @include corners("rightBot", $color-green, 80px, 6px, 50px);
-    }
-
-    &::after {
-      @include corners("leftBot", $color-green, 80px, 6px, 50px);
-    }
-
-    span {
+  height: 153px;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  &__border {
+    position: absolute;
+    width: 100%;
+    height: 114px;
+    border-radius: 53%;
+    transform: translateY(56px);
+    z-index: 0;
+  }
+  &__icon {
+    z-index: 2;
+    height: 122px;
+    width: 122px;
+    transform: translateY(27px);
+    svg {
+      height: 100%;
       width: 100%;
-
-      &::before {
-        @include corners("rightTop", $color-green, 80px, 6px, 50px);
-      }
-
-      &::after {
-        @include corners("leftTop", $color-green, 80px, 6px, 50px);
-      }
     }
   }
-
-  &--red {
-    margin-top: 10px;
-    color: $color-red;
-    height: 50px;
-    position: relative;
-
-    &::before {
-      @include corners("rightBot", $color-red, 80px, 6px, 50px);
-    }
-
-    &::after {
-      @include corners("leftBot", $color-red, 80px, 6px, 50px);
-    }
-
-    span {
-      width: 100%;
-
-      &::before {
-        @include corners("rightTop", $color-red, 80px, 6px, 50px);
-      }
-
-      &::after {
-        @include corners("leftTop", $color-red, 80px, 6px, 50px);
-      }
-    }
-  }
-}
-
-.recipe__editBtn--green span::before,
-.recipe__editBtn--green::before,
-.recipe__editBtn--green span::after,
-.recipe__editBtn--green::after,
-.recipe__editBtn--red span::before,
-.recipe__editBtn--red::before,
-.recipe__editBtn--red span::after,
-.recipe__editBtn--red::after,
-{
-  width: 117px;
-}
-
-.animatedRedirect--editForm {
-
-  &::before {
-    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-  }
-
-  &::after {
-    animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-    cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-  }
-
-  span {
-    &::after {
-      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-    }
-
-    &::before {
-      animation: cornerEffect--BackToCategory1 0.7s ease-in-out forwards,
-      cornerEffect--BackToCategory1_2 0.6s 0.9s ease-in-out forwards;
-    }
+  &__btn {
+    font-size: 15px;
+    padding: 4px 11px;
+    border-radius: 6px;
+    position: absolute;
+    transform: translateY(114px);
+    color: $color-white;
+    letter-spacing: 0.125rem;
+    border: none;
+    box-shadow: 0 0 2px $color-black;
   }
 }
