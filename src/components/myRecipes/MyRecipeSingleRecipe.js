@@ -1,16 +1,18 @@
 //component responsible for a single recipe
-import {connect} from "react-redux";
-import {useEffect, useState} from "react";
-import {useHistory, Redirect} from "react-router-dom";
-import {deleteDataFirestore} from "../../fireBase/deleteDataFirestore";
+import { connect } from "react-redux";
+import { useEffect, useState } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import { deleteDataFirestore } from "../../fireBase/deleteDataFirestore";
 //components
-import {Loading} from "../loading/Loading";
+import { Loading } from "../loading/Loading";
 import { getRecipeData } from "../../fireBase/getRecipeData";
 import { auth } from "../../fireBase/fireBase";
 import { changeRecipeDataRDX } from "../../redux/actions/recipeData.actions";
 import { changeRecipeStylesRDX } from "../../redux/actions/recipeStyles.actions";
 import { getRecipeStyles } from "../../fireBase/getRecipeStyles";
 import SingleRecipeHeader from "./SingleRecipeHeader";
+import { setToDos } from "../../redux/actions/firebaseData.actions";
+import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 // props //
 // AllRecipes --> all recipes from application store
 // id --> to get a specific recipe, and delete him in deleteDataFirestore
@@ -18,22 +20,28 @@ import SingleRecipeHeader from "./SingleRecipeHeader";
 const MyRecipeSingleRecipe = (props) => {
 
     // fetch data about specific recipe from firestore 
-    useEffect(()=> {
+    useEffect(() => {
         return auth()
-        .onAuthStateChanged(user => user && getRecipeData(user.uid, props.match.params.id, props.changeRecipeData )) 
-    },[ props.match.params.id]);
+            .onAuthStateChanged(user => {
+                if (user) {
+
+                    return getRecipeData(user.uid, props.match.params.id, props.changeRecipeData)
+                        .then(() => getDataFromFirestore('ToDo', user.uid, props.setToDos))
+                }
+            })
+    }, [props.match.params.id]);
 
     // fetch data about styles of particular type of recipe (svg icon and color) 
-    useEffect(()=> {
-       props.recipe && getRecipeStyles(props.recipe.type, props.changeRecipeStyles)
+    useEffect(() => {
+        props.recipe && getRecipeStyles(props.recipe.type, props.changeRecipeStyles)
     }, [props.recipe]);
 
-    if(props.recipe === null || props.recipeStyles === null){
-        return <Loading/>
+    if (props.recipe === null || props.recipeStyles === null || props.tasks === null) {
+        return <Loading />
     }
 
     return <main className="container">
-           <SingleRecipeHeader/>
+        <SingleRecipeHeader />
     </main>
 }
 
@@ -41,10 +49,12 @@ const MyRecipeSingleRecipe = (props) => {
 // username so as to delete recipe in deleteDataFirestore
 const mapDispatchToProps = dispatch => ({
     changeRecipeData: data => dispatch(changeRecipeDataRDX(data)),
-    changeRecipeStyles: data => dispatch(changeRecipeStylesRDX(data))
+    changeRecipeStyles: data => dispatch(changeRecipeStylesRDX(data)),
+    setToDos: data => dispatch(setToDos(data))
 })
 const mapStateToProps = state => ({
     recipe: state.recipeData,
-    recipeStyles: state.recipeStyles
+    recipeStyles: state.recipeStyles,
+    tasks: state.toDo
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MyRecipeSingleRecipe)
