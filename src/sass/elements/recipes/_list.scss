@@ -14,9 +14,13 @@
   font-size: 10px;
   letter-spacing: 0.063rem;
   padding: 5px 0;
+  @include mobileM {
+    font-size: 11px;
+    padding: 6px 0;
+  }
   h2 {
     font-size: 3.4em;
-    padding-bottom:0.3em;
+    padding-bottom: 0.3em;
   }
 
   strong {
@@ -48,6 +52,10 @@
   &::after {
     @include corners("leftBot", $color-green, 30%, 4px, 50%);
   }
+  @include mobileM {
+    font-size: 27px;
+    padding: 4px 0;
+  }
 }
 
 .addRecipeBtn__animation {
@@ -75,10 +83,10 @@
   animation: showEffect 0.8s;
 
   &:hover {
-    cursor: pointer;;
+    cursor: pointer;
   }
 
- div:first-child {
+  div:first-child {
     font-size: 31px;
     font-weight: bold;
     width: 95%;
@@ -93,6 +101,10 @@
     border: 6px solid $color-green;
     box-shadow: 0 0 5px $color-green inset;
     word-break: break-all;
+    @include mobileM {
+      font-size: 33px;
+      padding: 9px 10px;
+    }
   }
 
   &__products {
@@ -104,9 +116,12 @@
     text-align: center;
     padding: 4px 0;
     border-radius: 0 0 5px 5px;
-
+    @include mobileM {
+      font-size: 18px;
+      padding: 6px 0;
+    }
     .missing {
-      color: $color-red
+      color: $color-red;
     }
 
     &::after {
@@ -114,7 +129,7 @@
     }
 
     &::before {
-      @include corners("leftBot", $color-green, 25%, 6px,  50%);
+      @include corners("leftBot", $color-green, 25%, 6px, 50%);
     }
   }
 }
