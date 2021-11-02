@@ -48,6 +48,9 @@
       font-size: 12px;
       margin-top: 26px;
     }
+    @include laptopXL {
+      font-size: 13px;
+    }
   }
   &__label {
     width: 100%;
@@ -104,6 +107,9 @@
       border-radius: 8px;
       padding: 4px 8px;
     }
+    @include laptopXL {
+      padding: 4px 10px;
+    }
     &--ingredientAmount {
       width: 134px;
     }
@@ -124,6 +130,9 @@
       @include laptopL {
         height: 44px;
       }
+      @include laptopXL {
+        height: 47px;
+      }
     }
     &--textarea {
       height: 270px;
@@ -135,6 +144,9 @@
       }
       @include laptopL {
         height: 202px;
+      }
+      @include laptopXL {
+        height: 280px;
       }
     }
     &--instruction {
@@ -151,6 +163,9 @@
       @include laptopL {
         height: 202px;
       }
+      @include laptopXL {
+        height: 280px;
+      }
     }
     &--notes {
       height: 210px;
@@ -162,6 +177,9 @@
       }
       @include laptopL {
         height: 299px;
+      }
+      @include laptopXL {
+        height: 357px;
       }
     }
   }
@@ -202,6 +220,10 @@
       font-size: 25px;
       padding: 8px 0;
     }
+    @include laptopXL {
+      font-size: 28px;
+      padding: 10px 0;
+    }
     &--newItem {
       margin-top: 10px;
       background: #00b09b; /* fallback for old browsers */
@@ -227,6 +249,9 @@
       @include laptopL {
         margin-top: 26px;
       }
+      @include laptopXL {
+        margin-top: 36px;
+      }
     }
     &--prevStep {
       margin-top: 10px;
@@ -242,6 +267,9 @@
       }
       @include laptopL {
         margin-top: 14px;
+      }
+      @include laptopXL {
+        margin-top: 17px;
       }
     }
     &--backToSummary {
@@ -271,6 +299,9 @@
       font-size: 13px;
       margin-top: 5px;
     }
+    @include laptopXL {
+      font-size: 14px;
+    }
   }
   &__listTitle {
     margin-top: 23px;
@@ -286,6 +317,10 @@
     @include laptopL {
       margin-top: 16px;
       font-size: 21px;
+    }
+    @include laptopXL {
+      margin-top: 19px;
+      font-size: 22px;
     }
   }
   &__listItem {
@@ -453,6 +488,11 @@
       border-radius: 8px;
       border: 4px solid $color-green;
     }
+    @include laptopXL {
+      padding: 0.5em 1.7em;
+      border-radius: 10px;
+      border: 5px solid $color-green;
+    }
   }
 }
 
@@ -477,6 +517,10 @@
   @include laptopL {
     font-size: 20px;
     margin-top: 18px;
+  }
+  @include laptopXL {
+    font-size: 22px;
+    margin-top: 24px;
   }
 }
 .addRecipe__progress {
@@ -509,6 +553,11 @@
     font-size: 15px;
     width: 222px;
     margin-bottom: 18px;
+  }
+  @include laptopXL {
+    font-size: 17px;
+    width: 244px;
+    margin-bottom: 24px;
   }
   span {
     display: block;
@@ -596,6 +645,9 @@
   @include laptopL {
     font-size: 15px;
   }
+  @include laptopXL {
+    font-size: 16px;
+  }
   &__title {
     font-size: 21px;
     text-align: center;
@@ -626,6 +678,11 @@
       font-size: 33px;
       border-bottom: 4px solid $color-green;
       padding-bottom: 7px;
+    }
+    @include laptopXL {
+      font-size: 35px;
+      border-bottom: 5px solid $color-green;
+      padding-bottom: 8px;
     }
   }
   &__item {
@@ -678,6 +735,9 @@
     @include laptopL {
       font-size: 14px;
       margin-top: 13px;
+    }
+    @include laptopXL {
+      font-size: 16px;
     }
   }
   &__listItem {
