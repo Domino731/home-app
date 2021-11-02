@@ -190,6 +190,10 @@ header {
           border-right: 6px solid  $color-green;
           border-top: 6px solid  $color-green;
         }
+        @include desktopS {
+          border-right: 9px solid  $color-green;
+          border-top: 9px solid  $color-green;
+        }
       }
 
       &::before {
@@ -205,6 +209,10 @@ header {
         @include laptopL {
           border-left: 6px solid  $color-green;
           border-bottom: 6px solid  $color-green;
+        }
+        @include desktopS {
+          border-left: 9px solid  $color-green;
+          border-bottom: 9px solid  $color-green;
         }
       }
       &::after,

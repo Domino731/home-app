@@ -38,6 +38,10 @@
     font-size: 11px;
     padding: 7px;
   }
+  @include desktopS {
+    font-size: 12px;
+    padding: 8px;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -83,6 +87,10 @@
       border-right: 6px solid $color-green;
       border-bottom: 6px solid $color-green;
     }
+    @include desktopS {
+      border-right: 9px solid $color-green;
+      border-bottom: 9px solid $color-green;
+    }
   }
 
   &::after {
@@ -102,6 +110,10 @@
     @include laptopL {
       border-left: 6px solid $color-green;
       border-bottom: 6px solid $color-green;
+    }
+    @include desktopS {
+      border-left: 9px solid $color-green;
+      border-bottom: 9px solid $color-green;
     }
   }
   @include mobileM {
@@ -206,6 +218,14 @@
       border-radius: 8px;
       border: 8px solid $color-green;
     }
+    @include desktopS {
+      font-size: 43px;
+      padding: 16px 12px;
+      border-radius: 10px;
+      border: 10px solid #329d52;
+      box-shadow: 0 0 14px $color-green inset;
+      margin: 43px auto 0;
+    }
   }
 
   &__products {
@@ -245,6 +265,11 @@
       font-size: 22px;
       padding: 9px 0;
     }
+    @include desktopS {
+      border-radius: 0 0 8px 8px;
+      font-size: 27px;
+      padding: 12px 0;
+    }
     .missing {
       color: $color-red;
     }
@@ -263,6 +288,10 @@
         border-right: 6px solid $color-green;
         border-bottom: 6px solid $color-green;
       }
+      @include desktopS {
+        border-right: 9px solid $color-green;
+        border-bottom: 9px solid $color-green;
+      }
     }
 
     &::before {
@@ -278,6 +307,10 @@
       @include laptopL {
         border-left: 6px solid $color-green;
         border-bottom: 6px solid $color-green;
+      }
+      @include desktopS {
+        border-left: 9px solid $color-green;
+        border-bottom: 9px solid $color-green;
       }
     }
     &::before,
