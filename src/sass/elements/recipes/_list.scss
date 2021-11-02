@@ -34,6 +34,10 @@
     font-size: 10px;
     padding: 6px;
   }
+  @include laptopL {
+    font-size: 11px;
+    padding: 7px;
+  }
   h2 {
     font-size: 3.4em;
     padding-bottom: 0.3em;
@@ -75,6 +79,10 @@
       border-right: 4px solid $color-green;
       border-bottom: 4px solid $color-green;
     }
+    @include laptopL {
+      border-right: 6px solid $color-green;
+      border-bottom: 6px solid $color-green;
+    }
   }
 
   &::after {
@@ -91,6 +99,10 @@
       border-left: 4px solid $color-green;
       border-bottom: 4px solid $color-green;
     }
+    @include laptopL {
+      border-left: 6px solid $color-green;
+      border-bottom: 6px solid $color-green;
+    }
   }
   @include mobileM {
     font-size: 27px;
@@ -106,6 +118,10 @@
   }
   @include laptopS {
     font-size: 29px;
+    padding: 3px 0;
+  }
+  @include laptopL {
+    font-size: 32px;
     padding: 3px 0;
   }
 }
@@ -184,6 +200,12 @@
       border: 6px solid $color-green;
       border-radius: 4px;
     }
+    @include laptopL {
+      font-size: 37px;
+      padding: 12px 9px;
+      border-radius: 8px;
+      border: 8px solid $color-green;
+    }
   }
 
   &__products {
@@ -218,6 +240,11 @@
       font-size: 18px;
       padding: 5px 0;
     }
+    @include laptopL {
+      border-radius: 0 0 6px 6px;
+      font-size: 22px;
+      padding: 9px 0;
+    }
     .missing {
       color: $color-red;
     }
@@ -232,6 +259,10 @@
         border-right: 5px solid $color-green;
         border-bottom: 5px solid $color-green;
       }
+      @include laptopL {
+        border-right: 6px solid $color-green;
+        border-bottom: 6px solid $color-green;
+      }
     }
 
     &::before {
@@ -243,6 +274,10 @@
       @include laptopS {
         border-left: 5px solid $color-green;
         border-bottom: 5px solid $color-green;
+      }
+      @include laptopL {
+        border-left: 6px solid $color-green;
+        border-bottom: 6px solid $color-green;
       }
     }
     &::before,
