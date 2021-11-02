@@ -2,6 +2,9 @@
   &__title {
     border-bottom: 4px solid $color-green;
     color: $color-green;
+    @include mobileXL {
+      border-bottom: 4px solid $color-green;
+    }
   }
   &__step {
     width: 100%;
@@ -370,6 +373,9 @@
       font-size: 26px;
       padding-bottom: 6px;
       border-bottom: 4px solid $color-green;
+    }
+    @include mobileXL {
+      font-size: 28px;
     }
   }
   &__item {
