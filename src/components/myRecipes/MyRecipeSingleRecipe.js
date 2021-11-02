@@ -13,6 +13,7 @@ import { getRecipeStyles } from "../../fireBase/getRecipeStyles";
 import SingleRecipeHeader from "./SingleRecipeHeader";
 import { setToDos } from "../../redux/actions/firebaseData.actions";
 import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
+import SingleRecipeOverview from "./SingleRecipeOverview";
 // props //
 // AllRecipes --> all recipes from application store
 // id --> to get a specific recipe, and delete him in deleteDataFirestore
@@ -40,8 +41,9 @@ const MyRecipeSingleRecipe = (props) => {
         return <Loading />
     }
 
-    return <main className="container">
-        <SingleRecipeHeader />
+    return <main className="container container--singleRecipe">
+        <SingleRecipeHeader/>
+         <SingleRecipeOverview/>
     </main>
 }
 

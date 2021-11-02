@@ -12,7 +12,8 @@ import { db } from "./fireBase"
             // doc.data() is never undefined for query doc snapshots
             console.log()
             const data = {
-                color: doc.data().color,
+                colorPrimary: doc.data().colorPrimary,
+                colorSecondary: doc.data().colorSecondary,
                 icon: doc.data().icon
             }
             saveData(data)

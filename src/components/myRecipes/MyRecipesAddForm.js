@@ -17,7 +17,9 @@ const MyRecipesAddForm = (props) => {
         type: props.match.params.type,
         notes: '',
         kcal: '',
-        notes: ''
+        notes: '',
+        servingWeight: '',
+        prepareTime: ''
     })
     const [redirect, setRedirect] = useState(false)
     const [instruction, setInstruction] = useState('');
@@ -134,7 +136,7 @@ const MyRecipesAddForm = (props) => {
 
                     <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">
                         {/* detect if user enter description */}
-                        {data.description.length >= 1 ? `Dodaj opis` : `Bez opisu`}
+                        {data.description.length >= 4 ? `Dodaj opis` : `Bez opisu`}
                     </button>
 
                     {/* back to previous step - change title  */}
@@ -264,7 +266,13 @@ const MyRecipesAddForm = (props) => {
                         name='kcal'
                         value={data.kcal}
                         className='addRecipe__input addRecipe__input--small' />
-
+                    <strong>Jedna porcja (waga w gramach)</strong>
+                    <input
+                        onChange={handleChangeData}
+                        type='number'
+                        name='servingWeight'
+                        value={data.servingWeight}
+                        className='addRecipe__input addRecipe__input--small' />
                     <button onClick={nextStep} className="addRecipe__btn addRecipe__btn--nextStep">Przejdz do podsumowania</button>
                     {/* back to previous step - change title  */}
                     <button onClick={prevStep} className="addRecipe__btn addRecipe__btn--prevStep">
@@ -288,6 +296,11 @@ const MyRecipesAddForm = (props) => {
                     <div className="recipeSummary__item">
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Kaloryczność na 100 gramów<i className="fas fa-edit" /></h3>
                         <p className="recipeSummary__text">{data.kcal ? data.kcal + ' kcal' : `Nie dodano kaloryczności`}</p>
+                    </div>
+
+                    <div className="recipeSummary__item">
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Jedna porcja<i className="fas fa-edit" /></h3>
+                        <p className="recipeSummary__text">{data.servingWeight ? data.servingWeight + 'G' : `Nie dodano wagi dla jednej porcji`}</p>
                     </div>
 
                     <div className="recipeSummary__item">

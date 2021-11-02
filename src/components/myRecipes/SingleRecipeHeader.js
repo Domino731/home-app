@@ -18,14 +18,16 @@ const SingleRecipeHeader = ({ recipe, recipeStyles, tasks }) => {
     const handleAddNewTask = () => {
         return addNewElement(auth().currentUser.uid, "ToDo", task)
     }
-    const styles = {
-        backgroundColor: recipeStyles.color
+    const bgColorPrimary = {
+        backgroundColor: recipeStyles.colorPrimary
     }
-
-    return <header className="recipeHeader" style={styles}>
-        <span className="recipeHeader__border" style={styles} />
+    const bgColorSecondary = {
+        backgroundColor: recipeStyles.colorSecondary
+    }
+    return <header className="recipeHeader" style={bgColorPrimary}>
+        <span className="recipeHeader__border" style={bgColorPrimary} />
         <div className="recipeHeader__icon" dangerouslySetInnerHTML={{ __html: recipeStyles.icon }}></div>
-        <button className="recipeHeader__btn" style={styles} onClick={handleAddNewTask}>
+        <button className="recipeHeader__btn" style={bgColorSecondary} onClick={handleAddNewTask}>
             {onTasksList ? `Usuń z listy zadań` : `Dodaj do listy zadań`}
         </button>
     </header>
