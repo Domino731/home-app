@@ -156,6 +156,10 @@
       transform: translateY(250px);
       font-size: 14px;
     }
+    @include laptopL {
+      transform: translateY(246px);
+      font-size: 16px;
+    }
   }
 }
 .recipe {
@@ -191,6 +195,10 @@
   @include laptopM {
     padding-top: 18px;
     font-size: 12px;
+  }
+  @include laptopL {
+    padding-top: 24px;
+    font-size: 13px;
   }
   &__title {
     text-align: center;
@@ -245,6 +253,9 @@
       @include laptopS {
         margin-top: 14px;
       }
+      @include laptopL {
+        margin-top: 20px;
+      }
     }
     div:first-child {
       font-size: 2.2em;
@@ -271,6 +282,9 @@
   @include laptopM {
     margin-top: 34px;
   }
+  @include laptopL {
+    margin-top: 38px;
+  }
   fieldset {
     display: flex;
     justify-content: space-between;
@@ -288,6 +302,9 @@
     }
     @include laptopS {
       margin-bottom: 14px;
+    }
+    @include laptopL {
+      margin-bottom: 21px;
     }
   }
   &__checkboxActive span {
@@ -332,6 +349,9 @@
     padding: 7px 0;
     font-size: 20px;
   }
+  @include laptopL {
+    font-size: 22px;
+  }
   input {
     position: absolute;
     top: 0;
@@ -355,6 +375,10 @@
           border-right: 3px solid $color-black;
           border-bottom: 3px solid $color-black;
         }
+        @include laptopL {
+          border-right: 5px solid $color-black;
+          border-bottom: 5px solid $color-black;
+        }
       }
       &::before {
         @include corners("leftTop", $color-black, 9px, 3px, 9px);
@@ -369,6 +393,10 @@
         @include laptopS {
           border-left: 3px solid $color-black;
           border-top: 3px solid $color-black;
+        }
+        @include laptopL {
+          border-left: 5px solid $color-black;
+          border-top: 5px solid $color-black;
         }
       }
       &::before,
@@ -392,6 +420,10 @@
         @include laptopM {
           width: 20px;
           height: 20px;
+        }
+        @include laptopL {
+          width: 22px;
+          height: 22px;
         }
       }
     }
@@ -419,6 +451,10 @@
         border-right: 3px solid #adb5bd;
         border-bottom: 3px solid #adb5bd;
       }
+      @include laptopL {
+        border-right: 5px solid #adb5bd;
+        border-bottom: 5px solid #adb5bd;
+      }
     }
     &::before {
       transition: 0.2s;
@@ -435,6 +471,10 @@
       @include laptopS {
         border-left: 3px solid #adb5bd;
         border-top: 3px solid #adb5bd;
+      }
+      @include laptopL {
+        border-left: 5px solid #adb5bd;
+        border-top: 5px solid #adb5bd;
       }
     }
     &::before,
@@ -458,6 +498,10 @@
       @include laptopM {
         height: 12px;
         width: 12px;
+      }
+      @include laptopL {
+        height: 14px;
+        width: 14px;
       }
     }
   }
@@ -483,6 +527,9 @@
     }
     @include laptopM {
       font-size: 12px;
+    }
+    @include laptopL {
+      font-size: 13px;
     }
   }
   &__listItem {
@@ -547,6 +594,10 @@
       font-size: 12px;
       margin: 6px 6px;
     }
+    @include laptopL {
+      font-size: 13px;
+      margin: 7px 7px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -596,6 +647,10 @@
       padding-top: 10px;
       font-size: 17px;
     }
+    @include laptopL {
+      padding-top: 12px;
+      font-size: 19px;
+    }
   }
 }
 .recipeOptions {
@@ -639,6 +694,10 @@
     @include laptopM {
       font-size: 24px;
     }
+    @include laptopL {
+      border-radius: 8px;
+      font-size: 25px;
+    }
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
@@ -677,6 +736,10 @@
     }
     @include laptopM {
       padding: 14px;
+    }
+    @include laptopL {
+      border-radius: 5px;
+      padding: 16px;
     }
     &::after {
       position: absolute;
@@ -721,6 +784,10 @@
         height: 37px;
         width: 37px;
       }
+      @include laptopL {
+       height: 41px;
+       width: 41px;
+      }
     }
   }
   &__title {
@@ -747,6 +814,9 @@
     @include laptopM {
       font-size: 24px;
     }
+    @include laptopL {
+      font-size: 25px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -768,6 +838,9 @@
     }
     @include laptopM {
       margin-top: 16px;
+    }
+    @include laptopL {
+      margin-top: 22px;
     }
   }
   &__btn {
@@ -802,6 +875,10 @@
     }
     @include laptopM {
       font-size: 24px;
+    }
+    @include laptopL {
+      font-size: 25px;
+      border-radius: 8px;
     }
     &--delete {
       background: $color-red;
@@ -838,4 +915,7 @@
 }
 @include laptopS {
   @include setCornersForConfirmDeleteBox(4px);
+}
+@include laptopL {
+  @include setCornersForConfirmDeleteBox(6px);
 }
