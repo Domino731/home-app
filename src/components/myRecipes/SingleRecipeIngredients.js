@@ -3,14 +3,16 @@ import { connect } from "react-redux"
 const SingleRecipeIngredients = ({products, recipe, recipeStyles}) => {
     console.log(products)
     /** background color - primary */
-    const itemBgColor = {
-            backgroundColor: recipeStyles.colorPrimary
+    const styles = {
+            backgroundColor: recipeStyles.colorPrimary,
+            boxShadow: `0 0 0.2em ${recipeStyles.colorPrimary}, 
+            0 0 1.3em ${recipeStyles.colorSecondary} inset`
     }
     return <div className="recipeIngredients">
         {recipe.ingredients.map((el,num) => {
              // check if user has particualr ingredient in his kitchen
             const productIndex = products.findIndex(prod => prod.name === el.name)
-            return <div className="recipeIngredients__item" style={itemBgColor}>
+            return <div className="recipeIngredients__item" style={styles}>
                   <div className="recipeIngredients__name">{el.name}</div>
                   <div className="recipeIngredients__amount">
                       <strong>{el.amount} {el.unit} / &nbsp;</strong>

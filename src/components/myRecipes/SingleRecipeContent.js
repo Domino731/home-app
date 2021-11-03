@@ -3,8 +3,9 @@ import { connect } from "react-redux"
 import SingleRecipeIngredients from "./SingleRecipeIngredients";
 import SingleRecipeInstructions from "./SingleRecipeInstructions";
 import SingleRecipeNotes from "./SingleRecipeNotes";
+import SingleRecipeOptions from "./SingleRecipeOptions";
 const SingleRecipeContent = ({ recipe, recipeStyles }) => {
-    const [selectedContent, setSelectedContent] = useState('notes');
+    const [selectedContent, setSelectedContent] = useState('options');
     const handleChangeContent = (e) => setSelectedContent(e.target.value);
 
     return <section className="recipe__item recipeContent">
@@ -34,6 +35,7 @@ const SingleRecipeContent = ({ recipe, recipeStyles }) => {
         {selectedContent === 'instructions' && <SingleRecipeInstructions />}
         {selectedContent === 'ingredients' && <SingleRecipeIngredients />}
         {selectedContent === 'notes' && <SingleRecipeNotes/>}
+        {selectedContent === 'options' && <SingleRecipeOptions/>}
     </section>
 }
 const mapStateToProps = state => ({

@@ -206,3 +206,22 @@
     word-spacing: 0.125rem;
   }
 }
+.recipeOptions {
+  display: flex;
+  justify-content: space-between;
+  &__btn {
+    border: none;
+    background: transparent;
+    width: 48%;
+    font-weight: bold;
+    padding: 26px 0;
+    font-size: 17px;
+    border-radius: 7px;
+    letter-spacing: 0.063rem;
+    color: $color-white;
+    &--delete {
+      background: $color-red;
+      box-shadow: 0 0 0.1em $color-red;
+    }
+  }
+}
