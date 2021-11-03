@@ -25,7 +25,10 @@
     height: 284px;
   }
   @include laptopXL {
-    height: 308px;
+    height: 289px;
+  }
+  @include desktopS {
+    height: 304px;
   }
   &__item {
     display: flex;
@@ -173,8 +176,14 @@
     }
     @include laptopXL {
       padding: 6px 234px;
-      transform: translateY(270px);
+      transform: translateY(250px);
       font-size: 17px;
+    }
+    @include desktopS {
+      padding: 7px 322px;
+      transform: translateY(260px);
+      font-size: 18px;
+      border-radius: 12px;
     }
   }
 }
@@ -219,6 +228,10 @@
   @include laptopXL {
     padding-top: 41px;
     font-size: 14px;
+  }
+  @include desktopS {
+    padding-top: 43px;
+    font-size: 15px;
   }
   &__title {
     text-align: center;
@@ -279,6 +292,9 @@
       @include laptopXL {
         margin-top: 27px;
       }
+      @include desktopS {
+        margin-top: 30px;
+      }
     }
     div:first-child {
       font-size: 2.2em;
@@ -334,6 +350,9 @@
     }
     @include laptopXL {
       margin-bottom: 25px;
+    }
+    @include desktopS {
+      margin-bottom: 27px;
     }
   }
   &__checkboxActive span {
@@ -411,6 +430,10 @@
           border-right: 5px solid $color-black;
           border-bottom: 5px solid $color-black;
         }
+        @include desktopS {
+          border-right: 7px solid $color-black;
+          border-bottom: 7px solid $color-black;
+        }
       }
       &::before {
         @include corners("leftTop", $color-black, 9px, 3px, 9px);
@@ -429,6 +452,10 @@
         @include laptopL {
           border-left: 5px solid $color-black;
           border-top: 5px solid $color-black;
+        }
+        @include desktopS {
+          border-left: 7px solid $color-black;
+          border-top: 7px solid $color-black;
         }
       }
       &::before,
@@ -491,6 +518,10 @@
         border-right: 5px solid #adb5bd;
         border-bottom: 5px solid #adb5bd;
       }
+      @include desktopS {
+        border-right: 7px solid #adb5bd;
+        border-bottom: 7px solid #adb5bd;
+      }
     }
     &::before {
       transition: 0.2s;
@@ -511,6 +542,10 @@
       @include laptopL {
         border-left: 5px solid #adb5bd;
         border-top: 5px solid #adb5bd;
+      }
+      @include desktopS {
+        border-left: 7px solid #adb5bd;
+        border-top: 7px solid #adb5bd;
       }
     }
     &::before,
@@ -574,6 +609,9 @@
     @include laptopXL {
       font-size: 14px;
     }
+    @include desktopS {
+      font-size: 15px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
@@ -589,6 +627,9 @@
     }
     @include laptopXL {
       padding: 8px 0;
+    }
+    @include desktopS {
+      padding: 9px 0;
     }
   }
   &__listNumber {
@@ -648,6 +689,9 @@
       font-size: 14px;
       margin: 8px 8px;
     }
+    @include desktopS {
+      font-size: 15px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -705,6 +749,10 @@
       padding-top: 14px;
       font-size: 20px;
     }
+    @include desktopS {
+      padding-top: 16px;
+      font-size: 21px;
+    }
   }
 }
 .recipeOptions {
@@ -755,6 +803,10 @@
     @include laptopXL {
       font-size: 27px;
     }
+    @include desktopS {
+      font-size: 28px;
+      border-radius: 11px;
+    }
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
@@ -797,6 +849,9 @@
     @include laptopL {
       border-radius: 5px;
       padding: 16px;
+    }
+    @include desktopS {
+      padding: 21px;
     }
     &::after {
       position: absolute;
@@ -845,6 +900,10 @@
         height: 41px;
         width: 41px;
       }
+      @include desktopS {
+        width: 48px;
+        height: 48px;
+      }
     }
   }
   &__title {
@@ -874,6 +933,9 @@
     @include laptopL {
       font-size: 25px;
     }
+    @include desktopS {
+      font-size: 27px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -898,6 +960,9 @@
     }
     @include laptopL {
       margin-top: 22px;
+    }
+    @include desktopS {
+      margin-top: 26px;
     }
   }
   &__btn {
@@ -937,6 +1002,10 @@
       font-size: 25px;
       border-radius: 8px;
     }
+    @include desktopS {
+      font-size: 26px;
+      border-radius: 11px;
+    }
     &--delete {
       background: $color-red;
     }
@@ -975,4 +1044,7 @@
 }
 @include laptopL {
   @include setCornersForConfirmDeleteBox(6px);
+}
+@include desktopS {
+  @include setCornersForConfirmDeleteBox(9px);
 }

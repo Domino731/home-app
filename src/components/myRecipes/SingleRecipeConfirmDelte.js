@@ -15,12 +15,12 @@ const SingleRecipeConfirmDelte = ({recipe, changeDeleteRecipeFlag}) => {
        return deleteDataFirestore(recipe.id, auth().currentUser.uid, "recipes")
        .then(()=> {
            // redirect user to list with the same type of deleted recipe
-        window.location.replace(`/myRecipes/${recipeType}`)
+        window.location.replace(`/myRecipes/${recipeType}`);
        });
     }
     return <div className='recipeDelete'>
         <div className="recipeDelete__item">
-               <h2  className="recipeDelete__title">Czy na pewno chcesz usunąć ten przepis ?</h2>
+               <h2  className="recipeDelete__title">Czy na pewno chcesz usunąć ten przepis?</h2>
                <div className="recipeDelete__buttonsWrapper">
                     <button className="recipeDelete__btn recipeDelete__btn--delete" onClick={handleDeleteRecipe}>Usuń przepis</button>
                     <button className="recipeDelete__btn recipeDelete__btn--cancel" onClick={handleReturnToRecipe}>Nie usuwaj</button>
@@ -31,8 +31,8 @@ const SingleRecipeConfirmDelte = ({recipe, changeDeleteRecipeFlag}) => {
 }
 const mapStateToProps = state => ({
     recipe: state.recipeData
-})
+});
 const mapDispatchToProps = dispatch => ({
     changeDeleteRecipeFlag: boolean => dispatch(changeDeleteRecipeFlagRDX(boolean))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(SingleRecipeConfirmDelte)
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SingleRecipeConfirmDelte);

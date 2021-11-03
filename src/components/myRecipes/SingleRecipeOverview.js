@@ -18,7 +18,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
                 <div style={colorPrimary}>{recipe.prepareTime}</div>
                 <div>MIN</div>
             </div>}
-            <div className="recipeOverview__box recipeOverview__box--mid">
+            <div className={`recipeOverview__box ${(recipe.prepareTime && recipe.kcal) ? `recipeOverview__box--mid` : ``}`}>
                 <div style={colorPrimary}>{recipe.ingredients.length}</div>
                 <div>Ilość Składników</div>
             </div>
