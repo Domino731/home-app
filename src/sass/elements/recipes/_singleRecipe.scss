@@ -6,6 +6,9 @@
   z-index: 1;
   display: flex;
   justify-content: center;
+  @include mobileM {
+    height: 277px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -13,6 +16,9 @@
     height: 140px;
     left: 0;
     top: 0;
+    @include mobileM {
+      height: 155px;
+    }
   }
   &__border {
     left: 0;
@@ -22,6 +28,12 @@
     border-radius: 53%;
     transform: translateY(78px);
     z-index: 0;
+    z-index: -1;
+    box-shadow: 0 0 10px $color-black;
+    @include mobileM {
+      transform: translateY(85px);
+      height: 130px;
+    }
   }
   &__icon {
     z-index: 2;
@@ -32,17 +44,27 @@
       height: 100%;
       width: 100%;
     }
+    @include mobileM {
+      height: 144px;
+      width: 144px;
+      transform: translateY(38px);
+    }
   }
   &__btn {
     font-size: 15px;
     padding: 4px 11px;
-    border-radius: 6px;
+    border-radius: 4px;
     position: absolute;
     transform: translateY(221px);
     color: $color-white;
     letter-spacing: 0.125rem;
     border: none;
     box-shadow: 0 0 2px $color-black;
+    @include mobileM {
+      transform: translateY(239px);
+      font-size: 16px;
+      padding: 5px 28px;
+    }
   }
 }
 .recipe {
@@ -55,6 +77,10 @@
   font-size: 10px;
   word-break: break-all;
   padding-top: 22px;
+  @include mobileM {
+    padding-top: 30px;
+    font-size: 11px;
+  }
   &__title {
     text-align: center;
     font-size: 1.7em;
@@ -84,8 +110,8 @@
   }
   &__box {
     text-align: center;
-    &--mid{
-     margin-top: 17px;
+    &--mid {
+      margin-top: 17px;
     }
     div:first-child {
       font-size: 2.2em;
@@ -125,6 +151,10 @@
   position: relative;
   padding: 4px 0;
   font-size: 13px;
+  @include mobileM {
+    padding: 5px 0;
+    font-size: 14px;
+  }
   input {
     position: absolute;
     top: 0;
@@ -159,12 +189,22 @@
       position: absolute;
       @include corners("leftTop", #adb5bd, 6px, 2px, 6px);
     }
+    &::before,
+    &::after {
+      @include mobileM {
+        width: 8px;
+        height: 8px;
+      }
+    }
   }
 }
 .recipeInstructions {
   word-break: break-all;
   &__list {
     font-size: 10px;
+    @include mobileM {
+      font-size: 11px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
@@ -175,6 +215,9 @@
     i {
       font-size: 0.9em;
       padding-right: 0.5em;
+      @include mobileM {
+        padding-right: 0.3em;
+      }
     }
   }
 }
@@ -190,6 +233,10 @@
     padding: 0.3em 1em;
     text-align: center;
     flex-grow: 1;
+    @include mobileM {
+      font-size: 11px;
+      margin: 4px 4px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -206,11 +253,18 @@
 }
 .recipeNotes {
   padding: 5px;
+  @include mobileM {
+    padding: 6px;
+  }
   &__item {
     padding-top: 4px;
     font-size: 12px;
     letter-spacing: 0.063rem;
     word-spacing: 0.125rem;
+    @include mobileM {
+      padding-top: 5px;
+      font-size: 13px;
+    }
   }
 }
 .recipeOptions {
@@ -221,11 +275,15 @@
     background: transparent;
     width: 48%;
     font-weight: bold;
-    padding: 26px 0;
+    padding: 12px 0;
     font-size: 17px;
     border-radius: 7px;
     letter-spacing: 0.063rem;
     color: $color-white;
+    @include mobileM {
+      padding: 14px 0;
+      font-size: 19px;
+    }
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
@@ -244,6 +302,10 @@
     padding: 10px;
     border-radius: 4px;
     overflow: hidden;
+    @include mobileM {
+      padding: 12px;
+      border-radius: 5px;
+    }
     &::after {
       position: absolute;
       @include corners("leftBot", $color-red, 32px, 4px);
@@ -269,6 +331,9 @@
     letter-spacing: 0.063rem;
     text-align: center;
     line-height: 1.2em;
+    @include mobileM {
+      font-size: 19px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -285,6 +350,9 @@
     font-weight: 600;
     padding: 7px 0;
     color: $color-white;
+    @include mobileM {
+      font-size: 16px;
+    }
     &--delete {
       background: $color-red;
     }
