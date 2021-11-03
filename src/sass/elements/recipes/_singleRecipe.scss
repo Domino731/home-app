@@ -18,6 +18,9 @@
   @include tablet {
     height: 372px;
   }
+  @include laptopS {
+    height: 268px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -33,6 +36,9 @@
     }
     @include mobileXL {
       height: 196px;
+    }
+    @include laptopS {
+      height: 127px;
     }
   }
   &__border {
@@ -56,6 +62,10 @@
     @include mobileXL {
       transform: translateY(120px);
       height: 144px;
+    }
+    @include laptopS {
+      transform: translateY(70px);
+      height: 113px;
     }
   }
   &__icon {
@@ -81,6 +91,11 @@
       height: 191px;
       width: 191px;
       transform: translateY(32px);
+    }
+    @include laptopS {
+      height: 135px;
+      width: 135px;
+      transform: translateY(15px);
     }
   }
   &__btn {
@@ -116,6 +131,12 @@
       padding: 7px 135px;
       border-radius: 10px;
     }
+    @include laptopS {
+      transform: translateY(221px);
+      font-size: 13px;
+      padding: 5px 185px;
+      border-radius: 5px;
+    }
   }
 }
 .recipe {
@@ -144,6 +165,10 @@
     padding-top: 52px;
     font-size: 17px;
   }
+  @include laptopS {
+    padding-top: 6px;
+    font-size: 11px;
+  }
   &__title {
     text-align: center;
     font-size: 1.7em;
@@ -162,6 +187,7 @@
     }
   }
   &__description {
+    word-break: break-word;
     letter-spacing: 0.063em;
     text-align: center;
     font-size: 1.4em;
@@ -180,6 +206,9 @@
       }
       @include tablet {
         margin-top: 32px;
+      }
+      @include laptopS {
+        margin-top: 14px;
       }
     }
     div:first-child {
@@ -201,6 +230,9 @@
   @include mobileXL {
     margin-top: 57px;
   }
+  @include laptopS {
+    margin-top: 31px;
+  }
   fieldset {
     display: flex;
     justify-content: space-between;
@@ -215,6 +247,9 @@
     }
     @include tablet {
       margin-bottom: 26px;
+    }
+    @include laptopS {
+      margin-bottom: 14px;
     }
   }
   &__checkboxActive span {
@@ -251,6 +286,10 @@
     padding: 8px 0;
     font-size: 23px;
   }
+  @include laptopS {
+    padding: 6px 0;
+    font-size: 17px;
+  }
   input {
     position: absolute;
     top: 0;
@@ -270,6 +309,10 @@
           border-right: 5px solid $color-black;
           border-bottom: 5px solid $color-black;
         }
+        @include laptopS {
+          border-right: 3px solid $color-black;
+          border-bottom: 3px solid $color-black;
+        }
       }
       &::before {
         @include corners("leftTop", $color-black, 9px, 3px, 9px);
@@ -280,6 +323,10 @@
         @include tablet {
           border-left: 5px solid $color-black;
           border-top: 5px solid $color-black;
+        }
+        @include laptopS {
+          border-left: 3px solid $color-black;
+          border-top: 3px solid $color-black;
         }
       }
       &::before,
@@ -295,6 +342,10 @@
         @include tablet {
           width: 22px;
           height: 22px;
+        }
+        @include laptopS {
+          width: 14px;
+          height: 14px;
         }
       }
     }
@@ -318,6 +369,10 @@
         border-right: 5px solid #adb5bd;
         border-bottom: 5px solid #adb5bd;
       }
+      @include laptopS {
+        border-right: 3px solid #adb5bd;
+        border-bottom: 3px solid #adb5bd;
+      }
     }
     &::before {
       transition: 0.2s;
@@ -330,6 +385,10 @@
       @include tablet {
         border-left: 5px solid #adb5bd;
         border-top: 5px solid #adb5bd;
+      }
+      @include laptopS {
+        border-left: 3px solid #adb5bd;
+        border-top: 3px solid #adb5bd;
       }
     }
     &::before,
@@ -346,11 +405,15 @@
         width: 16px;
         height: 16px;
       }
+      @include laptopS {
+        height: 10px;
+        width: 10px;
+      }
     }
   }
 }
 .recipeInstructions {
-  word-break: break-all;
+  word-break: break-word;
   &__list {
     font-size: 10px;
     @include mobileM {
@@ -364,6 +427,9 @@
     }
     @include tablet {
       font-size: 17px;
+    }
+    @include laptopS {
+      font-size: 11px;
     }
   }
   &__listItem {
@@ -416,6 +482,11 @@
       margin: 8px 8px;
       border-radius: 7px;
     }
+    @include laptopS {
+      font-size: 11px;
+      margin: 4px 4px;
+      border-radius: 5px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -432,6 +503,7 @@
 }
 .recipeNotes {
   padding: 5px;
+  word-break: break-word;
   @include mobileM {
     padding: 6px;
   }
@@ -455,6 +527,10 @@
     @include tablet {
       padding-top: 15px;
       font-size: 22px;
+    }
+    @include laptopS {
+      padding-top: 8px;
+      font-size: 15px;
     }
   }
 }
@@ -490,6 +566,12 @@
       font-size: 29px;
       border-radius: 14px;
     }
+    @include laptopS {
+      width: 49%;
+      padding: 8px 0;
+      font-size: 23px;
+      border-radius: 6px;
+    }
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
@@ -521,6 +603,10 @@
     @include tablet {
       padding: 21px;
       border-radius: 7px;
+    }
+    @include laptopS {
+      padding: 12px;
+      border-radius: 4px;
     }
     &::after {
       position: absolute;
@@ -557,6 +643,10 @@
         width: 65px;
         height: 65px;
       }
+      @include laptopS {
+        width: 31px;
+        height: 31px;
+      }
     }
   }
   &__title {
@@ -577,6 +667,9 @@
     @include tablet {
       font-size: 32px;
     }
+    @include laptopS {
+      font-size: 22px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -592,6 +685,9 @@
     }
     @include tablet {
       margin-top: 38px;
+    }
+    @include laptopS {
+      margin-top: 12px;
     }
   }
   &__btn {
@@ -617,6 +713,12 @@
     }
     @include tablet {
       font-size: 27px;
+    }
+    @include laptopS {
+      width: 49%;
+      font-size: 17px;
+      padding: 5px 0;
+      border-radius: 5px;
     }
     &--delete {
       background: $color-red;
@@ -650,4 +752,7 @@
 }
 @include tablet {
   @include setCornersForConfirmDeleteBox(7px);
+}
+@include laptopS {
+  @include setCornersForConfirmDeleteBox(4px);
 }
