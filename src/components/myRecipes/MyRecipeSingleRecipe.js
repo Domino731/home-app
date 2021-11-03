@@ -45,7 +45,7 @@ const MyRecipeSingleRecipe = (props) => {
         return <Loading />
     }
 
-    return <main className="container container--singleRecipe">
+    return <main className="container">
         {!props.deleteRecipeFlag && <> 
         <SingleRecipeHeader />
         <SingleRecipeOverview />

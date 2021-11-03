@@ -1,19 +1,26 @@
 .recipeHeader {
-  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
-  height: 153px;
+  height: 261px;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  &__item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 140px;
+    left: 0;
+    top: 0;
+  }
   &__border {
+    left: 0;
     position: absolute;
     width: 100%;
-    height: 114px;
+    height: 122px;
     border-radius: 53%;
-    transform: translateY(56px);
+    transform: translateY(78px);
     z-index: 0;
   }
   &__icon {
@@ -31,7 +38,7 @@
     padding: 4px 11px;
     border-radius: 6px;
     position: absolute;
-    transform: translateY(114px);
+    transform: translateY(221px);
     color: $color-white;
     letter-spacing: 0.125rem;
     border: none;
@@ -42,14 +49,12 @@
   &__item {
     width: 95%;
     margin: 0 auto;
-    &--fix {
-      padding-top: 284px;
-    }
   }
 }
 .recipeOverview {
   font-size: 10px;
   word-break: break-all;
+  padding-top: 22px;
   &__title {
     text-align: center;
     font-size: 1.7em;
@@ -75,10 +80,13 @@
   &__botBar {
     display: flex;
     justify-content: space-around;
-    margin-top: 1.4em;
+    margin-top: 32px;
   }
   &__box {
     text-align: center;
+    &--mid{
+     margin-top: 17px;
+    }
     div:first-child {
       font-size: 2.2em;
       font-weight: bold;
@@ -229,7 +237,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &__item {
     position: relative;
     width: 90%;

@@ -5,7 +5,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
     const colorPrimary = {
         color: recipeStyles.colorPrimary
     }
-    return <section className="recipe__item recipe__item--fix recipeOverview">
+    return <section className="recipe__item recipeOverview">
         <h2 className="recipeOverview__title">{recipe.title}</h2>
         <div className="recipeOverview__topBar">
             {recipe.servingWeight && <div title='Jedna porcja'>{recipe.servingWeight}G  &nbsp;</div>}
@@ -18,7 +18,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
                 <div style={colorPrimary}>{recipe.prepareTime}</div>
                 <div>MIN</div>
             </div>}
-            <div className="recipeOverview__box">
+            <div className="recipeOverview__box recipeOverview__box--mid">
                 <div style={colorPrimary}>{recipe.ingredients.length}</div>
                 <div>Ilość Składników</div>
             </div>
