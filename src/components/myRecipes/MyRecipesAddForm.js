@@ -17,7 +17,6 @@ const MyRecipesAddForm = (props) => {
         type: props.match.params.type,
         notes: '',
         kcal: '',
-        notes: '',
         servingWeight: '',
         prepareTime: ''
     })

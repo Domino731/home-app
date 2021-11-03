@@ -197,3 +197,12 @@
     }
   }
 }
+.recipeNotes {
+  padding: 5px;
+  &__item {
+    padding-top: 4px;
+    font-size: 12px;
+    letter-spacing: 0.063rem;
+    word-spacing: 0.125rem;
+  }
+}
