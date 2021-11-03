@@ -15,6 +15,9 @@
   @include mobileXL {
     height: 342px;
   }
+  @include tablet {
+    height: 372px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -74,6 +77,11 @@
       width: 163px;
       transform: translateY(42px);
     }
+    @include tablet {
+      height: 191px;
+      width: 191px;
+      transform: translateY(32px);
+    }
   }
   &__btn {
     font-size: 15px;
@@ -82,6 +90,7 @@
     position: absolute;
     transform: translateY(221px);
     color: $color-white;
+    font-weight: 600;
     letter-spacing: 0.125rem;
     border: none;
     box-shadow: 0 0 2px $color-black;
@@ -100,6 +109,12 @@
       font-size: 23px;
       padding: 7px 101px;
       border-radius: 7px;
+    }
+    @include tablet {
+      transform: translateY(312px);
+      font-size: 28px;
+      padding: 7px 135px;
+      border-radius: 10px;
     }
   }
 }
@@ -124,6 +139,10 @@
   @include mobileXL {
     padding-top: 46px;
     font-size: 14px;
+  }
+  @include tablet {
+    padding-top: 52px;
+    font-size: 17px;
   }
   &__title {
     text-align: center;
@@ -159,6 +178,9 @@
       @include mobileXL {
         margin-top: 26px;
       }
+      @include tablet {
+        margin-top: 32px;
+      }
     }
     div:first-child {
       font-size: 2.2em;
@@ -191,6 +213,9 @@
     @include mobileXL {
       margin-bottom: 21px;
     }
+    @include tablet {
+      margin-bottom: 26px;
+    }
   }
   &__checkboxActive span {
     &::after {
@@ -222,6 +247,10 @@
     padding: 6px 0;
     font-size: 20px;
   }
+  @include tablet {
+    padding: 8px 0;
+    font-size: 23px;
+  }
   input {
     position: absolute;
     top: 0;
@@ -237,12 +266,20 @@
           border-right: 3px solid $color-black;
           border-bottom: 3px solid $color-black;
         }
+        @include tablet {
+          border-right: 5px solid $color-black;
+          border-bottom: 5px solid $color-black;
+        }
       }
       &::before {
         @include corners("leftTop", $color-black, 9px, 3px, 9px);
         @include mobileXL {
           border-left: 3px solid $color-black;
           border-top: 3px solid $color-black;
+        }
+        @include tablet {
+          border-left: 5px solid $color-black;
+          border-top: 5px solid $color-black;
         }
       }
       &::before,
@@ -254,6 +291,10 @@
         @include mobileXL {
           width: 14px;
           height: 14px;
+        }
+        @include tablet {
+          width: 22px;
+          height: 22px;
         }
       }
     }
@@ -273,6 +314,10 @@
         border-right: 3px solid #adb5bd;
         border-bottom: 3px solid #adb5bd;
       }
+      @include tablet {
+        border-right: 5px solid #adb5bd;
+        border-bottom: 5px solid #adb5bd;
+      }
     }
     &::before {
       transition: 0.2s;
@@ -281,6 +326,10 @@
       @include mobileXL {
         border-left: 3px solid #adb5bd;
         border-top: 3px solid #adb5bd;
+      }
+      @include tablet {
+        border-left: 5px solid #adb5bd;
+        border-top: 5px solid #adb5bd;
       }
     }
     &::before,
@@ -292,6 +341,10 @@
       @include mobileXL {
         width: 12px;
         height: 12px;
+      }
+      @include tablet {
+        width: 16px;
+        height: 16px;
       }
     }
   }
@@ -309,10 +362,19 @@
     @include mobileXL {
       font-size: 14px;
     }
+    @include tablet {
+      font-size: 17px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
     padding: 5px 0;
+    @include mobileXL {
+      padding: 6px 0;
+    }
+    @include tablet {
+      padding: 7px 0;
+    }
   }
   &__listNumber {
     font-weight: bold;
@@ -343,11 +405,16 @@
     }
     @include mobileL {
       font-size: 13px;
-      margin: 5px 6px;
+      margin: 5px 5px;
     }
     @include mobileXL {
       font-size: 14px;
       margin: 7px 7px;
+    }
+    @include tablet {
+      font-size: 17px;
+      margin: 8px 8px;
+      border-radius: 7px;
     }
   }
   &__name {
@@ -385,6 +452,10 @@
       padding-top: 11px;
       font-size: 18px;
     }
+    @include tablet {
+      padding-top: 15px;
+      font-size: 22px;
+    }
   }
 }
 .recipeOptions {
@@ -414,6 +485,11 @@
       font-size: 25px;
       border-radius: 11px;
     }
+    @include tablet {
+      padding: 19px 0;
+      font-size: 29px;
+      border-radius: 14px;
+    }
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
@@ -442,7 +518,10 @@
     @include mobileXL {
       padding: 17px;
     }
-
+    @include tablet {
+      padding: 21px;
+      border-radius: 7px;
+    }
     &::after {
       position: absolute;
       @include corners("leftBot", $color-red, 32px, 4px);
@@ -474,6 +553,10 @@
         width: 60px;
         height: 60px;
       }
+      @include tablet {
+        width: 65px;
+        height: 65px;
+      }
     }
   }
   &__title {
@@ -491,6 +574,9 @@
     @include mobileXL {
       font-size: 28px;
     }
+    @include tablet {
+      font-size: 32px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -503,6 +589,9 @@
     }
     @include mobileXL {
       margin-top: 32px;
+    }
+    @include tablet {
+      margin-top: 38px;
     }
   }
   &__btn {
@@ -526,6 +615,9 @@
       padding: 12px 0;
       border-radius: 7px;
     }
+    @include tablet {
+      font-size: 27px;
+    }
     &--delete {
       background: $color-red;
     }
@@ -544,7 +636,7 @@
     border-bottom: $width solid $color-red;
   }
   .recipeDelete__item span::after {
-    border-right:$width solid $color-red;
+    border-right: $width solid $color-red;
     border-top: $width solid $color-red;
   }
   .recipeDelete__item span::before {
@@ -552,6 +644,10 @@
     border-top: $width solid $color-red;
   }
 }
+
 @include mobileXL {
   @include setCornersForConfirmDeleteBox(5px);
+}
+@include tablet {
+  @include setCornersForConfirmDeleteBox(7px);
 }
