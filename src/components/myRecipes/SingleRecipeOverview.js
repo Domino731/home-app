@@ -20,7 +20,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
             </div>}
             <div className="recipeOverview__box">
                 <div style={colorPrimary}>{recipe.ingredients.length}</div>
-                <div>Ilość Skadników</div>
+                <div>Ilość Składników</div>
             </div>
             {recipe.kcal &&  <div className="recipeOverview__box">
             <div style={colorPrimary}>{recipe.kcal}</div>

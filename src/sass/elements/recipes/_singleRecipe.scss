@@ -171,3 +171,29 @@
     }
   }
 }
+
+.recipeIngredients{
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    font-size: 10px;
+    border-radius: 5px;
+    color: $color-white;
+    margin: 3px 3px;
+    padding: 0.3em 1em;
+    text-align: center;
+    flex-grow: 1;
+  }
+  &__name {
+    font-size: 1.4em;
+    font-weight: bold;
+    letter-spacing: 0.125rem;
+  }
+  &__amount {
+    letter-spacing: 0.063rem;
+    margin-top: 0.5em;
+    strong {
+      font-size: 1em;
+    }
+  }
+}

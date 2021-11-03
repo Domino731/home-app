@@ -15,6 +15,7 @@ import { setToDos } from "../../redux/actions/firebaseData.actions";
 import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 import SingleRecipeOverview from "./SingleRecipeOverview";
 import SingleRecipeContent from "./SingleRecipeContent";
+import { setProducts } from "../../redux/actions/firebaseData.actions";
 // props //
 // AllRecipes --> all recipes from application store
 // id --> to get a specific recipe, and delete him in deleteDataFirestore
@@ -29,6 +30,7 @@ const MyRecipeSingleRecipe = (props) => {
 
                     return getRecipeData(user.uid, props.match.params.id, props.changeRecipeData)
                         .then(() => getDataFromFirestore('ToDo', user.uid, props.setToDos))
+                        .then(()=> getDataFromFirestore('products', user.uid, props.setProducts))
                 }
             })
     }, [props.match.params.id]);
@@ -38,7 +40,7 @@ const MyRecipeSingleRecipe = (props) => {
         props.recipe && getRecipeStyles(props.recipe.type, props.changeRecipeStyles)
     }, [props.recipe]);
 
-    if (props.recipe === null || props.recipeStyles === null || props.tasks === null) {
+    if (props.recipe === null || props.recipeStyles === null || props.tasks === null || props.products === null) {
         return <Loading />
     }
 
@@ -54,10 +56,12 @@ const MyRecipeSingleRecipe = (props) => {
 const mapDispatchToProps = dispatch => ({
     changeRecipeData: data => dispatch(changeRecipeDataRDX(data)),
     changeRecipeStyles: data => dispatch(changeRecipeStylesRDX(data)),
-    setToDos: data => dispatch(setToDos(data))
+    setToDos: data => dispatch(setToDos(data)),
+    setProducts: data => dispatch(setProducts(data)),
 })
 const mapStateToProps = state => ({
     recipe: state.recipeData,
+    products: state.products,
     recipeStyles: state.recipeStyles,
     tasks: state.toDo
 })
