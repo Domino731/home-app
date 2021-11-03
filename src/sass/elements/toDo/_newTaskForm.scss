@@ -229,7 +229,7 @@
 
   &__successfulAdd {
     width: 91%;
-    height: 91%;
+    height: 225px;
     background: $color-purple;
     margin-top: -30px;
     color: white;
@@ -238,18 +238,50 @@
     align-items: center;
     justify-content: center;
     animation: showEffect 0.7s forwards;
-
+    @include mobileL {
+      height: 249px;
+    }
+    @include laptopS {
+      height: 326px;
+    }
+    @include laptopL {
+      height: 386px;
+    }
     h3 {
-      font-size: 32px;
-      margin-top: 47px;
+      font-size: 25px;
+      margin-top: 30px;
       text-align: center;
+      @include mobileL {
+        font-size: 32px;
+        margin-top: 34px;
+      }
+      @include laptopS {
+        font-size: 44px;
+        margin-top: 16px;
+      }
+      @include laptopL {
+        font-size: 55px;
+        margin-top: 18px;
+      }
+      @include desktopS {
+        font-size: 65px;
+      }
     }
 
     i {
       margin-top: 32px;
       margin-bottom: 32px;
-      font-size: 0;
       animation: successfulShowIcon 0.1s 1s forwards;
+      font-size: 0;
+      @include mobileL {
+        animation: successfulShowIcon-mobileL 0.1s 1s forwards;
+      }
+      @include laptopS {
+        animation: successfulShowIcon-laptopS 0.1s 1s forwards;
+      }
+      @include laptopL {
+        animation: successfulShowIcon-laptopL 0.1s 1s forwards;
+      }
     }
   }
 }

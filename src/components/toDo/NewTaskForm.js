@@ -13,7 +13,7 @@ const NewTaskForm = ({ username, showTasks }) => {
     const [task, setTask] = useState({ title: "", description: "", operations: [], archive: false, added: new Date() })
 
     //flag to overlay animation
-    const [successful, setSuccessful] = useState(false)
+    const [successful, setSuccessful] = useState(true)
 
     //flag to display error
     const [invalid, setInvalid] = useState(false)
