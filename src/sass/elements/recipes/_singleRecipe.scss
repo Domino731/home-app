@@ -21,6 +21,9 @@
   @include laptopS {
     height: 268px;
   }
+  @include laptopM {
+    height: 284px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -39,6 +42,9 @@
     }
     @include laptopS {
       height: 127px;
+    }
+    @include laptopM {
+      height: 146px;
     }
   }
   &__border {
@@ -66,6 +72,10 @@
     @include laptopS {
       transform: translateY(70px);
       height: 113px;
+    }
+    @include laptopM {
+      transform: translateY(87px);
+      height: 117px;
     }
   }
   &__icon {
@@ -96,6 +106,11 @@
       height: 135px;
       width: 135px;
       transform: translateY(15px);
+    }
+    @include laptopM {
+      height: 148px;
+      width: 148px;
+      transform: translateY(24px);
     }
   }
   &__btn {
@@ -137,6 +152,10 @@
       padding: 5px 185px;
       border-radius: 5px;
     }
+    @include laptopM {
+      transform: translateY(250px);
+      font-size: 14px;
+    }
   }
 }
 .recipe {
@@ -169,6 +188,10 @@
     padding-top: 6px;
     font-size: 11px;
   }
+  @include laptopM {
+    padding-top: 18px;
+    font-size: 12px;
+  }
   &__title {
     text-align: center;
     font-size: 1.7em;
@@ -195,7 +218,19 @@
   &__botBar {
     display: flex;
     justify-content: space-around;
-    margin-top: 32px;
+    margin-top: 28px;
+    @include mobileL {
+      margin-top: 32px;
+    }
+    @include tablet {
+      margin-top: 36px;
+    }
+    @include laptopS {
+      margin-top: 28px;
+    }
+    @include laptopM {
+      margin-top: 30px;
+    }
   }
   &__box {
     text-align: center;
@@ -232,6 +267,9 @@
   }
   @include laptopS {
     margin-top: 31px;
+  }
+  @include laptopM {
+    margin-top: 34px;
   }
   fieldset {
     display: flex;
@@ -290,6 +328,10 @@
     padding: 6px 0;
     font-size: 17px;
   }
+  @include laptopM {
+    padding: 7px 0;
+    font-size: 20px;
+  }
   input {
     position: absolute;
     top: 0;
@@ -346,6 +388,10 @@
         @include laptopS {
           width: 14px;
           height: 14px;
+        }
+        @include laptopM {
+          width: 20px;
+          height: 20px;
         }
       }
     }
@@ -409,6 +455,10 @@
         height: 10px;
         width: 10px;
       }
+      @include laptopM {
+        height: 12px;
+        width: 12px;
+      }
     }
   }
 }
@@ -431,6 +481,9 @@
     @include laptopS {
       font-size: 11px;
     }
+    @include laptopM {
+      font-size: 12px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
@@ -440,6 +493,9 @@
     }
     @include tablet {
       padding: 7px 0;
+    }
+    @include laptopS {
+      padding: 6px 0;
     }
   }
   &__listNumber {
@@ -487,6 +543,10 @@
       margin: 4px 4px;
       border-radius: 5px;
     }
+    @include laptopM {
+      font-size: 12px;
+      margin: 6px 6px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -532,6 +592,10 @@
       padding-top: 8px;
       font-size: 15px;
     }
+    @include laptopM {
+      padding-top: 10px;
+      font-size: 17px;
+    }
   }
 }
 .recipeOptions {
@@ -570,7 +634,10 @@
       width: 49%;
       padding: 8px 0;
       font-size: 23px;
-      border-radius: 6px;
+      border-radius: 5px;
+    }
+    @include laptopM {
+      font-size: 24px;
     }
     &--delete {
       background: $color-red;
@@ -607,6 +674,9 @@
     @include laptopS {
       padding: 12px;
       border-radius: 4px;
+    }
+    @include laptopM {
+      padding: 14px;
     }
     &::after {
       position: absolute;
@@ -647,6 +717,10 @@
         width: 31px;
         height: 31px;
       }
+      @include laptopM {
+        height: 37px;
+        width: 37px;
+      }
     }
   }
   &__title {
@@ -670,6 +744,9 @@
     @include laptopS {
       font-size: 22px;
     }
+    @include laptopM {
+      font-size: 24px;
+    }
   }
   &__buttonsWrapper {
     margin-top: 16px;
@@ -688,6 +765,9 @@
     }
     @include laptopS {
       margin-top: 12px;
+    }
+    @include laptopM {
+      margin-top: 16px;
     }
   }
   &__btn {
@@ -719,6 +799,9 @@
       font-size: 17px;
       padding: 5px 0;
       border-radius: 5px;
+    }
+    @include laptopM {
+      font-size: 24px;
     }
     &--delete {
       background: $color-red;
