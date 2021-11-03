@@ -16,7 +16,7 @@ import { auth } from "../../fireBase/fireBase";
 const ToDo = ({ setToDos }) => {
 
     /** flag by which user can toggling between tasks list and new task form */
-    const [flag, setFlag] = useState(true);
+    const [flag, setFlag] = useState(false);
 
     // fetch data about tasks from firestore and save this incomming data into redux state - toDo state
     useEffect(() => {
@@ -26,9 +26,7 @@ const ToDo = ({ setToDos }) => {
     }, []);
 
     /** function that is changing flag state, so user can toogle between tasks list and new task form */
-    const handleChangeFlag = () => flag ? setFlag(false) : setFlag(true);
-
-
+    const handleChangeFlag = () => flag ? setFlag(false) : setFlag(true)
 
     return (
         <section className="container container--menu toDo">

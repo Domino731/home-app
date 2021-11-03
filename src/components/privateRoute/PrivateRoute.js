@@ -1,56 +1,33 @@
 
-import {Route} from "react-router-dom"
-import {connect} from "react-redux";
-import {getDataFromFirestore} from "../../fireBase/getDataFromFirestore";
-import {useEffect} from "react";
-import {setProducts} from "../../redux/actions/firebaseData.actions";
-import {setRecipes} from "../../redux/actions/firebaseData.actions";
-import {setToDos} from "../../redux/actions/firebaseData.actions";
-import {Loading} from "../loading/Loading";
+import { Route } from "react-router-dom"
+import { connect } from "react-redux";
 import UserForm from "../userForm/UserForm";
 
-// props //
-// currentUser --> for checking a user is logged in or not, and getting data from firestore
-// set... --> actions from firestore, which are passed to the function getDataFromFirestore
-// recipes, products, ToDo --> reducers which store arrays of data, which are passed to the function getDataFromFirestore
-// component --> component which you want to render
-// rest --> rest props to route
-const PrivateRoute = ({currentUser, setProducts, setRecipes, setToDos, component: Component, ...rest}) => {
+/**
+ * Private route to which only logged-in users have access. If you want to create private router pass there a component
+ * @param currentUser - REDUX STATE - data about current logged user, needed to check if user is logged-in
+ * @param component - Component - component that you want to pass into private route
+ */
+const PrivateRoute = ({ currentUser, component: Component, ...rest }) => {
+    return <Route
+        {...rest}
+        render={props => {
+            // user isnt logged -> redirect to login form
+            if (currentUser === null) {
+                return <UserForm />
+            }
 
-    //if user is logged in, get data from firestore and push into reducers
-    useEffect(() => {
-        if (currentUser !== null) {
-           // getDataFromFirestore("recipes", currentUser.displayName, setRecipes)
-           // getDataFromFirestore("products", currentUser.displayName, setProducts)
-            // getDataFromFirestore("ToDo", currentUser.displayName, setToDos)
-        }
-    }, [currentUser])
-
-    return (
-        <Route
-            {...rest}
-            render={props => {
-
-                if (currentUser === null) {
-                    return <UserForm/>
-                } else if (currentUser === undefined) {
-                    return <Loading/>
-                } else {
-                    return <Component {...props}/>
-                }
-            }}
-        >
-
-        </Route>
-    )
+            // user is logged -> rendered passed component
+            else {
+                return <Component {...props} />
+            }
+        }}
+    >
+    </Route>
 }
 
+// REDUX
 const mapStateToProps = state => ({
     currentUser: state.currentUser,
-})
-
-const mapDispatchToProps = dispatch => ({
-    setRecipes: data => dispatch(setRecipes(data)),
-    setToDos: data => dispatch(setToDos(data))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute)
+});
+export default connect(mapStateToProps)(PrivateRoute)

@@ -294,7 +294,7 @@
         @include corners("leftBot", $color-white, 85px, 4px, 15px);
         @include mobileL {
           border-left: 5px solid $color-white;
-        border-bottom: 5px solid $color-white;
+          border-bottom: 5px solid $color-white;
         }
         @include tablet {
           border-left: 6px solid $color-white;

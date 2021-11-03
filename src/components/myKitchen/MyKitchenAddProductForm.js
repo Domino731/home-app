@@ -1,52 +1,54 @@
-//component which is used to add products to a specific product category by addNewElement function
-//it used in MyKitchenCategory component
-import {useState} from "react";
-import {addNewElement} from "../../fireBase/addNewElementToFirebase";
-import {connect} from "react-redux";
+import { useState } from "react";
+import { addNewElement } from "../../fireBase/addNewElementToFirebase";
 import { auth } from "../../fireBase/fireBase";
-// props //
-// username --> the name of the currently logged in user, is used in the addNewElement function
-// productType --> name of productType, passed to product state, is to add a product to a specific category
-const MyKitchenAddProductForm = ({productType}) => {
 
-    //status containing all product information, is passed to the addNewElement function
-    const [product, setProduct] = useState({name: "", amount: 0, unit: "Dag", type: productType})
+/**
+ * Component by which user can add new product 
+ * @param {string} productType - type of product, needed to set type of new product
+ */
+const MyKitchenAddProductForm = ({ productType }) => {
 
-    //flag by which an error is displayed, it changed when the product name is shorter than 2
-    const [invalidFlag, setInvalidFlag] = useState(false)
+    // state containing all product information
+    const [product, setProduct] = useState({ name: "", amount: 0, unit: "Dag", type: productType });
 
-    //flag by which a notification is displayed that a product has been added, when it false displayed form,
-    //change in handleSubmitProduct function
-    const [successful, setSuccessful] = useState(false)
+    // flag by which an error is displayed, it changed when the product name is shorter than 2
+    const [invalidFlag, setInvalidFlag] = useState(false);
 
+    // flag by which a notification is displayed that a product has been added, when it false display form,
+    // change in handleSubmitProduct function
+    const [successful, setSuccessful] = useState(false);
 
-    //changing the product unit
+    /** Change new product weight unit */
     const handleChangeUnit = (e) => {
-        setProduct(prev => ({
+        return setProduct(prev => ({
             ...prev,
             unit: e.target.value
-        }))
+        }));
     }
 
-    //changing the product
+    /** Change product data */
     const handleChangeProduct = (e) => {
-        const {name, value} = e.target;
+        // set new data
+        const { name, value } = e.target;
         setProduct((prev) => ({
             ...prev,
             [name]: value
         }));
+
+        // remove error
         setInvalidFlag(false)
     };
 
-    //sending new product
-    //product name must be longer than 2
+    /** add new product to user's account in firestore ('products' subcollection) */
     const handleSubmitProduct = (e) => {
         e.preventDefault()
+
+        // check if product name has 2 characters at least
         if (product.name.length <= 2) {
-            setInvalidFlag(true)
+            return setInvalidFlag(true);
         } else {
-            addNewElement(auth().currentUser.uid, "products", product)
-            setSuccessful(true)
+            return addNewElement(auth().currentUser.uid, "products", product)
+                .then(() => setSuccessful(true))
         }
     }
 
@@ -54,25 +56,31 @@ const MyKitchenAddProductForm = ({productType}) => {
     return (
         <section className="kitchenCtg__addProduct">
 
-
+            {/* form  */}
             {successful === false && <form className="addProduct__form">
+
+                {/* product name */}
                 <input type="text" className="addProduct__formInput" placeholder="Nazwa produktu" name="name"
-                       onChange={handleChangeProduct} maxLength="20"/>
+                    onChange={handleChangeProduct} maxLength="20" />
+
+                {/* amount */}
                 <input type="number" className="addProduct__formInput" placeholder={`Ilość (${product.unit})`}
-                       name="amount"
-                       onChange={handleChangeProduct}/>
+                    name="amount"
+                    onChange={handleChangeProduct} />
+
+                {/* product weight unit */}
                 <fieldset>
-                    <label> <input type="radio" name="weightUnit" value="Kg" onClick={handleChangeUnit}/> Kilogramy
+                    <label> <input type="radio" name="weightUnit" value="Kg" onClick={handleChangeUnit} /> Kilogramy
                     </label>
                     <label> <input type="radio" name="weightUnit" value="Dag" onClick={handleChangeUnit}
-                                   defaultChecked/> Dekagramy </label>
-                    <label> <input type="radio" name="weightUnit" value="G" onClick={handleChangeUnit} id="1t"/> Gramy
+                        defaultChecked /> Dekagramy </label>
+                    <label> <input type="radio" name="weightUnit" value="G" onClick={handleChangeUnit} id="1t" /> Gramy
                     </label>
-                    <label> <input type="radio" name="weightUnit" value="Mg" onClick={handleChangeUnit}/> Miligramy
+                    <label> <input type="radio" name="weightUnit" value="Mg" onClick={handleChangeUnit} /> Miligramy
                     </label>
-                    <label> <input type="radio" name="weightUnit" value="Ml" onClick={handleChangeUnit}/> Mililitry
+                    <label> <input type="radio" name="weightUnit" value="Ml" onClick={handleChangeUnit} /> Mililitry
                     </label>
-                    <label> <input type="radio" name="weightUnit" value="Na sztuki" onClick={handleChangeUnit}/> Na
+                    <label> <input type="radio" name="weightUnit" value="Na sztuki" onClick={handleChangeUnit} /> Na
                         sztuki
                     </label>
                 </fieldset>
@@ -80,22 +88,24 @@ const MyKitchenAddProductForm = ({productType}) => {
                 {/*show error when product name in shorter than 2*/}
                 {invalidFlag && <strong className="addProduct__invalid">*Wprowadz poprawną nazwę produktu</strong>}
 
-                {/*if adding a product was successful, display a notification and information if you want to add another*/}
-                <button className="addProduct__formButton" onClick={handleSubmitProduct}>Dodaj <span/></button>
+                {/* button by which user can add new product */}
+                <button className="addProduct__formButton" onClick={handleSubmitProduct}>Dodaj <span /></button>
+
             </form>}
 
-
+            {/*if adding a product was successful, display a notification and information if you want to add another*/}
             {successful && <div className="addProduct__form">
                 <div className="successful">
                     <h3>Dodano produkt</h3>
-                    <i className="far fa-smile"/>
-                    {/*when you click on this successful state change to false and form will be displayed*/}
+                    <i className="far fa-smile" />
+
+                    {/*when you click on this successful state change to false and form will be displayed again*/}
                     <button onClick={() => setSuccessful(false)}>Dodaj Kolejny</button>
                 </div>
             </div>}
         </section>
-    )
+    );
 }
 
 
-export default (MyKitchenAddProductForm)
+export default (MyKitchenAddProductForm);
