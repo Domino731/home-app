@@ -24,6 +24,9 @@
   @include laptopM {
     height: 284px;
   }
+  @include laptopXL {
+    height: 308px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -112,6 +115,11 @@
       width: 148px;
       transform: translateY(24px);
     }
+    @include laptopXL {
+      height: 166px;
+      width: 166px;
+      transform: translateY(19px);
+    }
   }
   &__btn {
     font-size: 15px;
@@ -154,11 +162,19 @@
     }
     @include laptopM {
       transform: translateY(250px);
+      padding: 5px 195px;
       font-size: 14px;
     }
     @include laptopL {
       transform: translateY(246px);
+      padding: 5px 210px;
       font-size: 16px;
+      border-radius: 8px;
+    }
+    @include laptopXL {
+      padding: 6px 234px;
+      transform: translateY(270px);
+      font-size: 17px;
     }
   }
 }
@@ -199,6 +215,10 @@
   @include laptopL {
     padding-top: 24px;
     font-size: 13px;
+  }
+  @include laptopXL {
+    padding-top: 41px;
+    font-size: 14px;
   }
   &__title {
     text-align: center;
@@ -256,6 +276,9 @@
       @include laptopL {
         margin-top: 20px;
       }
+      @include laptopXL {
+        margin-top: 27px;
+      }
     }
     div:first-child {
       font-size: 2.2em;
@@ -285,6 +308,9 @@
   @include laptopL {
     margin-top: 38px;
   }
+  @include laptopXL {
+    margin-top: 43px;
+  }
   fieldset {
     display: flex;
     justify-content: space-between;
@@ -305,6 +331,9 @@
     }
     @include laptopL {
       margin-bottom: 21px;
+    }
+    @include laptopXL {
+      margin-bottom: 25px;
     }
   }
   &__checkboxActive span {
@@ -351,6 +380,9 @@
   }
   @include laptopL {
     font-size: 22px;
+  }
+  @include laptopXL {
+    font-size: 24px;
   }
   input {
     position: absolute;
@@ -424,6 +456,10 @@
         @include laptopL {
           width: 22px;
           height: 22px;
+        }
+        @include laptopXL {
+          width: 24px;
+          height: 24px;
         }
       }
     }
@@ -503,6 +539,10 @@
         height: 14px;
         width: 14px;
       }
+      @include laptopXL {
+        width: 17px;
+        height: 17px;
+      }
     }
   }
 }
@@ -531,6 +571,9 @@
     @include laptopL {
       font-size: 13px;
     }
+    @include laptopXL {
+      font-size: 14px;
+    }
   }
   &__listItem {
     font-size: 1.3em;
@@ -543,6 +586,9 @@
     }
     @include laptopS {
       padding: 6px 0;
+    }
+    @include laptopXL {
+      padding: 8px 0;
     }
   }
   &__listNumber {
@@ -598,6 +644,10 @@
       font-size: 13px;
       margin: 7px 7px;
     }
+    @include laptopXL {
+      font-size: 14px;
+      margin: 8px 8px;
+    }
   }
   &__name {
     font-size: 1.4em;
@@ -651,6 +701,10 @@
       padding-top: 12px;
       font-size: 19px;
     }
+    @include laptopXL {
+      padding-top: 14px;
+      font-size: 20px;
+    }
   }
 }
 .recipeOptions {
@@ -697,6 +751,9 @@
     @include laptopL {
       border-radius: 8px;
       font-size: 25px;
+    }
+    @include laptopXL {
+      font-size: 27px;
     }
     &--delete {
       background: $color-red;
@@ -785,8 +842,8 @@
         width: 37px;
       }
       @include laptopL {
-       height: 41px;
-       width: 41px;
+        height: 41px;
+        width: 41px;
       }
     }
   }
