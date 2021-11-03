@@ -12,8 +12,9 @@ export const getRecipeData = (userUid, recipeId, saveData) => {
     .doc(recipeId)
     .get()
     .then( doc => {
-
-         saveData(doc.data())
+         const data = doc.data()
+         data.id = doc.id
+         saveData(data)
     })
     .catch(err => console.log(err))
 }

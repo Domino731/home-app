@@ -5,8 +5,8 @@ import {db} from "./fireBase";
 // dataId --> to delete specific element
 // username --> to know where delete
 // category --> to know in which category delete
-export const deleteDataFirestore = (dataId, userUID, category) => {
-    db.collection(`users/${userUID}/${category}`)
+export const deleteDataFirestore = async (dataId, userUID, category) => {
+    await db.collection(`users/${userUID}/${category}`)
     .doc(`${dataId}`)
     .delete()
     .then(()=> {

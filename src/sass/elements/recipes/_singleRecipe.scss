@@ -161,7 +161,6 @@
   &__listItem {
     font-size: 1.3em;
     padding: 5px 0;
-
   }
   &__listNumber {
     font-weight: bold;
@@ -172,7 +171,7 @@
   }
 }
 
-.recipeIngredients{
+.recipeIngredients {
   display: flex;
   flex-wrap: wrap;
   &__item {
@@ -222,6 +221,67 @@
     &--delete {
       background: $color-red;
       box-shadow: 0 0 0.1em $color-red;
+    }
+  }
+}
+.recipeDelete {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &__item {
+    position: relative;
+    width: 90%;
+    padding: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    &::after {
+      position: absolute;
+      @include corners("leftBot", $color-red, 32px, 4px);
+    }
+    &::before {
+      position: absolute;
+      @include corners("rightBot", $color-red, 32px, 4px);
+    }
+    span {
+      &::after {
+        position: absolute;
+        @include corners("rightTop", $color-red, 32px, 4px);
+      }
+      &::before {
+        position: absolute;
+        @include corners("leftTop", $color-red, 32px, 4px);
+      }
+    }
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.063rem;
+    text-align: center;
+    line-height: 1.2em;
+  }
+  &__buttonsWrapper {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    position: relative;
+  }
+  &__btn {
+    width: 48%;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 7px 0;
+    color: $color-white;
+    &--delete {
+      background: $color-red;
+    }
+    &--cancel {
+      background: #70e000;
     }
   }
 }

@@ -24,17 +24,17 @@ const SingleTask = ({ toDo }) => {
 
     //when task is update, update him in firestore
     useEffect(() => {
-        updateDataFirestore(task.id, auth().currentUser.uid, "ToDo", task, () => null)
+        return updateDataFirestore(task.id, auth().currentUser.uid, "ToDo", task, () => null)
     }, [task])
 
     //function that delete task
     const handleDeleteTask = () => {
-        deleteDataFirestore(task.id, auth().currentUser.uid, "ToDo")
+       return  deleteDataFirestore(task.id, auth().currentUser.uid, "ToDo")
     }
 
     //function that archive task
     const handleArchiveTask = () => {
-        setTask(prev => ({
+        return setTask(prev => ({
             ...prev,
             archive: true
         }));
