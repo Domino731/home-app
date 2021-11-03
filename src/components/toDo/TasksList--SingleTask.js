@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { deleteDataFirestore } from "../../fireBase/deleteDataFirestore";
 import { auth } from "../../fireBase/fireBase";
 import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
+import { formatDate } from "../../functions/formatDate";
+import TasksList from "./TasksList";
 
 // props //
 // toDo --> specific task
@@ -27,9 +29,9 @@ const SingleTask = ({ toDo }) => {
         return updateDataFirestore(task.id, auth().currentUser.uid, "ToDo", task, () => null)
     }, [task])
 
-    //function that delete task
+    // function that delete task from user's account in firestore
     const handleDeleteTask = () => {
-       return  deleteDataFirestore(task.id, auth().currentUser.uid, "ToDo")
+       return  deleteDataFirestore(toDo.id, auth().currentUser.uid, "ToDo")
     }
 
     //function that archive task
@@ -83,15 +85,19 @@ const SingleTask = ({ toDo }) => {
 
     if (task.operations === undefined) {
         return null
+
     }
     else {
         return <section className="singleTask">
             <span className="corner" />
 
             <div className='singleTask__titleScale'>
+                <div className="singleTask__date" title='Data dodania'>{formatDate(task.added)}</div>
                 <h3 className="singleTask__title">{task.title}</h3>
                 <p className="singleTask__description">{task.description}
+               
                 </p>
+                 
             </div>
 
             <div className="singleTask__panel">

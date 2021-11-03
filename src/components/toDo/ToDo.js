@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { setToDos } from "../../redux/actions/firebaseData.actions";
 import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 import { auth } from "../../fireBase/fireBase";
-import background from "../../images/background_tasks.jpg";
 const ToDo = ({ setToDos }) => {
 
     //flag which shows NewTaskForm or TaskList
@@ -30,10 +29,7 @@ const ToDo = ({ setToDos }) => {
         }
     }
     return (
-        <section className="container container--menu toDo glassEffect">
-            <style>{`body {
-            background-image: url(${background})} 
-            `}</style>
+        <section className="container container--menu toDo">
             <ToDoHeader />
             <div className="tasks">
                 <div className="tasks__choice"
@@ -45,10 +41,6 @@ const ToDo = ({ setToDos }) => {
 
                 </div>
                 {flag ? <NewTaskForm showTasks={handleChangeFlag} /> : <TaskList />}
-            </div>
-
-            <div className="freepik">
-                <a href='https://www.freepik.com/photos/paper'>Paper photo created by freepik - www.freepik.com</a>
             </div>
 
         </section>

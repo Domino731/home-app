@@ -31,11 +31,8 @@
 
 .toDo {
   display: flex;
-  height: 100vh;
-  overflow: auto;
   flex-direction: column;
   align-items: center;
-  background-image: url(../../../images/background_tasks.jpg);
 }
 
 .tasks {

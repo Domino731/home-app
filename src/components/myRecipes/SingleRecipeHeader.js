@@ -7,7 +7,7 @@ const SingleRecipeHeader = ({ recipe, recipeStyles, tasks }) => {
     const [onTasksList, setOnTasksList] = useState(false);
 
     //state with new task
-    const task = { title: recipe.title, description: "", operations: [], archive: false }
+    const task = { title: recipe.title, description: "", operations: [], archive: false}
 
     // check if user has added this dish to his tasks list ('toDo' subcollection), if he is then change text in button to user know about it
     useEffect(() => {
@@ -16,7 +16,9 @@ const SingleRecipeHeader = ({ recipe, recipeStyles, tasks }) => {
     }, [tasks]);
 
     const handleAddNewTask = () => {
-        return addNewElement(auth().currentUser.uid, "ToDo", task)
+        const data = task;
+        data.added = new Date();
+        return addNewElement(auth().currentUser.uid, "ToDo", data)
     }
     const bgColorPrimary = {
         backgroundColor: recipeStyles.colorPrimary
