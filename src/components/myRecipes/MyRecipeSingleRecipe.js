@@ -45,9 +45,12 @@ const MyRecipeSingleRecipe = (props) => {
     }
 
     return <main className="container container--singleRecipe">
+        ${!props.deleteRecipeFlag && <> 
         <SingleRecipeHeader />
         <SingleRecipeOverview />
         <SingleRecipeContent/>
+        </>}
+        
     </main>
 }
 
@@ -60,6 +63,7 @@ const mapDispatchToProps = dispatch => ({
     setProducts: data => dispatch(setProducts(data)),
 })
 const mapStateToProps = state => ({
+    deleteRecipeFlag: state.deleteRecipeFlag,
     recipe: state.recipeData,
     products: state.products,
     recipeStyles: state.recipeStyles,

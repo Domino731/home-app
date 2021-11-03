@@ -5,11 +5,13 @@ import {recipes} from "./firebaseData";
 import {toDo} from "./firebaseData";
 import { recipeData } from "./recipeData";
 import { recipeStyles } from "./recipeStyle";
+import { deleteRecipeFlag } from "./deleteRecipeFlag";
 export default  combineReducers({
     currentUser,
     products,
     recipes,
     toDo,
     recipeData,
-    recipeStyles
+    recipeStyles,
+    deleteRecipeFlag
 })
