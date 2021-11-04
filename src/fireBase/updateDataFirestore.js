@@ -9,7 +9,7 @@ import { db } from "./fireBase";
  * @param {*} callback - function that you want call on successfull update
  */
 export const updateDataFirestore = async (dataId, userUID, subcollection, element, callback) => {
-    return db.collection(`users/${userUID}/${subcollection}`)
+    return await db.collection(`users/${userUID}/${subcollection}`)
         .doc(`${dataId}`)
         .update(element)
         .then(() => {

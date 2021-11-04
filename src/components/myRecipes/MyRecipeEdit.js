@@ -1,23 +1,19 @@
-import { useState } from "react";
-import { addNewElement } from "../../fireBase/addNewElementToFirebase";
-import { useEffect } from "react";
 import { auth } from "../../fireBase/fireBase";
+import { useEffect, useState } from "react";
+import { addNewElement } from "../../fireBase/addNewElementToFirebase";
+import { SingleInstruction } from "./MyRecipesAddForm";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Loading } from "../loading/Loading";
+import { getRecipeData } from "../../fireBase/getRecipeData";
 
-/** Form for new recipe */
-const MyRecipesAddForm = (props) => {
+export const MyRecipeEdit = () => {
+   
+    // references
+    const {id} = useParams();
+    const recipeId = id;
 
     //state with data about new recipe
-    const [data, setData] = useState({
-        title: "",
-        description: "",
-        instructions: [],
-        ingredients: [],
-        type: props.match.params.type,
-        notes: '',
-        kcal: '',
-        servingWeight: '',
-        prepareTime: ''
-    });
+    const [data, setData] = useState(null);
 
     // state with instruction text
     const [instruction, setInstruction] = useState('');
@@ -34,7 +30,12 @@ const MyRecipesAddForm = (props) => {
     // 6 - additions (not required) - kcal, servingWeight, prepareTime
     // 7 - summary
     // by changing this state the specific section will displayed
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(7);
+
+    // fetch data about recipe that you want to edit
+    useEffect(()=> {
+       auth().onAuthStateChanged(user => user && getRecipeData(user.uid, recipeId, setData))
+    },[]);
 
     /** chande data state - set data about recipe */
     const handleChangeData = (e) => {
@@ -137,11 +138,14 @@ const MyRecipesAddForm = (props) => {
     /** add recipe to user's account in firestore database - 'recipes' subcollection */
     const addNewRecipe = () => {
         return addNewElement(auth().currentUser.uid, "recipes", data)
-            // redirect user to list with recipes of particular type
-            .then(() => window.location.replace(`/myRecipes/${props.match.params.type}`))
+            // redirect user to edited reciepe
+            .then(() => window.location.replace(`/myRecipe/${data.id}`))
             .catch(err => console.log(err))
     }
 
+    if(data === null){
+        return <Loading/>
+    }
     return (
         <section className="container">
 
@@ -440,47 +444,3 @@ const MyRecipesAddForm = (props) => {
         </section>
     )
 }
-
-/**
- * Component with single instruction content with abilit to change or remove this instruction
- * @param {string} content - istruction text
- * @param {number} index - index of instruction, needed to remove or change this instruction
- * @param deleteInstructionFnc - function that will delete that instruction
- * @param editInstruction - function that will change that instruction
- */
-export const SingleInstruction = ({ content, index, deleteInstructionFnc, editInstruction }) => {
-
-    // new instruction value
-    const [inputValue, setInputValue] = useState(content);
-
-    // flag by which user can toggle the input by which he can edit the instruction
-    const [isInputActive, setIsInputActive] = useState(false);
-
-    // change the instruction on inputValue state change
-    useEffect(() => {
-        return editInstruction(index, inputValue);
-    }, [inputValue]);
-
-    /**  change isInputActive state -> toogle input */
-    const handleChangeIsInputActive = () => isInputActive ? setIsInputActive(false) : setIsInputActive(true);
-
-    /** change inputValue state -> useEffect() hook will save new instruction value*/
-    const handleChangeInstruction = (e) => setInputValue(e.target.value);
-
-
-    return <li className="addRecipe__listItem" >
-        {/* icon by which user can delete the instruction */}
-        <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
-        {index + 1}.
-        
-        {/* if isInputActive state is true then display intruction text otherwise display input */}
-        {!isInputActive && <p> {content}</p>}
-        {isInputActive && <>
-            <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
-            <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>
-        </>}
-        {!isInputActive && <i class="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive} />}
-    </li>
-}
-
-export default MyRecipesAddForm;

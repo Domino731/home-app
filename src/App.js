@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
-//components
 import HomePage from "./components/homePage/HomePage";
 import MyKitchen from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
@@ -13,19 +12,13 @@ import MyRecipesAddForm from "./components/myRecipes/MyRecipesAddForm";
 import MyRecipeSingleRecipe from "./components/myRecipes/MyRecipeSingleRecipe";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import ToDo from "./components/toDo/ToDo";
+import { MyRecipeEdit } from "./components/myRecipes/MyRecipeEdit";
 
 function App({setUser}) {
-    //when component mounted check the user is logged in
+    //when component mounted check the user is logged in and set redux state (currentUser state)
     useEffect(() => {
-        auth().onAuthStateChanged(user => {
-            if (user) {
-                setUser(user)
-            } else {
-                setUser(null)
-            }
-        })
-    }, [])
-
+       return auth().onAuthStateChanged(user => user ? setUser(user) : setUser(null) )
+    }, []);
 
     return (
         <Router>
@@ -35,6 +28,7 @@ function App({setUser}) {
             <PrivateRoute exact path="/myRecipes/:type" component={MyRecipesList}/>
             <PrivateRoute exact path="/myRecipes/:type/add" component={MyRecipesAddForm}/>
             <PrivateRoute exact path="/myRecipe/:id" component={MyRecipeSingleRecipe}/>
+            <PrivateRoute exact path="/myRecipe/edit/:id" component={MyRecipeEdit}/>
             <PrivateRoute exact path="/toDo" component={ToDo}/>
         </Router>
     )

@@ -761,6 +761,13 @@
 .recipeOptions {
   display: flex;
   justify-content: space-between;
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-decoration-color: none;
+  }
   &__btn {
     border: none;
     background: transparent;
