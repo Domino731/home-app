@@ -56,6 +56,9 @@
     color: $color-white;
     font-size: 22px;
     margin-top: 9px;
+    i:hover {
+      cursor: pointer;
+    }
     @include mobileM {
       height: 38px;
       font-size: 25px;
@@ -137,6 +140,26 @@
     font-size: 14px;
     i {
       margin-left: 7px;
+    }
+    @include mobileL {
+      padding: 17px 14px;
+      font-size: 16px;
+    }
+    @include tablet {
+      padding: 22px 27px;
+      font-size: 21px;
+    }
+    @include laptopS {
+      padding: 17px 20px;
+      font-size: 17px;
+    }
+    @include laptopL {
+      padding: 22px 34px;
+      font-size: 20px;
+    }
+    @include desktopS {
+      padding: 28px 44px;
+      font-size: 24px;
     }
   }
 

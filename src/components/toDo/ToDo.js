@@ -12,6 +12,7 @@ import { Loading } from "../loading/Loading";
  * Main component for tasks section, responsbile for fetching data about tasks and saving
  *  it into redux state (toDo state), and for rendering header, new task form and tasks list
  * @param  setToDos - REDUX ACTION - function needed to set toDo state in redux in order to render list with tasks based on this data
+ * @param tasks - REDUX STATE - data about user's tasks ('ToDo' subcollection)
  */
 const ToDo = ({ setToDos, tasks }) => {
 
@@ -23,11 +24,10 @@ const ToDo = ({ setToDos, tasks }) => {
         return auth().onAuthStateChanged(user => {
             user && getDataFromFirestore('ToDo', user.uid, setToDos);
         });
-
     }, []);
 
     /** function that is changing flag state, so user can toogle between tasks list and new task form */
-    const handleChangeFlag = () => flag ? setFlag(false) : setFlag(true)
+    const handleChangeFlag = () => flag ? setFlag(false) : setFlag(true);
 
     if(!tasks){
         return <Loading/>

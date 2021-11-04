@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../../fireBase/fireBase";
 import { deleteDataFirestore } from "../../fireBase/deleteDataFirestore";
 import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
-import { getUnit } from "../../functions/getUnit";
+
 
 /**
  * Component which is rendering single product container with ability to display form by which user can edit this product 
@@ -80,11 +80,12 @@ const MyKitchenProduct = ({ prod, id, }) => {
                         {prod.amount ? prod.amount : `Brak`}
                     </strong>
 
-                    <strong>{getUnit(prod.unit, prod.amount)}</strong>
+                    <strong>{
+                        prod.unit === "Na sztuki" ? `Sztuk` : `${prod.unit}`
+                        }</strong>
                 </>}
                 {prod.amount === 0 && <strong>Brak</strong>}
             </div>
-
         </section>
 
         {/*product management is displayed when you click on a product*/}

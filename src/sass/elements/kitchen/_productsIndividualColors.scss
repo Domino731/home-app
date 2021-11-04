@@ -1,31 +1,32 @@
 //setting colors for specific products by colorForKitchenProducts mixin
 
-//// VEGETABLES
-.kitchenCtg:nth-child(2){
+//// MEAT
+.kitchenCtg:nth-child(1){
   @include colorForKitchenProducts(#ef5285);
 }
-//// MEAT
-.kitchenCtg:nth-child(3){
+//// VEGETABLES
+
+.kitchenCtg:nth-child(2){
   @include colorForKitchenProducts(#75D701);
 }
 //// DAIRY
-.kitchenCtg:nth-child(4){
+.kitchenCtg:nth-child(3){
   @include colorForKitchenProducts(#2EC4B6);
 }
 //// SUGAR
-.kitchenCtg:nth-child(5){
+.kitchenCtg:nth-child(4){
   @include colorForKitchenProducts(#f100e5);
 }
 //// FRUITS
-.kitchenCtg:nth-child(6){
+.kitchenCtg:nth-child(5){
   @include colorForKitchenProducts(#f9a11b);
 }
 //// FROZEN FOOD
-.kitchenCtg:nth-child(7){
+.kitchenCtg:nth-child(6){
   @include colorForKitchenProducts(#0080ff);
 }
 //// DRINKS
-.kitchenCtg:nth-child(8){
+.kitchenCtg:nth-child(7){
   @include colorForKitchenProducts(#f9320c);
 }
 
