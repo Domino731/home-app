@@ -456,25 +456,31 @@ const SingleInstruction = ({ content, index, deleteInstructionFnc, editInstructi
     // flag by which user can toggle the input by which he can edit the instruction
     const [isInputActive, setIsInputActive] = useState(false);
 
+    // change the instruction on inputValue state change
     useEffect(() => {
         return editInstruction(index, inputValue);
     }, [inputValue]);
 
+    /**  change isInputActive state -> toogle input */
     const handleChangeIsInputActive = () => isInputActive ? setIsInputActive(false) : setIsInputActive(true);
+
+    /** change inputValue state -> useEffect() hook will save new instruction value*/
     const handleChangeInstruction = (e) => setInputValue(e.target.value);
 
 
     return <li className="addRecipe__listItem" >
+        {/* icon by which user can delete the instruction */}
         <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
         {index + 1}.
+        
+        {/* if isInputActive state is true then display intruction text otherwise display input */}
         {!isInputActive && <p> {content}</p>}
         {isInputActive && <>
             <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
             <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>
         </>}
-
         {!isInputActive && <i class="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive} />}
     </li>
 }
 
-export default MyRecipesAddForm
+export default MyRecipesAddForm;
