@@ -616,21 +616,21 @@
   }
   &__listItem {
     font-size: 1.3em;
-    padding: 5px 0;
+    padding: 3px 0;
     @include mobileXL {
-      padding: 6px 0;
+      padding: 4px 0;
     }
     @include tablet {
-      padding: 7px 0;
-    }
-    @include laptopS {
       padding: 6px 0;
     }
+    @include laptopS {
+      padding: 5px 0;
+    }
     @include laptopXL {
-      padding: 8px 0;
+      padding: 6px 0;
     }
     @include desktopS {
-      padding: 9px 0;
+      padding: 8px 0;
     }
   }
   &__listNumber {
@@ -656,6 +656,8 @@
     padding: 0.3em 1em;
     text-align: center;
     flex-grow: 1;
+    transform: scale(20%);
+    animation: 0.3s an__single_recipe_scale  forwards;
     @include mobileM {
       font-size: 11px;
       margin: 4px 4px;
@@ -769,6 +771,11 @@
     border-radius: 7px;
     letter-spacing: 0.063rem;
     color: $color-white;
+    transform: scale(0%);
+    animation: 0.4s an__single_recipe_scale  forwards;
+    &:last-child {
+      animation:0.4s 0.1s  an__single_recipe_scale  forwards;
+    }
     @include mobileM {
       padding: 14px 0;
       font-size: 19px;
@@ -1031,6 +1038,20 @@
   .recipeDelete__item span::before {
     border-left: $width solid $color-red;
     border-top: $width solid $color-red;
+  }
+}
+@keyframes an__single_recipe_scale {
+  100% {
+     transform: scale(100%)
+  }
+}
+
+
+$animationDurationTime: 0.4s;
+
+@for $i from 1 through 100 {
+  .recipeIngredients__item:nth-child(#{$i}) {
+    animation: an__single_recipe_scale  #{($i / 10) + $animationDurationTime} forwards;
   }
 }
 
