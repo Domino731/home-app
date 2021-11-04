@@ -6,7 +6,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../../fireBase/fireBase";
 import { Loading } from "../loading/Loading";
-import { MyRecipesBar } from "./MyRecipesBar";
+import { MyRecipesHeader } from "./MyRecipesHeader";
 import { MyRecipeTypeRedirect } from "./MyRecipeTypeRedirect";
 import background from "../../images/background_recipes_types.jpg";
 
@@ -27,28 +27,32 @@ export const MyRecipes = () => {
                 id: doc.id
             }));
 
-            // sort by 
+            // sort by a number that specify priority
             data.sort((a, b) => a.number - b.number)
-            return setAvailableRecipesTypes(data)
+
+            // save new data
+            return setAvailableRecipesTypes(data);
         });
     }, [])
 
+    // wait for data
     if (availableRecipesTypes.length === 0) {
         return <Loading />
     }
-    return (
-        <section className="container recipes">
 
-            <MyRecipesBar />
+    return <section className="container recipes">
 
-            {/* rendering links for earch type of recipe, if you want to add new type - everything is described in docs */}
-            <div className="recipesType">
-                {
-                    availableRecipesTypes.map((el, num) => <MyRecipeTypeRedirect title={el.title} recipeType={el.path}
-                        key={`recipe${num}`} />)
-                }
-            </div>
+        {/* header */}
+        <MyRecipesHeader />
 
-        </section>
-    )
+        {/* rendering links for earch type of recipe, if you want to add new type - everything is described in docs */}
+        <div className="recipesType">
+            {
+                availableRecipesTypes.map((el, num) => <MyRecipeTypeRedirect title={el.title} recipeType={el.path}
+                    key={`recipe${num}`} />)
+            }
+        </div>
+
+    </section>
+
 }
