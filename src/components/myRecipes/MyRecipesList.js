@@ -1,74 +1,96 @@
-//component containing a list of all the recipes of a certain type
-
-import { useHistory } from "react-router-dom";
-import { getCategoryText } from "../../functions/getCategoryText";
 import { useEffect, useState } from "react";
-import { sortingByAlphabeticalRecipes } from "../../functions/sorting";
-import { renderByFirebase } from "../../fireBase/renderByFirebase";
 import { Loading } from "../loading/Loading";
 import MyRecipeBox from "./MyRecipeBox";
 import { auth } from "../../fireBase/fireBase";
 import { getRecipesOfParticularType } from "../../fireBase/getRecipesOfParticularType";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect, useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { db } from "../../fireBase/fireBase";
-const MyRecipesList = (props) => {
+const MyRecipesList = () => {
 
+    // references
     const { type } = useParams();
     const history = useHistory();
 
-    //flag to overlay animation
-    const [animationClass, setAnimationClass] = useState(false)
+    /** type of recipes from url parama */
+    const recipesType = type;
 
-    // an array to check if a given recipe type is in the firestore
-    const [recipesCategory, setRecipesCategory] = useState([])
+    // flag to overlay animation on add new recipe button
+    const [animationClass, setAnimationClass] = useState(false);
 
-    //sorting recipes alphabetically
-    const [sorting, setSorting] = useState("Alfabetycznie A - Z")
+    // sorting option
+    const [sorting, setSorting] = useState("Alfabetycznie A - Z");
 
-    const [recipesData, setRecipesData] = useState(null)
+    // array with data about recipes
+    const [recipesData, setRecipesData] = useState(null);
 
-    const [availableRecipesTypes, setAvailableRecipesTypes] = useState([]);
+    // state with name of current type of recipe (in polish)
+    const [typeNamePl, setTypeNamePl] = useState('');
+    // array with available types of recipes, needed to check if url param (which is recipe type) is included in this array,
+    // if no then redirect user to list all recipes types list - /myRecipes. If you want to add new type recipe look at docs
+    const [availableRecipesTypes, setAvailableRecipesTypes] = useState(null);
 
-    //getting recipes form application store by type, and sorting them alphabetically
+    // fetch available recipes types from firestore ('recipesRendering') collection
     useEffect(() => {
         return db.collection("recipesRendering").get().then((querySnapshot) => {
             const data = [];
             querySnapshot.docs.map(doc => {
-               data.push(doc.data().path) 
+                data.push(doc.data().path);
+                doc.data().path === recipesType && setTypeNamePl(doc.data().title)  
             });
-             return setAvailableRecipesTypes(data)
+
+            // save new data
+            return setAvailableRecipesTypes(data);
         });
-    }, [])
+    }, [recipesData]);
 
-    // useEffect(() => {
-    //     if (props.recipes !== null) {
-    //         setRecipesArray(props.recipes.filter(el => el.type === props.match.params.type))
-
-    //         //sorting
-    //         sortingByAlphabeticalRecipes(sorting, setRecipesArray)
-    //     }
-    // }, [sorting]);
 
     // fetch data about recipes of particular type
     useEffect(() => {
-        auth().onAuthStateChanged(user => {
-            if (user) {
-                setRecipesData([])
-               // getRecipesOfParticularType(props.match.params.type, user.uid, setRecipesData);
-            }
+        return auth().onAuthStateChanged(user => {
+            user && getRecipesOfParticularType(recipesType, user.uid, setRecipesData);
         });
-    }, [props.match.params.type]);
+    }, [recipesType]);
 
-    //function that changes the sorting
+    // listen for sorting state changes, then sort recipes by selecting option - sorting state
+    useEffect(() => {
+        recipesData && sortingByAlphabeticalRecipes(sorting);
+    }, [sorting]);
+
+
+    /**
+     * That function is sorting array with recipes alphabetically
+      * @param  {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
+      * @param {*} set - function with component state
+    */
+    const sortingByAlphabeticalRecipes = (option) => {
+        if (option === "Alfabetycznie Z - A") {
+            return setRecipesData(prev => prev.sort((a, b) => {
+                const textA = a.title.toUpperCase();
+                const textB = b.title.toUpperCase();
+                return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
+            }));
+        } else {
+            return setRecipesData(prev => prev.sort((a, b) => {
+                const textA = a.title.toUpperCase();
+                const textB = b.title.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            }));
+        }
+    }
+
+    /** function that changes the sorting state -> useEffect() hook will sort array with recipes (recipesData state) */
     const handleChangeSorting = () => {
         sorting === "Alfabetycznie Z - A" ? setSorting("Alfabetycznie A - Z") : setSorting("Alfabetycznie Z - A")
     }
 
-    //function that set the animation on button and, redirect to new recipe form
+    /** function that is appling animation on button and after 0.7s redirects user to form where he can add new recipe */
     const redirect = () => {
-        setAnimationClass(true)
-        setTimeout(() => {
-            history.push(`/myRecipes/${props.match.params.type}/add`);
+        // change state -> apply animation
+        setAnimationClass(true);
+
+        // redirect user after delay
+        return setTimeout(() => {
+            history.push(`/myRecipes/${recipesType}/add`);
         }, 700);
     }
 
@@ -77,48 +99,55 @@ const MyRecipesList = (props) => {
     }
 
     //if the specified category does not exist in the firestore, return null
-    else if (!availableRecipesTypes.includes(props.match.params.type)) {
-        return null
+    else if (availableRecipesTypes && !availableRecipesTypes.includes(recipesType)) {
+        return <Redirect to='/myRecipes' />
 
     }
-        return (
-            <section className="container recipes">
-                <header className="recipesListHeader">
-                    <h2>Twoje przepisy</h2>
-                    <strong>W kategorii <i>'{props.match.params.type}'</i></strong>
-                </header>
 
-                {/*if you click on this button it will redirect you to new recipe form*/}
-                <button className={`addRecipeBtn ${animationClass && "addRecipeBtn__animation"}`} onClick={redirect}>
-                    <i className="fas fa-plus" />
-                </button>
+    return (
+        <main className="container container--recipesList">
 
-                {/*if you do not have any rules, display information about it*/}
-                {recipesData.length === 0 &&
-                    <strong className="emptyRecipes">Brak przepisów w
-                        kategorii <br />'{props.match.params.type}'<i
-                            className="fas fa-heart-broken" /></strong>
-                }
+            {/* header */}
+            <header className="recipesListHeader">
+                <h2>Twoje przepisy</h2>
+                <strong>W kategorii <i>'{typeNamePl}'</i></strong>
+            </header>
 
-                {/*if you have recipes */}
-                {recipesData.length > 0 && `as`
-                    // <section>
-                    //     <div className="sort sort--green" onClick={handleChangeSorting}>
-                    //         <button>{sorting}</button>
-                    //     </div>
-                    //     <ul className="recipesList">
+            {/* if you click on this button it will redirect you to new recipe form (after delay)*/}
+            <button className={`addRecipeBtn ${animationClass && "addRecipeBtn__animation"}`} onClick={redirect}>
+                <i className="fas fa-plus" />
+            </button>
 
-                    //         {/*render elements which, when clicked, redirect you to a specific recipe*/}
-                    //         {recipesData.map(el => {
-                    //            return <MyRecipeBox recipe={el} key={el.id} />
-                    //         })}
-                    //     </ul>
-                    // </section>
-                }
+            {/* if user doesnt have any recipes then inform him about this */}
+            {recipesData.length === 0 &&
+                <strong className="emptyRecipes">Brak przepisów w
+                    kategorii <br />'{typeNamePl}'<i
+                        className="fas fa-heart-broken" /></strong>
+            }
 
-            </section>
+            {/*if user has one recipe at least */}
+            {recipesData.length > 0 &&
+                <section>
+                    
+                    {/* button by which user can sort recipes alphabetically */}
+                    <div className="sort sort--green" onClick={handleChangeSorting}>
+                        <button>{sorting}</button>
+                    </div>
 
-        );
+                     {/* list with all user's recipes */}
+                    <ul className="recipesList">
+                        {/*render elements which, when clicked, redirect you to a specific recipe*/}
+                        {recipesData.map(el => {
+                            return <MyRecipeBox recipe={el} key={el.id} />
+                        })}
+                    </ul>
+
+                </section>
+            }
+
+        </main>
+
+    );
 }
 
 

@@ -19,23 +19,3 @@ export const sortingByAlphabeticalProducts  = (option, set) => {
     }
 }
 
-/**
- * That function is sorting array with recipes alphabetically
- * @param  {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
- * @param {*} set - function with component state
- */
-export const sortingByAlphabeticalRecipes  = (option, set) => {
-    if (option === "Alfabetycznie Z - A") {
-        set(prev => prev.sort((a, b) => {
-            const textA = a.title.toUpperCase();
-            const textB = b.title.toUpperCase();
-            return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
-        }));
-    } else {
-        set(prev => prev.sort((a, b) => {
-            const textA = a.title.toUpperCase();
-            const textB = b.title.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        }));
-    }
-}

@@ -4,6 +4,9 @@
 }
 
 .recipesListHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
   background: $color-green;
   color: white;
   display: flex;
@@ -121,20 +124,19 @@
     padding: 4px 0;
   }
   @include mobileXL {
-    font-size: 13px;
-    padding: 8px 0;
+    font-size: 25px;
+    padding: 2px 0;
   }
   @include tablet {
     font-size: 38px;
     padding: 3px 0;
   }
   @include laptopS {
-    font-size: 29px;
-    padding: 3px 0;
+    font-size: 20px;
   }
   @include laptopL {
-    font-size: 32px;
-    padding: 3px 0;
+    font-size: 26px;
+    padding: 4px 0;
   }
 }
 
