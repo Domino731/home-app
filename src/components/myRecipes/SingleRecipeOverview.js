@@ -12,6 +12,7 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
         color: recipeStyles.colorPrimary
     }
     return <section className="recipe__item recipeOverview">
+
          {/* title */}
         <h2 className="recipeOverview__title">{recipe.title}</h2>
 
@@ -24,20 +25,27 @@ const SingleRecipeOverview = ({ recipe, recipeStyles }) => {
 
         {/* description */}
         <p className="recipeOverview__description">{recipe.description}</p>
+
         <div className="recipeOverview__botBar">
+            {/* prepare time */}
             {recipe.prepareTime && <div className="recipeOverview__box">
                 <div style={colorPrimary}>{recipe.prepareTime}</div>
                 <div>MIN</div>
             </div>}
+
+            {/* amount of ingredients */}
             <div className={`recipeOverview__box ${(recipe.prepareTime && recipe.kcal) ? `recipeOverview__box--mid` : ``}`}>
                 <div style={colorPrimary}>{recipe.ingredients.length}</div>
                 <div>Ilość Składników</div>
             </div>
+
+            {/* serving kcal */}
             {recipe.kcal &&  <div className="recipeOverview__box">
             <div style={colorPrimary}>{recipe.kcal}</div>
                 <div>Kcal</div>
                  </div>}
         </div>
+
     </section>
 }
 

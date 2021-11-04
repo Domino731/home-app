@@ -44,7 +44,7 @@ const MyRecipeSingleRecipe = (props) => {
         return <Loading />
     }
 
-    return <main className="container">
+    return <main className="container container--singleRecipe">
         {/* check if use wants to delete recipe, he can change deleteRecipeFlag (redux state) in SingleRecipeContent -> SingleRecipeOptions nested component  */}
         {/* main content */}
         {!props.deleteRecipeFlag && <> 
