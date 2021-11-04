@@ -433,7 +433,7 @@ const MyRecipesAddForm = (props) => {
 
                 {/* back to summary button */}
                 {(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 && step !== 5 && step !== 6 && step !== 7) && <div className="addRecipe__summaryBtnWrapper">
-                    <button onClick={() => setStep(6)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
+                    <button onClick={() => setStep(7)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
                 </div>}
             </div >
 
@@ -471,10 +471,10 @@ export const SingleInstruction = ({ content, index, deleteInstructionFnc, editIn
     return <li className="addRecipe__listItem" >
         {/* icon by which user can delete the instruction */}
         <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
-        {index + 1}.
+        {index + 1}. &nbsp;
         
         {/* if isInputActive state is true then display intruction text otherwise display input */}
-        {!isInputActive && <p> {content}</p>}
+        {!isInputActive &&  content}
         {isInputActive && <>
             <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
             <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>

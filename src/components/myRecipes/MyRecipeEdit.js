@@ -5,6 +5,7 @@ import { SingleInstruction } from "./MyRecipesAddForm";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Loading } from "../loading/Loading";
 import { getRecipeData } from "../../fireBase/getRecipeData";
+import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
 
 export const MyRecipeEdit = () => {
    
@@ -135,9 +136,9 @@ export const MyRecipeEdit = () => {
         }));
     }
 
-    /** add recipe to user's account in firestore database - 'recipes' subcollection */
-    const addNewRecipe = () => {
-        return addNewElement(auth().currentUser.uid, "recipes", data)
+    /** edit recipe in user's account in firestore database - 'recipes' subcollection */
+    const editRecipe = () => {
+        return updateDataFirestore(data.id, auth().currentUser.uid, 'recipes', data, null)
             // redirect user to edited reciepe
             .then(() => window.location.replace(`/myRecipe/${data.id}`))
             .catch(err => console.log(err))
@@ -418,7 +419,7 @@ export const MyRecipeEdit = () => {
                     </div>
 
                     {/* button by which user can add new recipe */}
-                    <button onClick={addNewRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Dodaj przepis</button>
+                    <button onClick={editRecipe} className="addRecipe__btn addRecipe__btn--nextStep">Zaktualizuj</button>
                 </div>}
 
                 {/* container with dots which are representing current step */}
@@ -437,7 +438,7 @@ export const MyRecipeEdit = () => {
 
                 {/* back to summary button */}
                 {(data.title.length > 2 && data.ingredients.length > 1 && data.ingredients.length > 1 && step !== 5 && step !== 6 && step !== 7) && <div className="addRecipe__summaryBtnWrapper">
-                    <button onClick={() => setStep(6)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
+                    <button onClick={() => setStep(7)} className="addRecipe__btn addRecipe__btn--backToSummary">Wróć do podsumowania</button>
                 </div>}
             </div >
 
