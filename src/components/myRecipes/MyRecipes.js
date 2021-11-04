@@ -1,15 +1,8 @@
-//component that renders categories of recipes from firestore(collection recipesRendering)
-
-//if you want to add a new category add to the firestore in the recipesRendering collection
-// a new document with a title, path, and a number which defines where the category is located
-
 import { useEffect, useState } from "react";
 import { db } from "../../fireBase/fireBase";
 import { Loading } from "../loading/Loading";
 import { MyRecipesHeader } from "./MyRecipesHeader";
-import { MyRecipeTypeRedirect } from "./MyRecipeTypeRedirect";
-import background from "../../images/background_recipes_types.jpg";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 /**
  * Component with all recipes types
  */
@@ -45,11 +38,13 @@ export const MyRecipes = () => {
         {/* header */}
         <MyRecipesHeader />
 
-        {/* rendering links for earch type of recipe, if you want to add new type - everything is described in docs */}
+        {/* rendering links for each type of recipe, if you want to add new type - everything is described in docs */}
         <div className="recipesType">
             {
-                availableRecipesTypes.map((el, num) => <MyRecipeTypeRedirect title={el.title} recipeType={el.path}
-                    key={`recipe${num}`} />)
+                availableRecipesTypes.map((el, num) => <Link to={`/myRecipes/${el.path}`} className='recipeRedirect' key={`recipe-redirect-${el.path}-${num}`}>
+                <span />
+                <div> {el.title} </div>
+            </Link>)
             }
         </div>
 
