@@ -89,20 +89,21 @@ const MyKitchenProduct = ({ prod, id, }) => {
 
         {/*product management is displayed when you click on a product*/}
         {flag === false &&
-
-             
+            //  when user successfully change product then change successfulUpdate state -> display animation 
             <section className={`kitchenProductManagement ${successfulUpdate && "successfulProductUpdate"}`}>
 
-                <h3 className="management__title"><i className="fas fa-times-circle" onClick={handleChangeFlag} /> Edytuj
+                <h3 className="management__title">
+                    {/* hide management form */}
+                    <i className="fas fa-times-circle" onClick={handleChangeFlag} /> Edytuj
                 </h3>
-                <div className="management__amount">
 
+                <div className="management__amount">
                     {/*changing the amount*/}
                     <button onClick={handleIncrease}><i className="fas fa-plus-circle" /></button>
                     <input type="number" placeholder="nowa ilość" value={newAmount} onChange={handleChangeAmount} />
                     <button onClick={handleDecrease}><i className="fas fa-minus-circle" /></button>
-
                 </div>
+                
                 <div className="management__actions">
 
                     {/*deleting product*/}

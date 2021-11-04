@@ -9,14 +9,13 @@ import { db } from "./fireBase"
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             console.log()
             const data = {
                 colorPrimary: doc.data().colorPrimary,
                 colorSecondary: doc.data().colorSecondary,
                 icon: doc.data().icon
             }
-            saveData(data)
+            return saveData(data)
         });
     })
     .catch((error) => {

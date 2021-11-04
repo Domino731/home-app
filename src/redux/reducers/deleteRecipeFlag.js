@@ -1,8 +1,9 @@
+/** Reducer with boolean value */
 export const deleteRecipeFlag = (state = false, action) => {
-    switch (action.type){
+    switch (action.type) {
         case "CHANGE_DELETE_RECIPE":
-            return action.delete
+            return action.delete;
         default:
-            return state
+            return state;
     }
-   }
+}

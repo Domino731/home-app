@@ -1,10 +1,9 @@
+/** reducer with current logged user data */
 export const currentUser = (state = [], action) => {
     switch (action.type){
         case "CHANGE_USER":
-            const currentUser = action.currentUser
-            return currentUser
-
+            return action.currentUser;
         default:
-            return state
+            return state;
     }
 }

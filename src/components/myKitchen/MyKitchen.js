@@ -9,7 +9,7 @@ import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 import { auth } from "../../fireBase/fireBase";
 
 /**
- * Component with whole content for kitchen products
+ * Component with the whole content for kitchen products
  * @param setProducts - REDUX ACTION - function that changes redux's products state, based on this state list with products will be rendered 
  */
 const MyKitchen = ({ setProducts }) => {

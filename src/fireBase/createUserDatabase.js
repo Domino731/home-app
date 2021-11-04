@@ -1,76 +1,30 @@
 import { db } from "./fireBase";
 const today = new Date().toLocaleDateString()
 
-//creating new user database in firestore(collection users)
-// params //
-// userName --> name it will be created with
+/**
+ * create initial user data in firestore database in 'users' collection
+ * @param {*} uid - uid of new created user
+ */
 export const createUserDatabase = (uid) => {
-        addCategory(uid, "recipes")
-        addCategory(uid, "ToDo")
-        addCategory(uid, "products")
+    addSubcollection(uid, "recipes");
+    addSubcollection(uid, "ToDo");
+    addSubcollection(uid, "products");
 }
 
-
-//creating first doc
-// params //
-// id --> to function know where push first doc
-// name --> name of collection, to which you want add new doc
-
-const addCategory = async (id, name) => {
-    await db.collection("users").doc(`${id}`).collection(`${name}`).doc().set({
-        firstDoc: today
-    })
-        .then(() => {
-            console.log("Document successfully written!");
+/**
+ * create new subcollection in 'users' collection 
+ * @param {*} id - id of doc where you want to nest new collection
+ * @param {*} name - name of new collection
+ */
+const addSubcollection = async (id, name) => {
+    return await db.collection("users")
+        .doc(`${id}`)
+        .collection(`${name}`)
+        .doc()
+        .set({
+            firstDoc: today
         })
         .catch((error) => {
             console.error("Error writing document: ", error);
         });
 }
-
-
-
-
-
-
-
-
-// import { db } from "./fireBase";
-// const today = new Date().toLocaleDateString()
-
-// //creating new user database in firestore(collection users)
-// // params //
-// // userName --> name it will be created with
-// export const createUserDatabase = (uid) => {
-//     db.collection('users')
-//         .add({
-//             createdAt: new Date()
-//         })
-//     createData(uid)
-// }
-
-// //creating new doc in firestore(collection users)
-// // params //
-// // name --> to get id of current user
-// const createData = (uid) => {
-//     addCategory(uid,"recipes")
-//     addCategory(uid, "ToDo")
-//     addCategory(uid, "products")
-// }
-
-// //creating first doc
-// // params //
-// // id --> to function know where push first doc
-// // name --> name of collection, to which you want add new doc
-
-// const addCategory = (id, name) => {
-//     db.collection("users").doc(`${id}`).collection(`${name}`).add({
-//        firstDoc: today
-//     })
-//         .then(() => {
-//             console.log("Document successfully written!");
-//         })
-//         .catch((error) => {
-//             console.error("Error writing document: ", error);
-//         });
-// }

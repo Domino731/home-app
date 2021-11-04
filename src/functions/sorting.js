@@ -1,34 +1,41 @@
-// functions that sort recipes, products alphabetically
-// params //
-// el --> the array you want to sort
-// set --> sets the state with sorted array
-export const sortingByAlphabeticalProducts  = (el, set) => {
-    if (el === "Alfabetycznie Z - A") {
+/**
+ * That function is sorting array with products alphabetically
+ * @param {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
+ * @param {*} set - function with component state
+ */
+export const sortingByAlphabeticalProducts  = (option, set) => {
+    if (option === "Alfabetycznie Z - A") {
         set(prev => prev.sort((a, b) => {
-            let textA = a.name.toUpperCase();
-            let textB = b.name.toUpperCase();
+            const textA = a.name.toUpperCase();
+            const textB = b.name.toUpperCase();
             return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
-        }))
+        }));
     } else {
         set(prev => prev.sort((a, b) => {
-            let textA = a.name.toUpperCase();
-            let textB = b.name.toUpperCase();
+            const textA = a.name.toUpperCase();
+            const textB = b.name.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        }))
+        }));
     }
 }
-export const sortingByAlphabeticalRecipes  = (el, set) => {
-    if (el === "Alfabetycznie Z - A") {
+
+/**
+ * That function is sorting array with recipes alphabetically
+ * @param  {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
+ * @param {*} set - function with component state
+ */
+export const sortingByAlphabeticalRecipes  = (option, set) => {
+    if (option === "Alfabetycznie Z - A") {
         set(prev => prev.sort((a, b) => {
-            let textA = a.title.toUpperCase();
-            let textB = b.title.toUpperCase();
+            const textA = a.title.toUpperCase();
+            const textB = b.title.toUpperCase();
             return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
-        }))
+        }));
     } else {
         set(prev => prev.sort((a, b) => {
-            let textA = a.title.toUpperCase();
-            let textB = b.title.toUpperCase();
+            const textA = a.title.toUpperCase();
+            const textB = b.title.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        }))
+        }));
     }
 }

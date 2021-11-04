@@ -7,52 +7,46 @@ import { useEffect, useState } from "react";
 import { db } from "../../fireBase/fireBase";
 import { Loading } from "../loading/Loading";
 import { MyRecipesBar } from "./MyRecipesBar";
-import { MyRecipeRedirect } from "./MyRecipeRedirect";
+import { MyRecipeTypeRedirect } from "./MyRecipeTypeRedirect";
 import background from "../../images/background_recipes_types.jpg";
 
+/**
+ * Component with all recipes types
+ */
 export const MyRecipes = () => {
 
-    //state with array from firestore,is used to rendering redirect for specific type for recipes
-    const [renderingArray, setRenderingArray] = useState([])
+    // array with available recipes types, needed to render links to list with recipes of particular type (by MyRecipeTypeRedirect  component)
+    // if you want to add new type look at docs
+    const [availableRecipesTypes, setAvailableRecipesTypes] = useState([]);
 
-    //when component mount get products form firestore and push them into renderingArray state
+    // fetch available recipes types data
     useEffect(() => {
-        db.collection("recipesRendering").get().then((querySnapshot) => {
+        return db.collection("recipesRendering").get().then((querySnapshot) => {
             const data = querySnapshot.docs.map(doc => ({
                 ...doc.data(),
                 id: doc.id
             }));
-            setRenderingArray(data.sort((a, b) => a.number - b.number))
-            return data
+
+            // sort by 
+            data.sort((a, b) => a.number - b.number)
+            return setAvailableRecipesTypes(data)
         });
     }, [])
 
-
-    if (renderingArray.length === undefined) {
-        return null
-    }
-    if (renderingArray.length === 0) {
+    if (availableRecipesTypes.length === 0) {
         return <Loading />
     }
     return (
         <section className="container recipes">
-
-            <style>{`body {
-            background-image: url(${background})} 
-            `}</style>
 
             <MyRecipesBar />
 
             {/* rendering links for earch type of recipe, if you want to add new type - everything is described in docs */}
             <div className="recipesType">
                 {
-                    renderingArray.map((el, num) => <MyRecipeRedirect title={el.title} path={el.path}
+                    availableRecipesTypes.map((el, num) => <MyRecipeTypeRedirect title={el.title} recipeType={el.path}
                         key={`recipe${num}`} />)
                 }
-            </div>
-
-            <div className="freepik">
-                <a href='https://www.freepik.com/photos/food'>Food photo created by freepik - www.freepik.com</a>
             </div>
 
         </section>
