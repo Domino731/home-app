@@ -20,7 +20,9 @@ export const setRecipes = (data) => ({
  * set ToDo state in REDUX
  * @param {*} data - data about tasks 
  */
-export const setToDos = (data) => ({
-    type: "GET_TODO",
-    todo: data
-});
+export const setToDos = (data) => {
+    return ({
+        type: "GET_TODO",
+        todo: data.sort((a,b) => a.added - b.added)
+    });
+}

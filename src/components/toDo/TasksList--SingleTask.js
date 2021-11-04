@@ -1,20 +1,22 @@
 //this component displays single tasks, used in ToDo component
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { deleteDataFirestore } from "../../fireBase/deleteDataFirestore";
 import { auth } from "../../fireBase/fireBase";
 import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
 import { formatDate } from "../../functions/formatDate";
-
+import { setToDos } from "../../redux/actions/firebaseData.actions";
+import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 /**
  * Component for single task, which is including task overview (title, description...), operations
  * and panel bar by which user can manage particular task delete, archive, or add new operation
  * Task can be only deleted if he has no operations or if he is archived
- * @param toDo - object with data about single tasks
+ * @param taskData - object with data about single tasks
  */
-const SingleTask = ({ toDo }) => {
+const SingleTask = ({ taskData }) => {
 
     // state with specific task data 
-    const [task, setTask] = useState(toDo);
+    const [task, setTask] = useState(taskData);
 
     // flag which allows to toogle tasks operations list
     const [operationFormFlag, setOperationFormFlag] = useState(false);
@@ -27,14 +29,14 @@ const SingleTask = ({ toDo }) => {
 
     // when task is update, update him in firestore
     useEffect(() => {
-        return updateDataFirestore(task.id, auth().currentUser.uid, "ToDo", task, () => null);
+        return updateDataFirestore(taskData.id, auth().currentUser.uid, "ToDo", task, () => null);
     }, [task]);
 
     /**
      * function that delete task from user's account in firestore
      */
     const handleDeleteTask = () => {
-        return deleteDataFirestore(toDo.id, auth().currentUser.uid, "ToDo");
+       return deleteDataFirestore(taskData.id, auth().currentUser.uid, "ToDo")
     };
 
     /** function that archive task, so user cant add new operation, he can only delete */
@@ -75,7 +77,7 @@ const SingleTask = ({ toDo }) => {
     const handleRemoveOperation = content => {
 
         // remove operation from task
-        const array = task.operations;
+        const array = taskData.operations;
         const index = array.indexOf(content);
         if (index > -1) {
             array.splice(index, 1);
@@ -93,29 +95,30 @@ const SingleTask = ({ toDo }) => {
 
         {/* overview - added date, title, description */}
         <div className='singleTask__titleScale'>
-            <div className="singleTask__date" title='Data dodania'>{formatDate(task.added)}</div>
-            <h3 className="singleTask__title">{task.title}</h3>
-            <p className="singleTask__description">{task.description}
+        <h3 className="singleTask__title">{taskData.id}</h3>
+            <div className="singleTask__date" title='Data dodania'>{formatDate(taskData.added)}</div>
+            <h3 className="singleTask__title">{taskData.title}</h3>
+            <p className="singleTask__description">{taskData.description}
             </p>
         </div>
 
         {/* panel with button by which user can manage his task */}
         <div className="singleTask__panel">
 
-            {/*Delete button is displayed only if tasks doesnt have operations or if tasks is archive*/}
-            {(task.operations.length === 0 || task.archive) &&
+            {/*Delete button is displayed only if task doesnt have operations or if tasks is archive*/}
+            {(taskData.operations.length === 0 || taskData.archive) &&
                 <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask} title='Usuń te zadanie'><i
                     className="fas fa-trash-alt" />
                 </button>}
 
             {/*These two buttons are only displayed when the task doesnt have archive status*/}
             {/* add new operation button */}
-            {!task.archive &&
+            {!taskData.archive &&
                 <button className="panelBtn panelBtn--addOperation" onClick={handleChangeOpsFlag} title='Dodaj nową operację'><i
                     className="fas fa-plus" /></button>}
 
             {/* archive task button */}
-            {!task.archive &&
+            {!taskData.archive &&
                 <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask} title='Archiwizuj te zadanie'><i
                     className="fas fa-archive" />
                 </button>}
@@ -123,7 +126,7 @@ const SingleTask = ({ toDo }) => {
         </div>
 
         {/*add new operation*/}
-        {(operationFormFlag && !task.archive) && <form className="singleTask__addOps">
+        {(operationFormFlag && !taskData.archive) && <form className="singleTask__addOps">
             <textarea type="text" placeholder="Opisz nową operacja" onChange={handleChangeOpValue} />
             <button onClick={handleAddOperation}>Dodaj operację <span /></button>
         </form>}
@@ -131,11 +134,11 @@ const SingleTask = ({ toDo }) => {
         {/*rendering task operations*/}
         <ol className="singleTask__opsList">
             {
-                task.operations.map((el, num) => (
-                    <li key={`task${num}--${task.id}`} >
+                taskData.operations.map((el, num) => (
+                    <li key={`task${num}--${taskData.id}`} >
 
                         {/* button by which user can remove operation, this button is displaying only when tasks isnt archived */}
-                        {!task.archive && <i className="fas fa-trash-alt"
+                        {!taskData.archive && <i className="fas fa-trash-alt"
                             onClick={() => handleRemoveOperation(el)}
                             title='Usuń operacje'
                         />}
@@ -149,5 +152,7 @@ const SingleTask = ({ toDo }) => {
 
     </section>
 };
-
-export default SingleTask;
+const mapDispatchToProps = dispatch => ({
+    setToDos: data => dispatch(setToDos(data))
+});
+export default connect(null, mapDispatchToProps)(SingleTask);
