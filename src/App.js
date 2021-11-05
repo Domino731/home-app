@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {changeUser} from "./redux/actions/currenUser.actions";
 import {auth} from "./fireBase/fireBase";
 import {useEffect} from "react";
-import HomePage from "./components/homePage/HomePage";
+import { HomePage } from "./components/homePage/HomePage";
 import MyKitchen from "./components/myKitchen/MyKitchen";
 import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import MyRecipesList from "./components/myRecipes/MyRecipesList";
@@ -15,6 +15,7 @@ import ToDo from "./components/toDo/ToDo";
 import { MyRecipeEdit } from "./components/myRecipes/MyRecipeEdit";
 
 function App({setUser}) {
+    
     //when component mounted check the user is logged in and set redux state (currentUser state)
     useEffect(() => {
        return auth().onAuthStateChanged(user => user ? setUser(user) : setUser(null) )
