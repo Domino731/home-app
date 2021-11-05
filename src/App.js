@@ -16,6 +16,7 @@ import { MyRecipeEdit } from "./components/myRecipes/MyRecipeEdit";
 import { Login } from "./components/userForm/Login";
 import AuthRoute from "./components/customRoutes/AuthRoute";
 import { Register } from "./components/userForm/Register";
+import { PasswordRecovery } from "./components/userForm/PasswordRecovery";
 
 function App({setUser}) {
 
@@ -26,6 +27,7 @@ function App({setUser}) {
 
     return (
         <Router>
+            <AuthRoute exact path="/password-recovery" component={PasswordRecovery} />
             <AuthRoute  exact path="/login" component={Login}/>
             <AuthRoute  exact path="/register" component={Register}/>
             <PrivateRoute exact path="/" component={HomePage}/>

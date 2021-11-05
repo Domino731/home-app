@@ -8,6 +8,12 @@
   flex-direction: column;
   &__item {
     width: 320px;
+    &--passwordRecovery{
+      background: $color-blue;
+      width: 300px;
+      border-radius: 10px;
+      padding: 10px 4px;
+    }
   }
   &__title {
     text-align: center;
@@ -128,5 +134,12 @@
         }
       }
     }
+  }
+  &__passwordRecovery{
+    color: $color-white;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    word-break: break-word;
   }
 }
