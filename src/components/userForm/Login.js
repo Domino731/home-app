@@ -1,5 +1,3 @@
-//component responsible for user login, is used in UserForm component
-import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../fireBase/fireBase";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -13,50 +11,42 @@ export const Login = () => {
 
     const [invalid, setInvalid] = useState({ email: false, password: false});
 
-    // //state with user data
-    // const [data, setData] = useState({email: "", password: ""})
+    const [errorTxt, setErrorTxt] = useState({ email: "", password: "" });
+    /** function that is responsible for login user */
+    const handleLogin = (e) => {
+        e.preventDefault()
+        return auth().signInWithEmailAndPassword(data.email, data.password)
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-    // //state with error if user gives wrong data
-    // const [error, setError] = useState("")
+                //setting invalid state by error code
+                // check email
+                if (errorCode === 'auth/email-already-in-use') {
+                    setErrorTxt('! Ten adres email jest przypisany już do innego konta');
+                    setInvalid(prev => ({ ...prev, email: true }));
+                }
+                else if (errorCode === 'auth/invalid-email') {
+                    setErrorTxt('! Podany adres email jest nieprawidłowy');
+                    setInvalid(prev => ({ ...prev, email: true }));
+                }
+                else {
+                    setErrorTxt(prev => ({...prev, email: ''}));
+                    setInvalid(prev => ({ ...prev, email: false }));
+                }
+                // check password
+                if(errorCode === 'auth/wrong-password'){
+                    setErrorTxt('! Podany adres email jest nieprawidłowy');
+                    setInvalid(prev => ({ ...prev, password: true}));
+                }
+                else{
+                    setErrorTxt(prev => ({...prev, password: ''}));
+                    setInvalid(prev => ({ ...prev, password: false}));
+                }
 
-    // //function that changing form to register
-    // const handleChangeForm = () => {
-    //     if (typeof changeForm) {
-    //         return changeForm()
-    //     }
-    // }
-
-    // //function that changing user's data
-    // const handleInputChange = (e) => {
-    //     const {name, value} = e.target;
-    //     setError("")
-    //     setData((prev) => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    // };
-
-    //function that is responsible for login user
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     auth().signInWithEmailAndPassword(data.email, data.password)
-    //         .then(() => {
-    //             // Signed in
-    //             setTimeout(() => {
-    //                 history.push("/")
-    //             }, 5000)
-
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             console.log(errorCode, errorMessage)
-    //             setError("Niepoprawny login lub hasło")
-    //         });
-    // }
-
-    //history
-    let history = useHistory();
+                console.log(errorCode, errorMessage)
+            });
+    }
 
     const handleChangeData = (e) => {
         const {name, value} = e.target;
@@ -91,9 +81,9 @@ export const Login = () => {
                  required/>
                 <span>Hasło</span>
             </label>
-            <div className="auth__error">Nieprawidłowy e-mail</div>
-            <div className="auth__error">Nieprawidłowe hasło</div>
-            <button className="auth__btn">Zaloguj się</button>
+            <div className="auth__error">{errorTxt.email}</div>
+            <div className="auth__error">{errorTxt.password}</div>
+            <button className="auth__btn" onClick={handleLogin}>Zaloguj się</button>
         </form>
         <div className="auth__actionBar">
             <Link to='/register'>Utwórz konto</Link>
