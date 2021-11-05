@@ -152,9 +152,32 @@
 
 .emptyRecipes {
   display: block;
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 46px;
+  @include mobileM {
+    font-size: 19px;
+  }
+  @include mobileL {
+    font-size: 21px;
+    margin-top: 48px;
+  }
+  @include tablet {
+    font-size: 29px;
+    margin-top: 63px;
+  }
+  @include laptopS {
+    font-size: 19px;
+    margin-top: 45px;
+  }
+  @include laptopL {
+    font-size: 23px;
+    margin-top: 50px;
+  }
+  @include desktopS {
+    font-size: 26px;
+    margin-top: 56px;
+  }
 }
 
 .recipeBox {

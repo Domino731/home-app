@@ -114,14 +114,14 @@ const MyRecipesList = () => {
             </header>
 
             {/* if you click on this button it will redirect you to new recipe form (after delay)*/}
-            <button className={`addRecipeBtn ${animationClass && "addRecipeBtn__animation"}`} onClick={redirect}>
+            <button className={`addRecipeBtn ${animationClass && "addRecipeBtn__animation"}`} onClick={redirect} title='Dodaj nowy przepis'>
                 <i className="fas fa-plus" />
             </button>
 
             {/* if user doesnt have any recipes then inform him about this */}
             {recipesData.length === 0 &&
                 <strong className="emptyRecipes">Brak przepisów w
-                    kategorii <br />'{typeNamePl}'<i
+                    kategorii <br/>'{typeNamePl}' <i
                         className="fas fa-heart-broken" /></strong>
             }
 
