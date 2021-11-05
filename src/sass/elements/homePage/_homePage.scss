@@ -60,6 +60,17 @@
       padding: 6px;
     }
   }
+  &__padding {
+    @include mobileM {
+      padding: 0 29px;
+    }
+    @include laptopL {
+      padding: 0 42px;
+    }
+    @include desktopS {
+      padding: 0 54px;
+    }
+  }
   &__list {
     display: flex;
     flex-direction: column;
@@ -76,7 +87,7 @@
     }
     @include laptopM {
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
     }
   }
   &__item {
@@ -84,31 +95,9 @@
     border-radius: 19px;
     width: 95%;
     padding: 14px 0;
-    background: rgba(255, 255, 255, 0.7);
-    // box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7),
-    // 5px 5px 5px rgba(228, 222, 222, 0.7);
-    box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7), 5px 5px 5px rgba(228, 222, 222, 0.7),
-      -5px -5px 5px rgba(255, 255, 255, 0.7) inset, 5px 5px 5px rgba(228, 222, 222, 0.7) inset;
     letter-spacing: 0.063rem;
     transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      @include onlyOnDesktop {
-        @include laptopS {
-          letter-spacing: 0.125rem;
-          box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
-            -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
-        }
-        @include laptopL {
-          box-shadow: -16px -16px 16px rgba(255, 255, 255, 0.7), 16px 16px 16px rgba(228, 222, 222, 0.7),
-            -16px -16px 16px rgba(255, 255, 255, 0.7) inset, 16px 16px 16px rgba(228, 222, 222, 0.7) inset;
-        }
-        @include desktopS {
-          box-shadow: -20px -20px 20px rgba(255, 255, 255, 0.7), 20px 20px 20px rgba(228, 222, 222, 0.7),
-            -20px -20px 20px rgba(255, 255, 255, 0.7) inset, 20px 20px 20px rgba(228, 222, 222, 0.7) inset;
-        }
-      }
-    }
+
     a {
       display: block;
       width: 100%;
@@ -125,29 +114,21 @@
     @include mobileM {
       border-radius: 23px;
       padding: 17px 0;
-      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
-        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
     }
     @include mobileL {
       margin-top: 25px;
       border-radius: 26px;
       padding: 19px 0;
-      box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
-        -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
     }
     @include tablet {
       margin-top: 33px;
       border-radius: 34px;
       padding: 24px 0;
-      box-shadow: -13px -13px 13px rgba(255, 255, 255, 0.7), 13px 13px 13px rgba(228, 222, 222, 0.7),
-        -13px -13px 13px rgba(255, 255, 255, 0.7) inset, 13px 13px 13px rgba(228, 222, 222, 0.7) inset;
     }
     @include laptopS {
       margin-top: 23px;
       border-radius: 21px;
       padding: 15px 0;
-      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
-        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
     }
     @include laptopM {
       width: 30%;
@@ -160,16 +141,11 @@
     }
     @include laptopL {
       border-radius: 27px;
-      box-shadow: -13px -13px 13px rgba(255, 255, 255, 0.7), 13px 13px 13px rgba(228, 222, 222, 0.7),
-        -13px -13px 13px rgba(255, 255, 255, 0.7) inset, 13px 13px 13px rgba(228, 222, 222, 0.7) inset;
     }
     @include desktopS {
       border-radius: 36px;
-      box-shadow: -16px -16px 16px rgba(255, 255, 255, 0.7), 16px 16px 16px rgba(228, 222, 222, 0.7),
-        -16px -16px 16px rgba(255, 255, 255, 0.7) inset, 16px 16px 16px rgba(228, 222, 222, 0.7) inset;
     }
   }
-
   &__icon {
     width: 104px;
     display: block;
@@ -241,6 +217,115 @@
     @include desktopS {
       font-size: 35px;
       margin-top: 18px;
+    }
+  }
+  &__logoutWrapper {
+    width: 95%;
+    margin: 30px auto 5px;
+    @include mobileL {
+      margin: 41px auto 8px;
+    }
+    @include tablet {
+      margin: 60px auto 10px;
+    }
+    @include laptopS {
+      margin: 30px auto 5px;
+    }
+    @include laptopM {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  &__btn {
+    width: 100%;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 12px;
+    border-radius: 6px;
+    border: none;
+    transition: 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.063rem;
+    @include mobileM {
+      padding: 4px 0;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+    @include mobileL {
+      padding: 6px 0;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+    @include tablet {
+      padding: 8px 0;
+      font-size: 19px;
+      border-radius: 12px;
+    }
+    @include laptopS {
+      padding: 6px 0;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+    @include laptopM {
+      width: 30%;
+      padding: 7px 0;
+      font-size: 18px;
+      border-radius: 9px;
+    }
+    @include desktopS {
+      padding: 11px 0;
+      font-size: 21px;
+      border-radius: 14px;
+    }
+  }
+
+  &__neumorphism {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7), 5px 5px 5px rgba(228, 222, 222, 0.7),
+      -5px -5px 5px rgba(255, 255, 255, 0.7) inset, 5px 5px 5px rgba(228, 222, 222, 0.7) inset;
+    letter-spacing: 0.063rem;
+    &:hover {
+      cursor: pointer;
+      @include onlyOnDesktop {
+        @include laptopS {
+          letter-spacing: 0.125rem;
+          box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
+            -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+        }
+        @include laptopL {
+          box-shadow: -16px -16px 16px rgba(255, 255, 255, 0.7), 16px 16px 16px rgba(228, 222, 222, 0.7),
+            -16px -16px 16px rgba(255, 255, 255, 0.7) inset, 16px 16px 16px rgba(228, 222, 222, 0.7) inset;
+        }
+        @include desktopS {
+          box-shadow: -20px -20px 20px rgba(255, 255, 255, 0.7), 20px 20px 20px rgba(228, 222, 222, 0.7),
+            -20px -20px 20px rgba(255, 255, 255, 0.7) inset, 20px 20px 20px rgba(228, 222, 222, 0.7) inset;
+        }
+      }
+    }
+    @include mobileM {
+      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
+        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include mobileL {
+      box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
+        -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include tablet {
+      box-shadow: -13px -13px 13px rgba(255, 255, 255, 0.7), 13px 13px 13px rgba(228, 222, 222, 0.7),
+        -13px -13px 13px rgba(255, 255, 255, 0.7) inset, 13px 13px 13px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include laptopS {
+      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
+        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include laptopL {
+      box-shadow: -13px -13px 13px rgba(255, 255, 255, 0.7), 13px 13px 13px rgba(228, 222, 222, 0.7),
+        -13px -13px 13px rgba(255, 255, 255, 0.7) inset, 13px 13px 13px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include desktopS {
+      box-shadow: -16px -16px 16px rgba(255, 255, 255, 0.7), 16px 16px 16px rgba(228, 222, 222, 0.7),
+        -16px -16px 16px rgba(255, 255, 255, 0.7) inset, 16px 16px 16px rgba(228, 222, 222, 0.7) inset;
     }
   }
 }

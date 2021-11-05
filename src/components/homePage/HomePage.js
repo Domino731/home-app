@@ -53,20 +53,20 @@ export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
             </header>
 
             <nav >
-               <ul className="menu__list">
-                   <li className="menu__item">
+               <ul className="menu__list menu__padding">
+                   <li className="menu__item menu__neumorphism" >
                        <Link to='/mykitchen'>
                            <img src={kitchenIcon}className='menu__icon' alt='Diet' />
                            <strong className="menu__name"> Moje produkty </strong>
                        </Link>
                    </li>
-                   <li className="menu__item">
+                   <li className="menu__item  menu__neumorphism">
                        <Link to='/myRecipes'>
                        <img src={recipesIcon}className='menu__icon' alt='Recipes book' />
                        <strong className="menu__name"> Przepisy </strong>
                        </Link>
                    </li>
-                   <li className="menu__item">
+                   <li className="menu__item menu__neumorphism">
                        <Link to='/tasks'>
                        <img src={tasksIcon}className='menu__icon' alt='Task board' />
                        <strong className="menu__name"> Do zrobienia </strong>
@@ -74,6 +74,10 @@ export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
                    </li>
                </ul>
             </nav>
+
+            <div className="menu__logoutWrapper menu__padding ">
+               <button className="menu__btn menu__neumorphism">Wyloguj <i className="fas fa-sign-out-alt"/></button>
+            </div>
         </main>
     )
 }
