@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { Loading } from "../loading/Loading";
 import { getRecipeData } from "../../fireBase/getRecipeData";
 import { auth } from "../../fireBase/fireBase";
@@ -13,11 +13,27 @@ import SingleRecipeOverview from "./SingleRecipeOverview";
 import SingleRecipeContent from "./SingleRecipeContent";
 import { setProducts } from "../../redux/actions/firebaseData.actions";
 import SingleRecipeConfirmDelte from "./SingleRecipeConfirmDelte";
-
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 /**
- * component with content for specifi recipe
+ * Component with content for single recipe
+ * @param changeRecipeData - REDUX ACTION - that function is changing recipeData state in redux
+ * @param changeRecipeStyles - REDUX ACTION - that function is changing recipeStyles state in redux
+ * @param setToDos - REDUX ACTION - that function is changing ToDo state in redux
+ * @param setProducts - REDUX ACTION - that function is changing products state in redux
+ * @param deleteRecipeFlag - REDUX STATE - deleteRecipeFlag state in redux, needed to toggle between main content for recipe and container by which user can delete recipe
+ * @param recipe - REDUX STATE - data about recipe
+ * @param products - REDUX STATE - data about user's products
+ * @param recipeStyles - REDUX STATE - data about styles for recipe
+ * @param tasks - REDUX STATE - data about user's tasks
  */
-const MyRecipeSingleRecipe = (props) => {
+const MyRecipeSingleRecipe = ({ changeRecipeData, changeRecipeStyles, setToDos, setProducts, deleteRecipeFlag, recipe, products, recipeStyles, tasks }) => {
+
+    // references
+    const { id } = useParams();
+
+    /** recipe id (from route params) */
+    const recipeId = id;
 
     // fetch data about specific recipe from firestore 
     useEffect(() => {
@@ -25,35 +41,38 @@ const MyRecipeSingleRecipe = (props) => {
             .onAuthStateChanged(user => {
                 if (user) {
                     // get recipe data, tasks and products data
-                    // tasks - needed to check if user has add this recipe to his tasks in SingleRecipeHeader component (button text with background will change)
-                    // products - to check if user has products for this recipe
-                    return getRecipeData(user.uid, props.match.params.id, props.changeRecipeData)
-                        .then(() => getDataFromFirestore('ToDo', user.uid, props.setToDos))
-                        .then(()=> getDataFromFirestore('products', user.uid, props.setProducts))
+                    // tasks - needed to check if user has add this recipe to his tasks in SingleRecipeHeader component (button text with background color will change)
+                    // products - to check if user has required products for this recipe
+                    return getRecipeData(user.uid, recipeId, changeRecipeData)
+                        .then(() => getDataFromFirestore('ToDo', user.uid, setToDos))
+                        .then(() => getDataFromFirestore('products', user.uid, setProducts))
                 }
             });
-    }, [props.match.params.id]);
+    }, [recipeId]);
 
     // fetch data about styles of particular type of recipe (svg icon and color) 
     useEffect(() => {
-        props.recipe && getRecipeStyles(props.recipe.type, props.changeRecipeStyles)
-    }, [props.recipe]);
+     recipe && getRecipeStyles(recipe.type, changeRecipeStyles)
+    }, [recipe]);
+
+
+
 
     // wait for data
-    if (props.recipe === null || props.recipeStyles === null || props.tasks === null || props.products === null) {
+    if (recipe === null || recipeStyles === null || tasks === null || products === null) {
         return <Loading />
     }
 
     return <main className="container container--singleRecipe">
         {/* check if use wants to delete recipe, he can change deleteRecipeFlag (redux state) in SingleRecipeContent -> SingleRecipeOptions nested component  */}
         {/* main content */}
-        {!props.deleteRecipeFlag && <> 
-        <SingleRecipeHeader />
-        <SingleRecipeOverview />
-        <SingleRecipeContent/>
+        {!deleteRecipeFlag && <>
+            <SingleRecipeHeader />
+            <SingleRecipeOverview />
+            <SingleRecipeContent />
         </>}
         {/* container with button by which user can delete recipe */}
-        {props.deleteRecipeFlag && <SingleRecipeConfirmDelte/>}
+        {deleteRecipeFlag && <SingleRecipeConfirmDelte />}
     </main>
 }
 
