@@ -21,15 +21,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    @include mobileM {
+      font-size: 30px;
+    }
+    @include mobileL {
+      font-size: 33px;
+      padding: 3px;
+    }
   }
   &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 5px;
+    @include mobileM {
+      padding-top: 8px;
+    }
   }
   &__item {
-    margin-top: 28px;
+    margin-top: 22px;
     border-radius: 19px;
     width: 95%;
     padding: 14px 0;
@@ -48,15 +58,37 @@
       letter-spacing: 0.125rem;
       color: $color-black;
     }
+    @include mobileM {
+      border-radius: 23px;
+      padding: 17px 0;
+      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7),
+      7px 7px 7px rgba(228, 222, 222, 0.7),
+      -7px -7px 7px rgba(255, 255, 255, 0.7) inset,
+      7px 7px 7px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include mobileL {
+      border-radius: 26px;
+      padding: 19px 0;
+      box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7),
+      9px 9px 9px rgba(228, 222, 222, 0.7),
+      -9px -9px 9px rgba(255, 255, 255, 0.7) inset,
+      9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+    }
   }
 
   &__icon {
-    width: 100px;
-    width: 100px;
+    width: 104px;
     display: block;
     margin: 0 auto;
     border-bottom: 2px solid $color-blue;
     padding-bottom: 3px;
+    @include mobileM {
+      width: 111px;
+    }
+    @include mobileL {
+      width: 122px;
+      padding-top: 5px;
+    }
     svg{
       height: 100%;
       width: 100%;
@@ -68,5 +100,9 @@
     text-align: center;
     font-weight: bold;
     font-size: 15px;
+    @include mobileL {
+      margin-top: 7px;
+      font-size: 18px;
+    }
   }
 }
