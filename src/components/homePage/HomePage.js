@@ -44,7 +44,7 @@ export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
 
 
     return (
-        <main className='container container--withoutPadding'>
+        <main className='container container--menu' >
 
             {/*top bar with greeting*/}
             <header className="menu__titleBar">

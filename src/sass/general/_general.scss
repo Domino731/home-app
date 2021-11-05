@@ -27,6 +27,24 @@
   @include desktopS {
     padding-top: 64px;
   }
+  &--menu {
+    padding-top: 58px;
+    @include mobileM {
+      padding-top: 78px;
+    }
+    @include laptopS {
+      padding-top: 66px;
+    }
+    @include laptopM {
+      padding-top: 70px;
+    }
+    @include laptopL {
+      padding-top: 76px;
+    }
+    @include desktopS {
+      padding-top: 103px;
+    }
+  }
   &--recipesList {
     padding-top: 70px;
     @include mobileM {
