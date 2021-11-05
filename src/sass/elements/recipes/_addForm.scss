@@ -381,12 +381,12 @@
     padding-left: 0.4em;
     text-align: left;
     word-break: break-all;
-    p {
-      display: inline-block;
-    }
     span {
       text-decoration: underline;
       text-decoration-color: $color-green;
+    }
+    i:hover{
+      cursor: pointer;
     }
   }
   &__deleteIcon {
@@ -784,6 +784,9 @@
     i {
       padding-left: 0.3em;
       font-size: 0.7em;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   &__text {
@@ -828,6 +831,7 @@
   &__listItem {
     font-size: 1.3em;
     margin-bottom: 0.4em;
+    word-break: break-word;
     span {
       text-decoration: underline;
       text-decoration-color: $color-green;
