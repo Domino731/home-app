@@ -1,4 +1,5 @@
 .addRecipe {
+
   &__title {
     border-bottom: 4px solid $color-green;
     color: $color-green;
@@ -225,6 +226,13 @@
     font-size: 20px;
     border-radius: 5px;
     padding: 5px 0;
+    transition: 0.2s;
+    &:hover {
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
+      }
+    }
+
     @include mobileM {
       font-size: 21px;
       padding: 6px 0;
@@ -453,6 +461,12 @@
     border: none;
     margin-top: -3px;
     border-radius: 0 0 5px 5px;
+    transition: 0.2s;
+    &:hover {
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
+      }
+    }
   }
   &__ingredientUnits {
     margin-top: 8px;
@@ -485,6 +499,12 @@
   &__summaryBtnWrapper {
     width: 100%;
     height: 48px;
+    transition: 0.2s;
+    &:hover {
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
+      }
+    }
     @include mobileL {
       height: 60px;
     }
@@ -758,6 +778,8 @@
     text-align: center;
     padding-bottom: 5px;
     border-bottom: 3px solid $color-green;
+    transition: 0.2s;
+
     @include mobileM {
       font-size: 23px;
     }
@@ -804,11 +826,15 @@
     font-size: 1.8em;
     text-decoration: underline;
     text-decoration-color: $color-green;
+    transition: 0.2s;
     i {
       padding-left: 0.3em;
       font-size: 0.7em;
-      &:hover {
-        cursor: pointer;
+    }
+    &:hover {
+      cursor: pointer;
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
       }
     }
   }

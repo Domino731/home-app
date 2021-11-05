@@ -215,6 +215,7 @@ export const MyRecipeEdit = () => {
                                     content={el}
                                     index={num}
                                     editInstruction={handleEditSpecificInstruction}
+                                    key={`edit-recipe-${data.title}-instruction-${num}`}
                                 />
                             })}
                         </ul>
@@ -272,7 +273,7 @@ export const MyRecipeEdit = () => {
                         <h3 className="addRecipe__listTitle">Składniki</h3>
                         <ul className='addRecipe__list'>
 
-                            {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`new-recipe-${data.name}-ingredients-${num}`}>
+                            {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`edit-recipe-${data.name}-ingredient-${num}`}>
                                 {/* user can remove this ingredient from data.ingredients state*/}
                                 <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)} title='Usuń składnik z listy'/>
                                 {num + 1}. <span>{el.amount} {el.unit}</span> - {el.name}
@@ -335,7 +336,7 @@ export const MyRecipeEdit = () => {
                         className='addRecipe__input addRecipe__input--small' />
 
                     {/* weight for single serving */}
-                    <strong>Jedna porcja (waga w gramach)</strong>
+                    <strong className="addRecipe__subLabel ">Jedna porcja (waga w gramach)</strong>
                     <input
                         onChange={handleChangeData}
                         type='number'
@@ -359,43 +360,43 @@ export const MyRecipeEdit = () => {
 
                     {/* title */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(1)}>Tytuł <i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(1)} title='Edytuj tytuł'>Tytuł <i className="fas fa-edit" /></h3>
                         <p className="recipeSummary__text">{data.title}</p>
                     </div>
 
                     {/* description */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Opis<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2) } title='Edytuj opis'>Opis<i className="fas fa-edit" /></h3>
                         {/* check if user has entered description */}
                         <p className="recipeSummary__text">{data.description ? data.description : `Nie dodano opisu`}</p>
                     </div>
 
                     {/* kcal per 100g */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Kaloryczność na 100 gramów<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)} title='Edytuj kaloryczość'>Kaloryczność na 100 gramów<i className="fas fa-edit" /></h3>
                         {/* check if user has entered kcal */}
                         <p className="recipeSummary__text">{data.kcal ? data.kcal + ' kcal' : `Nie dodano kaloryczności`}</p>
                     </div>
 
                     {/* weight for one serving */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Jedna porcja<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)} title='Edytuj wagę dla jednej porcji'>Jedna porcja<i className="fas fa-edit" /></h3>
                         {/* check if user has entered serving weight */}
                         <p className="recipeSummary__text">{data.servingWeight ? data.servingWeight + 'G' : `Nie dodano wagi dla jednej porcji`}</p>
                     </div>
 
                     {/* prepare time */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)}>Czas przygotowania<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(6)} title='Edytuj czas przygotowania'>Czas przygotowania<i className="fas fa-edit" /></h3>
                         {/* check if has entered prepare time */}
                         <p className="recipeSummary__text">{data.prepareTime ? data.prepareTime + ' m.' : `Nie dodano czasu`}</p>
                     </div>
 
                     {/* ingredients */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(4)}>Składniki<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(4)} title='Edytuj składniki'>Składniki<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
-                            {data.ingredients.map((el, num) => <li key={`recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
+                            {data.ingredients.map((el, num) => <li key={`edit-recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
                                 - <span>{el.amount}</span>  {el.unit} {el.name}
                             </li>)}
                         </ul>
@@ -403,9 +404,9 @@ export const MyRecipeEdit = () => {
 
                     {/* instructions list  */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(3)}>Instrukcje<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(3)} title='Edytuj instrukcje' >Instrukcje<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
-                            {data.instructions.map((el, num) => <li key={`recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
+                            {data.instructions.map((el, num) => <li key={`edit-recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
                                 {num + 1}. {el}
                             </li>)}
                         </ul>
@@ -413,7 +414,7 @@ export const MyRecipeEdit = () => {
 
                     {/* notes     */}
                     <div className="recipeSummary__item">
-                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)}>Notatki<i className="fas fa-edit" /></h3>
+                        <h3 className="recipeSummary__itemTitle" onClick={() => setStep(2)} title='Edytuj notatki'>Notatki<i className="fas fa-edit" /></h3>
                         {/* check if user has entered notes for recipe */}
                         <p className="recipeSummary__text">{data.notes ? data.notes : `Nie dodano dodatkowych notatek`}</p>
                     </div>
