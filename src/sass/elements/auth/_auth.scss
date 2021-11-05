@@ -4,4 +4,103 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  &__title {
+    width: 320px;
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 4px solid $color-blue;
+  }
+  &__form {
+    width: 320px;
+    padding: 8px;
+  }
+  &__label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 0;
+    margin-bottom: 17px;
+    &--inCorrect {
+      i {
+        background-color: $color-red;
+      }
+    }
+    &--correct {
+      i {
+        background-color: $color-blue;
+      }
+    }
+
+    i {
+      padding: 10px;
+      border-radius: 2px;
+      font-size: 25px;
+      color: $color-white;
+    }
+    span {
+      display: block;
+      position: absolute;
+      padding: 0 2px;
+      font-size: 15px;
+      top: 15px;
+      left: 56px;
+      transition: 0.1s;
+      background-color: $color-white;
+      letter-spacing: 0.125rem;
+    }
+  }
+  &__input {
+    width: calc(100% - 44px);
+    border: 2px solid #8d8989;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    outline: none;
+    padding: 4px 0 4px 2px;
+    &:focus {
+      border: 2px solid $color-blue;
+      border-left: none;
+    }
+    &:valid ~ span,
+    &:focus ~ span {
+      font-size: 12px;
+      transform: translate(-4px, -13px);
+      letter-spacing: 0.063rem;
+    }
+  }
+  &__error{
+    width: 100%;
+    color: $color-red;
+    font-weight: 600;
+    letter-spacing: 0.063rem;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 0.8em;
+  }
+  &__btn {
+    width: 100%;
+    padding: 2px 0;
+    font-size: 21px;
+    background-color: #4cc9f0;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.063rem;
+    transition: 0.2s;
+    color: $color-white;
+    &:focus {
+      letter-spacing: 0.125rem;
+      background-color: #5fcbec;
+    }
+    &:hover {
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
+        background-color: #5fcbec;
+      }
+    }
+  }
 }
