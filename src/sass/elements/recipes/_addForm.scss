@@ -79,7 +79,6 @@
       border-bottom: 4px solid $color-green;
       font-size: 2em;
     }
-
   }
   &__subLabel {
     display: block;
@@ -385,7 +384,7 @@
       text-decoration: underline;
       text-decoration-color: $color-green;
     }
-    i:hover{
+    i:hover {
       cursor: pointer;
     }
   }
@@ -403,6 +402,7 @@
     }
   }
   &__editTextarea {
+    font-size: 1em;
     height: 103px;
     margin-top: 10px;
     border-radius: 5px;
@@ -417,6 +417,29 @@
     z-index: 1;
     &:focus {
       box-shadow: 0 0 9px 2px $color-green;
+    }
+    @include mobileL {
+      border-radius: 7px;
+      height: 112px;
+    }
+    @include tablet {
+      border-radius: 10px;
+      padding: 7px;
+      height: 164px;
+    }
+    @include laptopS {
+      border-radius: 5px;
+      padding: 5px;
+      height: 100px;
+    }
+    @include laptopL {
+      border-radius: 8px;
+      padding: 7px;
+      height: 120px;
+    }
+    @include desktopS {
+      padding: 8px;
+      height: 144px;
     }
   }
   &__closeBtn {
@@ -784,7 +807,7 @@
     i {
       padding-left: 0.3em;
       font-size: 0.7em;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
     }

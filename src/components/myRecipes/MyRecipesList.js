@@ -25,6 +25,7 @@ const MyRecipesList = () => {
 
     // state with name of current type of recipe (in polish)
     const [typeNamePl, setTypeNamePl] = useState('');
+
     // array with available types of recipes, needed to check if url param (which is recipe type) is included in this array,
     // if no then redirect user to list all recipes types list - /myRecipes. If you want to add new type recipe look at docs
     const [availableRecipesTypes, setAvailableRecipesTypes] = useState(null);
@@ -98,7 +99,7 @@ const MyRecipesList = () => {
         return <Loading />
     }
 
-    //if the specified category does not exist in the firestore, return null
+    //if the specified type of recipe does not exist in the firestore, redirect user to page with all recipe types
     else if (availableRecipesTypes && !availableRecipesTypes.includes(recipesType)) {
         return <Redirect to='/myRecipes' />
 

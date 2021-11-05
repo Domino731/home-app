@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addNewElement } from "../../fireBase/addNewElementToFirebase";
-import { useEffect } from "react";
 import { auth } from "../../fireBase/fireBase";
+import { Redirect, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { db } from "../../fireBase/fireBase";
+import { Loading } from "../loading/Loading";
 
 /** Form for new recipe */
-const MyRecipesAddForm = (props) => {
+export const MyRecipesAddForm = () => {
+
+    // references
+    const { type } = useParams();
+    const recipeType = type;
+
+    // array with available types of recipes, needed to check if url param (which is recipe type) is included in this array,
+    // if no then redirect user to list all recipes types list - /myRecipes. If you want to add new type recipe look at docs
+    const [availableRecipesTypes, setAvailableRecipesTypes] = useState(null);
 
     //state with data about new recipe
     const [data, setData] = useState({
@@ -12,7 +22,7 @@ const MyRecipesAddForm = (props) => {
         description: "",
         instructions: [],
         ingredients: [],
-        type: props.match.params.type,
+        type: recipeType,
         notes: '',
         kcal: '',
         servingWeight: '',
@@ -35,6 +45,20 @@ const MyRecipesAddForm = (props) => {
     // 7 - summary
     // by changing this state the specific section will displayed
     const [step, setStep] = useState(1);
+
+    // fetch available recipes types from firestore ('recipesRendering') collection
+    useEffect(() => {
+        return db.collection("recipesRendering").get().then((querySnapshot) => {
+            const data = [];
+            querySnapshot.docs.map(doc => {
+                data.push(doc.data().path);
+            });
+
+            // save new data
+            return setAvailableRecipesTypes(data);
+        });
+    }, [recipeType]);
+
 
     /** chande data state - set data about recipe */
     const handleChangeData = (e) => {
@@ -138,10 +162,19 @@ const MyRecipesAddForm = (props) => {
     const addNewRecipe = () => {
         return addNewElement(auth().currentUser.uid, "recipes", data)
             // redirect user to list with recipes of particular type
-            .then(() => window.location.replace(`/myRecipes/${props.match.params.type}`))
+            .then(() => window.location.replace(`/myRecipes/${recipeType}`))
             .catch(err => console.log(err))
     }
 
+    // wait for data
+    if (!availableRecipesTypes) {
+        return <Loading />
+    }
+
+    //if the specified type of recipe does not exist in the firestore, redirect user to page with all recipe types
+    else if (availableRecipesTypes && !availableRecipesTypes.includes(recipeType)) {
+     return <Redirect to='/myRecipes'/>
+    }
     return (
         <section className="container">
 
@@ -210,6 +243,7 @@ const MyRecipesAddForm = (props) => {
                                     content={el}
                                     index={num}
                                     editInstruction={handleEditSpecificInstruction}
+                                    key={`edit-recipe-${data.title}-instruction-${num}`}
                                 />
                             })}
                         </ul>
@@ -260,17 +294,17 @@ const MyRecipesAddForm = (props) => {
                     </fieldset>
 
                     {/* button by which user can add new ingredient into data.ingredients state */}
-                    {(ingredient.amount > 0 && ingredient.name.length > 2 && ingredient.unit !== "") && <button onClick={handleAddNewIngredient} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nową instrukcję</button>}
+                    {(ingredient.amount > 0 && ingredient.name.length > 2 && ingredient.unit !== "") && <button onClick={handleAddNewIngredient} className="addRecipe__btn addRecipe__btn--newItem" >Dodaj nowy składnik</button>}
 
                     {/* list with ingredients */}
                     {data.ingredients.length > 0 && <div>
                         <h3 className="addRecipe__listTitle">Składniki</h3>
                         <ul className='addRecipe__list'>
 
-                            {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`new-recipe-${data.name}-ingredients-${num}`}>
+                            {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`edit-recipe-${data.name}-ingredient-${num}`}>
                                 {/* user can remove this ingredient from data.ingredients state*/}
                                 <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)} />
-                                {num + 1}. <span>{el.amount} {el.unit}</span> - <p>{el.name}</p>
+                                {num + 1}. <span>{el.amount} {el.unit}</span> - {el.name}
                             </li>)}
 
                         </ul>
@@ -330,7 +364,7 @@ const MyRecipesAddForm = (props) => {
                         className='addRecipe__input addRecipe__input--small' />
 
                     {/* weight for single serving */}
-                    <strong>Jedna porcja (waga w gramach)</strong>
+                    <strong className="addRecipe__subLabel ">Jedna porcja (waga w gramach)</strong>
                     <input
                         onChange={handleChangeData}
                         type='number'
@@ -390,7 +424,7 @@ const MyRecipesAddForm = (props) => {
                     <div className="recipeSummary__item">
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(4)}>Składniki<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
-                            {data.ingredients.map((el, num) => <li key={`recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
+                            {data.ingredients.map((el, num) => <li key={`new-recipe-summary-${data.title}-ingredient-${num}`} className="recipeSummary__listItem">
                                 - <span>{el.amount}</span>  {el.unit} {el.name}
                             </li>)}
                         </ul>
@@ -400,7 +434,7 @@ const MyRecipesAddForm = (props) => {
                     <div className="recipeSummary__item">
                         <h3 className="recipeSummary__itemTitle" onClick={() => setStep(3)}>Instrukcje<i className="fas fa-edit" /></h3>
                         <ul className="recipeSummary__list">
-                            {data.instructions.map((el, num) => <li key={`recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
+                            {data.instructions.map((el, num) => <li key={`new-recipe-summary-${data.title}-instruction-${num}`} className="recipeSummary__listItem">
                                 {num + 1}. {el}
                             </li>)}
                         </ul>
@@ -470,17 +504,16 @@ export const SingleInstruction = ({ content, index, deleteInstructionFnc, editIn
 
     return <li className="addRecipe__listItem" >
         {/* icon by which user can delete the instruction */}
-        <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} />
+        <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} title='Usuń' />
         {index + 1}. &nbsp;
-        
+
         {/* if isInputActive state is true then display intruction text otherwise display input */}
-        {!isInputActive &&  content}
+        {!isInputActive && content}
         {isInputActive && <>
             <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
             <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>
         </>}
-        {!isInputActive && <i class="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive} />}
+        {!isInputActive && <i className="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive} title='Edytuj' />}
     </li>
 }
 
-export default MyRecipesAddForm;
