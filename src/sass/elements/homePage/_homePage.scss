@@ -28,6 +28,21 @@
       font-size: 33px;
       padding: 3px;
     }
+    @include mobileXL {
+      font-size: 34px;
+      border-bottom: 5px solid $color-blue;
+      padding: 5px;
+    }
+    @include tablet {
+      border-bottom: 7px solid $color-blue;
+      font-size: 37px;
+      padding: 7px;
+    }
+    @include laptopS {
+      border-bottom: 4px solid $color-blue;
+      font-size: 27px;
+      padding: 4px;
+    }
   }
   &__list {
     display: flex;
@@ -37,42 +52,64 @@
     @include mobileM {
       padding-top: 8px;
     }
+    @include tablet {
+      padding-top: 11px;
+    }
   }
   &__item {
     margin-top: 22px;
     border-radius: 19px;
     width: 95%;
     padding: 14px 0;
-    background:rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     // box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7),
     // 5px 5px 5px rgba(228, 222, 222, 0.7);
-    box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7),
-    5px 5px 5px rgba(228, 222, 222, 0.7),
-    -5px -5px 5px rgba(255, 255, 255, 0.7) inset,
-    5px 5px 5px rgba(228, 222, 222, 0.7) inset;
-    a{
+    box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.7), 5px 5px 5px rgba(228, 222, 222, 0.7),
+      -5px -5px 5px rgba(255, 255, 255, 0.7) inset, 5px 5px 5px rgba(228, 222, 222, 0.7) inset;
+    letter-spacing: 0.063rem;
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      @include onlyOnDesktop {
+        letter-spacing: 0.125rem;
+        box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
+        -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+      }
+    }
+    a {
       display: block;
       width: 100%;
       height: 100%;
       text-decoration: none;
-      letter-spacing: 0.125rem;
+
       color: $color-black;
     }
     @include mobileM {
       border-radius: 23px;
       padding: 17px 0;
-      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7),
-      7px 7px 7px rgba(228, 222, 222, 0.7),
-      -7px -7px 7px rgba(255, 255, 255, 0.7) inset,
-      7px 7px 7px rgba(228, 222, 222, 0.7) inset;
+      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
+        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
     }
     @include mobileL {
+      margin-top: 25px;
       border-radius: 26px;
       padding: 19px 0;
-      box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7),
-      9px 9px 9px rgba(228, 222, 222, 0.7),
-      -9px -9px 9px rgba(255, 255, 255, 0.7) inset,
-      9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+      box-shadow: -9px -9px 9px rgba(255, 255, 255, 0.7), 9px 9px 9px rgba(228, 222, 222, 0.7),
+        -9px -9px 9px rgba(255, 255, 255, 0.7) inset, 9px 9px 9px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include tablet {
+      margin-top: 33px;
+      border-radius: 34px;
+      padding: 24px 0;
+      box-shadow: -13px -13px 13px rgba(255, 255, 255, 0.7), 13px 13px 13px rgba(228, 222, 222, 0.7),
+        -13px -13px 13px rgba(255, 255, 255, 0.7) inset, 13px 13px 13px rgba(228, 222, 222, 0.7) inset;
+    }
+    @include laptopS {
+      margin-top: 23px;
+      border-radius: 21px;
+      padding: 15px 0;
+      box-shadow: -7px -7px 7px rgba(255, 255, 255, 0.7), 7px 7px 7px rgba(228, 222, 222, 0.7),
+        -7px -7px 7px rgba(255, 255, 255, 0.7) inset, 7px 7px 7px rgba(228, 222, 222, 0.7) inset;
     }
   }
 
@@ -87,11 +124,21 @@
     }
     @include mobileL {
       width: 122px;
-      padding-top: 5px;
+      padding-bottom: 5px;
     }
-    svg{
-      height: 100%;
-      width: 100%;
+    @include mobileXL {
+      width: 131px;
+      padding-bottom: 6px;
+    }
+    @include tablet {
+      border-bottom: 4px solid $color-blue;
+      width: 153px;
+      padding-bottom: 8px;
+    }
+    @include laptopS {
+      border-bottom: 3px solid $color-blue;
+      width: 105px;
+      padding-bottom: 4px;
     }
   }
   &__name {
@@ -103,6 +150,16 @@
     @include mobileL {
       margin-top: 7px;
       font-size: 18px;
+    }
+    @include mobileXL {
+      margin-top: 8px;
+      font-size: 19px;
+    }
+    @include tablet {
+      font-size: 27px;
+    }
+    @include laptopS {
+      font-size: 21px;
     }
   }
 }
