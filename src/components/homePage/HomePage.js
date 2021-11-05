@@ -19,11 +19,6 @@ export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
 
     /** logout the user */
     const handleLogOut = () => {
-        // clear redux state
-        setRecipes(null);
-        setProducts(null);
-        setToDos(null);
-
         return auth().signOut();
     }
 

@@ -95,7 +95,6 @@ const SingleTask = ({ taskData }) => {
 
         {/* overview - added date, title, description */}
         <div className='singleTask__titleScale'>
-        <h3 className="singleTask__title">{taskData.id}</h3>
             <div className="singleTask__date" title='Data dodania'>{formatDate(taskData.added)}</div>
             <h3 className="singleTask__title">{taskData.title}</h3>
             <p className="singleTask__description">{taskData.description}

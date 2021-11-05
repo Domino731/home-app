@@ -10,12 +10,13 @@ import {MyRecipes} from "./components/myRecipes/MyRecipes";
 import MyRecipesList from "./components/myRecipes/MyRecipesList";
 import {MyRecipesAddForm}  from "./components/myRecipes/MyRecipesAddForm";
 import MyRecipeSingleRecipe from "./components/myRecipes/MyRecipeSingleRecipe";
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import PrivateRoute from "./components/customRoutes/PrivateRoute";
 import ToDo from "./components/toDo/ToDo";
 import { MyRecipeEdit } from "./components/myRecipes/MyRecipeEdit";
-
+import { Login } from "./components/userForm/Login";
+import AuthRoute from "./components/customRoutes/AuthRoute";
 function App({setUser}) {
-    
+
     //when component mounted check the user is logged in and set redux state (currentUser state)
     useEffect(() => {
        return auth().onAuthStateChanged(user => user ? setUser(user) : setUser(null) )
@@ -23,6 +24,7 @@ function App({setUser}) {
 
     return (
         <Router>
+            <AuthRoute  exact path="/login" component={Login}/>
             <PrivateRoute exact path="/" component={HomePage}/>
             <PrivateRoute exact path="/mykitchen" component={MyKitchen}/>
             <PrivateRoute exact path="/myRecipes" component={MyRecipes}/>

@@ -23,6 +23,6 @@ export const setRecipes = (data) => ({
 export const setToDos = (data) => {
     return ({
         type: "GET_TODO",
-        todo: data.sort((a,b) => a.added - b.added)
+        todo: data ? data.sort((a,b) => a.added - b.added) : data
     });
 }
