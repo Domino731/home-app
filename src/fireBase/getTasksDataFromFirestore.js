@@ -11,13 +11,12 @@ export const getTasksDataFromFirestore = (userUid, saveData) => {
             const data = [];
              querySnapshot.docs.map(doc => {
                 if (doc.data().added) {
-                     data.push({
+                    return data.push({
                         ...doc.data(),
                         id: doc.id
                     });
                 }
-
-            })
+            });
             return saveData(data);
         });
 }

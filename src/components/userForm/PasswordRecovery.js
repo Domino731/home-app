@@ -53,9 +53,13 @@ export const PasswordRecovery = () => {
 
 
         {!successfulSend && <div className="auth__item">
+            {/* title */}
             <h1 className="auth__title">Odzyskaj hasło</h1>
+
+            {/* form */}
             <form className="auth__form">
 
+                {/* when email passedd by user is invalid then change icon color  */}
                 <label className={`auth__label ${errorTxt ? 'auth__label--inCorrect' : 'auth__label--correct'}`}>
                     Podaj hasło
                     <i className="fas fa-lock" />
@@ -66,7 +70,11 @@ export const PasswordRecovery = () => {
                         required />
                     <span>Hasło</span>
                 </label>
+
+                {/* error message */}
                 <div className="auth__error">{errorTxt}</div>
+
+                {/* button with firebase auth operation */}
                 <button className="auth__btn" onClick={handleSendRecoveryMail}>Wyślij e-mail</button>
             </form>
 
