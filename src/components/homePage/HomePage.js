@@ -1,15 +1,18 @@
 //home page which redirects to a particular section
-import {greeting} from "../../functions/greeting";
-import {dayName} from "../../functions/greeting";
-import {auth} from "../../fireBase/fireBase";
-import {useHistory} from "react-router-dom";
-import {useState} from "react";
-import {setProducts, setRecipes, setToDos} from "../../redux/actions/firebaseData.actions";
-import {connect} from "react-redux";
-import background from '../../images/background_menu.jpg'
+import { greeting } from "../../functions/greeting";
+import { dayName } from "../../functions/greeting";
+import { auth } from "../../fireBase/fireBase";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { setProducts, setRecipes, setToDos } from "../../redux/actions/firebaseData.actions";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import kitchenIcon from "../../images/diet.svg";
+import recipesIcon from "../../images/recipes.svg";
+import tasksIcon from "../../images/task.svg";
 // props //
 // --> deleting user's stuff by redux actions
-export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
+export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
     //the states by which the animation is applied
     const [kitchenAnimation, setKitchenAnimation] = useState(false)
     const [recipesAnimation, setRecipesAnimation] = useState(false)
@@ -18,11 +21,12 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
     //log out function
     const handleLogOut = () => {
-        setRecipes(null)
-        setProducts(null)
-        setToDos(null)
-        return auth().signOut()
+        // clear redux state
+        setRecipes(null);
+        setProducts(null);
+        setToDos(null);
 
+        return auth().signOut()
     }
 
 
@@ -40,47 +44,37 @@ export const HomePage = ({setProducts, setRecipes,  setToDos}) => {
 
 
     return (
-        <section className="container container--menu glassEffect">
-             <style>{`body {
-            background-image: url(${background})} 
-            `}</style>
-            <div className="mainMenu">
+        <main className='container container--withoutPadding'>
 
-                {/*top bar with greeting*/}
-                <div className="mainMenu__titleBar">
-                    <h1 data-text={greeting()}>{greeting()}</h1>
-                    <h2 data-text={dayName()}>{dayName()}</h2>
-                </div>
+            {/*top bar with greeting*/}
+            <header className="menu__titleBar">
+                <h1 data-text={greeting()}>{greeting()}</h1>
+                <h2 data-text={dayName()}>{dayName()}</h2>
+            </header>
 
-                {/*redirection to kitchen component*/}
-                <div className={`mainMenu__element  mainMenu__element--kitchen ${kitchenAnimation ? "animatedRedirect--homePage" : null}`}
-                     onClick={() => redirect(setKitchenAnimation, "/myKitchen")}>
-                    <strong>Kuchnia</strong>
-                </div>
-
-                {/*redirection to recipes component*/}
-                <div className={`mainMenu__element  mainMenu__element--recipes ${recipesAnimation ? "animatedRedirect--homePage" : null}`}
-                     onClick={() => redirect(setRecipesAnimation, "/myRecipes")}>
-                    <strong>Przepisy</strong>
-                </div>
-
-                {/*redirection to toDo  component*/}
-                <div className={`mainMenu__element  mainMenu__element--toDo ${toDoAnimation ? "animatedRedirect--homePage" : null}`}
-                     onClick={() => redirect(setToDoAnimation, "/ToDo")}>
-                    <strong>Do zrobienia</strong>
-                </div>
-
-
-                {/*log out*/}
-                <div className="mainMenu__logOut" onClick={handleLogOut} title='Wyloguj się '>
-                    <i className="fas fa-sign-out-alt"/>
-                </div>
-
-            </div>
-            <div className="freepik freepik--menu">
-            <a href='https://www.freepik.com/photos/vintage'>Vintage photo created by kjpargeter - www.freepik.com</a>
-            </div>
-        </section>
+            <nav >
+               <ul className="menu__list">
+                   <li className="menu__item">
+                       <Link to='/mykitchen'>
+                           <img src={kitchenIcon}className='menu__icon' alt='Diet' />
+                           <strong className="menu__name"> Moje produkty </strong>
+                       </Link>
+                   </li>
+                   <li className="menu__item">
+                       <Link to='/myRecipes'>
+                       <img src={recipesIcon}className='menu__icon' alt='Recipes book' />
+                       <strong className="menu__name"> Przepisy </strong>
+                       </Link>
+                   </li>
+                   <li className="menu__item">
+                       <Link to='/tasks'>
+                       <img src={tasksIcon}className='menu__icon' alt='Task board' />
+                       <strong className="menu__name"> Do zrobienia </strong>
+                       </Link>
+                   </li>
+               </ul>
+            </nav>
+        </main>
     )
 }
 

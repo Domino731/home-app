@@ -63,7 +63,7 @@ const MyRecipeSingleRecipe = ({ changeRecipeData, changeRecipeStyles, setToDos, 
         return <Loading />
     }
 
-    return <main className="container container--singleRecipe">
+    return <main className="container container--withoutPadding">
         {/* check if use wants to delete recipe, he can change deleteRecipeFlag (redux state) in SingleRecipeContent -> SingleRecipeOptions nested component  */}
         {/* main content */}
         {!deleteRecipeFlag && <>

@@ -173,7 +173,7 @@ export const MyRecipesAddForm = () => {
 
     //if the specified type of recipe does not exist in the firestore, redirect user to page with all recipe types
     else if (availableRecipesTypes && !availableRecipesTypes.includes(recipeType)) {
-     return <Redirect to='/myRecipes'/>
+        return <Redirect to='/myRecipes' />
     }
     return (
         <section className="container">

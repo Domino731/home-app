@@ -29,7 +29,7 @@ function App({setUser}) {
             <PrivateRoute exact path="/myRecipes/:type/add" component={MyRecipesAddForm}/>
             <PrivateRoute exact path="/myRecipe/:id" component={MyRecipeSingleRecipe}/>
             <PrivateRoute exact path="/myRecipe/edit/:id" component={MyRecipeEdit}/>
-            <PrivateRoute exact path="/toDo" component={ToDo}/>
+            <PrivateRoute exact path="/tasks" component={ToDo}/>
         </Router>
     )
 }
