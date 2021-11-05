@@ -15,6 +15,8 @@ import ToDo from "./components/toDo/ToDo";
 import { MyRecipeEdit } from "./components/myRecipes/MyRecipeEdit";
 import { Login } from "./components/userForm/Login";
 import AuthRoute from "./components/customRoutes/AuthRoute";
+import { Register } from "./components/userForm/Register";
+
 function App({setUser}) {
 
     //when component mounted check the user is logged in and set redux state (currentUser state)
@@ -25,6 +27,7 @@ function App({setUser}) {
     return (
         <Router>
             <AuthRoute  exact path="/login" component={Login}/>
+            <AuthRoute  exact path="/register" component={Register}/>
             <PrivateRoute exact path="/" component={HomePage}/>
             <PrivateRoute exact path="/mykitchen" component={MyKitchen}/>
             <PrivateRoute exact path="/myRecipes" component={MyRecipes}/>

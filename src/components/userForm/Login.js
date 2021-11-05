@@ -2,6 +2,7 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "../../fireBase/fireBase";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 // props //
 // changeForm --> changing form to register
@@ -66,6 +67,7 @@ export const Login = () => {
     }
 
     return <main className="auth">
+        <div className="auth__item">
         <h1 className="auth__title">Zaloguj</h1>
         <form className="auth__form">
             <label className={`auth__label ${invalid.email ? 'auth__label--inCorrect' : 'auth__label--correct'}`}>
@@ -93,6 +95,11 @@ export const Login = () => {
             <div className="auth__error">Nieprawidłowe hasło</div>
             <button className="auth__btn">Zaloguj się</button>
         </form>
+        <div className="auth__actionBar">
+            <Link to='/register'>Utwórz konto</Link>
+            <Link to='/password-recovery'>Odzyskaj hasło</Link>
+        </div>
+        </div>
     </main>
 
 }

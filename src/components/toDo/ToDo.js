@@ -8,6 +8,7 @@ import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 import { auth } from "../../fireBase/fireBase";
 import SingleTask from "./TasksList--SingleTask";
 import { Loading } from "../loading/Loading";
+import { getTasksDataFromFirestore } from "../../fireBase/getTasksDataFromFirestore";
 /**
  * Main component for tasks section, responsbile for fetching data about tasks and saving
  *  it into redux state (toDo state), and for rendering header, new task form and tasks list
@@ -22,7 +23,7 @@ const ToDo = ({ setToDos, tasks }) => {
     // fetch data about tasks from firestore and save this incomming data into redux state - toDo state
     useEffect(() => {
         return auth().onAuthStateChanged(user => {
-            user && getDataFromFirestore('ToDo', user.uid, setToDos);
+            user && getTasksDataFromFirestore( user.uid, setToDos);
         });
     }, []);
 

@@ -1,12 +1,15 @@
 .auth {
   max-width: 1600px;
   height: 100vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  &__title {
+  &__item {
     width: 320px;
+  }
+  &__title {
     text-align: center;
     font-size: 23px;
     margin-bottom: 10px;
@@ -14,7 +17,7 @@
     border-bottom: 4px solid $color-blue;
   }
   &__form {
-    width: 320px;
+    width: 100%;
     padding: 8px;
   }
   &__label {
@@ -80,6 +83,13 @@
     font-size: 12px;
     margin-bottom: 0.8em;
   }
+  &__requirements{
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 0.8em;
+    
+  }
   &__btn {
     width: 100%;
     padding: 2px 0;
@@ -100,6 +110,22 @@
       @include onlyOnDesktop {
         letter-spacing: 0.125rem;
         background-color: #5fcbec;
+      }
+    }
+  }
+  &__actionBar{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 13px;
+    a{
+      font-size: 13px;
+      color: #8d8989;
+      transition: 0.1s;
+      &:hover{
+        @include onlyOnDesktop {
+          letter-spacing: 0.063rem;
+          color: $color-black;
+        }
       }
     }
   }
