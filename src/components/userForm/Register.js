@@ -109,7 +109,7 @@ export const Register = () => {
                 </label>
 
                 {/* text about password requirements  */}
-                <div className="auth__requirements">Hasło powinno składać się z conajmniej 6 znaków</div>
+                <div className={`auth__requirements ${invalid.password && 'auth__requirements--error'}`}>Hasło powinno składać się z conajmniej 6 znaków</div>
 
                 {/* password input */}
                 <label className={`auth__label ${invalid.password ? 'auth__label--inCorrect' : 'auth__label--correct'}`}>

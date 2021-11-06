@@ -7,20 +7,33 @@
   flex-direction: column;
   &--login {
     min-height: 300px;
+    @include mobileL {
+      min-height: 460px;
+    }
   }
   &--register {
-     min-height: 400px;
+    min-height: 400px;
+    @include mobileL {
+      min-height: 550px;
+    }
   }
   &--passwordRecovery {
-     min-height: 300px;
+    min-height: 270px;
   }
   &__item {
     width: 320px;
-    &--passwordRecovery{
+    &--passwordRecovery {
       background: $color-blue;
       width: 300px;
       border-radius: 10px;
       padding: 10px 4px;
+      @include mobileL {
+        font-size: 22px;
+        margin-bottom: 23px;
+      }
+    }
+    @include mobileL {
+      width: 420px;
     }
   }
   &__title {
@@ -29,6 +42,11 @@
     margin-bottom: 10px;
     padding-bottom: 4px;
     border-bottom: 4px solid $color-blue;
+    @include mobileL {
+      font-size: 29px;
+      margin-bottom: 16px;
+      padding-bottom: 7px;
+    }
   }
   &__form {
     width: 100%;
@@ -41,6 +59,9 @@
     position: relative;
     font-size: 0;
     margin-bottom: 17px;
+    @include mobileL {
+      margin-bottom: 24px;
+    }
     &--inCorrect {
       i {
         background-color: $color-red;
@@ -53,10 +74,21 @@
     }
 
     i {
-      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
       border-radius: 2px;
       font-size: 25px;
       color: $color-white;
+      @include mobileL {
+        width: 59px;
+        height: 59px;
+        border-radius: 7px;
+        font-size: 30px;
+      }
     }
     span {
       display: block;
@@ -68,6 +100,11 @@
       transition: 0.1s;
       background-color: $color-white;
       letter-spacing: 0.125rem;
+      @include mobileL {
+        font-size: 16px;
+        top: 22px;
+        left: 68px;
+      }
     }
   }
   &__input {
@@ -86,9 +123,19 @@
       font-size: 12px;
       transform: translate(-4px, -13px);
       letter-spacing: 0.063rem;
+      @include mobileL {
+        font-size: 13px;
+        transform: translate(0px, -17px);
+      }
+    }
+    @include mobileL {
+      border-radius: 0 7px 7px 0;
+      padding: 5px 0 4px 5px;
+      font-size: 18px;
+      width: calc(100% - 59px);
     }
   }
-  &__error{
+  &__error {
     width: 100%;
     color: $color-red;
     font-weight: 600;
@@ -96,13 +143,21 @@
     text-align: center;
     font-size: 12px;
     margin-bottom: 0.8em;
+    @include mobileL {
+      font-size: 14px;
+    }
   }
-  &__requirements{
+  &__requirements {
     font-weight: 600;
     text-align: center;
     font-size: 12px;
     margin-bottom: 0.8em;
-    
+    &--error {
+      color: $color-red;
+    }
+    @include mobileL {
+      font-size: 14px;
+    }
   }
   &__btn {
     width: 100%;
@@ -126,24 +181,35 @@
         background-color: #5fcbec;
       }
     }
+    @include mobileL {
+      padding: 3px 0;
+      font-size: 25px;
+      border-radius: 6px;
+    }
   }
-  &__actionBar{
+  &__actionBar {
     display: flex;
     justify-content: space-around;
     margin-top: 13px;
-    a{
+    @include mobileL {
+      margin-top: 17px;
+    }
+    a {
       font-size: 13px;
       color: #8d8989;
       transition: 0.1s;
-      &:hover{
+      &:hover {
         @include onlyOnDesktop {
           letter-spacing: 0.063rem;
           color: $color-black;
         }
       }
+      @include mobileL {
+        font-size: 15px;
+      }
     }
   }
-  &__passwordRecovery{
+  &__passwordRecovery {
     color: $color-white;
     text-align: center;
     font-size: 20px;
