@@ -25,7 +25,7 @@ export const Login = () => {
         // try to log the user in
         return auth().signInWithEmailAndPassword(data.email, data.password)
 
-        // set errors
+            // set errors
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -33,11 +33,19 @@ export const Login = () => {
                 //setting invalid state by error code
                 // check email
                 if (errorCode === 'auth/email-already-in-use') {
-                    setErrorTxt(prev => ({...prev, email: '! Ten adres email jest przypisany już do innego konta'}));
+                    setErrorTxt(prev => ({ ...prev, email: '! Ten adres e-mail jest przypisany już do innego konta' }));
                     setInvalid(prev => ({ ...prev, email: true }));
                 }
                 else if (errorCode === 'auth/invalid-email') {
-                    setErrorTxt(prev => ({...prev, email: '! Podany adres email jest nieprawidłowy'}));
+                    setErrorTxt(prev => ({ ...prev, email: '! Podany adres e-mail jest nieprawidłowy' }));
+                    setInvalid(prev => ({ ...prev, email: true }));
+                }
+                else if (errorCode === 'auth/user-not-found') {
+                    setErrorTxt(prev => ({ ...prev, email: '! Urzytkownik z tym adresem e-mail nie istnieje' }));
+                    setInvalid(prev => ({ ...prev, email: true }));
+                }
+                else if (errorCode === 'auth/too-many-requests'){
+                    setErrorTxt(prev => ({ ...prev, email: '! Dostęp do tego konta został zablokowany z powodu zbyt wielu nieudanych prób logowania' }));
                     setInvalid(prev => ({ ...prev, email: true }));
                 }
                 // clear email errors 
@@ -49,7 +57,7 @@ export const Login = () => {
 
                 // check password
                 if (errorCode === 'auth/wrong-password') {
-                    setErrorTxt(prev => ({...prev, password: '! Niepoprawne hasło'}));
+                    setErrorTxt(prev => ({ ...prev, password: '! Niepoprawne hasło' }));
                     setInvalid(prev => ({ ...prev, password: true }));
                 }
                 else {
@@ -83,6 +91,7 @@ export const Login = () => {
                     Podaj e-mail
                     <i className="fas fa-at" />
                     <input
+                        type='text'
                         name='email'
                         value={data.email}
                         className="auth__input"
@@ -96,6 +105,7 @@ export const Login = () => {
                     Podaj hasło
                     <i className="fas fa-lock" />
                     <input name='password'
+                        type='password'
                         value={data.password}
                         className="auth__input"
                         onChange={handleChangeData}

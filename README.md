@@ -1,132 +1,66 @@
-# What this application is
+# DOMIX App
+It's an app created by react. In this app I have nested 3 diffrent sections which are to make your house management easier.
+*  Recipes section - place where you can storage all of your recipes. There are 7 diffrent types of recipes, they are there to make it easier to navigate in this section. This types are from firestore database (`recipesRendering` collection) . If you want to add a new type for a recipe, everything is described below.
+* Tasks section - place where user can add his tasks for a day. 
+* Kitchen section - user can there add his products. There are also diffrent types of products. These types are from firestore database - `productsRendering` collection, and based on this data the relevant product subsections will be rendered. If you want to add new type of product look below.
 
-It is an app written in react in which you can store your recipes, home products and to-do tasks. I used firebase from
-google for authentication and storing all user elements what this application is
 
-## How to add a new category to  recipes or products
+ Back-end for this project was realized by using Google Firebase service. Data structure is described below. Everything is created in order to make this project easy to develop without making any changings in code :)
 
-everything happens automatically, so all you have to do is add a new document to the appropriate rendering collection,
-with the appropriate information How to add a new category to a recipe
+ ## Technology
+ * Create React App - https://github.com/facebook/create-react-app
+ * React (function components)
+ * React Router
+ * React Redux
+ * Sass
+ * Google Firebase
+ 
+ ## React Router
+ ### Custom routes components
+ * `<PrivateRoute>` - Route for component which is only available for only logged user. 
+ * `<AuthRoute>` - Route for component for user which is not logged in.
+ ### Available routes
+ **path - Type of route - component - description**
+ *  `/` - Private - `<HomePage>` - Page with navigation 
+ * `/mykitchen` - Private - `<MyKitchen>` - section with user's products
+ * `/myRecipes` - Private - `<MyRecipes>` - list with all recipes types
+ * `/myRecipes/:type` - Private - `<MyRecipesList>` - List with all user's recipes of particular type (`type` param)
+ * `/myRecipes/:type/add` - Private - `<MyRecipesAddForm>` - Page where user can add new recipe for a specific type of recipes (`type` param)
+ * `/myRecipe/:id` - Private - `<MyRecipeSingleRecipe>` - Page with content for particular recipes (`id` param)
+ * `/myRecipe/edit/:id` - Private - `<MyRecipeEdit>` - Page where user can edit his recipes (`id` param)
+ * `/tasks` - Private - `<ToDo>` - List with all user's tasks
+ * `/register` - Auth - `<Register>` - form to register a user and create his account in Firestore database
+ * `/login` - Auth - `<Login>` - form responsible for user login 
+ * `/password-recovery` - Auth - `<PasswordRecovery>` - form responsible for password recovery
 
-### -> information about new product
+ ## Google Firebase
+ Based on this service I was created back-end for this project - storage for user data and user authentication.
+### Authentication
+All components responsible for user authentication are placed in `<PrivateRoute>`. 
+* `/login` - form for loggin user
+* `/password-recovery` - recovering user's password
+* `/register` - creating user profile in firestore - `users` collection, with 3 nested subcollections - `products, recipes, ToDo` in order. So that the user can store and modify their data in diffrent sections in this project.
 
-1. title - add new title, which will be displayed
-2. number - place a new category in a specific location in MyKitchen component
-3. productType - this is very important, because every new added product will be sent to firestore with this type and
-   then downloaded in MyKitchenCategory component
-4. icon - add a class name for the icon from the font awasome page this is very important, because every new added
-   product will be sent to firestore with this type and then downloaded in MyKitchenCategory component
+### Firestore
+ **`productsRendering`** - data about available types for products. Data structure:
 
-### -> information about new recipe category
+| key | value type | description |
+| ---- | ---- | ---- |
+|icon | string | class name which is representing icon for a product, (class name must be from fontawesome.com). For example - `fas fa-apple-alt` |
+| number | number | a number that determines the priority of the product and its position in the list in `<Mykitchen>` component|
+| productType | string | type of product. This name is needed to filter products by type in `<MyKitchenCategory>` component. This product type name is also used in `<MyKitchenAddProductForm>` where user is adding new product with this type |
+| title | string | Name of product type which will displayed in `<MyKitchenCategory>` component |
 
-1. number - place a new category in a specific location in MyRecipes component
-2. title - add new title, which will be displayed
-3. path - this is very important because using this path, components will fetch recipes from a specific category(
-   MyRecipesList component) or add a new recipe to a specific category (MyRecipesAddForm component)
+**`recipesRendering`** - data about available recipes types. Data structure:
 
-## Important information
+| key | value type | description |
+| ---- | ---- | ---- |
+| colorPrimary | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| colorSecondary | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+|icon| string| svg tag used to display icon of recipe type in `<SingleRecipeHeader>` component|
+ | number | number | a number that determines the priority of the product and its position in the list in `<MyRecipes>` component. Special type must be always at the end of the list |
+|path| string| recipe type, needed to fetch all recipes with this type in `<MyRecipesList>` component. And this value is also used in `<MyRecipesAddForm>` component where newly created recipes will be with this path name (`type` key)|
 
-### - > How to add a new component
 
-when you create a component, import it into the App component and then add it to thePrivateRoute path, it is a component
-that checks if user is logged in or not
 
-### -> How it created user database in firestore
 
-when user registers he gives the username and when user presses the register button the function checks if the given
-username already exists in the users collection in firestore and if it does not exist it creates a new user with its
-database
-
-### -> where user's stuff are stored
-
-They are stored in the redux state and are then retrieved by the components
-
-### -> How user's stuff is downloaded
-
-If the user is logged in, the PrivateRoute component retrieves the data using the getDataFormFirestore function to which
-it sends the username, and sends the retrieved data to the application state
-
-### -> How to make a corners
-
-use corners mixin sass, add shape, color, size, thickness, and optionally height which is equal to width
-
-### -> How to add color for specific products
-
-use colorForKitchenProducts mixin in _productsIndividualColors file, however, the colors are given 5 forward
-
-## Components
-
-### -> homePage
-
-1.HomePage - application home page which contains a menu of section choices
-
-### -> loading
-
-1.Loading - a simple component that is displayed when downloading data from firestore
-
-### -> privateRoute
-
-1.PrivateRoute - the component that gets props is a single component that displays only when the user is logged in and
-retrieves data from the firestore, if the user is not logged in it sends him back to the login
-
-### -> userForm
-
-1.UserForm - used to display a login or registration form
-
-2.UserFormLogin - used to login
-
-3.UserFormRegister - user to register and create user database in firestore
-
-### -> myKitchen
-
-1.MyKitchen - component that renders MyKitchenCategory components based on the "productsRendering" collection from
-firestore
-
-2.MyKitchenAddProductForm - a component which is used to add a product to a specific type of product
-
-3.MyKitchenBar - a simple component containing a title bar
-
-4.MyKitchenCategory - component for a single product type, it displays a MyKitchenAddProductForm component or renders
-MyKitchenProduct components by map
-
-5.MyKitchenProduct - Displays a single product, and a form to manage that product
-
-### -> myRecipes
-
-1.MyRecipes - component that renders categories (by MyRecipeRedirect component) of recipes from firestore(collection
-recipesRendering)
-
-2.MyRecipeRedirect - component which, when pressed, redirects to recipes with a specific category(MyRecipesList
-component)
-
-3.MyRecipesList - component which retrieves a product category from the page address and retrieves the state of the
-application with this type, when clicked on, it redirects to the specific recipe
-
-4.MyRecipeSingleRecipe - component that retrieves the recipe id from the address and then retrieves that particular
-recipe from the application state, and displays it
-
-4.1 RecipeIngredients - displays a single ingredient 4.2 RecipeInstruction - displays a single instruction
-
-5.MyRecipeAddForm - displays a form where you can add a recipe to a specific category (the category name is taken from
-the address)
-
-5.1 addFormIngredients - displays a single ingredient
-
-5.2 addFormInstruction - displays a single instruction, which you can edit
-
-6.MyRecipeEditForm - displays the form for editing a recipe, it is the same as the form for a new recipe only it sends
-the edited recipe 
-
-7.MyRecipesBar - a simple component containing a title bar
-
-### -> toDo
-
-1.ToDo - component which displays a form for adding a new task (NewTaskForm component) or a list with tasks
-
-2.NewTaskForm - is used to add new tasks
-
-3.SingleTask - a single task with operations
-
-4.TasksList - component that retrieves all user tasks and displays them using the SingleTask component
-
-5.ToDoBar - a simple component containing a title bar

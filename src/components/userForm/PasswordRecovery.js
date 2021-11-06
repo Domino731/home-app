@@ -28,7 +28,7 @@ export const PasswordRecovery = () => {
             .then(() => setSuccessfulSend(true))
             // set error
             .catch((error) => {
-                setErrorTxt('! Podany adres email jest nieprawidłowy');
+                setErrorTxt('! Podany adres e-mail jest nieprawidłowy');
                 console.log(error.code, error.message)
             })
     }

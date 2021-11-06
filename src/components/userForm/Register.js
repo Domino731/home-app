@@ -54,11 +54,11 @@ export const Register = () => {
 
                     //setting invalid state by error code
                     if (errorCode === 'auth/email-already-in-use') {
-                        setEmailErrorTxt('! Ten adres email jest przypisany już do innego konta');
+                        setEmailErrorTxt('! Ten adres e-mail jest przypisany już do innego konta');
                         setInvalid(prev => ({ ...prev, email: true }));
                     }
                     else if (errorCode === 'auth/invalid-email') {
-                        setEmailErrorTxt('! Podany adres email jest nieprawidłowy');
+                        setEmailErrorTxt('! Podany adres e-mail jest nieprawidłowy');
                         setInvalid(prev => ({ ...prev, email: true }));
                     }
                     // remove errors if there is no email error
@@ -99,6 +99,7 @@ export const Register = () => {
                     Podaj e-mail
                     <i className="fas fa-at" />
                     <input
+                    type='text'
                         name='email'
                         value={data.email}
                         className="auth__input"
@@ -116,6 +117,7 @@ export const Register = () => {
                     Podaj hasło
                     <i className="fas fa-lock" />
                     <input name='password'
+                    type='password'
                         value={data.password}
                         className="auth__input"
                         onChange={handleChangeData}
@@ -128,6 +130,7 @@ export const Register = () => {
                     Powtórz hasło
                     <i className="fas fa-lock" />
                     <input name='passwordRepeat'
+                    type='password'
                         value={data.passwordRepeat}
                         className="auth__input"
                         onChange={handleChangeData}
