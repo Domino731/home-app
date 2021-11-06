@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { sortingByAlphabeticalProducts } from "../../functions/sorting";
 import MyKitchenAddProductForm from "./MyKitchenAddProductForm";
 import MyKitchenProduct from "./MyKitchenProduct";
 
@@ -29,7 +28,7 @@ const MyKitchenCategory = ({ title, products, productType }) => {
 
     // sort product by selected option - sorting state
     useEffect(() => {
-        return sortingByAlphabeticalProducts(sorting, setProductsArray);
+        return sortingByAlphabeticalProducts(sorting);
     }, [sorting]);
 
     /** change showList state - toogle content */
@@ -58,6 +57,26 @@ const MyKitchenCategory = ({ title, products, productType }) => {
             return setSorting("Alfabetycznie Z - A");
         } else {
             return setSorting("Alfabetycznie A - Z");
+        }
+    }
+
+    /**
+ * That function is sorting array with products alphabetically
+ * @param {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
+ */
+     const sortingByAlphabeticalProducts = (option) => {
+        if (option === "Alfabetycznie Z - A") {
+            return setProductsArray(prev => prev.sort((a, b) => {
+                const textA = a.name.toUpperCase();
+                const textB = b.name.toUpperCase();
+                return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
+            }));
+        } else {
+            return setProductsArray(prev => prev.sort((a, b) => {
+                const textA = a.name.toUpperCase();
+                const textB = b.name.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            }));
         }
     }
 

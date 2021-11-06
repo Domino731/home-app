@@ -25,7 +25,7 @@ const MyKitchenProduct = ({ prod, id, }) => {
 
     // get the icon (<i> tag)of product type from 'productsRendering' collection in firestore
     useEffect(() => {
-        db.collection("productsRendering")
+        return db.collection("productsRendering")
             .where("productType", "==", `${prod.type}`)
             .get()
             .then((querySnapshot) => {
@@ -48,9 +48,9 @@ const MyKitchenProduct = ({ prod, id, }) => {
     /** function which decrease the amount state ( -1 ) */
     const handleDecrease = () => {
         if (newAmount === 0) {
-            setNewAmount(0)
+            return setNewAmount(0)
         } else {
-            setNewAmount(prev => prev - 1)
+            return setNewAmount(prev => prev - 1)
         }
     }
 

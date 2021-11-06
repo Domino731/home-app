@@ -8,7 +8,7 @@ import { db } from "./fireBase";
  * @param {*} element - data about new element
  */
 export const addNewElement = async (userUid, collection, element) => {
-   return await db.collection("users")
+    return await db.collection("users")
         .doc(`${userUid}`)
         .collection(`${collection}`)
         .add(element)

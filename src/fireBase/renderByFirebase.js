@@ -1,7 +1,7 @@
 import {db} from "./fireBase";
 
 /**
- * fetch data with information about available content for specific section (read in docs)
+ * fetch data with informations about available content for a specific section (read in docs)
  * @param {*} collection - name of collection
  * @param {*} saveData - function that will save incomming data 
  */

@@ -7,8 +7,8 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import rootReducer from "./redux/reducers/allReducers"
 
-
-const store = createStore(rootReducer)
+// redux state initialization
+const store = createStore(rootReducer);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

@@ -2,7 +2,6 @@
 import { greeting } from "../../functions/greeting";
 import { dayName } from "../../functions/greeting";
 import { auth } from "../../fireBase/fireBase";
-import { setProducts, setRecipes, setToDos } from "../../redux/actions/firebaseData.actions";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import kitchenIcon from "../../images/diet.svg";
 import recipesIcon from "../../images/recipes.svg";
@@ -15,7 +14,7 @@ import tasksIcon from "../../images/task.svg";
  * @param setToDos - REDUX ACTION - function that will clear ToDo state in redux after successfull logout
  * @returns 
  */
-export const HomePage = ({ setProducts, setRecipes, setToDos }) => {
+export const HomePage = () => {
 
     /** logout the user */
     const handleLogOut = () => {

@@ -1,10 +1,5 @@
-// deleting data from firestore
 import {db} from "./fireBase";
 
-// params //
-// dataId --> to delete specific element
-// username --> to know where delete
-// category --> to know in which category delete
 /**
  * delete specific document from firestore database (from specific nested collection in 'user' collection)
  * @param {*} dataId - id of document that you want to delete

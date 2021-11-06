@@ -1,7 +1,7 @@
 import { db } from "./fireBase";
 
 /**
- * update document in specific subcollection in firestore
+ * update document in specific subcollection in firestore (`users` collection)
  * @param {*} dataId - id of document that you want to update
  * @param {*} userUID - uid of current logged user
  * @param {*} subcollection - name of subcollection where you want update documenet
