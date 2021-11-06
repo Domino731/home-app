@@ -1,11 +1,19 @@
 .auth {
   max-width: 1600px;
   height: 100vh;
-  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  &--login {
+    min-height: 300px;
+  }
+  &--register {
+     min-height: 400px;
+  }
+  &--passwordRecovery {
+     min-height: 300px;
+  }
   &__item {
     width: 320px;
     &--passwordRecovery{

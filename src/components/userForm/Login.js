@@ -33,11 +33,11 @@ export const Login = () => {
                 //setting invalid state by error code
                 // check email
                 if (errorCode === 'auth/email-already-in-use') {
-                    setErrorTxt('! Ten adres email jest przypisany już do innego konta');
+                    setErrorTxt(prev => ({...prev, email: '! Ten adres email jest przypisany już do innego konta'}));
                     setInvalid(prev => ({ ...prev, email: true }));
                 }
                 else if (errorCode === 'auth/invalid-email') {
-                    setErrorTxt('! Podany adres email jest nieprawidłowy');
+                    setErrorTxt(prev => ({...prev, email: '! Podany adres email jest nieprawidłowy'}));
                     setInvalid(prev => ({ ...prev, email: true }));
                 }
                 // clear email errors 
@@ -49,7 +49,7 @@ export const Login = () => {
 
                 // check password
                 if (errorCode === 'auth/wrong-password') {
-                    setErrorTxt('! Podany adres email jest nieprawidłowy');
+                    setErrorTxt(prev => ({...prev, password: '! Niepoprawne hasło'}));
                     setInvalid(prev => ({ ...prev, password: true }));
                 }
                 else {
@@ -70,7 +70,7 @@ export const Login = () => {
         }));
     }
 
-    return <main className="auth">
+    return <main className="auth auth--login">
         <div className="auth__item">
 
             {/* title */}

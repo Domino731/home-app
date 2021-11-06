@@ -86,7 +86,7 @@ export const Register = () => {
 
     }
 
-    return <main className="auth">
+    return <main className="auth auth--register">
         <div className="auth__item">
             {/* title */}
             <h1 className="auth__title">Rejestracja</h1>
