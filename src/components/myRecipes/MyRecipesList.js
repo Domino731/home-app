@@ -5,6 +5,9 @@ import { auth } from "../../fireBase/fireBase";
 import { getRecipesOfParticularType } from "../../fireBase/getRecipesOfParticularType";
 import { Redirect, useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { db } from "../../fireBase/fireBase";
+/**
+ * Component with all recipes about particular type
+ */
 const MyRecipesList = () => {
 
     // references

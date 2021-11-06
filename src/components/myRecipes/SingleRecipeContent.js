@@ -4,6 +4,10 @@ import SingleRecipeInstructions from "./SingleRecipeInstructions";
 import SingleRecipeNotes from "./SingleRecipeNotes";
 import SingleRecipeOptions from "./SingleRecipeOptions";
 
+/**
+ * content for recipe -> instructions, ingredients, notes, options
+ * @returns 
+ */
 const SingleRecipeContent = () => {
 
     // selected content name, by changing this state user toggle between section in this component - instructions, ingredients, notes and options

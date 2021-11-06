@@ -1,12 +1,14 @@
 import { auth } from "../../fireBase/fireBase";
 import { useEffect, useState } from "react";
-import { addNewElement } from "../../fireBase/addNewElementToFirebase";
 import { SingleInstruction } from "./MyRecipesAddForm";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Loading } from "../loading/Loading";
 import { getRecipeData } from "../../fireBase/getRecipeData";
 import { updateDataFirestore } from "../../fireBase/updateDataFirestore";
 
+/**
+ * component with form where your can edit his recipe 
+ */
 export const MyRecipeEdit = () => {
    
     // references

@@ -4,7 +4,7 @@ import { Loading } from "../loading/Loading";
 import { MyRecipesHeader } from "./MyRecipesHeader";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 /**
- * Component with all recipes types
+ * Component with recipes types list
  */
 export const MyRecipes = () => {
 

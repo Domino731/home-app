@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 /**
- * Component with recipe redirect container
+ * Component with link to specific recipe
  * @param {*} recipe - data about single recipe
  */
 const MyRecipeBox = ({ recipe }) => {

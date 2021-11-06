@@ -118,6 +118,22 @@ All components responsible for user authentication are placed in `<PrivateRoute>
 * `<ToDoHeader>` - subcomponent for `<ToDo>`, with header for task component
 * `<SingleTask>` - subcomponent for `<ToDo>`, with content about single task
 * `<NewTaskForm>` -  subcomponent for `<ToDo>`, with form by which user can add new task into his account in firestore. 
+### Recipes
+* `<MyRecipes>` - with recipes types list
+* `<MyRecipesHeader>` - header for `<MyRecipes>`
+* `<MyRecipesList>` - Component with all recipes about particular type
+* `<MyRecipeBox>` -  subcomponent for  `<MyRecipesList>`, with link to specific recipe
+* `<MyRecipeEdit>` - form where your can edit his recipe
+* `<MyRecipesAddForm>` - Form for new recipe.
+* `<MyRecipeSingleRecipe>` - Component with content for single recipe
+* `<SingleRecipeConfirmDelte>` - subcomponent  `<MyRecipeSingleRecipe>`, for with box to confirm deleting recipe
+*  `SingleRecipeHeader` - subcomponent for `<MyRecipeSingleRecipe>`, with header for single recipe component
+* `SingleRecipeOverview` - subcomponent for  `<MyRecipeSingleRecipe>`, including overview for recipe -> title, description, kcal, serving weight... 
+* `<SingeRecipeContent>` - subcomponent for `<MyRecipeSingleRecipe>` -> instructions, ingredients, notes, options
+* `<SingleRecipeIngredients>` - subcomponent for `<SingeRecipeContent>`, with list of recipe ingredients
+* `<SingleRecipeInstructions>` - subcomponent for `<SingeRecipeContent>`, with list of recipe instructions
+* `<SingleRecipeNots>` - subcomponent for `<SingeRecipeContent>`, with notes for recipe
+* `<SingleRecipeOptions>` - subcomponent for `<SingeRecipeContent>`, with options for recipe - edit or delete recipe
 ### Authorization
 * `<Login>` - component by which user can log into app
 * `<PasswordRecovery>` - component with form by which user can reset his password
@@ -140,6 +156,60 @@ All components responsible for user authentication are placed in `<PrivateRoute>
 * `setRecipes` - change `recipes` state
 * `changeRecipeDataRDX` - change `recipeData` state
 * `changeRecipeStylesRDX` - change `recipeState` state
+
+## Available functions
+* `formatDate()` - that function is formatting passed date
+* `dayName()` - return day name (in Polish)
+* `greeting()` - return greeting text (in Polish)
+
+
+## Other
+### **How to add new recipe type?**
+In firestore, in 'recipesRendering' add new document with following data:
+| key | value type | description |
+| ---- | ---- | ---- |
+| colorPrimary | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| colorSecondary | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+|icon| string| svg tag used to display icon of recipe type in `<SingleRecipeHeader>` component|
+ | number | number | a number that determines the priority of the product and its position in the list in `<MyRecipes>` component. Special type must be always at the end of the list |
+|path| string| recipe type, needed to fetch all recipes with this type in `<MyRecipesList>` component. And this value is also used in `<MyRecipesAddForm>` component where newly created recipes will be with this path name (`type` key)|
+|title| string | title for recipes with the same type, used in `<MyRecipesList>` component and in `<MyRecipes>` | 
+
+### **How to add new product type?** 
+In firestore, in 'productsRendering' add new document with following data:
+| key | value type | description |
+| ---- | ---- | ---- |
+|icon | string | class name which is representing icon for a product, (class name must be from fontawesome.com). For example - `fas fa-apple-alt` |
+| number | number | a number that determines the priority of the product and its position in the list in `<Mykitchen>` component|
+| productType | string | type of product. This name is needed to filter products by type in `<MyKitchenCategory>` component. This product type name is also used in `<MyKitchenAddProductForm>` where user is adding new product with this type |
+| title | string | Name of product type which will displayed in `<MyKitchenCategory>` component |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
