@@ -85,6 +85,15 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  &::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+    border-left: 2px solid $color-black;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 100%;
+    background: rgb(190, 184, 184);
+  }
 }
 input,
 textarea,

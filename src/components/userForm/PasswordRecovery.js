@@ -14,7 +14,7 @@ export const PasswordRecovery = () => {
     const [errorTxt, setErrorTxt] = useState('');
 
     // flag which is changing on successful mail send into user's inbox. User to display container with information about successful auth operation 
-    const [successfulSend, setSuccessfulSend] = useState(true);
+    const [successfulSend, setSuccessfulSend] = useState(false);
 
     /**
      * set email with next steps for password recovery
