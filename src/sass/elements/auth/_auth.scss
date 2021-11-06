@@ -13,6 +13,9 @@
     @include tablet {
       min-height: 550px;
     }
+    @include laptopS {
+      min-height: 380px;
+    }
   }
   &--register {
     min-height: 400px;
@@ -22,13 +25,11 @@
     @include tablet {
       min-height: 700px;
     }
-  }
-  &--passwordRecovery {
-    min-height: 270px;
-    @include tablet {
-      min-height: 400px;
+    @include laptopS {
+      min-height: 480px;
     }
   }
+
   &__item {
     width: 320px;
     &--passwordRecovery {
@@ -43,6 +44,10 @@
       @include tablet {
         border-radius: 17px;
         padding: 13px 11px;
+      }
+      @include laptopS {
+        border-radius: 13px;
+        padding: 10px 6px;
       }
     }
     @include mobileL {
@@ -67,6 +72,13 @@
       font-size: 43px;
       margin-bottom: 23px;
       padding-bottom: 15px;
+      border-bottom: 5px solid $color-blue;
+    }
+    @include laptopS {
+      font-size: 25px;
+      margin-bottom: 14px;
+      padding-bottom: 9px;
+      border-bottom: 4px solid $color-blue;
     }
   }
   &__form {
@@ -85,6 +97,9 @@
     }
     @include tablet {
       margin-bottom: 31px;
+    }
+    @include laptopS {
+      margin-bottom: 18px;
     }
     &--inCorrect {
       i {
@@ -119,6 +134,12 @@
         border-radius: 11px;
         font-size: 38px;
       }
+      @include laptopS {
+        width: 61px;
+        height: 61px;
+        border-radius: 8px;
+        font-size: 32px;
+      }
     }
     span {
       display: block;
@@ -140,6 +161,11 @@
         top: 25px;
         left: 82px;
       }
+      @include laptopS {
+        font-size: 20px;
+        top: 21px;
+        left: 67px;
+      }
     }
   }
   &__input {
@@ -156,6 +182,10 @@
         border: 3px solid $color-blue;
         border-left: none;
       }
+      @include laptopS {
+        border: 2px solid $color-blue;
+        border-left: none;
+      }
     }
     &:valid ~ span,
     &:focus ~ span {
@@ -169,6 +199,10 @@
       @include tablet {
         font-size: 17px;
         transform: translate(13px, -20px);
+      }
+      @include laptopS {
+        font-size: 15px;
+        transform: translate(8px, -19px);
       }
     }
     @include mobileL {
@@ -185,6 +219,14 @@
       font-size: 23px;
       width: calc(100% - 74px);
     }
+    @include laptopS {
+      border: 2px solid #8d8989;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      padding: 4px 0 4px 6px;
+      font-size: 19px;
+      width: calc(100% - 61px);
+    }
   }
   &__error {
     width: 100%;
@@ -200,6 +242,9 @@
     @include tablet {
       font-size: 17px;
     }
+    @include laptopS {
+      font-size: 15px;
+    }
   }
   &__requirements {
     font-weight: 600;
@@ -214,6 +259,9 @@
     }
     @include tablet {
       font-size: 17px;
+    }
+    @include laptopS {
+      font-size: 15px;
     }
   }
   &__btn {
@@ -248,6 +296,10 @@
       font-size: 30px;
       border-radius: 9px;
     }
+    @include laptopS {
+      font-size: 22px;
+      border-radius: 5px;
+    }
   }
   &__actionBar {
     display: flex;
@@ -258,6 +310,9 @@
     }
     @include tablet {
       margin-top: 21px;
+    }
+    @include laptopS {
+      margin-top: 14px;
     }
     a {
       font-size: 13px;
@@ -275,6 +330,9 @@
       @include tablet {
         font-size: 19px;
       }
+      @include laptopS {
+        font-size: 15px;
+      }
     }
   }
   &__passwordRecovery {
@@ -286,6 +344,10 @@
     @include tablet {
       font-size: 31px;
       margin-bottom: 31px;
+    }
+    @include laptopS {
+      font-size: 20px;
+      margin-bottom: 16px;
     }
   }
 }
