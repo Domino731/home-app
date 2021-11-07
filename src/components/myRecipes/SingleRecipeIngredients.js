@@ -18,7 +18,7 @@ const SingleRecipeIngredients = ({ products, recipe, recipeStyles }) => {
     return <div className="recipeIngredients">
         {recipe.ingredients.map((el, num) => {
             // check if user has particualr ingredient in his kitchen
-            const productIndex = products.findIndex(prod => prod.name === el.name)
+            const productIndex = products.findIndex(prod => prod.name.toLowerCase() === el.name.toLowerCase())
             return <div className="recipeIngredients__item" style={styles} key={`recipe-${recipe.title}-ingredient-${num}`}>
 
                 {/* ingredient name */}
