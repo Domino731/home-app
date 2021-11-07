@@ -10,25 +10,25 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
  * @param currentUser - REDUX STATE - data about current logged user, needed to check if user is logged-in
  * @param component - Component - component that you want to pass into private route
  */
-const PrivateRoute = ({ currentUser , setRecipes , setProducts,  setToDos, component: Component, ...rest }) => {
+const PrivateRoute = ({ currentUser, setRecipes, setProducts, setToDos, component: Component, ...rest }) => {
 
-     // clear redux statewhen the user has logged out
-    useEffect(()=> {
+    // clear redux statewhen the user has logged out
+    useEffect(() => {
         return auth().onAuthStateChanged(user => {
-            if(!user){
-             setRecipes(null);
-             setProducts(null);
-             setToDos(null);  
+            if (!user) {
+                setRecipes(null);
+                setProducts(null);
+                setToDos(null);
             }
-        });  
+        });
     }, []);
-    
+
     return <Route
         {...rest}
         render={props => {
             // user isnt logged -> redirect to login form
             if (currentUser === null) {
-                return <Redirect to='/login'/>
+                return <Redirect to='/login' />
             }
 
             // user is logged -> rendered passed component

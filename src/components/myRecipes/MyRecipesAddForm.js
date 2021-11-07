@@ -59,6 +59,27 @@ export const MyRecipesAddForm = () => {
         });
     }, [recipeType]);
 
+    // clear data on recipe type change
+    useEffect(() => {
+        // redirect user to the first step - title for recipe
+        setStep(1);
+
+        // clear ingredient data
+        setIngredient({ name: "", amount: "", unit: "" });
+
+        // clear all data about recipe
+        return setData({
+            title: "",
+            description: "",
+            instructions: [],
+            ingredients: [],
+            type: recipeType,
+            notes: '',
+            kcal: '',
+            servingWeight: '',
+            prepareTime: ''
+        });
+    }, [recipeType]);
 
     /** chande data state - set data about recipe */
     const handleChangeData = (e) => {

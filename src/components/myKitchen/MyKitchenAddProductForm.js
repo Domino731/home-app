@@ -36,7 +36,7 @@ const MyKitchenAddProductForm = ({ productType }) => {
         }));
 
         // remove error
-        setInvalidFlag(false)
+        return setInvalidFlag(false)
     };
 
     /** add new product to user's account in firestore ('products' subcollection) */

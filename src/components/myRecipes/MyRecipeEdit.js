@@ -37,8 +37,8 @@ export const MyRecipeEdit = () => {
 
     // fetch data about recipe that you want to edit
     useEffect(()=> {
-       auth().onAuthStateChanged(user => user && getRecipeData(user.uid, recipeId, setData))
-    },[]);
+       return auth().onAuthStateChanged(user => user && getRecipeData(user.uid, recipeId, setData))
+    },[recipeId]);
 
     /** chande data state - set data about recipe */
     const handleChangeData = (e) => {

@@ -9,7 +9,6 @@ import { db } from "./fireBase"
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            console.log()
             const data = {
                 colorPrimary: doc.data().colorPrimary,
                 colorSecondary: doc.data().colorSecondary,

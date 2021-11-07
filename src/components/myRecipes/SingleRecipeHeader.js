@@ -21,7 +21,7 @@ const SingleRecipeHeader = ({ recipe, recipeStyles, tasks }) => {
     useEffect(() => {
         const index = tasks.findIndex(el => el.title === recipe.title);
         index !== -1 ? setOnTasksList(true) : setOnTasksList(false);
-    }, [tasks]);
+    }, [tasks, recipe.title]);
 
     /** add new task to user's account in firestore ('ToDo' subcollection), or remove this tasks if he has already add */
     const handleAddNewTask = () => {

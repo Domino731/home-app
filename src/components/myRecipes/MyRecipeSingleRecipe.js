@@ -14,7 +14,7 @@ import SingleRecipeContent from "./SingleRecipeContent";
 import { setProducts } from "../../redux/actions/firebaseData.actions";
 import SingleRecipeConfirmDelte from "./SingleRecipeConfirmDelte";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+
 /**
  * Component with content for single recipe
  * @param changeRecipeData - REDUX ACTION - that function is changing recipeData state in redux

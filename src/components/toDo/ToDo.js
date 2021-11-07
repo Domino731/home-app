@@ -4,7 +4,6 @@ import NewTaskForm from "./NewTaskForm";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setToDos } from "../../redux/actions/firebaseData.actions";
-import { getDataFromFirestore } from "../../fireBase/getDataFromFirestore";
 import { auth } from "../../fireBase/fireBase";
 import SingleTask from "./TasksList--SingleTask";
 import { Loading } from "../loading/Loading";
@@ -50,16 +49,12 @@ const ToDo = ({ setToDos, tasks }) => {
 
                 {/* according to flag state display appropriate content,*/}
                 {flag && <NewTaskForm showTasks={handleChangeFlag} />}
-                {!flag && tasks.map((el, num) =>  {
-                    console.log(el)
-                   return <SingleTask taskData={el} key={`task_${num}`} /> 
-                })}
+                {!flag && tasks.map((el, num) =>  <SingleTask taskData={el} key={`task_${num}`} />)}
+                  
             </div>
 
         </main>
-    )
-
-
+    );
 }
 
 ///////// REDUX ////////////////////////

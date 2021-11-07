@@ -21,48 +21,48 @@ export const HomePage = () => {
         return auth().signOut();
     }
 
-    return  <main className='container container--menu' >
+    return <main className='container container--menu' >
 
-            {/*top bar with greeting text */}
-            <header className="menu__titleBar">
-                <h1 data-text={greeting()}>{greeting()}</h1>
-                <h2 data-text={dayName()}>{dayName()}</h2>
-            </header>
+        {/*top bar with greeting text */}
+        <header className="menu__titleBar">
+            <h1 data-text={greeting()}>{greeting()}</h1>
+            <h2 data-text={dayName()}>{dayName()}</h2>
+        </header>
 
-            {/* navigation */}
-            <nav >
-                <ul className="menu__list menu__padding">
-                    {/* products link */}
-                    <li className="menu__item menu__neumorphism" >
-                        <Link to='/mykitchen'>
-                            <img src={kitchenIcon} className='menu__icon' alt='Diet' />
-                            <strong className="menu__name"> Moje produkty </strong>
-                        </Link>
-                    </li>
+        {/* navigation */}
+        <nav >
+            <ul className="menu__list menu__padding">
+                {/* products link */}
+                <li className="menu__item menu__neumorphism" >
+                    <Link to='/mykitchen'>
+                        <img src={kitchenIcon} className='menu__icon' alt='Diet' />
+                        <strong className="menu__name"> Moje produkty </strong>
+                    </Link>
+                </li>
 
-                    {/* recipes link */}
-                    <li className="menu__item  menu__neumorphism">
-                        <Link to='/myRecipes'>
-                            <img src={recipesIcon} className='menu__icon' alt='Recipes book' />
-                            <strong className="menu__name"> Przepisy </strong>
-                        </Link>
-                    </li>
+                {/* recipes link */}
+                <li className="menu__item  menu__neumorphism">
+                    <Link to='/myRecipes'>
+                        <img src={recipesIcon} className='menu__icon' alt='Recipes book' />
+                        <strong className="menu__name"> Przepisy </strong>
+                    </Link>
+                </li>
 
-                    {/* tasks link */}
-                    <li className="menu__item menu__neumorphism">
-                        <Link to='/tasks'>
-                            <img src={tasksIcon} className='menu__icon' alt='Task board' />
-                            <strong className="menu__name"> Do zrobienia </strong>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+                {/* tasks link */}
+                <li className="menu__item menu__neumorphism">
+                    <Link to='/tasks'>
+                        <img src={tasksIcon} className='menu__icon' alt='Task board' />
+                        <strong className="menu__name"> Do zrobienia </strong>
+                    </Link>
+                </li>
+            </ul>
+        </nav>
 
-            {/* button by which user can logout  */}
-            <div className="menu__logoutWrapper menu__padding ">
-                <button className="menu__btn menu__neumorphism" onClick={handleLogOut}>Wyloguj <i className="fas fa-sign-out-alt" /></button>
-            </div>
-        </main>
+        {/* button by which user can logout  */}
+        <div className="menu__logoutWrapper menu__padding ">
+            <button className="menu__btn menu__neumorphism" onClick={handleLogOut}>Wyloguj <i className="fas fa-sign-out-alt" /></button>
+        </div>
+    </main>
 }
 
 

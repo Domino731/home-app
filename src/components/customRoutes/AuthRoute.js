@@ -6,10 +6,10 @@ import { Route } from "react-router-dom/cjs/react-router-dom.min"
  * @param {*} currentUser - REDUX STATE - data about current logged user,
  *  needed to redirect user to PrivateRoute if he is logged in and if he is not logged in then redirect him to component auth
  */
-const AuthRoute = ({ currentUser ,  component: Component, ...rest }) => {
-   return <Route
+const AuthRoute = ({ currentUser, component: Component, ...rest }) => {
+    return <Route
         {...rest}
-        render={ props => {
+        render={props => {
             // user isnt logged -> redirect to login form
             if (currentUser === null) {
                 return <Component {...props} />
@@ -17,7 +17,7 @@ const AuthRoute = ({ currentUser ,  component: Component, ...rest }) => {
 
             // user is logged then redirect him to home page (HomePage component)
             else {
-                return <Redirect to='/'/>
+                return <Redirect to='/' />
             }
         }}
     >
