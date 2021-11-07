@@ -1,61 +1,57 @@
 //setting colors for specific products by colorForKitchenProducts mixin
 
 //// MEAT
-.kitchenCtg:nth-child(1){
+.kitchenCtg:nth-child(1) {
   @include colorForKitchenProducts(#ef5285);
 }
 //// VEGETABLES
 
-.kitchenCtg:nth-child(2){
-  @include colorForKitchenProducts(#75D701);
+.kitchenCtg:nth-child(2) {
+  @include colorForKitchenProducts(#75d701);
 }
 //// DAIRY
-.kitchenCtg:nth-child(3){
-  @include colorForKitchenProducts(#2EC4B6);
+.kitchenCtg:nth-child(3) {
+  @include colorForKitchenProducts(#2ec4b6);
 }
 //// SUGAR
-.kitchenCtg:nth-child(4){
+.kitchenCtg:nth-child(4) {
   @include colorForKitchenProducts(#f100e5);
 }
 //// FRUITS
-.kitchenCtg:nth-child(5){
+.kitchenCtg:nth-child(5) {
   @include colorForKitchenProducts(#f9a11b);
 }
 //// FROZEN FOOD
-.kitchenCtg:nth-child(6){
+.kitchenCtg:nth-child(6) {
   @include colorForKitchenProducts(#0080ff);
 }
 //// DRINKS
-.kitchenCtg:nth-child(7){
+.kitchenCtg:nth-child(7) {
   @include colorForKitchenProducts(#f9320c);
 }
 
-
 /// for next products, when you add new
-.kitchenCtg:nth-child(9){
+.kitchenCtg:nth-child(9) {
   @include colorForKitchenProducts(#ef5285);
 }
 
-.kitchenCtg:nth-child(10){
+.kitchenCtg:nth-child(10) {
   @include colorForKitchenProducts(#004e66);
 }
 
-.kitchenCtg:nth-child(11){
+.kitchenCtg:nth-child(11) {
   @include colorForKitchenProducts(#e94e77);
 }
 
-.kitchenCtg:nth-child(12){
+.kitchenCtg:nth-child(12) {
   @include colorForKitchenProducts(#00dffc);
 }
 
-.kitchenCtg:nth-child(13){
+.kitchenCtg:nth-child(13) {
   @include colorForKitchenProducts(#fe4365);
 }
 
-
-
 //// OTHER
-.kitchenCtg:last-child{
-  @include colorForKitchenProducts(#9055A2);
+.kitchenCtg:last-child {
+  @include colorForKitchenProducts(#9055a2);
 }
-

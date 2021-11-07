@@ -1,45 +1,45 @@
 @mixin setGeneralBorderSize($size) {
-    .sort--blue button::before {
-      border-left: $size solid $color-blue;
-      border-bottom: $size solid $color-blue;
-    }
-    .sort--blue button::after {
-      border-right: $size solid $color-blue;
-      border-top: $size solid $color-blue;
-    }
-    .kitchenCtg__list::before {
-      border-right: $size solid $color-blue;
-      border-top: $size solid $color-blue;
-    }
-    .kitchenCtg__list::after {
-      border-left: $size solid $color-blue;
-      border-top: $size solid $color-blue;
-    }
-    .kitchenCtg__list {
-      border-bottom: $size solid $color-blue;
-    }
-    .addProduct__form::before {
-      border-left: $size solid $color-blue;
-      border-bottom: $size solid $color-blue;
-    }
-    .addProduct__form::after {
-      border-right:  $size solid $color-blue;
-      border-bottom: $size solid $color-blue;
-    }
-    .addProduct__form{
-        border-top: $size solid $color-blue;
-    }
+  .sort--blue button::before {
+    border-left: $size solid $color-blue;
+    border-bottom: $size solid $color-blue;
   }
-  
-  @include tablet {
-    @include setGeneralBorderSize(7px);
+  .sort--blue button::after {
+    border-right: $size solid $color-blue;
+    border-top: $size solid $color-blue;
   }
-  @include laptopS {
-    @include setGeneralBorderSize(4px);
+  .kitchenCtg__list::before {
+    border-right: $size solid $color-blue;
+    border-top: $size solid $color-blue;
   }
-  @include laptopL {
-    @include setGeneralBorderSize(6px);
+  .kitchenCtg__list::after {
+    border-left: $size solid $color-blue;
+    border-top: $size solid $color-blue;
   }
-  @include desktopS {
-    @include setGeneralBorderSize(9px);
+  .kitchenCtg__list {
+    border-bottom: $size solid $color-blue;
   }
+  .addProduct__form::before {
+    border-left: $size solid $color-blue;
+    border-bottom: $size solid $color-blue;
+  }
+  .addProduct__form::after {
+    border-right: $size solid $color-blue;
+    border-bottom: $size solid $color-blue;
+  }
+  .addProduct__form {
+    border-top: $size solid $color-blue;
+  }
+}
+
+@include tablet {
+  @include setGeneralBorderSize(7px);
+}
+@include laptopS {
+  @include setGeneralBorderSize(4px);
+}
+@include laptopL {
+  @include setGeneralBorderSize(6px);
+}
+@include desktopS {
+  @include setGeneralBorderSize(9px);
+}

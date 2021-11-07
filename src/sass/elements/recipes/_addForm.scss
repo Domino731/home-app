@@ -1,5 +1,4 @@
 .addRecipe {
-
   &__title {
     border-bottom: 4px solid $color-green;
     color: $color-green;
@@ -556,7 +555,7 @@
     height: 100%;
     appearance: none;
     background: transparent;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
     &:checked ~ span {
