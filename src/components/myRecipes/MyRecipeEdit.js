@@ -142,7 +142,7 @@ export const MyRecipeEdit = () => {
     const editRecipe = () => {
         return updateDataFirestore(data.id, auth().currentUser.uid, 'recipes', data, null)
             // redirect user to edited reciepe
-            .then(() => window.location.replace(`/myRecipe/${data.id}`))
+            .then(() => window.location.replace(`/myRecipes/${data.type}`))
             .catch(err => console.log(err))
     }
 

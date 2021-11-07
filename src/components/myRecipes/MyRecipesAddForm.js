@@ -161,8 +161,8 @@ export const MyRecipesAddForm = () => {
     /** add recipe to user's account in firestore database - 'recipes' subcollection */
     const addNewRecipe = () => {
         return addNewElement(auth().currentUser.uid, "recipes", data)
-            // redirect user to new created reciepe
-            .then(() => window.location.replace(`/myRecipe/${data.id}`))
+            // redirect user to list with recipes
+            .then(() => window.location.replace(`/myRecipes/${data.type}`))
             .catch(err => console.log(err))
     }
 
@@ -176,7 +176,7 @@ export const MyRecipesAddForm = () => {
         return <Redirect to='/myRecipes' />
     }
     return (
-        <section className="container">
+        <main className="container">
 
             {/* title */}
             <h1 className="titleBar addRecipe__title">Nowy Przepis</h1>
@@ -471,7 +471,7 @@ export const MyRecipesAddForm = () => {
                 </div>}
             </div >
 
-        </section>
+        </main>
     )
 }
 

@@ -44,7 +44,7 @@ const MyKitchen = ({ setProducts }) => {
         return <Loading />
     }
 
-    return <section className="container kitchen">
+    return <main className="container kitchen">
         {/* header */}
         <MyKitchenBar />
 
@@ -53,7 +53,7 @@ const MyKitchen = ({ setProducts }) => {
             {renderingArray.map(el => <MyKitchenCategory title={el.title} productType={el.productType} key={el.id} />)}
         </section>
 
-    </section>
+    </main>
 }
 
 // REDUX

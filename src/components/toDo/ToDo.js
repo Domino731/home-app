@@ -34,7 +34,7 @@ const ToDo = ({ setToDos, tasks }) => {
         return <Loading/>
     }
     return (
-        <section className="container container--menu toDo">
+        <main className="container container--menu toDo">
             {/* header */}
             <ToDoHeader />
 
@@ -56,7 +56,7 @@ const ToDo = ({ setToDos, tasks }) => {
                 })}
             </div>
 
-        </section>
+        </main>
     )
 
 

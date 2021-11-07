@@ -8,123 +8,124 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.recipeRedirect {
-  border-radius: 5px;
-  width: 49%;
-  height: 144px;
-  overflow: hidden;
-  margin-top: 11px;
-  position: relative;
-  padding: 12px;
-  animation: showEffect 0.5s forwards;
-  font-size: 20px;
-  transition: 0.2s;
-  text-decoration: none;
-  @include mobileM {
-    height: 162px;
-    font-size: 23px;
-  }
-  @include mobileL {
-    height: 169px;
-    font-size: 27px;
-  }
-  @include mobileXL {
-    height: 174px;
-    font-size: 31px;
-  }
-  @include tablet {
-    height: 198px;
-    font-size: 36px;
-    padding: 16px;
-    margin-top: 14px;
-  }
-  @include laptopS {
-    margin-top: 11px;
-    height: 146px;
-    font-size: 30px;
-    padding: 12px;
-  }
-  @include laptopL {
-    margin-top: 19px;
-    height: 153px;
-    font-size: 32px;
-    padding: 14px;
-  }
-  @include desktopS {
-    margin-top: 19px;
-    height: 165px;
-    font-size: 38px;
-    padding: 19px;
-    border-radius: 9px;
-  }
-  &:last-child {
-    //flex-grow: 1;
-    width: 100%;
-  }
-
-
-  &::before {
-    transition: 0.8s;
-    @include corners("rightBot", $color-green, 30px, 5px);
-  }
-
-  &::after {
-    transition: 0.8s;
-    @include corners("rightTop", $color-green, 30px, 5px);
-  }
-  @include onlyOnDesktop {
-      &:hover {
-    &::after, &::before{
-      width: 100%;
-      height: 100%;
-    }
-    cursor: pointer;
-  }
-  &:hover span {
-    &::after, &::before{
-      width: 100%;
-      height: 100%;
-    }
-  }
-  }
-
-  span {
-    &::after {
-      transition: 0.8s;
-      @include corners("leftBot", $color-green, 30px, 5px);
-    }
-
-    &::before {
-      transition: 0.8s;
-      @include corners("leftTop", $color-green, 30px, 5px);
-    }
-  }
-
-  div {
-    color: white;
-    width: 100%;
-    height: 100%;
-    background: $color-green;
+  a{
+    text-decoration: none;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 49%;
+    height: 144px;
+    overflow: hidden;
+    margin-top: 11px;
+    position: relative;
+    padding: 12px;
+    animation: showEffect 0.5s forwards;
+    font-size: 20px;
+    transition: 0.2s;
+  
+    @include mobileM {
+      height: 162px;
+      font-size: 23px;
+    }
     @include mobileL {
-      border-radius: 8px;
+      height: 169px;
+      font-size: 27px;
+    }
+    @include mobileXL {
+      height: 174px;
+      font-size: 31px;
     }
     @include tablet {
-      border-radius: 10px;
+      height: 198px;
+      font-size: 36px;
+      padding: 16px;
+      margin-top: 14px;
     }
     @include laptopS {
-      border-radius: 5px;
+      margin-top: 11px;
+      height: 146px;
+      font-size: 30px;
+      padding: 12px;
+    }
+    @include laptopL {
+      margin-top: 19px;
+      height: 153px;
+      font-size: 32px;
+      padding: 14px;
     }
     @include desktopS {
-      border-radius: 15px;
+      margin-top: 19px;
+      height: 165px;
+      font-size: 38px;
+      padding: 19px;
+      border-radius: 6px;
+    }
+    &:last-child {
+      //flex-grow: 1;
+      width: 100%;
+    }
+  
+  
+    &::before {
+      transition: 0.8s;
+      @include corners("rightBot", $color-green, 30px, 5px);
+    }
+  
+    &::after {
+      transition: 0.8s;
+      @include corners("rightTop", $color-green, 30px, 5px);
+    }
+    @include onlyOnDesktop {
+        &:hover {
+      &::after, &::before{
+        width: 100%;
+        height: 100%;
+      }
+      cursor: pointer;
+    }
+    &:hover span {
+      &::after, &::before{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    }
+  
+    span {
+      &::after {
+        transition: 0.8s;
+        @include corners("leftBot", $color-green, 30px, 5px);
+      }
+  
+      &::before {
+        transition: 0.8s;
+        @include corners("leftTop", $color-green, 30px, 5px);
+      }
+    }
+  
+    strong {
+      color: white;
+      width: 100%;
+      height: 100%;
+      background: $color-green;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include mobileL {
+        border-radius: 8px;
+      }
+      @include tablet {
+        border-radius: 10px;
+      }
+      @include laptopS {
+        border-radius: 5px;
+      }
+      @include desktopS {
+        border-radius: 15px;
+      }
     }
   }
 }
+
 
 .animatedRedirect--ToCategory {
   animation: removePadding--ToCategory 0.2s 0.8s forwards;

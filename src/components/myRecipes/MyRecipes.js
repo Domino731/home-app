@@ -33,7 +33,7 @@ export const MyRecipes = () => {
         return <Loading />
     }
 
-    return <section className="container recipes">
+    return <main className="container recipes">
 
         {/* header */}
         <MyRecipesHeader />
@@ -43,11 +43,11 @@ export const MyRecipes = () => {
             {
                 availableRecipesTypes.map((el, num) => <Link to={`/myRecipes/${el.path}`} className='recipeRedirect' key={`recipe-redirect-${el.path}-${num}`}>
                 <span />
-                <div> {el.title} </div>
+                <strong> {el.title} </strong>
             </Link>)
             }
         </div>
 
-    </section>
+    </main>
 
 }

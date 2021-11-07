@@ -556,6 +556,9 @@
     height: 100%;
     appearance: none;
     background: transparent;
+    &:hover{
+      cursor: pointer;
+    }
     &:checked ~ span {
       box-shadow: none;
       background: $color-green;
