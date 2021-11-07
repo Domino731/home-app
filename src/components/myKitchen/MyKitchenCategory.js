@@ -19,17 +19,12 @@ const MyKitchenCategory = ({ title, products, productType }) => {
     const [productsArray, setProductsArray] = useState([]);
 
     // state with selected sorting
-    const [sorting, setSorting] = useState("Alfabetycznie A - Z");
+    const [sorting, setSorting] = useState("Włącz sortowanie");
 
     // filter redux's products state and pull out products of particular type
     useEffect(() => {
         products && setProductsArray(products.filter(el => el.type === productType));
     }, [products]);
-
-    // sort product by selected option - sorting state
-    useEffect(() => {
-        return sortingByAlphabeticalProducts(sorting);
-    }, [sorting]);
 
     /** change showList state - toogle content */
     const handleChangeShowList = () => {
@@ -54,9 +49,11 @@ const MyKitchenCategory = ({ title, products, productType }) => {
     /** change sorting state - useEffect will sort products by selected option */
     const handleChangeSorting = () => {
         if (sorting === "Alfabetycznie A - Z") {
-            return setSorting("Alfabetycznie Z - A");
+            setSorting("Alfabetycznie Z - A");
+            return sortingByAlphabeticalProducts("Alfabetycznie Z - A")
         } else {
-            return setSorting("Alfabetycznie A - Z");
+            setSorting("Alfabetycznie A - Z");
+            return sortingByAlphabeticalProducts("Alfabetycznie A - Z")
         }
     }
 
@@ -64,7 +61,7 @@ const MyKitchenCategory = ({ title, products, productType }) => {
  * That function is sorting array with products alphabetically
  * @param {"Alfabetycznie Z - A" | "Alfabetycznie Z - A"} option - sorting option ->  A - Z or Z - A
  */
-     const sortingByAlphabeticalProducts = (option) => {
+    const sortingByAlphabeticalProducts = (option) => {
         if (option === "Alfabetycznie Z - A") {
             return setProductsArray(prev => prev.sort((a, b) => {
                 const textA = a.name.toUpperCase();

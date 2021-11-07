@@ -17,10 +17,6 @@ import { Login } from "./components/userForm/Login";
 import AuthRoute from "./components/customRoutes/AuthRoute";
 import { Register } from "./components/userForm/Register";
 import { PasswordRecovery } from "./components/userForm/PasswordRecovery";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-
-/** Handling error 404 */
-const NotFound = () => <Redirect to='/'/>
 
 function App({ setUser }) {
 
@@ -46,8 +42,6 @@ function App({ setUser }) {
             <PrivateRoute exact path="/myRecipe/edit/:id" component={MyRecipeEdit} />
             <PrivateRoute exact path="/tasks" component={ToDo} />
             
-            {/* error 404 handling */}
-            <Route component={NotFound} />
         </Router>
     )
 }

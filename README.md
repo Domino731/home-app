@@ -183,6 +183,12 @@ In firestore, in 'productsRendering' add new document with following data:
 | number | number | a number that determines the priority of the product and its position in the list in `<Mykitchen>` component|
 | productType | string | type of product. This name is needed to filter products by type in `<MyKitchenCategory>` component. This product type name is also used in `<MyKitchenAddProductForm>` where user is adding new product with this type |
 | title | string | Name of product type which will displayed in `<MyKitchenCategory>` component |
+## Project develop environment scripts
+###  `npm i` or `npm install` to install dependencies
+###  `npm start` - development server
+### `npm run build` - build package
+
+
 
 
 

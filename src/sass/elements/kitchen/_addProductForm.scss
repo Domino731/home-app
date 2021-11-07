@@ -265,7 +265,8 @@
       border: none;
       background: $color-blue;
       position: relative;
-
+      transform: scale(0%);
+      animation: 0.4s 0.5s an__addNewProduct_button forwards;
       &::after {
         @include corners("rightTop", $color-white, 85px, 4px, 15px);
         @include mobileL {
@@ -415,5 +416,10 @@
     margin-top: 20px;
     width: 190px;
     height: 50px;
+  }
+}
+@keyframes an__addNewProduct_button {
+  100% {
+    transform: scale(100%);
   }
 }
