@@ -52,7 +52,7 @@ const MyRecipeSingleRecipe = ({ changeRecipeData, changeRecipeStyles, setToDos, 
 
     // fetch data about styles of particular type of recipe (svg icon and color) 
     useEffect(() => {
-     recipe && getRecipeStyles(recipe.type, changeRecipeStyles)
+       recipe && getRecipeStyles(recipe.type, changeRecipeStyles)
     }, [recipe]);
 
 

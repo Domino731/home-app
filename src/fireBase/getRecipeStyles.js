@@ -10,8 +10,8 @@ import { db } from "./fireBase"
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const data = {
-                colorPrimary: doc.data().colorPrimary,
-                colorSecondary: doc.data().colorSecondary,
+                colorPrimary: doc.data().primaryColor,
+                colorSecondary: doc.data().secondaryColor,
                 icon: doc.data().icon
             }
             return saveData(data)

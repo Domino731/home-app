@@ -277,7 +277,7 @@ export const MyRecipeEdit = () => {
 
                             {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`edit-recipe-${data.name}-ingredient-${num}`}>
                                 {/* user can remove this ingredient from data.ingredients state*/}
-                                <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)} title='Usuń składnik z listy'/>
+                                <button className='clearButton' onClick={() => handleRemoveSpecificIngredient(num)} title='Usuń składnik z listy'> </button><i className="fas fa-trash-alt addRecipe__deleteIcon" />
                                 {num + 1}. <span>{el.amount} {el.unit}</span> - {el.name}
                             </li>)}
 

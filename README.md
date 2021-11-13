@@ -55,8 +55,8 @@ All components responsible for user authentication are placed in `<PrivateRoute>
 
 | key | value type | description |
 | ---- | ---- | ---- |
-| colorPrimary | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
-| colorSecondary | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| primaryColor | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| secondaryColor | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
 |icon| string| svg tag used to display icon of recipe type in `<SingleRecipeHeader>` component|
  | number | number | a number that determines the priority of the product and its position in the list in `<MyRecipes>` component. Special type must be always at the end of the list |
 |path| string| recipe type, needed to fetch all recipes with this type in `<MyRecipesList>` component. And this value is also used in `<MyRecipesAddForm>` component where newly created recipes will be with this path name (`type` key)|
@@ -168,8 +168,8 @@ All components responsible for user authentication are placed in `<PrivateRoute>
 In firestore, in 'recipesRendering' add new document with following data:
 | key | value type | description |
 | ---- | ---- | ---- |
-| colorPrimary | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
-| colorSecondary | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| primaryColor | string | primary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
+| secondaryColor | string | secondary color for recipe, used in `<MyRecipeSingleRecipe>` subcomponents - background color, font color |
 |icon| string| svg tag used to display icon of recipe type in `<SingleRecipeHeader>` component|
  | number | number | a number that determines the priority of the product and its position in the list in `<MyRecipes>` component. Special type must be always at the end of the list |
 |path| string| recipe type, needed to fetch all recipes with this type in `<MyRecipesList>` component. And this value is also used in `<MyRecipesAddForm>` component where newly created recipes will be with this path name (`type` key)|

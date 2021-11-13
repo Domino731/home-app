@@ -134,13 +134,13 @@ const SingleTask = ({ taskData }) => {
         <ol className="singleTask__opsList">
             {
                 taskData.operations.map((el, num) => (
-                    <li key={`task${num}--${taskData.id}`} >
+                    <li key={`task-${num}-${taskData.id}`} >
 
                         {/* button by which user can remove operation, this button is displaying only when tasks isnt archived */}
-                        {!taskData.archive && <i className="fas fa-trash-alt"
+                        {!taskData.archive && <button className="clearButton"><i className="fas fa-trash-alt"
                             onClick={() => handleRemoveOperation(el)}
                             title='Usuń operacje'
-                        />}
+                        /></button>}
 
                         {/* content */}
                         - {el}

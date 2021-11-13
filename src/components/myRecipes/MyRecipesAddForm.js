@@ -324,7 +324,7 @@ export const MyRecipesAddForm = () => {
 
                             {data.ingredients.map((el, num) => <li className="addRecipe__listItem" key={`edit-recipe-${data.name}-ingredient-${num}`}>
                                 {/* user can remove this ingredient from data.ingredients state*/}
-                                <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => handleRemoveSpecificIngredient(num)} />
+                                <button className='clearButton' onClick={() => handleRemoveSpecificIngredient(num)} title='Usuń'><i className="fas fa-trash-alt addRecipe__deleteIcon" /></button>
                                 {num + 1}. <span>{el.amount} {el.unit}</span> - {el.name}
                             </li>)}
 
@@ -525,7 +525,7 @@ export const SingleInstruction = ({ content, index, deleteInstructionFnc, editIn
 
     return <li className="addRecipe__listItem" >
         {/* icon by which user can delete the instruction */}
-        <i className="fas fa-trash-alt addRecipe__deleteIcon" onClick={() => deleteInstructionFnc(index)} title='Usuń' />
+        <button className="clearButton" title='Usuń' onClick={() => deleteInstructionFnc(index)}><i className="fas fa-trash-alt addRecipe__deleteIcon"   /></button>
         {index + 1}. &nbsp;
 
         {/* if isInputActive state is true then display intruction text otherwise display input */}
@@ -534,7 +534,7 @@ export const SingleInstruction = ({ content, index, deleteInstructionFnc, editIn
             <textarea className="addRecipe__editTextarea" value={inputValue} onChange={handleChangeInstruction} onBlur={handleChangeIsInputActive} />
             <button onClick={handleChangeIsInputActive} className="addRecipe__closeBtn">Zamknij pole edycji</button>
         </>}
-        {!isInputActive && <i className="fas fa-edit addRecipe__editIcon" onClick={handleChangeIsInputActive} title='Edytuj' />}
+        {!isInputActive && <button className="clearButton" title='Edytuj' onClick={handleChangeIsInputActive}><i className="fas fa-edit addRecipe__editIcon"  /></button>}
     </li>
 }
 

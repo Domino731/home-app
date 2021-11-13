@@ -332,6 +332,9 @@
     margin-top: 1em;
     overflow: auto;
     font-size: 10px;
+    button {
+      line-height: 15px;
+    }
     @include mobileM {
       font-size: 11px;
     }
