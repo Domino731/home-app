@@ -30,6 +30,11 @@ export const Register = () => {
     const createAccount = async (e) => {
         e.preventDefault()
 
+        // remove previous errors
+        setInvalid({ email: false, password: false, passwordRepeat: false });
+        setInvalid(prev => ({...prev, email: ''}));
+        setEmailErrorTxt('');
+        
         // check if the passwords are same
         if (data.password === data.passwordRepeat) {
 

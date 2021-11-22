@@ -106,7 +106,7 @@ const SingleTask = ({ taskData }) => {
 
             {/*Delete button is displayed only if task doesnt have operations or if tasks is archive*/}
             {(taskData.operations.length === 0 || taskData.archive) &&
-                <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask} title='Usuń te zadanie'><i
+                <button className="panelBtn panelBtn--delete" onClick={handleDeleteTask} title='Usuń zadanie'><i
                     className="fas fa-trash-alt" />
                 </button>}
 
@@ -118,7 +118,7 @@ const SingleTask = ({ taskData }) => {
 
             {/* archive task button */}
             {!taskData.archive &&
-                <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask} title='Archiwizuj te zadanie'><i
+                <button className="panelBtn panelBtn--archive" onClick={handleArchiveTask} title='Archiwizuj zadanie'><i
                     className="fas fa-archive" />
                 </button>}
 
